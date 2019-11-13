@@ -75,6 +75,8 @@
 						</div>
 					<?php } ?>
 					<!-- 1  -->
+
+					<?php if(!empty($banner[0])){ ?>
 					<div class="image-slider snd-size">
 						<span class="top-stories">TOP STORIES</span>
 						
@@ -110,6 +112,7 @@
 						</div>
 							
 					</div>
+					<?php } ?>
 
 					<!-- 4  -->
 					<?php if(!empty($banner[3])){ ?>
@@ -328,19 +331,28 @@
 								
 
 								<div class="image-post-slider">
-									<ul class="bxslider">
+									<ul class="">
 										<li>
 											<div class="news-post image-post2">
 												<div class="post-gallery">
-													<img src="<?php echo base_url().$result[0]->image ?>" alt="">
+													<div class="featured-imgs">
+														<img src="<?php echo base_url().$fetured[0]->image ?>" alt="">
+													</div>
 													<div class="hover-box overlaybox">
 														<div class="inner-hover">
-															<a class="category-post" href="#!"><?php echo $result[0]->category ?></a>
-															<h2><a href="<?php echo strtolower(base_url('news/').$result[0]->category.'/'.$result[0]->slug) ?>"><?php echo  (strlen(strip_tags($result[0]->title)) > 53) ? substr(strip_tags($result[0]->title),0,50).'...' : strip_tags($result[0]->title); ?></a></h2>
+														<?php 
+															echo (!empty($fetured[0]->category)? '<a class="category-post" href="#!">'.$fetured[0]->category.'</a>': ' ' ) ;
+															if(empty($fetured[0]->category)){
+																$urllink = $fetured[0]->slug;
+															}else{
+																$urllink = base_url('news/').$fetured[0]->category.'/'.$fetured[0]->slug;
+															}
+														?>
+															<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($result[0]->title),0,50).'...' : strip_tags($result[0]->title); ?></a></h2>
 															<ul class="post-tags">
 																<!--  -->
 																<?php 
-																	echo (!empty($result[0]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$result[0]->posted_by .'</a></li>' : '' )
+																	echo (!empty($fetured[0]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$fetured[0]->posted_by .'</a></li>' : '' )
 																?>
 																<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
 																<li><i class="fa fa-eye"></i>872</li>
@@ -356,13 +368,23 @@
 								<div class="row">
 									
 									<ul class="list-posts">
-										<?php foreach ($result as $key => $row) { 
-											if($key != 0 && $key < 12){
+										<?php foreach ($fetured as $key => $row) { 
+											if(!empty($row->id) && $key > 0 ){
 										?>
 											<li class="col-md-6">
-												<img src="<?php echo base_url().$row->image ?>" alt="">
+												<div class="featuedimg-second">
+													<img src="<?php echo base_url().$row->image ?>" alt="">
+												</div>
+
+												<?php 
+													if(empty($row->category)){
+														$urllink = $row->slug;
+													}else{
+														$urllink = base_url('news/').$row->category.'/'.$row->slug;
+													}
+												?>
 												<div class="post-content">
-													<h2><a href="<?php echo strtolower(base_url('news/').$row->category.'/'.$row->slug) ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></h2>
+													<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></h2>
 													<ul class="post-tags">
 														<!--  -->
 													</ul>

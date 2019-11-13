@@ -28,6 +28,13 @@ class m_site extends CI_Model {
         
     }
 
+    public function todayFetured()
+    {
+        $this->db->select('id, img as image, title,  link as slug, type');
+        $result = $this->db->order_by('orders', 'asc')->get('mh_today_featured')->result();
+        return $this->arrangedata($result);
+    }
+
     public function getBanner($var = null)
     {
         $this->db->select('id, img as image, title,  link as slug, type');
