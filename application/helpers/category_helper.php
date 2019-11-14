@@ -15,5 +15,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     }
 
+    if(!function_exists('randomArticle')) {
+        function randomArticle() {
+            $ci = get_instance();
+
+            $ci->load->model('m_site');
+            $category =  $ci->m_site->random();
+            return $category;
+        }
+    }
+
   
 

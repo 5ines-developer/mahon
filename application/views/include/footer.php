@@ -3,64 +3,26 @@
 				<div class="footer-widgets-part">
 					<div class="row">
 						<div class="col-md-3">
-							<div class="widget text-widget">
-								<h1>About</h1>
-								<p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
-								<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. </p>
-							</div>
-							<div class="widget social-widget">
-								<h1>Stay Connected</h1>
-								<ul class="social-icons">
-									<li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-									<li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-									<li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#" class="vimeo"><i class="fa fa-vimeo-square"></i></a></li>
-									<li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
-									<li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-									<li><a href="#" class="flickr"><i class="fa fa-flickr"></i></a></li>
-									<li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
-								</ul>
-							</div>
+							<img style="width:100%" src="<?php echo base_url() ?>assets/images/logo2.png" alt="mahonnathi" class="img-responsive">
 						</div>
 						<div class="col-md-3">
 							<div class="widget posts-widget">
 								<h1>Random Post</h1>
 								<ul class="list-posts">
-									<li>
-										<img src="<?php echo base_url() ?>assets/upload/news-posts/listw4.jpg" alt="">
-										<div class="post-content">
-											<a href="travel.html">travel</a>
-											<h2><a href="single-post.html">Pellentesque odio nisi, euismod in ultricies in, diam. </a></h2>
-											<ul class="post-tags">
-												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-											</ul>
-										</div>
-									</li>
-
-									<li>
-										<img src="<?php echo base_url() ?>assets/upload/news-posts/listw1.jpg" alt="">
-										<div class="post-content">
-											<a href="business.html">business</a>
-											<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-											<ul class="post-tags">
-												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-											</ul>
-										</div>
-									</li>
-
-									<li>
-										<img src="<?php echo base_url() ?>assets/upload/news-posts/listw3.jpg" alt="">
-										<div class="post-content">
-											<a href="tech.html">tech</a>
-											<h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus.</a></h2>
-											<ul class="post-tags">
-												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-											</ul>
-										</div>
-									</li>
+									<?php foreach (randomArticle() as $key => $rand) { ?>
+										<li>
+											<div class="footer-article-img">
+												<img src="<?php echo base_url().$rand->image ?>" alt="">
+											</div>
+											<div class="post-content">
+												<a href="<?php echo base_url('news/').strtolower($rand->category) ?>"><?php echo $rand->category ?></a>
+												<h2><a href="<?php echo base_url('news/').strtolower($rand->category.'/'.$rand->slug) ?>"><?php echo $rand->title ?></a></h2>
+												<ul class="post-tags">
+													<!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
+												</ul>
+											</div>
+										</li>
+									<?php } ?>
 								</ul>
 							</div>
 						</div>
@@ -68,65 +30,26 @@
 							<div class="widget categories-widget">
 								<h1>Hot Categories</h1>
 								<ul class="category-list">
-									<li>
-										<a href="#">Business <span>12</span></a>
-									</li>
-									<li>
-										<a href="#">Sport <span>26</span></a>
-									</li>
-									<li>
-										<a href="#">LifeStyle <span>55</span></a>
-									</li>
-									<li>
-										<a href="#">Fashion <span>37</span></a>
-									</li>
-									<li>
-										<a href="#">Technology <span>62</span></a>
-									</li>
-									<li>
-										<a href="#">Music <span>10</span></a>
-									</li>
-									<li>
-										<a href="#">Culture <span>43</span></a>
-									</li>
-									<li>
-										<a href="#">Design <span>74</span></a>
-									</li>
-									<li>
-										<a href="#">Entertainment <span>11</span></a>
-									</li>
-									<li>
-										<a href="#">video <span>41</span></a>
-									</li>
-									<li>
-										<a href="#">Travel <span>11</span></a>
-									</li>
-									<li>
-										<a href="#">Food <span>29</span></a>
-									</li>
+									<?php if(!empty(categories())){ foreach(categories() as $key => $value) { ?>
+										<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->title ?> <span><?php echo $value->total ?></span></a> </li>
+									<?php } } ?>
 								</ul>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="widget text-widget">
 								<h1>About</h1>
-								<p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
-								<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. </p>
+								<p>Mahonnathi is a part of Jeevan Poorna Foundation, It’s a non-profit educational and humanitarian Foundation. 
+									The new age online magazine portrays the vision of Spiritual, Ancient scriptures, Culture, National articles related to achievements, 
+									Patriotism, Stories, tips from the Ayurvedic Science, Astrology, Science, Vedic knowledge & Yoga. </p>
 							</div>
 							<div class="widget social-widget">
 								<h1>Stay Connected</h1>
 								<ul class="social-icons">
-									<li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-									<li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-									<li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#" class="vimeo"><i class="fa fa-vimeo-square"></i></a></li>
-									<li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
-									<li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-									<li><a href="#" class="flickr"><i class="fa fa-flickr"></i></a></li>
-									<li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
+								<li><a class="facebook" href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour"><i class="fa fa-facebook"></i></a></li>
+									<li><a class="rss" href="https://www.instagram.com/mahonnathii/"><i class="fa fa-instagram"></i></a></li>
+									<li><a class="twitter" href="https://twitter.com/Mahonnathii"><i class="fa fa-twitter"></i></a></li>
+									<li><a class="google" href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
 								</ul>
 							</div>
 						</div>
@@ -135,15 +58,14 @@
 				<div class="footer-last-line">
 					<div class="row">
 						<div class="col-md-6">
-							<p>&copy; COPYRIGHT 2015 hotmagazine.com</p>
+							<p>© Copyrights <?php echo date('Y') ?> All Rights Reserved by Mahonnathi Magazines </p>
 						</div>
 						<div class="col-md-6">
 							<nav class="footer-nav">
 								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li><a href="index.html">Purchase Theme</a></li>
-									<li><a href="about.html">About</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="">Home</a></li>
+									<li><a href="">About</a></li>
+									<li><a href="">Contact</a></li>
 								</ul>
 							</nav>
 						</div>
@@ -151,3 +73,4 @@
 				</div>
 			</div>
 		</footer>
+	

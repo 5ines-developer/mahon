@@ -20,12 +20,21 @@ class m_site extends CI_Model {
 
     public function getCategory()
     {
-        return $this->db
+        $query =  $this->db
             ->where('status', 1)
             ->select('title, id')
             ->get('mh_category')
             ->result();
-        
+        foreach ($query as $key => $value) {
+            $value->total = $this->totalposts($value->id);
+        }
+        return $query;
+    }
+
+    public function totalposts($id = null)
+    {
+        $query = $this->db->where('category', $id)->get('mh_posts');
+        return $query->num_rows();
     }
 
     public function todayFetured()
@@ -85,6 +94,40 @@ class m_site extends CI_Model {
                 ->join('mh_category c', 'c.id = p.category', 'left')
                 ->join('mh_author a', 'a.id = p.posted_by', 'left');
         return $this->db->order_by('p.update_on', 'DESC')->get()->row(0);
+    }
+
+    // get Category wise data
+    public function getCategoryArticle()
+    {
+        $category = $this->indexCategory();
+        foreach ($category as $key => $value) {
+            $value->data = $this->getArticleBycategory($value->id);
+        }
+        return $category;
+    }
+
+    // Index Category
+    public function indexCategory()
+    {
+        return  $this->db->where('index', 1)->order_by('created_on', 'DESC')->where('status', 1)->select('title, id')->get('mh_category')->result();
+    }
+
+    // get category wise data
+    public function getArticleBycategory($id = null)
+    {
+        return $this->db->where('category', $id)->order_by('created_on', 'DESC')->select('id, title, slug,  image')->get('mh_posts')->result();
+    }
+
+    public function random()
+    {
+        return  $this->db->from('mh_posts p')
+                ->where('p.status', 1)
+                ->select('p.id, p.title, p.slug,  p.image, c.title as category')
+                ->order_by('p.id', 'RANDOM')
+                ->join('mh_category c', 'c.id = p.category', 'left')
+                ->limit(3)
+                ->get()
+                ->result();
     }
 
 }

@@ -60,19 +60,17 @@
 										</svg>
 										<span class="cel-temperature">+7</span>
 									</li>
-									<li><span class="time-now">Thursday 8 January 2015 / 21:20</span></li>
-									<li><a href="#">Log In</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><span class="time-now"> <?php echo date("l jS  F Y  / h:i:s A") ?></span></li>
+									<!-- <li><a href="#">Log In</a></li>
+									<li><a href="contact.html">Contact</a></li> -->
 								</ul>
 							</div>	
 							<div class="col-md-3">
 								<ul class="social-icons">
-									<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
-									<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+									<li><a class="facebook" href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour"><i class="fa fa-facebook"></i></a></li>
+									<li><a class="rss" href="https://www.instagram.com/mahonnathii/"><i class="fa fa-instagram"></i></a></li>
+									<li><a class="twitter" href="https://twitter.com/Mahonnathii"><i class="fa fa-twitter"></i></a></li>
+									<li><a class="google" href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
 								</ul>
 							</div>	
 						</div>

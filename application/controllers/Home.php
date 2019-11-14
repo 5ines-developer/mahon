@@ -16,10 +16,10 @@ class home extends CI_Controller {
 
     public function index()
     {
-        $data['result'] = $this->m_site->getsiteData();
-        $data['fetured'] = $this->m_site->todayFetured();
-        $data['banner'] = $this->m_site->getBanner();
-        
+        $data['result']     = $this->m_site->getsiteData();
+        $data['fetured']    = $this->m_site->todayFetured();
+        $data['banner']     = $this->m_site->getBanner();
+        $data['cArticle']   = $this->m_site->getCategoryArticle();
         $this->load->view('site/index', $data, FALSE);
     }
 
