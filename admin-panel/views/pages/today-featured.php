@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -47,7 +48,7 @@
                                         <span class="card-title activator grey-text text-darken-4"><?php echo $post['0']->title ?></span>
                                     </div>
                                     <div class="card-action">
-                                        <a href="#">Open the article</a>
+                                        <a href="<?php echo (!empty($post['0']->link)? $post['0']->link : $this->config->item('web_url').$post['0']->slug) ?>" target="_blank">Open the article</a>
                                     </div>
                                 </div>
 
@@ -70,7 +71,7 @@
                                             <p><?php echo $row->title ?></p>
                                             </div>
                                             <div class="card-action">
-                                            <a href="#">Open the article</a>
+                                            <a href="<?php echo (!empty($row->link)? $row->link : $row->slug) ?>" target="_blank">Open the article</a>
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +88,7 @@
 
         <!-- Modal Structure -->
     <div id="modal1" class="modal">
-        <form action="<?php echo base_url() ?>banner/update" method="post" enctype="multipart/form-data">
+        <form action="<?php echo base_url() ?>featured/update" method="post" enctype="multipart/form-data">
         <div class="modal-content">
             <h6 class="bold">Change Banner Article</h6>
             <br>

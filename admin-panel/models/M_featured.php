@@ -50,7 +50,7 @@ class M_featured extends CI_Model {
             }
         }
         if(!empty($link)){$this->db->where('slug', $link); }
-        $this->db->select('id, image, title, content');
+        $this->db->select('id, image, title, content, slug');
         
         return $this->db->order_by('update_on', 'DESC')->get('mh_posts')->row(0);
     }

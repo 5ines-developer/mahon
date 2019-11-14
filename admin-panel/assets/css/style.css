@@ -1933,4 +1933,4 @@ tr.chieldrow td:nth-child(1){ background: #fff; }
 .card.horizontal .card-image a.btn-floating{ right: -20px; bottom: 36px; }
 .omgbox {max-height: 300px; overflow: hidden;}
 .card.horizontal .card-image { max-width: 40%; width: 40%; }
-.card-image-f { height: 179px; background: #f2f2f2; }
+.card-image-f { height: 179px; background: #f2f2f2; overflow: hidden;}

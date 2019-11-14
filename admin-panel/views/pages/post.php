@@ -99,7 +99,7 @@
 
                             <div class="input-field col s12 m6">
                                 <input type="text" id="title" name="title" placeholder="." required class="validate"
-                                    value="">
+                                    value="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)">
                                 <label for="title">Title <span class="red-text">*</span></label>
                                 <input type="hidden" id="ctid" name="ctid">
                             </div>
@@ -437,7 +437,6 @@
 
                     $('input[name=ctid]').val(res.id);
                     $('input[name=title]').val(res.title);
-                    // $('input[name=posted_by]').val(res.posted_by);
                     $('input[name=date]').val(res.date);
                     $('input[name=slug]').val(res.slug);
                     $('input[name=tags]').importTags(res.tags);
@@ -499,6 +498,22 @@
         });
 
     });
+
+    function convertToSlug(str) {
+       
+        //replace all special characters | symbols with a space
+        str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+        
+        // trim spaces at start and end of string
+        str = str.replace(/^\s+|\s+$/gm,'');
+        
+        // replace space with dash/hyphen
+        str = str.replace(/\s+/g, '-');	
+        console.log(document.getElementById("slug"));
+        
+        document.getElementById("slug").value = str;
+        //return str;
+    }
     </script>
 
 
