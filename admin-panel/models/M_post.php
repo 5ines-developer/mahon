@@ -72,7 +72,11 @@ class m_post extends CI_Model {
     // get Category
     public function getCategory()
     {
-       return $this->db->get('mh_category')->result();
+        $category =  $this->db->get('mh_category')->result();
+        foreach ($category as $key => $value) {
+            $value->sub = $this->choose_sub_category($value->id);        
+        }
+        return  $category;
     }
 
     // app post
@@ -145,7 +149,7 @@ class m_post extends CI_Model {
     public function single_data($id)
     {
         $select_column = array("p.id", "p.title", "c.title as category", 'p.date', 'a.name as posted_by', 'p.created_on', 'p.slug', 'p.content', 'p.tags', 'p.image', 
-        'fb.pageid as fbid', 'fb.title as fbtitle', 'fb.site_name as fbsite', 'fb.url as fburl', 'fb.img_url as fbimg', 'fb.descr as fbdes'); 
+        'fb.pageid as fbid', 'fb.title as fbtitle', 'fb.site_name as fbsite', 'fb.url as fburl', 'fb.img_url as fbimg', 'fb.descr as fbdes', 'p.realted', 'p.scategory'); 
         $this->db->select($select_column);
         $this->db->from('mh_posts p');
         $this->db->join('mh_category c', 'c.id = p.category', 'left');
@@ -172,6 +176,13 @@ class m_post extends CI_Model {
     {
        return $this->db->where('status', 1)->order_by('name', 'asc')->get('mh_author')->result();
     }
-}
 
+    // subcategory
+    public function choose_sub_category($id = null)
+    {
+        return $this->db->where('main_category', $id)->get('mh_sub_category')->result();
+    }
+
+    
+}
 /* End of file m_post.php */

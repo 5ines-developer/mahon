@@ -14,9 +14,9 @@ class post extends CI_Controller {
 
     public function index()
     {
-        $data['title'] = 'post';
-        $data['category'] = $this->m_post->getCategory();
-        $data['author'] = $this->m_post->getauthor();
+        $data['title']      = 'post';
+        $data['category']   = $this->m_post->getCategory();
+        $data['author']     = $this->m_post->getauthor();
         $this->load->view('pages/post', $data, FALSE);
     }
 
@@ -65,8 +65,12 @@ class post extends CI_Controller {
 
        
         // categoty 
-       
         
+        $related = $this->input->post('related', TRUE);
+        $relatedItem = '';
+        foreach ($related as $key => $value) {
+            $relatedItem .= $value.', ';
+        }
         
         $id = $this->input->post('ctid', TRUE);
         if(!empty($this->input->post('slug', TRUE))){
@@ -76,6 +80,7 @@ class post extends CI_Controller {
         }
         // assign to array
         if($files['status']){
+            
             $data = array(
                 'title'     => $this->input->post('title', TRUE),
                 'category'  => $this->input->post('category', TRUE),
@@ -85,7 +90,9 @@ class post extends CI_Controller {
                 'tags'      => $this->input->post('tags', TRUE),
                 'content'   => $this->input->post('description', TRUE),
                 'image'     => $files['file'],
-                'update_on' => date('Y-m-d H:i:s')
+                'update_on' => date('Y-m-d H:i:s'),
+                'scategory' => $this->input->post('scategory', TRUE),
+                'realted'   => $relatedItem,
             );
 
             $postResult = $this->m_post->addPost($data, $id);
@@ -266,6 +273,12 @@ class post extends CI_Controller {
             $data['title'] = 'Edit';
             $this->load->view('pages/post-edit', $data, FALSE);
         }
+    }
+
+    public function choose_sub_category()
+    {
+        $data = $this->m_post->choose_sub_category($this->input->post('id'));
+        echo json_encode($data);
     }
 
 }

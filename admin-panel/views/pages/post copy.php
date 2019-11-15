@@ -105,14 +105,8 @@
                             </div>
 
                             <div class="input-field col s12 m6">
-                                <input type="text" id="slug" name="slug" placeholder="" class="validate"
-                                    value="">
-                                <label for="slug">Slug<span class="red-text"> *</span></label>
-                            </div>
-
-                            <div class="input-field col s12 m6">
                                 <select required name="category" id="category">
-                                    <option value=""  >Choose Category</option>
+                                    <option value="" disabled >Choose Category</option>
                                     <?php foreach ($category as $key => $value) {
                                        echo '<option  value="'.$value->id.'">'.$value->title.'</option>';
                                     } ?>
@@ -120,31 +114,7 @@
                                 <label for="category">Category</label>
                             </div>
 
-                            <div class="input-field col s12 m6">
-                                <select  name="scategory" id="scategory" disabled>
-                                    <option value="">Choose Sub Category</option>
-                                </select>
-                                <label for="category">Sub Category</label>
-                            </div>
 
-
-                            <div class="clearfix"></div>
-
-                            
-
-                            <div class="input-field col s12 m6">
-                                <select multiple placeholder="Select Related Category" name="related[]">
-                                    <option value="" disabled="" selected="">Select Related Category</option>
-                                    <?php foreach ($category as $key => $value) { ?>
-                                        <optgroup label="<?php echo $value->title?>">
-                                            <?php foreach ($value->sub as $keys => $values) { ?>
-                                                <option value="<?php echo  $values->id ?>"><?php echo  $values->title ?></option>
-                                            <?php } ?>
-                                        </optgroup>
-                                    <?php } ?>    
-                                </select>
-                                <label>Related Category</label>
-                            </div>
 
                             <div class="input-field col s12 m6">
 
@@ -158,15 +128,18 @@
                                 <label for="posted_by">Posted By</label>
                             </div>
 
-                            <div class="clearfix"></div>
-
                             <div class="input-field col s12 m6">
                                 <input type="text" id="date" name="date" placeholder=""
-                                    class="validate datepicker" value="<?php echo date('D m Y') ?>">
+                                    class="validate datepicker" value="">
                                 <label for="date">Date</label>
                             </div>
+                            <div class="clearfix"></div>
+                            <div class="input-field col s12 m6">
+                                <input type="text" id="slug" name="slug" placeholder="" class="validate"
+                                    value="">
+                                <label for="slug">Slug<span class="red-text"> *</span></label>
+                            </div>
 
-                            
                             <div class="file-field input-field col m6">
                                 <div class="btn">
                                     <span>Featured Image</span>
@@ -382,6 +355,7 @@
                reader.onload = function(e) {
                   $('#img-previwer').attr('src', e.target.result);
                }
+               
                reader.readAsDataURL(input.files[0]);
             }
          }
@@ -521,33 +495,6 @@
                         
                     }
                 });
-        });
-
-        // sub category
-        $('select[name=category]').change(function (e) { 
-            e.preventDefault();
-            var category = $(this).val();
-           
-            $.ajax({
-                type: "post",
-                url: "<?php echo base_url() ?>post/choose_sub_category",
-                data: {id: category},
-                dataType: "json",
-                success: function (response) {
-                    var subCategory = $('select[name=scategory]');
-                    subCategory.removeAttr('disabled');
-                    subCategory.empty();
-                    if(response.length == 0 || category == ''){
-                        subCategory.append('<option value="">Not have Subcategory</option>');
-                        subCategory.attr('disabled', true);
-                    }else{
-                        response.forEach(element => {
-                            subCategory.append('<option value="'+ element.id +'">'+ element.title +'</option>');
-                        });
-                    }
-                    subCategory.formSelect();
-                }
-            });
         });
 
     });
