@@ -6394,12 +6394,12 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
 .navad{line-height: 100px;}
 .topimgox { max-height: 434px; overflow: hidden; }
 .featured-imgs { max-height: 300px; overflow: hidden; }
-.featuedimg-second { float: left; height: 80px; overflow: hidden; }
+.featuedimg-second { float: left; height: 80px; overflow: hidden; display: flex; align-items: center; }
 .post-gallerybox{height: 200px;overflow: hidden;}
 .column-2{column-count: 2;}
 .ul {list-style-type: none; padding: 0px;}
 .brd{ border-right: 1px solid #f0f0f0; border-left: 1px solid #f0f0f0; }
-.footer-article-img {width:100px; height: 80px; overflow: hidden;float: left;}
+.footer-article-img {width:100px; height: 80px; overflow: hidden;float: left;display: flex; align-items: center;}
 .footer-article-img img{width: 100%; max-width: 100%;}
 @media (max-width: 768px){
   .column-2{column-count: 1;}

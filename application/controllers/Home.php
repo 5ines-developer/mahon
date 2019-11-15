@@ -20,6 +20,7 @@ class home extends CI_Controller {
         $data['fetured']    = $this->m_site->todayFetured();
         $data['banner']     = $this->m_site->getBanner();
         $data['cArticle']   = $this->m_site->getCategoryArticle();
+        $data['breaking']   = $this->m_site->breaking();
         $this->load->view('site/index', $data, FALSE);
     }
 

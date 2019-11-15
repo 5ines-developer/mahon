@@ -115,7 +115,7 @@ class m_site extends CI_Model {
     // get category wise data
     public function getArticleBycategory($id = null)
     {
-        return $this->db->where('category', $id)->order_by('created_on', 'DESC')->select('id, title, slug,  image')->get('mh_posts')->result();
+        return $this->db->where('category', $id)->order_by('created_on', 'DESC')->select('id, title, slug,  image')->limit(6)->get('mh_posts')->result();
     }
 
     public function random()
@@ -128,6 +128,18 @@ class m_site extends CI_Model {
                 ->limit(3)
                 ->get()
                 ->result();
+    }
+
+    public function breaking()
+    {
+        $bareking = $this->db->where('status', 1)->get('mh_breaking_news')->result();
+        foreach ($bareking as $key => $value) {
+            $link = explode('/', $value->url);
+            $slug = $link[sizeof($link) - 1];
+            $value->news = $this->getArticle($slug,  $data = null);
+        }
+    return $bareking;
+        
     }
 
 }
