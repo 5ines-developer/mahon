@@ -382,7 +382,8 @@
 							<!-- article box -->
 							<div class="article-box">
 								<div class="title-section">
-									<h1><span class="world"><?php echo $category ?></span></h1>
+									<?php echo (!empty($category)? '<h1><span class="world">'.$category.'</span></h1>': '') ?>
+									<?php echo (!empty($mtitle)? '<h1><span class="world">'.$mtitle.'</span></h1>': '') ?>
 								</div>
 
                                 <?php 
@@ -415,13 +416,13 @@
                                         </div>
                                     </div>           
 
-                                <?php            
-                                        }
-                                    }
-                                ?>
-                                    
+                                <?php } }else{ ?>
+									<div class="error-banner">
+										<h1>No Result <span>Found</span></h1>
+										<p>Oops! It looks like nothing was found at this search. Maybe try another search?</p>
+									</div>
 
-
+								<?php } ?>	
 							</div>
 							<!-- End article box -->
 

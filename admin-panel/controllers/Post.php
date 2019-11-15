@@ -69,7 +69,7 @@ class post extends CI_Controller {
         $related = $this->input->post('related', TRUE);
         $relatedItem = '';
         foreach ($related as $key => $value) {
-            $relatedItem .= $value.', ';
+            $relatedItem .= $value.' , ';
         }
         
         $id = $this->input->post('ctid', TRUE);

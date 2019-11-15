@@ -19,6 +19,17 @@
 		</div>
 	</header>	
 <?php } ?>
+<script>
+			function convertToSlug(str) {
+				str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+				
+				str = str.replace(/^\s+|\s+$/gm,'');
+				
+				str = str.replace(/\s+/g, '-');	
+				document.getElementById("search-form").action  = '<?php echo base_url("topic/") ?>'+str;
+				//return str;
+			}
+		</script>
 
 <header class="clearfix second-style <?php echo $ishedder ?>">
 			<!-- Bootstrap navbar -->
@@ -133,8 +144,8 @@
                             </ul>
                             <ul class="navbar-form nav navbar-nav navbar-right">
                                 <li>
-                                    <form class=" role="search">
-                                        <input type="text" id="search" name="search" placeholder="Search here">
+                                    <form class="" id="search-form" role="search" method="post">
+                                        <input type="text" id="search" name="search" placeholder="Search here" autofocus onfocus="convertToSlug(this.value)" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" value="<?php echo (!empty($mtitle)? $mtitle : '') ?>">
                                         <button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
                                     </form>
                                 </li>
@@ -161,3 +172,4 @@
 			<!-- End Bootstrap navbar -->
 
 		</header>
+
