@@ -28,6 +28,7 @@ $route['banner']                = 'banner/index';
 $route['banner/update']         = 'banner/update';
 // todays featured
 $route['todays-featured']       = 'featured';
+$route['breaking-news']         = 'breaking_news';
 
 
 
