@@ -18,10 +18,17 @@ class M_result extends CI_Model {
             ->order_by('p.id', 'DESC')
             ->join('mh_category c', 'c.id = p.category', 'left')
             ->get();
+
+            
+            
         if(!empty($category) && !empty($slug)){
             $result =  $query->row();
-            $result->author = $this->autherdetail($result->posted_by);
-            return $result;
+            if(!empty($result)):
+                $result->author = $this->autherdetail($result->posted_by);
+                return $result;
+            else:
+                return $result;
+            endif;
         }else{
             return $query->result();
         }

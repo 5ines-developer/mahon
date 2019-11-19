@@ -68,9 +68,11 @@ class post extends CI_Controller {
         
         $related = $this->input->post('related', TRUE);
         $relatedItem = '';
-        foreach ($related as $key => $value) {
-            $relatedItem .= $value.' , ';
-        }
+        if(!empty($related)):
+            foreach ($related as $key => $value):
+                $relatedItem .= $value.' , ';
+            endforeach;
+        endif;
         
         $id = $this->input->post('ctid', TRUE);
         if(!empty($this->input->post('slug', TRUE))){

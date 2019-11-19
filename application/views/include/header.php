@@ -137,9 +137,11 @@
 								<li><a  href="<?php echo base_url() ?>">Home</a> </li>
 								<?php 
 								if(!empty(categories())){
-									foreach(categories() as $key => $value) { ?>
+									foreach(categories() as $key => $value) { 
+										if($value->menu == 1){
+								?>
 									<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->title ?></a> </li>
-								<?php } } ?>	
+								<?php } } }?>	
 
                             </ul>
                             <ul class="navbar-form nav navbar-nav navbar-right">

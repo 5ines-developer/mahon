@@ -26,7 +26,8 @@ class Breaking_news extends CI_Controller {
          {  
               $sub_array = array();  
               $sub_array[] = $key + 1;  
-              $sub_array[] = $row->url;  
+              $sub_array[] = $row->title;  
+              $sub_array[] = '<a href="'.$row->url.'" class="truncate" target="_blank" />'.$row->url.'</a>';  
               $sub_array[] = date('d M, Y', strtotime($row->created_on)); 
               $sub_array[] = '
                   <a class="blue hoverable action-btn update-btn  modal-trigger" id="'.$row->id.'" href="#modal1"><i class="fas fa-edit "></i></a>
@@ -54,8 +55,9 @@ class Breaking_news extends CI_Controller {
              $data = form_error('breaking');
              echo $data;
          }else{
-             $title  = $this->input->post('breaking');
-             $data   = array('url' => $title);
+             $url  = $this->input->post('breaking');
+             $title  = $this->input->post('title');
+             $data   = array('url' => $url, 'title' => $title);
              if($this->m_breaking_news->add($data))
              {
                  echo 'Successfully Added';
@@ -84,7 +86,8 @@ class Breaking_news extends CI_Controller {
          $id  = $this->input->post('id');
          if($row = $this->m_breaking_news->single_data($id))
          {
-             $output['title']  = $row->url;
+             $output['url']  = $row->url;
+             $output['title']  = $row->title;
              $output['id']     = $row->id;
              echo json_encode($output);
          }else{
@@ -95,9 +98,10 @@ class Breaking_news extends CI_Controller {
     //  // update
      public function update_breaking()
      {
-         $title  = $this->input->post('breaking');
+         $url  = $this->input->post('breaking');
+         $title  = $this->input->post('title');
          $id  = $this->input->post('ctid');
-         $data   = array('url' => $title);
+         $data   = array('url' => $url, 'title'=> $title);
          if($this->m_breaking_news->add($data, $id))
          {
              echo 'Successfully Updated';

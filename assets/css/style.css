@@ -6372,6 +6372,17 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
 .sidebar .categories-widget ul.category-list li:nth-child(8) a span{background: #f39c12;}
 .sidebar .categories-widget ul.category-list li:nth-child(9) a span{background: #0c2461;}
 .sidebar .categories-widget ul.category-list li:nth-child(10) a span{background: #78e08f;}
+.sidebar .categories-widget ul.category-list li:nth-child(11) a span{background: #1abc9c;}
+.sidebar .categories-widget ul.category-list li:nth-child(12) a span{background: #c0392b;}
+.sidebar .categories-widget ul.category-list li:nth-child(13) a span{background: #8e44ad;}
+.sidebar .categories-widget ul.category-list li:nth-child(14) a span{background: #e67e22;}
+.sidebar .categories-widget ul.category-list li:nth-child(15) a span{background: #3498db;}
+.sidebar .categories-widget ul.category-list li:nth-child(16) a span{background: #27ae60;}
+.sidebar .categories-widget ul.category-list li:nth-child(17) a span{background: #16a085;}
+.sidebar .categories-widget ul.category-list li:nth-child(18) a span{background: #f39c12;}
+.sidebar .categories-widget ul.category-list li:nth-child(19) a span{background: #0c2461;}
+.sidebar .categories-widget ul.category-list li:nth-child(20) a span{background: #78e08f;}
+.block-wrapper .container{ width: 1100px; }
 .block-wrapper .container{ width: 1100px; }
 .top-story-banner-slider li{max-height: 440px;overflow: hidden;;}
 .top-story-banner-slider li .news-post{max-height: 445px;overflow: hidden;}

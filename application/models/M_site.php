@@ -22,7 +22,7 @@ class m_site extends CI_Model {
     {
         $query =  $this->db
             ->where('status', 1)
-            ->select('title, id')
+            ->select('title, id, menu, index')
             ->get('mh_category')
             ->result();
         foreach ($query as $key => $value) {

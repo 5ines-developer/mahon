@@ -35,6 +35,12 @@ class result extends CI_Controller {
         }
         
     }
+
+    public function test($var = null)
+    {
+        echo $this->uri->segment(1);
+        
+    }
 }
 
 /* End of file Result.php */

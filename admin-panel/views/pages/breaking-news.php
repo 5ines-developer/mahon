@@ -55,7 +55,8 @@
                                     <thead>
                                        <tr>
                                           <th width="75px">Sl NO.</th>
-                                          <th width="300px">Title</th>
+                                          <th width="250px">Title</th>
+                                          <th width="200px">URL</th>
                                           <th >Added Date</th>
                                           <th >Action</th>
                                        </tr>
@@ -79,9 +80,14 @@
                  <div class="row m0">
                     <h6 class="m-title col">Add Breaking News</h6>
                      <div class="input-field col s12">
-                       <input type="url" id="breaking" name="breaking" placeholder="" class="validate" autofocus required value="">
-                       <label for="breaking" class="active">URL <span class="red-text">*</span></label>
+                       <input type="text" id="title" name="title" placeholder="" class="validate" autofocus required value="">
+                       <label for="title" class="active">Title <span class="red-text">*</span></label>
                        <input type="hidden" id="ctid" name="ctid">
+                     </div>
+
+                     <div class="input-field col s12">
+                       <input type="url" id="breaking" name="breaking" placeholder="" class="validate"  required value="">
+                       <label for="breaking" class="active">URL <span class="red-text">*</span></label>
                      </div>
                  </div> 
                  <div class="modal-footer">
@@ -174,7 +180,8 @@
                     data: {id : id},
                     dataType: "json",
                     success: function (response) {
-                        $('#breaking').val(response.title);
+                        $('#breaking').val(response.url);
+                        $('#title').val(response.title);
                         $('#ctid').val(response.id);
                     }
                 });
@@ -200,7 +207,8 @@
                          var instances = M.Modal.init(document.querySelectorAll('.modal'));
                          instances[0].close();  
                          $('body').css("overflow-y" , "auto");
-                         closestd.eq(1).text(name)
+                        //  closestd.eq(1).text(name)
+                        dataTable.ajax.reload();  
                       }  
                     }); 
                 }else{

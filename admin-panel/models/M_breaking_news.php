@@ -7,8 +7,8 @@ class m_breaking_news extends CI_Model {
 
     public function make_query()
 	{
-		$select_column = array("id", "url", "created_on");  
-		$order_column = array("null", "url", "created_on", 'null');  
+		$select_column = array("id", "title", "url",  "created_on");  
+		$order_column = array("null", "title","url", "created_on", 'null');  
 		  
 		$this->db->select($select_column);
         $this->db->from('mh_breaking_news');
