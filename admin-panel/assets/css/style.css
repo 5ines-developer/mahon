@@ -1689,6 +1689,7 @@ table tr .td-a {
     max-height: 99vh;
     scrollbar-width: thin;
     background: #fff;
+    overflow: hidden;
 }    
 .modal.modal-fixed-footer .modal-content{
     overflow-x: hidden !important;
@@ -1934,3 +1935,55 @@ tr.chieldrow td:nth-child(1){ background: #fff; }
 .omgbox {max-height: 300px; overflow: hidden;}
 .card.horizontal .card-image { max-width: 40%; width: 40%; }
 .card-image-f { height: 179px; background: #f2f2f2; overflow: hidden;}
+.preloader-box.active { position: fixed; width: 100%; height: 100vh; top: 0; background: #0b0b0b1a; z-index: 999; display: flex; overflow: hidden; align-items: center; justify-content: center; }
+.preloader-box{display: none}
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+
+@keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.modal-container { height: calc(100vh - 152px); overflow: auto; scrollbar-width: thin; }
+.field_set{ border-color: #F00; border-style: solid; }
+.card-25{overflow: auto; padding: 25px 10px;}
+form .collapsible-body:after{
+    display: block;
+    content: '';
+    clear: both;
+}
+form .collapsible-body{padding: 1rem;}
+.btn-img { border: 1px dotted gray; width: 200px; margin: auto; padding: 7px 10px; background: #f2f2f2; cursor: pointer; }
+.btn-img:hover{background: #dfdede;}
+.btn-img span{ cursor: pointer; }
+
+.categorydata .caret { position: absolute; right: 0; top: 13px !important; line-height: 0; padding: 0; margin: 0; }
+.colaps-box { max-height: 200px; overflow: auto; scrollbar-width: thin; }
+.realted-sub { margin-left: 37px; }
+.input-box input, .input-box textarea{ border: 1px solid #d0d0d0 !important; height: 35px !important; padding: 0 5px !important; width: calc(100% - 10px) !important; border-radius: 4px !important;}
+.realted-sub input[type=checkbox]:checked ~ label{ background: #e8eaf6; color: #000; }
+.realted-sub label{ height: 25px; line-height: 25px; font-size: 1rem; cursor: pointer; padding: 2px 16px; border-radius: 2px; }
+.related-main > p > span > .material-icons{position: relative; top: 6px; transition: .3s; transform: rotate(0deg);}
+.realted-sub {display: none;}
+.related-main > p{margin: 0px;}
+.related-main { margin-bottom: 10px; }
+.related-main-title{cursor: pointer;}

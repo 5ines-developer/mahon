@@ -45,14 +45,16 @@ class M_featured extends CI_Model {
         if(!empty($data)){
             foreach ($data as $key => $value) {
               if(!empty($value->id)){
-                  $this->db->where('id !=', $value->id);
+                  $this->db->where('p.id !=', $value->id);
               }
             }
         }
         if(!empty($link)){$this->db->where('slug', $link); }
-        $this->db->select('id, image, title, content, slug');
+        $this->db->select('p.id, p.image, p.title, p.content, p.slug, c.title as category');
+        $this->db->from('mh_posts p');
+        $this->db->join('mh_category c', 'c.id = p.category', 'left');
         
-        return $this->db->order_by('update_on', 'DESC')->get('mh_posts')->row(0);
+        return $this->db->order_by('p.update_on', 'DESC')->get()->row(0);
     }
 
 

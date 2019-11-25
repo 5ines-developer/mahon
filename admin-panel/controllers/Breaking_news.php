@@ -55,9 +55,11 @@ class Breaking_news extends CI_Controller {
              $data = form_error('breaking');
              echo $data;
          }else{
-             $url  = $this->input->post('breaking');
-             $title  = $this->input->post('title');
-             $data   = array('url' => $url, 'title' => $title);
+             $url       = $this->input->post('breaking');
+             $title     = $this->input->post('title');
+             $newtab    = $this->input->post('newtab');
+             if(empty($newtab)){$newtab = 0 ; }
+             $data      = array('url' => $url, 'title' => $title, 'is_newtab' => $newtab);
              if($this->m_breaking_news->add($data))
              {
                  echo 'Successfully Added';
@@ -86,9 +88,10 @@ class Breaking_news extends CI_Controller {
          $id  = $this->input->post('id');
          if($row = $this->m_breaking_news->single_data($id))
          {
-             $output['url']  = $row->url;
-             $output['title']  = $row->title;
-             $output['id']     = $row->id;
+             $output['url']     = $row->url;
+             $output['title']   = $row->title;
+             $output['newtab']  = $row->is_newtab;
+             $output['id']      = $row->id;
              echo json_encode($output);
          }else{
              echo 'No data fond';

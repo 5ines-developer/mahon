@@ -400,7 +400,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="post-content">
-                                                    <h2><a href="<?php echo strtolower(base_url('news/').$posts->category.'/'.$posts->slug) ?>"><?php echo  (strlen(strip_tags($posts->title)) > 108) ? substr(strip_tags($posts->title),0,105).'...' : strip_tags($posts->title); ?></a></h2>
+                                                    <h2><a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  (strlen(strip_tags($posts->title)) > 108) ? substr(strip_tags($posts->title),0,105).'...' : strip_tags($posts->title); ?></a></h2>
                                                     <ul class="post-tags">
                                                         <!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
                                                         <?php 
@@ -410,7 +410,7 @@
                                                         <li><i class="fa fa-eye"></i>872</li>
                                                     </ul>
                                                     <p><?php echo  (strlen(strip_tags($posts->content)) > 230) ? substr(strip_tags($posts->content),0,227).'...' : strip_tags($posts->content); ?></p>
-                                                    <a href="<?php echo strtolower(base_url('news/').$posts->category.'/'.$posts->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+                                                    <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
                                                 </div>
                                             </div>
                                         </div>

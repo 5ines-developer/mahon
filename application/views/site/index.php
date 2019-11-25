@@ -52,16 +52,16 @@
 									<?php 
 										echo (!empty($banner[1]->category)? '<a class="category-post" href="#!">'.$banner[1]->category.'</a>': ' ' ) ;
 										if(empty($banner[1]->category)){
-											$urllink = $banner[1]->slug;
+											$urllink = $this->urls->urlFormat($banner[1]->slug);
 										}else{
-											$urllink = base_url('news/').$banner[1]->category.'/'.$banner[1]->slug;
+											$urllink = $this->urls->urlFormat(base_url().$banner[1]->category.'/'.$banner[1]->slug);
 										}
 										(!empty($banner[1]->content)? $content = $banner[1]->content : $content = '' ) ;
 									?>
 									
 
 
-									<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($banner[1]->title)) > 43) ? substr(strip_tags($banner[1]->title),0,40).'...' : strip_tags($banner[1]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[1]->title)) > 43) ? substr(strip_tags($banner[1]->title),0,40).'...' : strip_tags($banner[1]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
@@ -89,16 +89,16 @@
 									<?php 
 										echo (!empty($banner[0]->category)? '<a class="category-post" href="#!">'.$banner[0]->category.'</a>': ' ' ) ;
 										if(empty($banner[0]->category)){
-											$urllink = $banner[0]->slug;
+											$urllink = $this->urls->urlFormat($banner[0]->slug);
 										}else{
-											$urllink = base_url('news/').$banner[0]->category.'/'.$banner[0]->slug;
+											$urllink = $this->urls->urlFormat(base_url().$banner[0]->category.'/'.$banner[0]->slug);
 										}
 										(!empty($banner[0]->content)? $content = $banner[0]->content : $content = '' ) ;
 									?>
 									
 
 
-									<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($banner[0]->title)) > 43) ? substr(strip_tags($banner[0]->title),0,40).'...' : strip_tags($banner[0]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[0]->title)) > 43) ? substr(strip_tags($banner[0]->title),0,40).'...' : strip_tags($banner[0]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
@@ -123,16 +123,16 @@
 									<?php 
 										echo (!empty($banner[3]->category)? '<a class="category-post" href="#!">'.$banner[3]->category.'</a>': ' ' ) ;
 										if(empty($banner[3]->category)){
-											$urllink = $banner[3]->slug;
+											$urllink = $this->urls->urlFormat($banner[3]->slug);
 										}else{
-											$urllink = base_url('news/').$banner[3]->category.'/'.$banner[3]->slug;
+											$urllink = $this->urls->urlFormat(base_url().$banner[3]->category.'/'.$banner[3]->slug);
 										}
 										 (!empty($banner[3]->content)? $content = $banner[3]->content : $content = '' ) ;
 									?>
 									
 
 
-									<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($banner[3]->title)) > 43) ? substr(strip_tags($banner[3]->title),0,40).'...' : strip_tags($banner[3]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[3]->title)) > 43) ? substr(strip_tags($banner[3]->title),0,40).'...' : strip_tags($banner[3]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
@@ -155,16 +155,16 @@
 									<?php 
 										echo (!empty($banner[2]->category)? '<a class="category-post" href="#!">'.$banner[2]->category.'</a>': ' ' ) ;
 										if(empty($banner[2]->category)){
-											$urllink = $banner[2]->slug;
+											$urllink = $this->urls->urlFormat($banner[2]->slug);
 										}else{
-											$urllink = base_url('news/').$banner[2]->category.'/'.$banner[2]->slug;
+											$urllink = $this->urls->urlFormat(base_url().$banner[2]->category.'/'.$banner[2]->slug);
 										}
 										 (!empty($banner[2]->content)? $content = $banner[2]->content : $content = '' ) ;
 									?>
 									
 
 
-									<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($banner[2]->title)) > 43) ? substr(strip_tags($banner[2]->title),0,40).'...' : strip_tags($banner[2]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[2]->title)) > 43) ? substr(strip_tags($banner[2]->title),0,40).'...' : strip_tags($banner[2]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
@@ -187,16 +187,16 @@
 									<?php 
 										echo (!empty($banner[4]->category)? '<a class="category-post" href="#!">'.$banner[4]->category.'</a>': ' ' ) ;
 										if(empty($banner[4]->category)){
-											$urllink = $banner[4]->slug;
+											$urllink = $this->urls->urlFormat($banner[4]->slug);
 										}else{
-											$urllink = base_url('news/').$banner[4]->category.'/'.$banner[4]->slug;
+											$urllink = $this->urls->urlFormat(base_url().$banner[4]->category.'/'.$banner[4]->slug);
 										}
 										 (!empty($banner[4]->content)? $content = $banner[4]->content : $content = '' ) ;
 									?>
 									
 
 
-									<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($banner[4]->title)) > 43) ? substr(strip_tags($banner[4]->title),0,40).'...' : strip_tags($banner[4]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[4]->title)) > 43) ? substr(strip_tags($banner[4]->title),0,40).'...' : strip_tags($banner[4]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
@@ -225,12 +225,9 @@
 				<div class="ticker-news-box">
 					<span class="breaking-news">breaking news</span>
 					<ul id="js-news">
-						<?php 
-						foreach ($breaking as $key => $value) { 
-							if(!empty($value->news)){
-						?>
-							<li class="news-item"><a href="<?php echo $value->url?>"><?php echo $value->news->title?></li>
-						<?php } }?>
+						<?php foreach ($breaking as $key => $value) { ?>
+							<li class="news-item"><a href="<?php echo $value->url?>"><?php echo $value->title?></li>
+						<?php } ?>
 					</ul>
 				</div>
 			</div>
@@ -346,12 +343,12 @@
 														<?php 
 															echo (!empty($fetured[0]->category)? '<a class="category-post" href="#!">'.$fetured[0]->category.'</a>': ' ' ) ;
 															if(empty($fetured[0]->category)){
-																$urllink = $fetured[0]->slug;
+																$urllink = $this->urls->urlFormat($fetured[0]->slug);
 															}else{
-																$urllink = base_url('news/').$fetured[0]->category.'/'.$fetured[0]->slug;
+																$urllink = $this->urls->urlFormat(base_url().$fetured[0]->category.'/'.$fetured[0]->slug);
 															}
 														?>
-															<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($result[0]->title),0,50).'...' : strip_tags($result[0]->title); ?></a></h2>
+															<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($result[0]->title),0,50).'...' : strip_tags($result[0]->title); ?></a></h2>
 															<ul class="post-tags">
 																<!--  -->
 																<?php 
@@ -382,13 +379,13 @@
 
 												<?php 
 													if(empty($row->category)){
-														$urllink = $row->slug;
+														$urllink = $this->urls->urlFormat($row->slug);
 													}else{
-														$urllink = base_url('news/').$row->category.'/'.$row->slug;
+														$urllink = $this->urls->urlFormat(base_url().$row->category.'/'.$row->slug);
 													}
 												?>
 												<div class="post-content">
-													<h2><a href="<?php echo strtolower($urllink) ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></h2>
+													<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></h2>
 													<ul class="post-tags">
 														<!--  -->
 													</ul>
@@ -423,7 +420,7 @@
 														<div class="hover-box">
 															<div class="inner-hover">
 																<!-- <a class="category-post" href="politics-category.html">Opionion</a> -->
-																<h2><a href="<?php echo base_url().$cArticle['0']->title.'/'.$carow->slug ?>"><?php echo $carow->title ?></a></h2>
+																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 																<ul class="post-tags">
 																	<!--  -->
 																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
@@ -442,7 +439,7 @@
 															<img src="<?php echo base_url().$carow->image ?>" alt="">
 														</div>
 														<div class="post-content">
-															<h2><a href="<?php echo base_url().$cArticle['1']->title.'/'.$carow->slug ?>"><?php echo $carow->title ?></a></h2>
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 														</div>
 													</li>
 												<?php } }?>	
@@ -474,7 +471,7 @@
 												<img src="<?php echo base_url().$row->image ?>" alt="">
 											</div>
 											<div class="post-content">
-												<h2><a href="<?php echo base_url().$cArticle['1']->title.'/'.$row->slug ?>"><?php echo $row->title ?></a></h2>
+												<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$row->slug) ?>"><?php echo $row->title ?></a></h2>
 											</div>
 										</li>
 									<?php } ?>
@@ -514,7 +511,7 @@
 															<img src="<?php echo base_url().$drow->image ?>" alt="">
 														</div>
 														<div class="post-content">
-															<h2><a href="<?php echo base_url().$cArticle['1']->title.'/'.$drow->slug ?>"><?php echo $drow->title ?></a></h2>
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$drow->slug) ?>"><?php echo $drow->title ?></a></h2>
 															<ul class="post-tags">
 																<!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
 															</ul>
@@ -786,7 +783,7 @@
 								</div>
 								<ul class="category-list">
 								<?php if(!empty(categories())){ foreach(categories() as $key => $value) { ?>
-									<li><a class="world" href="<?php echo strtolower(base_url().$value->title) ?>"><?php echo $value->title ?> <span><?php echo $value->total ?></span></a> </li>
+									<li><a class="world" href="<?php echo $this->urls->urlFormat(base_url().$value->title) ?>"><?php echo $value->title ?> <span><?php echo $value->total ?></span></a> </li>
 								<?php } } ?>	
 								</ul>
 							</div>

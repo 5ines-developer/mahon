@@ -132,14 +132,8 @@ class m_site extends CI_Model {
 
     public function breaking()
     {
-        $bareking = $this->db->where('status', 1)->get('mh_breaking_news')->result();
-        foreach ($bareking as $key => $value) {
-            $link = explode('/', $value->url);
-            $slug = $link[sizeof($link) - 1];
-            $value->news = $this->getArticle($slug,  $data = null);
-        }
-    return $bareking;
-        
+        $bareking = $this->db->where('status', 1)->order_by('created_on', 'DESC')->get('mh_breaking_news')->result();
+        return $bareking;
     }
 
 }

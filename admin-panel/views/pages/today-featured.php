@@ -48,7 +48,7 @@
                                         <span class="card-title activator grey-text text-darken-4"><?php echo $post['0']->title ?></span>
                                     </div>
                                     <div class="card-action">
-                                        <a href="<?php echo (!empty($post['0']->link)? $post['0']->link : $this->config->item('web_url').$post['0']->slug) ?>" target="_blank">Open the article</a>
+                                        <a href="<?php echo $this->config->item('web_url').strtolower(!empty($post['0']->link)? $post['0']->link : $post['0']->category.'/'.$post['0']->slug) ?>" target="_blank">Open the article</a>
                                     </div>
                                 </div>
 
@@ -68,10 +68,11 @@
                                         </div>
                                         <div class="card-stacked">
                                             <div class="card-content">
-                                            <p><?php echo $row->title ?></p>
+                                            <p><?php echo   (strlen(strip_tags($row->title)) > 80) ? substr(strip_tags($row->title),0,75).'...' : $row->title  ?></p>
                                             </div>
                                             <div class="card-action">
-                                            <a href="<?php echo (!empty($row->link)? $row->link : $row->slug) ?>" target="_blank">Open the article</a>
+                                                
+                                            <a href="<?php echo $this->config->item('web_url').strtolower(!empty($row->link)? $row->link : $row->category.'/'.$row->slug) ?>" target="_blank">Open the article</a>
                                             </div>
                                         </div>
                                     </div>
@@ -162,6 +163,24 @@
             </div>
         </form>
     </div>
+
+      <!-- Botón para ejecutar modal -->
+      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Botón Modal</a>
+      
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Encabezado del modal</h4>
+          <p>Texto descriptivo</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+      </div>
+      
+      <!-- 
+        $('.modal').modal();
+      -->
 
       <!-- end footer -->
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>

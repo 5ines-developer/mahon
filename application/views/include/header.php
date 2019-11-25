@@ -12,7 +12,9 @@
 					</div>
 					<ul class="nav navbar-nav">
 						<li ><a href="<?php echo base_url() ?>admin-panel/post/add"><i class="fa fa-plus mr5" aria-hidden="true"></i> Add New </a></li>
-						<li><a href="<?php echo base_url('admin-panel/post/edit/').$post->id ?>"><i class="fa fa-pencil mr5" aria-hidden="true"></i> Edit </a></li>
+						<?php if(!empty($post->id)) { ?>
+							<li><a href="<?php echo base_url('admin-panel/post/edit/').$post->id ?>"><i class="fa fa-pencil mr5" aria-hidden="true"></i> Edit </a></li>
+						<?php } ?>
 					</ul>
 				</div>
 			</nav>
@@ -139,8 +141,9 @@
 								if(!empty(categories())){
 									foreach(categories() as $key => $value) { 
 										if($value->menu == 1){
+											$rurl = $this->urls->urlFormat(base_url().$value->title)
 								?>
-									<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->title ?></a> </li>
+									<li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>
 								<?php } } }?>	
 
                             </ul>

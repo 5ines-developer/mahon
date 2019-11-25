@@ -89,6 +89,15 @@
                        <input type="url" id="breaking" name="breaking" placeholder="" class="validate"  required value="">
                        <label for="breaking" class="active">URL <span class="red-text">*</span></label>
                      </div>
+
+                     <div class="col s12">
+                        <p>
+                           <label>
+                           <input type="checkbox" class="filled-in" name="newtab" id="newtab" value="1"  />
+                           <span>Open with new tab</span>
+                           </label>
+                        </p>
+                     </div>
                  </div> 
                  <div class="modal-footer">
                      <button class="btn waves-effect waves-light green darken-4 hoverable btn-small" type="submit">Submit
@@ -183,6 +192,11 @@
                         $('#breaking').val(response.url);
                         $('#title').val(response.title);
                         $('#ctid').val(response.id);
+                        if(response.newtab == 1 ){
+                           $('#newtab').attr('checked', 'checked');
+                        }else{
+                           $('#newtab').removeAttr('checked');
+                        }
                     }
                 });
             });

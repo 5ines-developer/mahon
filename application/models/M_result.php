@@ -39,6 +39,12 @@ class M_result extends CI_Model {
         return $this->db->where('id', $id)->get('mh_author')->row();
     }
 
+    public function breaking()
+    {
+        $bareking = $this->db->where('status', 1)->order_by('created_on', 'DESC')->get('mh_breaking_news')->result();
+        return $bareking;
+    }
+
 }
 
 /* End of file M_result.php */
