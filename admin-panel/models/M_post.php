@@ -149,12 +149,18 @@ class m_post extends CI_Model {
     public function single_data($id)
     {
         $select_column = array("p.id", "p.title", "c.title as category", 'p.date', 'a.name as posted_by', 'p.created_on', 'p.slug', 'p.content', 'p.tags', 'p.image', 
-        'fb.pageid as fbid', 'fb.title as fbtitle', 'fb.site_name as fbsite', 'fb.url as fburl', 'fb.img_url as fbimg', 'fb.descr as fbdes', 'p.realted', 'p.scategory'); 
+        'fb.pageid as fbid', 'fb.title as fbtitle', 'fb.site_name as fbsite', 'fb.url as fburl', 'fb.img_url as fbimg', 'fb.descr as fbdes', 'p.realted', 'p.scategory',
+        'pp.title as page_title', 'pp.keyword as page_keyword', 'pp.descr as page_descr',
+        't.card as tw_card', 't.title as tw_title', 't.card as tw_card', 't.site_name as tw_site_name', 't.url as tw_url', 't.img_url as tw_img_url', 't.descr as tw_descr',
+
+    ); 
         $this->db->select($select_column);
         $this->db->from('mh_posts p');
         $this->db->join('mh_category c', 'c.id = p.category', 'left');
         $this->db->join('mh_author a', 'a.id = p.posted_by', 'left');
         $this->db->join('mh_post_fb fb', 'fb.postid = p.id', 'left');
+        $this->db->join('mh_post_page pp', 'pp.post_id = p.id', 'left');
+        $this->db->join('mh_twitter t', 't.post_id = p.id', 'left');
         $this->db->where('p.id', $id);
         return $this->db->get()->row();
     }

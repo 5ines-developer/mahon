@@ -270,10 +270,7 @@
                                             <input type="text" placeholder="Title" id="ftitle" name="ftitle">
                                         </div>
 
-                                        <div class="input-box">
-                                            <input type="text" placeholder="Keywords">
-                                        </div>
-
+                                        
                                         <div class="input-box">
                                             <input type="text" placeholder="Site name" id="fsite_name" name="fsite_name">
                                         </div>
@@ -501,6 +498,31 @@
                         $('input[name=tags]').importTags(res.tags);
                         $('#img-previwer').attr('src', '<?php echo $this->config->item('web_url') ?>'+res.image);
                         $('.file-path').val(res.image);
+
+                        $('input[name=fdescription]').val(res.fbdes);
+                        $('input[name=fid]').val(res.fbid);
+                        $('input[name=fimg_url]').val(res.fbimg);
+                        $('input[name=fsite_name]').val(res.fbsite);
+                        $('input[name=ftitle]').val(res.fbtitle);
+                        $('input[name=furl]').val(res.fburl);
+
+                        $('input[name=tcard]').val(res.tw_card);
+                        $('input[name=tdescription]').val(res.tw_descr);
+                        M.textareaAutoResize($('input[name=tdescription]'));
+                        $('input[name=timg_url]').val(res.tw_img_url);
+                        $('input[name=tsite_name]').val(res.tw_site_name);
+                        $('input[name=ttitle]').val(res.tw_title);
+                        $('input[name=turl]').val(res.tw_url);
+
+                        $('input[name=pdescription]').val(res.page_descr);
+                        $('input[name=pkeywords]').val(res.page_keyword);
+                        $('input[name=ptitle]').val(res.page_title);
+
+
+
+
+
+
                         CKEDITOR.instances['description'].setData(res.content);
                         
                         var textcat = $('input[name=category]');
@@ -511,7 +533,8 @@
                                 $(this).show(mainCategorySub);
                             }
                         });
-
+                        console.log(res);
+                        
                         setTimeout(() => {
                             var subcat = $('.nasubcategory[name=scategory]');
                             $.each(subcat, function (ids, vls) {
