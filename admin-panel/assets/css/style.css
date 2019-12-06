@@ -1689,7 +1689,7 @@ table tr .td-a {
     max-height: 99vh;
     scrollbar-width: thin;
     background: #fff;
-    overflow: hidden;
+    /* overflow: hidden; */
 }    
 .modal.modal-fixed-footer .modal-content{
     overflow-x: hidden !important;
@@ -1857,14 +1857,14 @@ form::after {
     top: 8px;
 }
 
-.modal-fixed .modal-content {
-    height: calc(100% - 56px);
+/* .modal-fixed .modal-content {
+    height: calc(100vh - 152px);
     max-height: 100%;
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
-}
+} */
 
 .modal-fixed .modal-footer {
     border-top: 1px solid 
@@ -1962,8 +1962,8 @@ tr.chieldrow td:nth-child(1){ background: #fff; }
       transform: rotate(360deg);
     }
   }
-
-.modal-container { height: calc(100vh - 152px); overflow: auto; scrollbar-width: thin; }
+#newsPost{position: relative;}
+/* .modal-container { height: calc(100vh - 152px); overflow: auto; scrollbar-width: thin; } */
 .field_set{ border-color: #F00; border-style: solid; }
 .card-25{overflow: auto; padding: 25px 10px;}
 form .collapsible-body:after{

@@ -8,15 +8,18 @@ class m_category extends CI_Model {
     public function make_query()
 	{
 		$select_column = array("id", "title", "created_on");  
-		$order_column = array("id", "title", "created_on", 'null');  
-		  
-		$this->db->select($select_column);
-		$this->db->from('mh_category');
-		if(isset($_POST["search"]["value"])){
+        $order_column = array("id", "title", "created_on", 'null'); 
 
-            $this->db->like("id", $_POST["search"]["value"]);  
-            $this->db->or_like("title", $_POST["search"]["value"]);
-            $this->db->or_like("created_on", $_POST["search"]["value"]);
+        $this->db->where('status', 1);
+		$this->db->select($select_column);
+        $this->db->from('mh_category');
+        
+		if(isset($_POST["search"]["value"])){
+            $this->db->group_start();
+                $this->db->like("id", $_POST["search"]["value"]);  
+                $this->db->or_like("title", $_POST["search"]["value"]);
+                $this->db->or_like("created_on", $_POST["search"]["value"]);
+            $this->db->group_end();
 		}
 		if(isset($_POST["order"]))  
         {  
@@ -29,7 +32,9 @@ class m_category extends CI_Model {
 	}
 
 	function make_datatables(){  
-		$this->make_query();  
+        $this->make_query();  
+        
+       
 		if($_POST["length"] != -1)  
 		{  
 			 $this->db->limit($_POST['length'], $_POST['start']);  
@@ -46,7 +51,7 @@ class m_category extends CI_Model {
 
 	function get_all_data()  
     {  
-           $this->db->select("*");  
+           $this->db->select("*");
            $this->db->from('mh_category');  
            return $this->db->count_all_results();  
     }
@@ -65,9 +70,31 @@ class m_category extends CI_Model {
     //delete
     public function delete($id)
     {
-        $this->db->where('id', $id)->delete('mh_category');
-        if($this->db->affected_rows() > 0){ return true;}else{return false; }
+        $this->db->where('id', $id)->update('mh_category', array('status' => 0));
+        if($this->db->affected_rows() > 0){ 
+            $this->deleteSubCategory($id);
+            $this->deletePots($id);
+            return true;
+        }
+        else{
+            return false; 
+        }
     }
+
+    public function deleteSubCategory($id)
+    {
+        $this->db->where('main_category', $id)->update('mh_sub_category', array('status' => 0));
+        return true;
+    }
+
+    public function deletePots($id)
+    {
+        $this->db->where('category', $id)->update('mh_posts', array('status' => 0));
+        return true;
+    }
+
+
+
 
     // fetch single data
     public function single_data($id)
