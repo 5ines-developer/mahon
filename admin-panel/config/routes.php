@@ -29,7 +29,9 @@ $route['banner/update']         = 'banner/update';
 // todays featured
 $route['todays-featured']       = 'featured';
 $route['breaking-news']         = 'breaking_news';
-
+// Trash
+$route['trash/category']        =  'trash/category';
+$route['trash/category-restore/(:any)'] =  'trash/category_restore/$1';
 
 
  // category

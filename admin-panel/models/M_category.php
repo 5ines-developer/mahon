@@ -128,9 +128,22 @@ class m_category extends CI_Model {
     // delete sub category
     public function deleteSub($id = null)
     {
-        $this->db->where('id', $id)->delete('mh_sub_category');
-        if($this->db->affected_rows() > 0){ return true;}else{return false; }
+        $this->db->where('id', $id)->update('mh_sub_category', array('status' => 2));
+        if($this->db->affected_rows() > 0){ 
+            $this->deleteSubCategoryTrash($id);
+            return true;
+        }
+        else{
+            return false; 
+        }
     }
+    // move to trash sub post
+    public function deleteSubCategoryTrash($id)
+    {
+        $this->db->where('category', $id)->update('scategory', array('status' => 0));
+        return true;
+    }
+
 
     // edit sub category
     public function editSub($data = null, $id = null)

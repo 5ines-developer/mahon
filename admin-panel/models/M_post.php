@@ -14,17 +14,16 @@ class m_post extends CI_Model {
         $this->db->from('mh_posts p');
         $this->db->join('mh_category c', 'c.id = p.category', 'left');
         $this->db->join('mh_author a', 'a.id = p.posted_by', 'left');
-        $this->db->group_start();
-            $this->db->where('p.status', 1);
-        $this->db->group_end();
+        $this->db->where('p.status', 1);
 		if(isset($_POST["search"]["value"])){
-
+        $this->db->group_start();    
             $this->db->like("p.id", $_POST["search"]["value"]);  
             $this->db->or_like("p.title", $_POST["search"]["value"]);
             $this->db->or_like("p.date", $_POST["search"]["value"]);
             $this->db->or_like("c.title", $_POST["search"]["value"]);
             $this->db->or_like("p.posted_by", $_POST["search"]["value"]);
             $this->db->or_like("p.created_on", $_POST["search"]["value"]);
+        $this->db->group_end();
 		}
 		if(isset($_POST["order"]))  
         {  
@@ -63,7 +62,7 @@ class m_post extends CI_Model {
     //delete
     public function delete($id)
     {
-        $this->db->where('id', $id)->delete('mh_posts');
+        $this->db->where('id', $id)->update('mh_posts', array('status' => 2));
         if($this->db->affected_rows() > 0){ return true;}else{return false; }
     }
 
