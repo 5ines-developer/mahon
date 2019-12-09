@@ -20,7 +20,7 @@
             <li class="droup-link <?php echo $this->uri->segment(1) == 'trash'?'active':'' ?>"><a class="droup-link-item" data-target="#trash-dropdown"><i class="fas fa-trash li-icon"></i>Trash</a>
                 <ul class="droupmenu" id="trash-dropdown">
                     <li class="<?php echo $this->uri->segment(2) == 'trash/category'?'active':'' ?>"><a href="<?php echo base_url('trash/category') ?>">Category</a></li>
-                    <li class="<?php echo $this->uri->segment(2) == 'trash/article'?'active':'' ?>"><a href="<?php echo base_url('category/sub-category') ?>">Articles</a></li>
+                    <li class="<?php echo $this->uri->segment(2) == 'trash/article'?'active':'' ?>"><a href="<?php echo base_url('trash/article') ?>">Articles</a></li>
                 </ul>
             </li>
 

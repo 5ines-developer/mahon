@@ -26,6 +26,21 @@ class Trash extends CI_Controller {
         
     }
 
+    public function articles()
+    {
+        $data['title'] = 'Article';
+        $data['result'] =   $this->m_trash->articleList();
+        $this->load->view('trash/article', $data, FALSE);
+    }
+
+    public function articles_restore($id = null)
+    {
+        $this->m_trash->articles_restore($id);
+        $this->session->set_flashdata('success', 'restore successfully');
+        redirect('trash/article','refresh');
+        
+    }
+
 }
 
 /* End of file Trash.php */

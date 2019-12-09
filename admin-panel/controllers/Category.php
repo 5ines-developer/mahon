@@ -56,7 +56,13 @@ class category extends CI_Controller {
             echo $data;
         }else{
             $title  = $this->input->post('category');
-            $data   = array('title' => $title);
+            $nav = $this->input->post('nav');
+            $home = $this->input->post('home');
+            $data   = array(
+                'title' => $title,
+                'menu' => (empty($nav))? '0' : $nav,
+                'index' => (empty($home))? '0' : $home,
+            );
             if($this->m_category->add_category($data))
             {
                 echo 'Category added successfully';
@@ -87,6 +93,8 @@ class category extends CI_Controller {
         {
             $output['title']  = $row->title;
             $output['id']     = $row->id;
+            $output['index']  = $row->index;
+            $output['menu']   = $row->menu;
             echo json_encode($output);
         }else{
             echo 'No data fond';
@@ -98,7 +106,13 @@ class category extends CI_Controller {
     {
         $title  = $this->input->post('category');
         $id  = $this->input->post('ctid');
-        $data   = array('title' => $title);
+        $nav = $this->input->post('nav');
+        $home = $this->input->post('home');
+        $data   = array(
+            'title' => $title,
+            'menu' => (empty($nav))? '0' : $nav,
+            'index' => (empty($home))? '0' : $home,
+        );
         if($this->m_category->add_category($data, $id))
         {
             echo 'Category update successfully';

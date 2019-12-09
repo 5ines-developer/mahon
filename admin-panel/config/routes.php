@@ -31,7 +31,9 @@ $route['todays-featured']       = 'featured';
 $route['breaking-news']         = 'breaking_news';
 // Trash
 $route['trash/category']        =  'trash/category';
+$route['trash/article']         = 'trash/articles';
 $route['trash/category-restore/(:any)'] =  'trash/category_restore/$1';
+$route['trash/article-restore/(:any)']  = 'trash/articles_restore/$1';
 
 
  // category

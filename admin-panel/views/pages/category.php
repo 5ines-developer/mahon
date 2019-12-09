@@ -83,6 +83,21 @@
                        <label for="category" class="active">Title <span class="red-text">*</span></label>
                        <input type="hidden" id="ctid" name="ctid">
                      </div>
+                     <div class="col s12">
+                         <p>
+                           <label>
+                              <input type="checkbox" class="filled-in" name="nav" value="1" />
+                              <span>Visible on navbar</span>
+                           </label>
+                        </p>
+
+                        <p>
+                           <label>
+                              <input type="checkbox" class="filled-in" name="home" value="1" />
+                              <span>Visible on home page</span>
+                           </label>
+                        </p>
+                     </div>
                  </div> 
                  <div class="modal-footer">
                      <button class="btn waves-effect waves-light green darken-4 hoverable btn-small" type="submit">Submit
@@ -176,6 +191,18 @@
                     success: function (response) {
                         $('#category').val(response.title);
                         $('#ctid').val(response.id);
+                        if(response.index == 1){
+                           $('input[name=home]').attr('checked', 'checked');   
+                        }
+                        else{
+                           $('input[name=home]').removeAttr('checked');
+                        }
+
+                        if(response.menu == 1){
+                           $('input[name=nav]').attr('checked', 'checked');
+                        }else{
+                           $('input[name=nav]').removeAttr('checked');
+                        }
                     }
                 });
             });
