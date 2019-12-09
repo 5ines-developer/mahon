@@ -331,7 +331,65 @@
 
 							</div>
 							<!-- End block content -->
-						<?php } ?>						
+
+							<!-- article 2 -->
+							
+								
+							<!-- end article -->
+						<?php } ?>	
+
+						<?php if(!empty($related)): foreach ($related as $key => $post): ?>
+								<div class="block-content related-article" data_slug="<?php echo  $post->slug ?>">
+								<!-- single-post box -->
+								<div class="single-post-box">
+
+									<div class="title-post">
+										<h1><?php echo $post->title ?></h1>
+										<ul class="post-tags">
+											<li><i class="fa fa-clock-o"></i><?php echo $post->created_on ?></li>
+											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
+											<li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
+											<li><i class="fa fa-eye"></i>872</li>
+										</ul>
+									</div>
+
+									<div class="share-post-box">
+										<ul class="share-box">
+											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+											<li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="google" href="#"><i class="fa fa-google-plus"></i><span></span></a></li>
+											<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i><span></span></a></li>
+										</ul>
+									</div>
+
+									<div class="post-gallery">
+										<img src="<?php echo base_url().$post->image ?>" alt="">
+										<!-- <span class="image-caption">Cras eget sem nec dui volutpat ultrices.</span> -->
+									</div>
+
+									<div class="post-content">
+										<?php echo $post->content ?>
+									</div>
+
+									
+
+									<div class="post-tags-box">
+										<ul class="tags-box">
+											<li><i class="fa fa-tags"></i><span>Tags:</span></li>
+											<?php  
+											foreach (explode(',', $post->tags) as $key => $value) {
+											?>
+											<li><a href="#"><?php echo  $value ?></a></li>
+											<?php } ?>
+										</ul>
+									</div>
+
+									
+								</div>
+							</div>
+							<br>
+						<?php endforeach; endif;?>  					
 					</div>
 
 					<div class="col-sm-4">
@@ -683,7 +741,7 @@
 			</div>
 		</section>
 		<!-- End block-wrapper-section -->
-
+									
 		<!-- footer 
 			================================================== -->
             <?php $this->load->view('include/footer'); ?>
@@ -703,6 +761,19 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/owl.carousel.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/script.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>											
+	<script>
+		$(document).ready(function () {
+			setTimeout(() => {
+				var waypoints = $('.related-article').waypoint({
+					handler: function(direction) {
+					var url = this.element.attributes.data_slug.value
+					history.pushState(null, url, url);
+					}
+				})
+			}, 2000);
+		});
+	</script>
 
 </body>
 </html>

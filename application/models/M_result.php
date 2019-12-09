@@ -45,6 +45,24 @@ class M_result extends CI_Model {
         return $bareking;
     }
 
+    public function related($category, $slug)
+    {
+        $this->db->where('c.title', $category);
+        $query = $this->db->from('mh_posts p')
+            ->where('p.status', 1)
+            ->where('p.slug <>', $slug)
+            ->where('p.status', 1)
+            ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, p.posted_by, p.created_on, p.tags')
+            ->order_by('p.id', 'DESC')
+            ->join('mh_category c', 'c.id = p.category', 'left')
+            ->get()
+            ->result();
+        foreach ($query as $key => $result) {
+            $result->author = $this->autherdetail($result->posted_by);
+        }
+        return $query;
+    }
+
 }
 
 /* End of file M_result.php */

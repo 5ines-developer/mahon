@@ -26,7 +26,9 @@ class result extends CI_Controller {
         $category = $this->urls->urlDformat($this->uri->segment(1));
         $data['post'] = $this->m_result->getPosts($category, $slug, $date, $auth);
         $data['breaking']   = $this->m_result->breaking();
+        
         if($category != null && $slug != null){
+            $data['related']    =  $this->m_result->related($category, $slug);
             $data['is_detail'] = TRUE;
             $this->load->view('site/detail', $data, FALSE);
         }

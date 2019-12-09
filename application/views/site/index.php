@@ -328,7 +328,9 @@
 								</div>
 
 								
-							<?php if(!empty($fetured)){ ?>	
+							<?php 
+						
+							 if(!empty($fetured[0])){ ?>	
 								<div class="image-post-slider">
 									<ul class="ul">
 
