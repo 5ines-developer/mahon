@@ -35,7 +35,6 @@
                 <?php $this->load->view('include/menu.php'); ?>
               </div>
 
-
                <div class="col m12 s12 l9">
                   <div class="main-bar">
 
@@ -67,7 +66,13 @@
                                     <tbody>
                                         <?php foreach($result as $k => $row){ ?>
                                             <tr>
-                                                <td class="center"><a href="<?php echo base_url('trash/article-restore/').$row->id ?>" class="blue hoverable action-btn update-btn modal-trigger">Restore</a></td>
+                                                <td class="center">
+                                                   <?php if($row->status == 2):  ?>
+                                                   <a href="<?php echo base_url('trash/article-restore/').$row->id ?>" class="blue hoverable action-btn update-btn ">Restore</a>
+                                                   <?php elseif ($row->status == 0):?>
+                                                      <a href="#!" class="red lighten-3 btn-small action-btn tooltipped action-btn update-btn" data-position="right" data-tooltip="you need restore <?php echo $row->category ?> category">Restore</a>
+                                                   <?php endif; ?>
+                                                </td>
                                                 <td class="center"><?php echo $row->id?></td>
                                                 <td><?php echo $row->title ?></td>
                                                 <td class="center"><?php echo $row->category ?></td>
@@ -109,6 +114,7 @@
              // materializedcss js initialize
             $('select').formSelect();
             $('.modal').modal({onOpenStart: reset});
+            $('.tooltipped').tooltip();
 
             function reset(){  
                 $('#category_form')[0].reset();

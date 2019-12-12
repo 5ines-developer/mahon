@@ -21,7 +21,7 @@ class Trash extends CI_Controller {
     public function category_restore($id = null)
     {
         $this->m_trash->category_restore($id);
-        $this->session->set_flashdata('success', 'restore successfully');
+        $this->session->set_flashdata('success', 'restored successfully');
         redirect('trash/category','refresh');
         
     }
@@ -36,7 +36,7 @@ class Trash extends CI_Controller {
     public function articles_restore($id = null)
     {
         $this->m_trash->articles_restore($id);
-        $this->session->set_flashdata('success', 'restore successfully');
+        $this->session->set_flashdata('success', 'restored successfully');
         redirect('trash/article','refresh');
         
     }

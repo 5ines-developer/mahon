@@ -103,9 +103,9 @@
             <form  id="newsPost">
                 <div class="modal-content">
                 <a href="#!" class="close-btn modal-close waves-effect waves-red"><i class="fas fa-times"></i></a>
-                    <h5 class="m-title col s12" style="margin-top: 0;">New Posts</h5>
 
                     <div class="modal-container row">
+                    <h5 class="m-title col s12" style="margin-top: 0;">New Posts</h5>
                         <div class="col s12 m8 ">
                             <!-- basic detail -->
                                 <div class="basic-detail card card-25">
@@ -133,7 +133,7 @@
                                             } ?>
                                             <option value="0" > none </option>
                                         </select>
-                                        <label for="posted_by">Posted By</label>
+                                        <label for="posted_by">Author</label>
                                     </div>
 
                                     <div class="input-field col s12 m6">
@@ -583,6 +583,7 @@
                             $('body').css("overflow-y", "auto");
                             $('#img-previwer').attr('src', '');
                             dataTable.ajax.reload();
+                            clearform(); 
                         }else{
                             M.toast({
                                 html: data.msg,
@@ -593,6 +594,7 @@
                         }
                     });
                 }
+                  
             });
 
             function validationForm() { 

@@ -66,7 +66,7 @@
 					<div class="col-sm-8">
 						<?php if(!empty($post))	{ ?>		
 							<!-- block content -->
-							<div class="block-content">
+							<div class="block-content related-article"  data_slug="<?php echo  $post->slug ?>">
 
 								<!-- single-post box -->
 								<div class="single-post-box">
