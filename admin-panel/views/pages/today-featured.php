@@ -29,30 +29,31 @@
                 <?php $this->load->view('include/menu.php'); ?>
               </div>
 
-
                <div class="col m12 s12 l9">
                   <div class="card m0">
                      <div class="card-content">
                         <div class="row">
-                            <div class="col s10 push-s1">
+                            <?php if(!empty($post['0'])){ ?>
+                                <div class="col s10 push-s1">
 
-                                <div class="card">
-                                    <div class="card-image">
-                                        <div class="omgbox">
-                                            <img src="<?php echo $this->config->item('web_url').$post['0']->image ?>" class="activator">
+                                    <div class="card">
+                                        <div class="card-image">
+                                            <div class="omgbox">
+                                                <img src="<?php echo $this->config->item('web_url').$post['0']->image ?>" class="activator">
+                                            </div>
+                                            <span class="card-title">F1</span>
+                                            <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="F1"><i class="fas fa-pencil-alt"></i></a>
                                         </div>
-                                        <span class="card-title">F1</span>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="F1"><i class="fas fa-pencil-alt"></i></a>
+                                        <div class="card-content">
+                                            <span class="card-title activator grey-text text-darken-4"><?php echo $post['0']->title ?></span>
+                                        </div>
+                                        <div class="card-action">
+                                            <a href="<?php echo $this->config->item('web_url').strtolower(!empty($post['0']->link)? $post['0']->link : $post['0']->category.'/'.$post['0']->slug) ?>" target="_blank">Open the article</a>
+                                        </div>
                                     </div>
-                                    <div class="card-content">
-                                        <span class="card-title activator grey-text text-darken-4"><?php echo $post['0']->title ?></span>
-                                    </div>
-                                    <div class="card-action">
-                                        <a href="<?php echo $this->config->item('web_url').strtolower(!empty($post['0']->link)? $post['0']->link : $post['0']->category.'/'.$post['0']->slug) ?>" target="_blank">Open the article</a>
-                                    </div>
-                                </div>
 
-                            </div>
+                                </div>
+                            <?php } else{ echo '<h3 class="center">No result found</h3>'; }?>
 
                             <?php $a = 1; foreach ($post as $i => $row) { 
                                 if($i > 0 && !empty($row->id)){
@@ -164,20 +165,6 @@
         </form>
     </div>
 
-      <!-- Botón para ejecutar modal -->
-      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Botón Modal</a>
-      
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <h4>Encabezado del modal</h4>
-          <p>Texto descriptivo</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
-        </div>
-      </div>
-      
       <!-- 
         $('.modal').modal();
       -->

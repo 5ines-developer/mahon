@@ -7,7 +7,7 @@ class m_post extends CI_Model {
 
     public function make_query()
 	{
-		$select_column = array("p.id", "p.title", "c.title as category", 'p.date', 'a.name as posted_by', 'p.created_on');  
+		$select_column = array("p.id", "p.title", "p.slug", "c.title as category", 'p.date', 'a.name as posted_by', 'p.created_on');  
 		$order_column = array(null, "p.id", "p.title", 'c.title', 'p.date', 'p.posted_by', 'p.created_on');  
 		  
 		$this->db->select($select_column);
@@ -36,11 +36,13 @@ class m_post extends CI_Model {
 	}
 
 	function make_datatables(){  
-		$this->make_query();  
-		if($_POST["length"] != -1)  
-		{  
-			 $this->db->limit($_POST['length'], $_POST['start']);  
-		}  
+        $this->make_query();
+        if(!empty($_POST["length"])){  
+            if($_POST["length"] != -1)  
+            {  
+                $this->db->limit($_POST['length'], $_POST['start']);  
+            }  
+        }
 		$query = $this->db->get();  
 		return $query->result();  
    }

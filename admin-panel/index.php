@@ -304,7 +304,7 @@ switch (ENVIRONMENT)
 	}
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
-
+	date_default_timezone_set('Asia/Kolkata');
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

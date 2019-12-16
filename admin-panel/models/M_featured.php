@@ -50,6 +50,7 @@ class M_featured extends CI_Model {
             }
         }
         if(!empty($link)){$this->db->where('slug', $link); }
+        $this->db->where('p.status', 1);
         $this->db->select('p.id, p.image, p.title, p.content, p.slug, c.title as category');
         $this->db->from('mh_posts p');
         $this->db->join('mh_category c', 'c.id = p.category', 'left');

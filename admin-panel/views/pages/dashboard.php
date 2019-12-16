@@ -12,10 +12,12 @@
       <link rel="stylesheet" href="<?php echo base_url()?>assets/dataTable/datatables.min.css">
       <link rel="stylesheet" href="<?php echo base_url()?>assets/dataTable/button/css/buttons.dataTables.css">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/percircle.css">
       
       <style type="text/css">
          .dash-list a .list-dashboard{transition: 0.5s}
          .dash-list a:hover .list-dashboard{transform: scale(1.1);background: #f3f3f3 !important}
+         .percircle  span{line-height:11px}
       
       </style>
    </head>
@@ -37,12 +39,59 @@
 
 
                <div class="col m12 s12 l9">
-                  <div class="card m0">
-                     <div class="card-content">
-                        <img src="http://thsti.res.in/writereaddata/under-construction_3.png" class="responsive-img">
+                  <div class="row m0">
+                     <div class="top-report">
+
+                        <div class="col s6 m4 l4">
+                           <div class="card horizontal cyan  ">
+                              <div class="card-image valign-wrapper ">
+                                 <i class="far fa-newspaper li-icon"></i>
+                              </div>
+                              <div class="card-stacked">
+                                 <div class="card-content">
+                                    <p>500</p>
+                                 </div>
+                                 <div class="card-action">
+                                    <a href="#">Articles</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col s6 m4 l4">
+                           <div class="card horizontal teal accent-4">
+                              <div class="card-image valign-wrapper ">
+                                 <i class="fas fa-boxes li-icon "></i>
+                              </div>
+                              <div class="card-stacked">
+                                 <div class="card-content">
+                                    <p>20</p>
+                                 </div>
+                                 <div class="card-action">
+                                    <a href="#">Category</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col s6 m4 l4">
+                           <div class="card horizontal teal">
+                              <div class="card-image valign-wrapper ">
+                                 <i class="fas fa-user-tie li-icon"></i>
+                              </div>
+                              <div class="card-stacked">
+                                 <div class="card-content">
+                                    <p>50</p>
+                                 </div>
+                                 <div class="card-action">
+                                    <a href="#">Author</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
                      </div>
                   </div>
-
                </div>
             </div>
          </div>
@@ -52,10 +101,12 @@
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
+      <script type="text/javascript" src="<?php echo base_url()?>assets/js/percircle.js"></script>
    
     <script>
         $(document).ready( function () {
             $('select').formSelect();
+            $(".bluecircle").percircle();
         });
     </script>
 </body>

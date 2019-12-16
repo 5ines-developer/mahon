@@ -48,6 +48,7 @@ class M_banner extends CI_Model {
             }
         }
         if(!empty($link)){$this->db->where('slug', $link); }
+        $this->db->where('status', 1);
         $this->db->select('id, image, title, content');
         
         return $this->db->order_by('update_on', 'DESC')->get('mh_posts')->row(0);

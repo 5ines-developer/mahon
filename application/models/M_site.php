@@ -135,7 +135,39 @@ class m_site extends CI_Model {
         $bareking = $this->db->where('status', 1)->order_by('created_on', 'DESC')->get('mh_breaking_news')->result();
         return $bareking;
     }
+    
+    // Website counter
+    public function WebCounters($ip = null)
+    {
+        
+        $getQ = $this->db->where('date', date('Y-m-d'))->where('ip_address', $ip)->get('web_view');
+        if($getQ->num_rows() > 0){
+            $this->updateVisitorCount($ip);
+        }else{
+            $this->addVisitorCount($ip);
+        }
+    }
 
+    // update visitor count
+    public function updateVisitorCount($ip = null)
+    {
+        $data = array( 'time'  => date('H:i:s'), );
+        $this->db->where('date', date('Y-m-d'))->where('ip_address', $ip)->set('visite_perday', 'visite_perday+1', FALSE)->update('web_view', $data);
+        return true;
+    }
+
+    // update visitor count
+    public function addVisitorCount($ip = null)
+    {
+        $data = array(
+            'ip_address'    => $ip,
+            'visite_perday' => 1,
+            'date'          => date('Y-m-d'),
+            'time'          => date('H:i:s')
+        );
+        $this->db->insert('web_view', $data);
+        return true;
+    }
 }
 
 /* End of file m_site.php */

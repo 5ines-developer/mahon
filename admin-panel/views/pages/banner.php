@@ -33,110 +33,122 @@
                 <?php $this->load->view('include/menu.php'); ?>
               </div>
 
-
                <div class="col m12 s12 l9">
                     <div class="card m0">
                         <div class="card-content">
                             <div class="row">
                                 <div class="col s12 m3">
                                     <!-- L1 -->
-                                    <div class="container-banner l1">
-                                        <div class="card">
-                                            <div class="card-image valign-wrapper">
-                                                <img src="<?php echo $this->config->item('web_url').$banner['1']->image ?>" class="activator">
-                                                <span class="card-title">L1</span>
-                                                <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="l1"><i class="fas fa-pencil-alt"></i></a>
-                                            </div>
-                                            <div class="card-content">
-                                                <p  class="truncate"><?php echo $banner['1']->title ?></p>
-                                            </div>
+                                    <?php if(!empty($banner['1'])) { ?>
+                                        <div class="container-banner l1">
+                                            <div class="card">
+                                                <div class="card-image valign-wrapper">
+                                                    <img src="<?php echo $this->config->item('web_url').$banner['1']->image ?>" class="activator">
+                                                    <span class="card-title">L1</span>
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="l1"><i class="fas fa-pencil-alt"></i></a>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p  class="truncate"><?php echo $banner['1']->title ?></p>
+                                                </div>
 
-                                            <div class="card-reveal">
-                                                <span class="card-title grey-text text-darken-4 "><?php echo $banner['1']->title ?><i class="fas fa-times right"></i></span>
-                                                <p ><?php echo !empty($banner['1']->content) ? $banner['1']->content : '' ?></p>
+                                                <div class="card-reveal">
+                                                    <span class="card-title grey-text text-darken-4 "><?php echo $banner['1']->title ?><i class="fas fa-times right"></i></span>
+                                                    <p ><?php echo !empty($banner['1']->content) ? $banner['1']->content : '' ?></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
+                                    <?php } ?>    
                                     <!-- L2 -->
-                                    <div class="container-banner l2">
-                                        <div class="card">
-                                            <div class="card-image valign-wrapper">
-                                                <img src="<?php echo $this->config->item('web_url').$banner['2']->image ?>" class="activator">
-                                                <span class="card-title">L2</span>
-                                                <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="l2"><i class="fas fa-pencil-alt"></i></a>
-                                            </div>
-                                            <div class="card-content">
-                                                <p  class="truncate"><?php echo $banner['2']->title ?></p>
-                                            </div>
+                                    <?php if(!empty($banner['2'])) { ?>
+                                        <div class="container-banner l2">
+                                            <div class="card">
+                                                <div class="card-image valign-wrapper">
+                                                    <img src="<?php echo $this->config->item('web_url').$banner['2']->image ?>" class="activator">
+                                                    <span class="card-title">L2</span>
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="l2"><i class="fas fa-pencil-alt"></i></a>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p  class="truncate"><?php echo $banner['2']->title ?></p>
+                                                </div>
 
-                                            <div class="card-reveal">
-                                                <span class="card-title grey-text text-darken-4"><?php echo $banner['2']->title ?><i class="fas fa-times right"></i></span>
-                                                <p><?php echo !empty($banner['2']->content) ? $banner['2']->content : '' ?></p>
+                                                <div class="card-reveal">
+                                                    <span class="card-title grey-text text-darken-4"><?php echo $banner['2']->title ?><i class="fas fa-times right"></i></span>
+                                                    <p><?php echo !empty($banner['2']->content) ? $banner['2']->content : '' ?></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                                 <!-- C1 -->
-                                <div class="col s12 m6">
-                                    <div class="container-banner cnt">
-                                        <div class="card">
-                                            <div class="card-image valign-wrapper">
-                                                <img src="<?php echo $this->config->item('web_url').$banner['0']->image ?>" class="activator">
-                                                <span class="card-title">C1</span>
-                                                <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="c1"><i class="fas fa-pencil-alt"></i></a>
-                                            </div>
-                                            <div class="card-content">
-                                                <p  class="truncate"><?php echo $banner['0']->title ?></p>
-                                            </div>
+                                <?php if(!empty($banner['0'])) { ?>
+                                    <div class="col s12 m6">
+                                        <div class="container-banner cnt">
+                                            <div class="card">
+                                                <div class="card-image valign-wrapper">
+                                                    <img src="<?php echo $this->config->item('web_url').$banner['0']->image ?>" class="activator">
+                                                    <span class="card-title">C1</span>
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="c1"><i class="fas fa-pencil-alt"></i></a>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p  class="truncate"><?php echo $banner['0']->title ?></p>
+                                                </div>
 
-                                            <div class="card-reveal">
-                                                <span class="card-title grey-text text-darken-4"><?php echo $banner['0']->title ?><i class="fas fa-times right"></i></span>
-                                                <p><?php echo !empty($banner['0']->content) ? $banner['0']->content : '' ?></p>
+                                                <div class="card-reveal">
+                                                    <span class="card-title grey-text text-darken-4"><?php echo $banner['0']->title ?><i class="fas fa-times right"></i></span>
+                                                    <p><?php echo !empty($banner['0']->content) ? $banner['0']->content : '' ?></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php } ?>
 
                                 <div class="col s12 m3">
                                     <!--  R1 -->
-                                    <div class="container-banner r1">
-                                        <div class="card">
-                                            <div class="card-image valign-wrapper">
-                                                <img src="<?php echo $this->config->item('web_url').$banner['3']->image ?>" class="activator">
-                                                <span class="card-title">R1</span>
-                                                <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="r1"><i class="fas fa-pencil-alt"></i></a>
-                                            </div>
-                                            <div class="card-content">
-                                                <p  class="truncate"><?php echo $banner['3']->title ?></p>
-                                            </div>
+                                    <?php if(!empty($banner['3'])) { ?>
+                                        <div class="container-banner r1">
+                                            <div class="card">
+                                                <div class="card-image valign-wrapper">
+                                                    <img src="<?php echo $this->config->item('web_url').$banner['3']->image ?>" class="activator">
+                                                    <span class="card-title">R1</span>
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="r1"><i class="fas fa-pencil-alt"></i></a>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p  class="truncate"><?php echo $banner['3']->title ?></p>
+                                                </div>
 
-                                            <div class="card-reveal">
-                                                <span class="card-title grey-text text-darken-4"><?php echo $banner['3']->title ?><i class="fas fa-times right"></i></span>
-                                                <p><?php echo !empty($banner['3']->content) ? $banner['3']->content : '' ?></p>
+                                                <div class="card-reveal">
+                                                    <span class="card-title grey-text text-darken-4"><?php echo $banner['3']->title ?><i class="fas fa-times right"></i></span>
+                                                    <p><?php echo !empty($banner['3']->content) ? $banner['3']->content : '' ?></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                     <!-- R2  -->
-                                    <div class="container-banner r2">
-                                        <div class="card">
-                                            <div class="card-image valign-wrapper">
-                                                <img src="<?php echo $this->config->item('web_url').$banner['4']->image ?>" class="activator">
-                                                <span class="card-title">R2</span>
-                                                <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="r2"><i class="fas fa-pencil-alt"></i></a>
-                                            </div>
-                                            <div class="card-content">
-                                                <p  class="truncate"><?php echo $banner['4']->title ?></p>
-                                            </div>
+                                    <?php if(!empty($banner['4'])) { ?>
+                                        <div class="container-banner r2">
+                                            <div class="card">
+                                                <div class="card-image valign-wrapper">
+                                                    <img src="<?php echo $this->config->item('web_url').$banner['4']->image ?>" class="activator">
+                                                    <span class="card-title">R2</span>
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="r2"><i class="fas fa-pencil-alt"></i></a>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p  class="truncate"><?php echo $banner['4']->title ?></p>
+                                                </div>
 
-                                            <div class="card-reveal">
-                                                <span class="card-title grey-text text-darken-4"><?php echo $banner['4']->title ?><i class="fas fa-times right"></i></span>
-                                                <p><?php echo !empty($banner['4']->content) ? $banner['4']->content : '' ?></p>
+                                                <div class="card-reveal">
+                                                    <span class="card-title grey-text text-darken-4"><?php echo $banner['4']->title ?><i class="fas fa-times right"></i></span>
+                                                    <p><?php echo !empty($banner['4']->content) ? $banner['4']->content : '' ?></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
+
+                            <?php if(empty($banner['1']) && empty($banner['0']) && empty($banner['2']) && empty($banner['3']) && empty($banner['4'])){
+                                echo '<h3 class="center">No result found</h3>';
+                            } ?>
                         </div>
                     </div>
                </div>

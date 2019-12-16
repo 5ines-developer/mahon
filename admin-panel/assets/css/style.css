@@ -1987,3 +1987,22 @@ form .collapsible-body{padding: 1rem;}
 .related-main > p{margin: 0px;}
 .related-main { margin-bottom: 10px; }
 .related-main-title{cursor: pointer;}
+
+/* DASHBOARD */
+.top-report .card-image{
+    max-width: 30%;
+    border-right: 1px solid rgba(255, 255, 255, 0.57)
+}
+.top-report .card-image i{
+    margin: auto;
+    font-size: 50px;
+    opacity: 0.5;
+    color: #fff;
+}
+.top-report .card{border-radius: 4px;}
+.card{border-radius: 4px;}
+.top-report .card-content{color: #fff; font-weight: 700; font-size: 18px;}
+.top-report .card-action a{color: #fff !important;text-transform: capitalize !important;}
+.top-report .card .card-action {
+    background-color: inherit;
+    border-top:1px solid rgba(255, 255, 255, 0.57)}
