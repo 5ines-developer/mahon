@@ -169,12 +169,17 @@
                             <ul class="collapsible  popout">
                                 <li class="imageli">
                                     <div class="collapsible-header"><i class="material-icons">add_photo_alternate</i>Featured Image</div>
-                                    <div class="collapsible-body">
+                                    <div class="collapsible-body  draggable-list">
                                         <img src="" id="img-previwer" class="responsive-img">
-                                        <div class="file-field center">
+                                        <div class="file-field draggable center">
+                                            <div class="drag-place center">
+                                                <i class="material-icons small"> cloud_upload </i>
+                                                <p>Drag & Drop Image here</p>
+                                                <p>Or</p>
+                                            </div>
                                             <div class="btn-img">
-                                                <span>Upload Image</span>
-                                                <input type="file" id="img"  name="img">
+                                                <span>Browse Image</span>
+                                                <input type="file" id="img"  name="img" accept="image/*" >
                                             </div>
                                             <div class="file-path-wrapper ">
                                                 <input class="file-path validate" name="filepath" type="hidden"

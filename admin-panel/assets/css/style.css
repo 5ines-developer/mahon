@@ -1909,3 +1909,8 @@ form .collapsible-body{padding: 1rem;}
 .most-view-toolbar p{ font-size: 16px; margin: 0; font-weight: 600; }
 .btn:hover{ color:#fff }
 .btn-group .btn{ width:calc((100% / 3) - 3px) }
+.draggable-list{position: relative;}
+.file-field.draggable{ position: static; border: 1px dashed; padding: 20px; background: #f7f7f7;}
+.file-field.draggable input[type=file]{
+    height: 100%;
+}
