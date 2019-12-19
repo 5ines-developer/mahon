@@ -7,7 +7,7 @@ $route['translate_uri_dashes'] 	= FALSE;
 //admin authentication
 $route['login'] 				= 'authentication/index'; 			
 $route['can-login'] 			= 'authentication/form_validation'; 
-$route['dashboard'] 			= 'authentication/enter'; 			
+$route['dashboard'] 			= 'dashboard'; 			
 $route['logout'] 				= 'authentication/logout'; 			
 //forgot password
 $route['forgot-password'] 		= 'authentication/forgot_password'; 	

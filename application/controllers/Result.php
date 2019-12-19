@@ -30,6 +30,7 @@ class result extends CI_Controller {
         if($category != null && $slug != null){
             $data['related']    =  $this->m_result->related($category, $slug);
             $data['is_detail'] = TRUE;
+            $this->m_result->visitorCount($data['post']->id);
             $this->load->view('site/detail', $data, FALSE);
         }
         else{

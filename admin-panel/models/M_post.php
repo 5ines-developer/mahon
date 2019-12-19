@@ -149,7 +149,7 @@ class m_post extends CI_Model {
     // fetch single data
     public function single_data($id)
     {
-        $select_column = array("p.id", "p.title", "c.title as category", 'p.date', 'a.name as posted_by', 'p.created_on', 'p.slug', 'p.content', 'p.tags', 'p.image', 
+        $select_column = array("p.id", "p.title", "c.title as category", 'p.date', 'a.name as posted_by', 'p.created_on', 'p.slug', 'p.content', 'p.tags', 'p.image', 'DATE_FORMAT(p.schedule, "%h:%i %p") as time', 'DATE_FORMAT(p.schedule, "%M %d, %Y") as scheduled',
         'fb.pageid as fbid', 'fb.title as fbtitle', 'fb.site_name as fbsite', 'fb.url as fburl', 'fb.img_url as fbimg', 'fb.descr as fbdes', 'p.realted', 'p.scategory',
         'pp.title as page_title', 'pp.keyword as page_keyword', 'pp.descr as page_descr',
         't.card as tw_card', 't.title as tw_title', 't.card as tw_card', 't.site_name as tw_site_name', 't.url as tw_url', 't.img_url as tw_img_url', 't.descr as tw_descr',

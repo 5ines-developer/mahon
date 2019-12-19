@@ -83,12 +83,15 @@ class post extends CI_Controller {
         }
         // assign to array
         if($files['status']){
+            $alt = (!empty($this->input->post('alt'))? $this->input->post('alt') : $slug);
+            $schedule = $this->input->post('time').' '. $this->input->post('scheduledate');
+            $schedule = date('Y-m-d H:i:s', strtotime($schedule));
             
             $data = array(
                 'title'     => $this->input->post('title', TRUE),
                 'category'  => $this->input->post('category', TRUE),
                 'posted_by' => $this->input->post('posted_by', TRUE),
-                'date'      => date('Y-m-d', strtotime($this->input->post('date', TRUE))),
+                'date'      => date('Y-m-d', strtotime($this->input->post('date'))),
                 'slug'      => $slug,
                 'tags'      => $this->input->post('tags', TRUE),
                 'content'   => $this->input->post('description', TRUE),
@@ -96,6 +99,8 @@ class post extends CI_Controller {
                 'update_on' => date('Y-m-d H:i:s'),
                 'scategory' => $this->input->post('scategory', TRUE),
                 'realted'   => $relatedItem,
+                'alt'       => $alt,
+                'schedule'  => $schedule,
             );
 
             $postResult = $this->m_post->addPost($data, $id);

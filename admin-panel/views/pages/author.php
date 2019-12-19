@@ -68,7 +68,7 @@
                                     <thead>
                                        <tr>
                                           <th width="75px">Sl NO.</th>
-                                          <th width="100px">Sl NO.</th>
+                                          <th width="100px">Profile</th>
                                           <th width="250px">Name</th>
                                           <th >Email</th>
                                           <th >Phone</th>
@@ -183,7 +183,7 @@
                   },
                   'columnDefs':[
                      {
-                        "targets":[0,4],
+                        "targets":[0,5],
                         "orderable":false,
                      }
                   ]

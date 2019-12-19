@@ -105,7 +105,7 @@
                 <a href="#!" class="close-btn modal-close waves-effect waves-red"><i class="fas fa-times"></i></a>
 
                     <div class="modal-container row">
-                    <h5 class="m-title col s12" style="margin-top: 0;">New Posts</h5>
+                    <h5 class="m-title col s12" style="margin-top: 0;">Post Article</h5>
                         <div class="col s12 m8 ">
                             <!-- basic detail -->
                                 <div class="basic-detail card card-25">
@@ -208,11 +208,9 @@
                                 <li>
                                     <div class="collapsible-header"><i class="material-icons">format_indent_increase</i>Sub Category</div>
                                     <div class="collapsible-body">
-
                                         <div class="sub-cat">
                                             <p>Select main category</p>
                                         </div>
-
                                     </div>
                                 </li>
 
@@ -241,6 +239,19 @@
                                                 </div>
                                             <?php } ?>
                                         </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">schedule</i>Schedule Article Post</div>
+                                    <div class="collapsible-body">
+                                        <div class="input-box col s6"> 
+                                            <input type="text" name="time" value="<?php echo date('h:i A') ?>" placeholder="select Time" class="timepicker">
+                                        </div>
+                                        <div class="input-box col s6"> 
+                                            <input type="text" class="datepicker"  value="<?php echo date('M d, Y') ?>"  placeholder="Select date" name="scheduledate"> 
+                                        </div>
+                                        
                                     </div>
                                 </li>
 
@@ -331,7 +342,7 @@
                 </div>
             </form>
         
-      </div>
+        </div>
       
       <!-- 
         $('.modal').modal();
@@ -378,6 +389,7 @@
             $('.modal').modal({onCloseEnd : clearform});
             $('#tags').tagsInput({ 'defaultText':'add a Tags', });
             $('.datepicker').datepicker();
+            $('.timepicker').timepicker({defaultTime: 'now'});
 
             // ck editor
             CKEDITOR.replace( 'description');
@@ -517,6 +529,8 @@
                         $('input[name=pdescription]').val(res.page_descr);
                         $('input[name=pkeywords]').val(res.page_keyword);
                         $('input[name=ptitle]').val(res.page_title);
+                        $('input[name=time]').val(res.time);
+                        $('input[name=scheduledate]').val(res.scheduled);
 
 
 

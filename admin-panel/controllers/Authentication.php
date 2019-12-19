@@ -77,13 +77,7 @@ class Authentication extends CI_Controller {
     public function enter()
     {
         if ($this->session->userdata('Mht') != '') {
-            $data['title'] = 'Dashboard - Mahonnati';
-            // $data['enquiry'] = $this->m_authentication->getEnquiry();
-            // $data['vcount'] = $this->m_authentication->vendorCount();
-            // $data['uscount'] = $this->m_authentication->userCount();
-            // $data['vnenquirycount'] = $this->m_authentication->vnenquiryCount();
-            // $data['catcount'] = $this->m_authentication->categoryCount();
-            $this->load->view('pages/dashboard.php', $data);
+            redirect('dashboard','refresh');
         } else {
             $this->session->set_flashdata('error', 'Please login and try again');
             redirect('login');
