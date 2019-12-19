@@ -350,7 +350,7 @@
 																$urllink = $this->urls->urlFormat(base_url().$fetured[0]->category.'/'.$fetured[0]->slug);
 															}
 														?>
-															<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($result[0]->title),0,50).'...' : strip_tags($result[0]->title); ?></a></h2>
+															<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($fetured[0]->title),0,50).'...' : strip_tags($fetured[0]->title); ?></a></h2>
 															<ul class="post-tags">
 																<!--  -->
 																<?php 

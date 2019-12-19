@@ -9,6 +9,7 @@ class m_site extends CI_Model {
     {
         return  $this->db->from('mh_posts p')
                 ->where('p.status', 1)
+                ->where('p.schedule <=', date('Y-m-d H:i:s'))
                 ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, a.name as posted_by')
                 ->order_by('p.id', 'DESC')
                 ->join('mh_category c', 'c.id = p.category', 'left')
@@ -33,7 +34,9 @@ class m_site extends CI_Model {
 
     public function totalposts($id = null)
     {
-        $query = $this->db->where('category', $id)->get('mh_posts');
+        $query = $this->db->where('category', $id)
+        ->where('schedule <=', date('Y-m-d H:i:s'))
+        ->get('mh_posts');
         return $query->num_rows();
     }
 
@@ -90,6 +93,7 @@ class m_site extends CI_Model {
         if(!empty($link)){$this->db->where('slug', $link); }
             $this->db->where('p.status', 1)
                 ->from('mh_posts p')
+                ->where('p.schedule <=', date('Y-m-d H:i:s'))
                 ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, a.name as posted_by')
                 ->join('mh_category c', 'c.id = p.category', 'left')
                 ->join('mh_author a', 'a.id = p.posted_by', 'left');
@@ -109,19 +113,31 @@ class m_site extends CI_Model {
     // Index Category
     public function indexCategory()
     {
-        return  $this->db->where('index', 1)->order_by('created_on', 'DESC')->where('status', 1)->select('title, id')->get('mh_category')->result();
+        return  $this->db->where('index', 1)
+        ->order_by('created_on', 'DESC')
+        ->where('status', 1)
+        ->select('title, id')
+        ->get('mh_category')
+        ->result();
     }
 
     // get category wise data
     public function getArticleBycategory($id = null)
     {
-        return $this->db->where('category', $id)->order_by('created_on', 'DESC')->select('id, title, slug,  image')->limit(6)->get('mh_posts')->result();
+        return $this->db->where('category', $id)
+        ->where('schedule <=', date('Y-m-d H:i:s'))
+        ->order_by('created_on', 'DESC')
+        ->select('id, title, slug,  image')
+        ->limit(6)
+        ->get('mh_posts')
+        ->result();
     }
 
     public function random()
     {
         return  $this->db->from('mh_posts p')
-                ->where('p.status', 1)
+                // ->where('p.status', 1)
+                ->where('p.schedule <=', date('Y-m-d H:i:s'))
                 ->select('p.id, p.title, p.slug,  p.image, c.title as category')
                 ->order_by('p.id', 'RANDOM')
                 ->join('mh_category c', 'c.id = p.category', 'left')

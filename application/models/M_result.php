@@ -14,6 +14,7 @@ class M_result extends CI_Model {
         // if(!empty($category)){}
         $query = $this->db->from('mh_posts p')
             ->where('p.status', 1)
+            ->where('p.schedule <=', date('Y-m-d H:i:s'))
             ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, p.posted_by, p.created_on, p.tags')
             ->order_by('p.id', 'DESC')
             ->join('mh_category c', 'c.id = p.category', 'left')
@@ -51,6 +52,7 @@ class M_result extends CI_Model {
         $query = $this->db->from('mh_posts p')
             ->where('p.status', 1)
             ->where('p.slug <>', $slug)
+            ->where('p.schedule <=', date('Y-m-d H:i:s'))
             ->where('p.status', 1)
             ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, p.posted_by, p.created_on, p.tags')
             ->order_by('p.id', 'DESC')
