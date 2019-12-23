@@ -101,10 +101,27 @@
                   <div class="row">
                         <div class="col s12 m12 l8">
                            <!--  Most viewed Article -->
+                           <?php
+                              // most view per
+                              $mostViewPerDay = "Today's";
+                              $per = $this->input->get('mview');
+                              if($per == 'week'){
+                                 $mostViewPerDay = 'Current Week';
+                              }elseif($per == 'half-month'){
+                                 $mostViewPerDay = "Last 15 day's";
+                              }elseif ($per == 'month') {
+                                 $mostViewPerDay = "Current Month";
+                              }
+                              elseif ($per == 'year') {
+                                 $mostViewPerDay = "Current Year";
+                              }else{
+                                 $mostViewPerDay = "Today's";
+                              }
                            
+                           ?>
                            <div class="most-view-toolbar">
                                  <div class="row m0">
-                                    <p class="heading left">Most Viewed Articles</p>
+                                    <p class="heading left">Most Viewed Articles (<?php echo $mostViewPerDay ?>)</p>
                                     <a class='dropdown-trigger btn right' href='#' data-target='dropdown1'>Sort By date &nbsp; &nbsp;<i class="fas fa-caret-down "></i></a>
                                     <ul id='dropdown1' class='dropdown-content'>
                                        <li><a href="<?php echo base_url('dashboard') ?>">Today</a></li>
