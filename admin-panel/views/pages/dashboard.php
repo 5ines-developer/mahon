@@ -101,7 +101,7 @@
                   <div class="row">
                         <div class="col s12 m12 l8">
                            <!--  Most viewed Article -->
-                           <?php if(!empty($mostViewed)) {?>
+                           
                            <div class="most-view-toolbar">
                                  <div class="row m0">
                                     <p class="heading left">Most Viewed Articles</p>
@@ -115,7 +115,7 @@
                                     </ul>
                                  </div>
                            </div>
-                           <?php foreach($mostViewed as $key => $posts) {  ?>
+                           <?php if(!empty($mostViewed)) { foreach($mostViewed as $key => $posts) {  ?>
                               <a target="_blank" href="<?php echo $this->config->item('web_url').strtolower($posts->category.'/'.$posts->slug)?>">
                                  <div class="most-view-list hoverable">
                                     <div class="card z-depth-1">

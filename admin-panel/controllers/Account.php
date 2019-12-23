@@ -38,7 +38,7 @@ class Account extends CI_Controller {
         $this->form_validation->set_rules('crpassword', 'Current Password', 'callback_passwordcheck');
         $this->form_validation->set_rules('password', 'New Password', 'required');
         $this->form_validation->set_rules('cnpassword', 'Confirm Password', 'required|matches[password]');
-        if ($this->form_validation->run() == false) {
+            if ($this->form_validation->run() == false) {
             $error = validation_errors();
             $this->session->set_flashdata('formerror', $error);
             redirect('change-password');
