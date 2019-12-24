@@ -197,7 +197,6 @@ class m_post extends CI_Model {
             $this->db->where('draft', $id);
             $this->db->update('mh_posts_draft', $data);
             if($this->db->affected_rows() > 0 ){
-                echo 'ok';
                 $data = array('status' => 1, 'draft' => $id);
             }else{
                 $this->db->insert('mh_posts_draft', $data);
@@ -228,6 +227,21 @@ class m_post extends CI_Model {
         $this->db->where('draft', $id);
         $this->db->delete('mh_posts_draft');
         return true;
+    }
+
+    public function isExistDraft($id = null)
+    {
+        $this->db->where('draft', $id);
+        $this->db->where('image <>', null);
+        $query = $this->db->get('mh_posts_draft');
+        
+        if($query->num_rows() > 0){
+            return array('status' => false, 'data' => $query->row());
+        }else{
+            return array('status' => true, 'data' => $query->row());
+        }
+        
+        
     }
     
 }

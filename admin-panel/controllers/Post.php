@@ -305,11 +305,20 @@ class post extends CI_Controller {
         
         $title  = $this->input->post('post');
         // file upload check
-        if($_FILES['img']['size'] != 0) {
-            $files = $this->uploadFile();
+        $id = $this->input->post('daraftid', TRUE);
+        $isExistDraft = $this->m_post->isExistDraft($id);
+       
+        if($isExistDraft['status']){
+            if($_FILES['img']['size'] != 0) {
+                $files = $this->uploadFile();
+            }else{
+                $files = array('status'=> true, 'file' => $this->input->post('filepath', TRUE));
+            }
         }else{
-            $files = array('status'=> true, 'file' => $this->input->post('filepath', TRUE));
+            $files['file'] = $isExistDraft['data']->image;
         }
+        
+        echo $files['file'];
        
         // categoty 
         $related = $this->input->post('related', TRUE);
@@ -320,7 +329,6 @@ class post extends CI_Controller {
             endforeach;
         endif;
         
-        $id = $this->input->post('daraftid', TRUE);
         if(!empty($this->input->post('slug', TRUE))){
             $slug = $this->input->post('slug', TRUE);
         }else{
@@ -368,7 +376,7 @@ class post extends CI_Controller {
 
             $postResult = $this->m_post->addPost_draft($data, $id);
             if($postResult['status'] == 1){
-                $data = array('status' => true, 'status_code' => 200, 'postid'=> $id, 'msg' => 'ok');
+                $data = array('status' => true, 'status_code' => 200, 'postid'=> $id, 'msg' => 'updated');
                 return true;
             }
             else
