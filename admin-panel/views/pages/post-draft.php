@@ -53,17 +53,14 @@
 
                         <div class="row">
                             <div class="col 12 m6">
-                                <p class="h5-para black-text m0">Posts</p>
-                            </div>
-                            <div class="col 12 m6 right-align">
-                                <a href="#modal1" class="waves-effect waves-light btn brand white-text hoverable modal-trigger" id="addArticle"><i class="fas fa-plus left"></i> Add new</a>
+                                <p class="h5-para black-text m0">Articles Draft</p>
                             </div>
                         </div>
 
                         <div class="row m0 mb10 boder-bottom c-tabs">
                             <div class="col l4 m4 s12 pl0">
                                 <a href="<?php echo base_url() ?>post">
-                                    <p class="black-text f-left m0"><i class="fas green-text fa-check-circle left " style="font-size:1.5rem"></i> Active Articles</p>
+                                    <p class="black-text r-left m0"><i class="fas green-text fa-check-circle left " style="font-size:1.5rem"></i> Active Articles</p>
                                 </a>
                             </div>
                             <div class="col l4 m4 s12">
@@ -73,7 +70,7 @@
                             </div>
                             <div class="col l4 m4 s12">
                                 <a href="<?php echo base_url() ?>post/draft">
-                                    <p class="black-text r-left m0"><i class="fas orange-text fa-save left " style="font-size:1.5rem"></i> Draft</p>
+                                    <p class="black-text f-left m0"><i class="fas orange-text fa-save left " style="font-size:1.5rem"></i> Draft</p>
                                 </a>
                             </div>
                         </div>
@@ -87,10 +84,8 @@
                                             <thead>
                                                 <tr>
                                                    <th width="170px">Action</th>
-                                                   <th width="100px">Sl NO.</th>
                                                    <th width="350px">Title</th>
                                                    <th width="150px">Category</th>
-                                                   <th width="120px">Date</th>
                                                    <th width="120px">Posted By</th>
                                                    <th width="120px">Uploaded Date</th>
                                                 </tr>
@@ -122,7 +117,7 @@
             <form  id="newsPost">
                 <div class="modal-content">
                 <a href="#!" class="close-btn modal-close waves-effect waves-red"><i class="fas fa-times"></i></a>
-
+                    <div class="hidden" id="addArticle"></div>
                     <div class="modal-container row">
                     <h5 class="m-title col s12" style="margin-top: 0;">Post Article</h5>
                         <div class="col s12 m8 ">
@@ -486,7 +481,7 @@
                 ],
                 'order': [],
                 'ajax': {
-                    'url': "<?php echo base_url(). 'post/getData' ?>",
+                    'url': "<?php echo base_url(). 'post/getDraft' ?>",
                     'type': 'POST'
                 },
                 'columnDefs': [{
@@ -501,7 +496,7 @@
                 if (confirm("Are you sure you want to delete this?")) {
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url(); ?>post/delete",
+                        url: "<?php echo base_url(); ?>post/deleteDraft",
                         data: {
                             id: id
                         },
@@ -524,15 +519,14 @@
                 $('button[value=post]').html('Update <i class="fas fa-paper-plane right"></i>');
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>post/single_data",
+                    url: "<?php echo base_url(); ?>post/single_draft",
                     data: {
                         id: id
                     },
                     dataType: "json",
                     success: function(res) {
                         
-
-                        $('input[name=ctid]').val(res.id);
+                        $('#addArticle').attr('data-draft', res.draft)
                         $('input[name=title]').val(res.title);
                         $('input[name=date]').val(res.date);
                         $('input[name=slug]').val(res.slug);

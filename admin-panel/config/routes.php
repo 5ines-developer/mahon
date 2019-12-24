@@ -23,6 +23,7 @@ $route['profile/update']   		= 'account/updateacnt';
 $route['post']                  = 'post/index';
 $route['post/edit/(:any)']      = 'post/edit/$1';
 $route['post/detail/(:any)']    = 'post/get_single/$1';
+$route['post/draft']            = 'post/draft';
 // banner
 $route['banner']                = 'banner/index';
 $route['banner/update']         = 'banner/update';

@@ -389,6 +389,77 @@ class post extends CI_Controller {
        
     }
 
+
+
+/** 
+ * ARTICLE POST DRAFT
+ * EDIT
+ * DELETE
+ * FETCH
+ * FETCH SINGLE
+*/
+
+    // load draft page
+    public function draft()
+    {
+        $data['title']      = 'Draft';
+        $data['category']   = $this->m_post->getCategory();
+        $data['author']     = $this->m_post->getauthor();
+        $this->load->view('pages/post-draft', $data, FALSE);
+    }
+
+    // fetch Draft 
+    public function getDraft($var = null)
+    {
+        $fetch_data = $this->m_post->draft_make_datatables();
+        $data = array();  
+        foreach($fetch_data as $row)  
+        {  
+            
+            $sub_array = array();  
+            $sub_array[] = '
+                <a class="blue hoverable action-btn update-btn modal-trigger"  href="#modal1" id="'.$row->id.'"><i class="fas fa-edit "></i></a>
+                <a class="red hoverable delete-btn action-btn" id="'.$row->id.'"><i class="fas fa-trash  "></i></a>
+            ';  
+             $sub_array[] =  (strlen($row->title) > 60) ? substr($row->title,0,57).'...' : $row->title; 
+             $sub_array[] = $row->category;  
+             $sub_array[] = $row->posted_by;  
+             $sub_array[] = date('d M, Y', strtotime($row->created_on));  
+
+             $data[] = $sub_array;  
+        }  
+        $output = array(  
+             "draw"                =>     intval($_POST["draw"]),  
+             "recordsTotal"        =>     $this->m_post->draft_get_all_data(),  
+             "recordsFiltered"     =>     $this->m_post->draft_get_filtered_data(),  
+             "data"                =>     $data  
+        );  
+        echo json_encode($output); 
+    }
+
+     // delete Draft
+    public function deleteDraft()
+    {
+         $id  = $this->input->post('id');
+         if($this->m_post->draft_delete($id))
+         {
+             echo 'Draft deleted successfully';
+         }else{
+             echo 'Some error occured, Please try agin later';
+         }
+    }
+
+    // get single Draft
+    public function single_draft($id = null)
+    {
+        $id  = $this->input->post('id');
+        if($row = $this->m_post->single_draft($id))
+        {
+            echo json_encode($row);
+        }else{
+            echo 'No data fond';
+        }
+    }
 }
 
 /* End of file post.php */
