@@ -56,7 +56,20 @@ class post extends CI_Controller {
     public function add_post()
     {
         $title  = $this->input->post('post');
+        $postedBtn = 1;
+        $postid = '';
+        $submit = $this->input->post('btnType');
+        if($submit == 'post'){
+            $postedBtn = 1;
+            $this->m_post->deleteDraft($this->input->post('daraftid'));
+        }elseif ($submit == 'preview') {
+            $postedBtn = 3;
+        }elseif ($submit == 'draft') {
+            $this->m_post->deleteDraft($this->input->post('daraftid'));
+            $postedBtn = 4;
+        }
 
+      
         // file upload check
         if($_FILES['img']['size'] != 0) {
             $files = $this->uploadFile();
@@ -101,6 +114,7 @@ class post extends CI_Controller {
                 'realted'   => $relatedItem,
                 'alt'       => $alt,
                 'schedule'  => $schedule,
+                'status'    => $postedBtn
             );
 
             $postResult = $this->m_post->addPost($data, $id);
@@ -142,18 +156,18 @@ class post extends CI_Controller {
                 $this->m_post->addFbMeta($datafb, $id);
                 $this->m_post->addTwitMeta($datatwit, $id);
                 
-                $data = array('status' => true, 'status_code' => 200, 'msg' => $msg);
+                $data = array('status' => true, 'status_code' => 200, 'postid'=> $postid, 'msg' => $msg);
                 echo json_encode($data);
             }
             else
             {
-                $data = array('status' => false, 'status_code' => 400, 'msg' => 'Server error occurred. Please try again.');
+                $data = array('status' => false, 'status_code' => 400, 'postid'=> $postid, 'msg' => 'Server error occurred. Please try again.');
                 echo json_encode($data);
             }
         }
         else
         {
-            $data = array('status' => false, 'status_code' => 400, 'msg' => $files['error']);
+            $data = array('status' => false, 'status_code' => 400, 'postid'=> $postid, 'msg' => $files['error']);
             echo json_encode($data);
         }
     }
@@ -182,9 +196,6 @@ class post extends CI_Controller {
         }
         return $data;
     }
-
-
-
 
 
     // delete data
@@ -287,6 +298,87 @@ class post extends CI_Controller {
     {
         $data = $this->m_post->choose_sub_category($this->input->post('id'));
         echo json_encode($data);
+    }
+
+    public function save_draft()
+    {
+        
+        $title  = $this->input->post('post');
+        // file upload check
+        if($_FILES['img']['size'] != 0) {
+            $files = $this->uploadFile();
+        }else{
+            $files = array('status'=> true, 'file' => $this->input->post('filepath', TRUE));
+        }
+       
+        // categoty 
+        $related = $this->input->post('related', TRUE);
+        $relatedItem = '';
+        if(!empty($related)):
+            foreach ($related as $key => $value):
+                $relatedItem .= $value.' , ';
+            endforeach;
+        endif;
+        
+        $id = $this->input->post('daraftid', TRUE);
+        if(!empty($this->input->post('slug', TRUE))){
+            $slug = $this->input->post('slug', TRUE);
+        }else{
+            $slug =  str_replace(' ', '-',$this->input->post('title', TRUE));
+        }
+        // assign to array
+        
+            $alt = (!empty($this->input->post('alt'))? $this->input->post('alt') : $slug);
+            $schedule = $this->input->post('time').' '. $this->input->post('scheduledate');
+            $schedule = date('Y-m-d H:i:s', strtotime($schedule));
+            
+            $data = array(
+                'draft'         => $id,
+                'title'         => $this->input->post('title', TRUE),
+                'category'      => $this->input->post('category', TRUE),
+                'posted_by'     => $this->input->post('posted_by', TRUE),
+                'date'          => date('Y-m-d', strtotime($this->input->post('date'))),
+                'slug'          => $slug,
+                'tags'          => $this->input->post('tags', TRUE),
+                'content'       => $this->input->post('description', TRUE),
+                'image'         => $files['file'],
+                'update_on'     => date('Y-m-d H:i:s'),
+                'scategory'     => $this->input->post('scategory', TRUE),
+                'realted'       => $relatedItem,
+                'alt'           => $alt,
+                'schedule'      => $schedule,
+                'p_title'       => $this->input->post('ptitle', TRUE),
+                'p_keyword'     => $this->input->post('pkeywords', TRUE),
+                'p_descr'       => $this->input->post('pdescription', TRUE),
+                'f_pageid'      => $this->input->post('fid', TRUE),
+                'f_title'       => $this->input->post('ftitle', TRUE),
+                'f_site_name'   => $this->input->post('fsite_name', TRUE),
+                'f_url'         => $this->input->post('furl', TRUE),
+                'f_img_url'     => $this->input->post('fimg_url', TRUE),
+                'f_descr'       => $this->input->post('fdescription', TRUE),
+                't_card'        => $this->input->post('tcard', TRUE),
+                't_title'       => $this->input->post('ttitle', TRUE),
+                't_site_name'   => $this->input->post('tsite_name', TRUE),
+                't_url'         => $this->input->post('turl', TRUE),
+                't_img_url'     => $this->input->post('timg_url', TRUE),
+                't_descr'       => $this->input->post('tdescription', TRUE),
+                'created_by'    => $this->session->userdata('Mht'),
+                'updated_by'    => $this->session->userdata('Mht'),
+            );
+
+            $postResult = $this->m_post->addPost_draft($data, $id);
+            if($postResult['status'] == 1){
+                $data = array('status' => true, 'status_code' => 200, 'postid'=> $id, 'msg' => 'ok');
+                return true;
+            }
+            else
+            {
+                $data = array('status' => false, 'status_code' => 400, 'postid'=> $id, 'msg' => 'Server error occurred. Please try again.');
+                return true;
+            }
+        
+       
+       
     }
 
 }

@@ -46,6 +46,7 @@ class M_dashboard extends CI_Model {
         }
         $this->db->where('p.update_on <=', date('Y-m-d H:i:s'));
         $this->db->where('p.update_on >=', $sorted);
+        $this->db->where('p.status ', 1);
         return $this->db->from('mh_posts p')
         ->select('p.views, p.id, p.slug, p.title, p.update_on, a.id as authid, a.name as author, p.update_on, c.title as category')
         ->join('mh_author a', 'a.id = p.posted_by', 'left')

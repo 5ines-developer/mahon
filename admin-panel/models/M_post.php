@@ -190,6 +190,45 @@ class m_post extends CI_Model {
         return $this->db->where('main_category', $id)->get('mh_sub_category')->result();
     }
 
+    // add to draft
+    public function addPost_draft($data = null, $id = null)
+    {
+        if(!empty($id)){
+            $this->db->where('draft', $id);
+            $this->db->update('mh_posts_draft', $data);
+            if($this->db->affected_rows() > 0 ){
+                echo 'ok';
+                $data = array('status' => 1, 'draft' => $id);
+            }else{
+                $this->db->insert('mh_posts_draft', $data);
+                if( $this->db->affected_rows() > 0 ){
+                    $data = array('status' => 1, 'draft' => $id);
+                }else{
+                        $data = array('status' => 0,);
+                }
+            }
+           
+            return $data;
+        }
+        else{
+            $this->db->insert('mh_posts_draft', $data);
+            if( $this->db->affected_rows() > 0 ){
+                $data = array('status' => 1, 'draft' => $id);
+            }else{
+                    $data = array('status' => 0,);
+            }
+            return $data;
+        }
+        
+    }
+
+    // delete draft
+    public function deleteDraft($id = null)
+    {
+        $this->db->where('draft', $id);
+        $this->db->delete('mh_posts_draft');
+        return true;
+    }
     
 }
 /* End of file m_post.php */

@@ -8,13 +8,12 @@ class M_result extends CI_Model {
     public function getPosts($category, $slug, $date, $auth)
     {
         // where
-        if(!empty($category)){$this->db->where('c.title', $category); }
         if(!empty($slug)){$this->db->where('p.slug', $slug);}
-        // if(!empty($category)){}
-        // if(!empty($category)){}
+        if(!empty($category)){$this->db->where('c.title', $category); }
+        
         $query = $this->db->from('mh_posts p')
             ->where('p.status', 1)
-            ->where('p.schedule <=', date('Y-m-d H:i:s'))
+            // ->where('p.schedule <=', date('Y-m-d H:i:s'))
             ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, p.posted_by, p.created_on, p.tags')
             ->order_by('p.id', 'DESC')
             ->join('mh_category c', 'c.id = p.category', 'left')
@@ -34,6 +33,8 @@ class M_result extends CI_Model {
             return $query->result();
         }
     }
+
+
 
     public function autherdetail($id = null)
     {
@@ -113,6 +114,30 @@ class M_result extends CI_Model {
         ->set('views', 'views+1', FALSE)
         ->update('mh_posts');
         return true;       
+    }
+
+    // preview
+    public function getPostsPreview($id = null)
+    {
+        // where
+       
+       $this->db->where('p.id', $id);
+        $query = $this->db->from('mh_posts p')
+            ->where('p.status', 3)
+            ->where('p.schedule <=', date('Y-m-d H:i:s'))
+            ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, p.posted_by, p.created_on, p.tags')
+            ->order_by('p.id', 'DESC')
+            ->join('mh_category c', 'c.id = p.category', 'left')
+            ->get();
+
+        
+            $result =  $query->row();
+            if(!empty($result)):
+                $result->author = $this->autherdetail($result->posted_by);
+                return $result;
+            else:
+                return $result;
+            endif;
     }
 
 }

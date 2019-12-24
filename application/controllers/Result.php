@@ -45,6 +45,14 @@ class result extends CI_Controller {
         echo $this->uri->segment(1);
         
     }
+
+    // preview
+    public function preview($id = null)
+    {
+        $data['post'] = $this->m_result->getPostsPreview($id);
+        $data['breaking']   = $this->m_result->breaking();
+        $this->load->view('site/detail', $data, FALSE);
+    }
 }
 
 /* End of file Result.php */

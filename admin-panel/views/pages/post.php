@@ -55,9 +55,7 @@
                                 <p class="h5-para black-text m0">Posts</p>
                             </div>
                             <div class="col 12 m6 right-align">
-                                <a href="#modal1"
-                                    class="waves-effect waves-light btn brand white-text hoverable modal-trigger"><i
-                                        class="fas fa-plus left"></i> Add new</a>
+                                <a href="#modal1" class="waves-effect waves-light btn brand white-text hoverable modal-trigger" id="addArticle"><i class="fas fa-plus left"></i> Add new</a>
                             </div>
                         </div>
                         <div class="shorting-table">
@@ -340,9 +338,13 @@
                         </div>                     
                     </div>
                 </div>
-                <div class="modal-footer">
-                <button class="btn waves-effect waves-light green darken-4 hoverable btn-small" type="submit">Post <i class="fas fa-paper-plane right"></i></button>
-            <button type="reset" class="hide" value="Reset" id="reset-btn">Reset</button>
+                <br>
+                <div class="modal-footer mt10">
+                <input type="hidden" name="btnType">
+                <button class="btn waves-effect waves-light green darken-4 hoverable btn-small" name="submit" type="submit" value="post">Post <i class="fas fa-paper-plane right"></i></button>
+                <button class="btn waves-effect waves-light blue darken-4 hoverable btn-small" name="submit" type="submit" value="preview">Preview Article <i class="fas fa-eye right"></i></button>
+                <button class="btn waves-effect waves-light orange accent-3 darken-4 hoverable btn-small" name="submit" type="submit" value="draft">Save to Draft <i class="fas fa-save right"></i></button>
+            
             <a href="#!" class="modal-close waves-effect waves-red hoverable red btn-small btn">Close <i class="fas fa-times right"></i></a> 
                 </div>
             </form>
@@ -394,7 +396,7 @@
             $('.modal').modal({onCloseEnd : clearform});
             $('#tags').tagsInput({ 'defaultText':'add a Tags', });
             $('.datepicker').datepicker();
-            $('.timepicker').timepicker({defaultTime: 'now'});
+            $('.timepicker').timepicker();
 
             // ck editor
             CKEDITOR.replace( 'description');
@@ -432,13 +434,14 @@
                 }
             }
 
-        // Reset the form  
+            // Reset the form  
             function clearform() {
+                $('#addArticle').removeAttr('data-draft');
                 $('#newsPost')[0].reset();
                 $('input[name=tags]').importTags('');
                 $('#img-previwer').attr('src', '');
                 $('#ctid').val('');
-                $('button[type=submit]').html('Post <i class="fas fa-paper-plane right"></i>');
+                $('button[value=post]').html('Post <i class="fas fa-paper-plane right"></i>');
                 CKEDITOR.instances['description'].setData('');
                 var postedby = $('select[name=posted_by]').find('option');
                 $.each(postedby, function (i, vl) { 
@@ -451,6 +454,7 @@
                 });
                 
             }
+
             // ajax request
             var dataTable = $('#dynamic').DataTable({
                 'processing': true,
@@ -490,14 +494,13 @@
                 }
             })
 
-
             //  update data
             $(document).on('click', '.update-btn', function() {
 
                 var id = $(this).attr('id');
                 
                 $('.m-title').text('Edit Post');
-                $('button[type=submit]').html('Update <i class="fas fa-paper-plane right"></i>');
+                $('button[value=post]').html('Update <i class="fas fa-paper-plane right"></i>');
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>post/single_data",
@@ -537,11 +540,6 @@
                         $('input[name=time]').val(res.time);
                         $('input[name=scheduledate]').val(res.scheduled);
 
-
-
-
-
-
                         CKEDITOR.instances['description'].setData(res.content);
                         
                         var textcat = $('input[name=category]');
@@ -579,30 +577,43 @@
             });
 
             // submit update category_form
+            $(document).on('click', 'button[name=submit]', function(event){
+                $('input[name=btnType]').val($(this).val())
+            });
             $(document).on('submit', '#newsPost', function(event) {
                 event.preventDefault();
+                                
                 var validate = validationForm();
                 if(validate == true){
                     
                     $('.preloader-box').addClass('active');
+                    var form = $(this)[0];
+                    var formData = new FormData(form);
+                    formData.append('daraftid', $('#addArticle').attr('data-draft'));
                     $.ajax({
                         url: "<?php echo base_url() . 'post/add_post'?>",
                         method: 'POST',
                         dataType: "json",
-                        data: new FormData(this),
+                        data: formData,
                         contentType: false,
                         processData: false,
 
                         success: function(data) {
                         if(data.status == true){
-                            $('#newsPost')[0].reset();
-                            var instances = M.Modal.init(document.querySelectorAll('.modal'));
-                            instances[0].close();
-                            M.toast({ html: data.msg, classes: 'green' });
-                            $('body').css("overflow-y", "auto");
-                            $('#img-previwer').attr('src', '');
-                            dataTable.ajax.reload();
-                            clearform(); 
+                            // check if preview
+                            if($('input[name=btnType]').val() == 'preview'){
+                                $('input[name=ctid]').val(data.postid);
+                                window.open('<?php echo $this->config->item('web_url') ?>preview/' + data.postid, '_blank');
+                            }else{
+                                $('#newsPost')[0].reset();
+                                var instances = M.Modal.init(document.querySelectorAll('.modal'));
+                                instances[0].close();
+                                M.toast({ html: data.msg, classes: 'green' });
+                                $('body').css("overflow-y", "auto");
+                                $('#img-previwer').attr('src', '');
+                                dataTable.ajax.reload();
+                                clearform(); 
+                            }
                         }else{
                             M.toast({
                                 html: data.msg,
@@ -627,7 +638,6 @@
                 }
             }
 
-            
             // sub category
             function mainCategorySub() { 
                 
@@ -653,9 +663,6 @@
             $('input[name=category]').change(mainCategorySub);
             $(document).ready(mainCategorySub);
            
-
-          
-
             $(document).on('change', '.main-cat-select', function(event) {
                 event.preventDefault();
                 if ($(this).is(':checked')) { 
@@ -667,8 +674,61 @@
                 }
             });
             
+            // auto draft   
+            $('#addArticle').click(function() {
+                var key = Math.ceil(Math.random() * 10000);
+               $(this).attr('data-draft', key);
+            });
 
+            // test ionterval
+            function saveToDraft() {
+                $('input[name=ctid]').val();
+                $('input[name=title]').val();
+                $('input[name=date]').val();
+                $('input[name=slug]').val();
+                $('input[name=tags]').val();
+                // $('#img-previwer').attr('src', '<?php echo $this->config->item('web_url') ?>'+res.image);
+                $('.file-path').val();
 
+                $('input[name=fdescription]').val();
+                $('input[name=fid]').val();
+                $('input[name=fimg_url]').val();
+                $('input[name=fsite_name]').val();
+                $('input[name=ftitle]').val();
+                $('input[name=furl]').val();
+
+                $('input[name=tcard]').val();
+                $('input[name=tdescription]').val();
+                $('input[name=tdescription]').val();
+                $('input[name=timg_url]').val();
+                $('input[name=tsite_name]').val();
+                $('input[name=ttitle]').val();
+                $('input[name=turl]').val();
+
+                $('input[name=pdescription]').val();
+                $('input[name=pkeywords]').val();
+                $('input[name=ptitle]').val();
+                $('input[name=time]').val();
+                $('input[name=scheduledate]').val();
+
+            }
+
+           
+            // set interval
+            setInterval(function() {
+                if($('.modal').hasClass('open') == true &&  $('#addArticle').attr('data-draft')){
+                    var form = $("#newsPost")[0];
+                    var formData = new FormData(form);
+                    formData.append('daraftid', $('#addArticle').attr('data-draft'));
+                    $.ajax({
+                        url : "<?php echo base_url() ?>post/save_draft",
+                        type: "POST",
+                        data : formData,
+                        processData: false,
+                        contentType: false,
+                    });
+                }
+            }, 5000);
         });
 
         function convertToSlug(str) {
