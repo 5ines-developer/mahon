@@ -63,6 +63,21 @@ class m_site extends CI_Model {
         
     }
 
+    public function temple($var = null)
+    {
+        $this->db->select('id, img as image, title,  link as slug, type');
+        $result = $this->db->order_by('orders', 'asc')->get('mh_temple')->result();
+        return $this->arrangedata($result);
+    }
+
+    public function popular($var = null)
+    {
+        $this->db->select('id, img as image, title,  link as slug, type');
+        $result = $this->db->order_by('orders', 'asc')->get('mh_popular')->result();
+        return $this->arrangedata($result);
+    }
+    
+
     function arrangedata($result = null)
     {
         $data = array();

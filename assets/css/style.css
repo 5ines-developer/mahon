@@ -6416,3 +6416,39 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   .column-2{column-count: 1;}
   .brd{border: transparent !important;}
 }
+
+.temple-to-visit a img{
+  height: 163px;
+  width: auto;
+  max-width: inherit;
+  text-align: center;
+}
+
+.verticle {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+
+.features-slide-widget  .bx-pager  {
+  position: absolute;
+  bottom: 5px !important;
+}
+
+.breaking-news{
+  animation: breakingnews 0.7s infinite 0s ease-in-out;
+}
+
+@keyframes breakingnews{
+  0%{
+    transform:  translateX(0px);
+      }
+  54%{
+      transform:  translateX(8px);
+      }
+  99%{
+      transform: translateX(10px);
+      }
+}
+

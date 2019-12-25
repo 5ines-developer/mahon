@@ -7,11 +7,12 @@
 
             <li class="divider" tabindex="-1"></li>
 
-            <li class="<?php echo $this->uri->segment(1) == 'post'?'active':''?>"> <a href="<?php echo base_url('post') ?>"><i class="far fa-newspaper li-icon"></i>Articles</a></li>
+            <li class="<?php echo $this->uri->segment(1) == 'post'?'active':''?>"> <a href="<?php echo base_url('post') ?>"><i class="far fa-newspaper li-icon"></i>Articles Post</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'breaking-news'?'active':''?>"> <a href="<?php echo base_url('breaking-news') ?>"><i class="fab fa-audible li-icon"></i>Breaking News</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'banner'?'active':''?>"> <a href="<?php echo base_url('banner') ?>"><i class="far fa-images li-icon"></i>Banner</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'todays-featured'?'active':''?>"> <a href="<?php echo base_url('todays-featured') ?>"><i class="fas fa-newspaper li-icon"></i>Today's Featured</a></li>
-            <li class="<?php echo $this->uri->segment(1) == 'trending'?'active':''?>"> <a href="<?php echo base_url('trending') ?>"><i class="fas fa-fire li-icon"></i>Trending</a></li>
+            <li class="<?php echo $this->uri->segment(1) == 'trending'?'active':''?>"> <a href="<?php echo base_url('trending') ?>"><i class="fas fa-fire li-icon"></i>Trending Article</a></li>
+            <li class="<?php echo $this->uri->segment(1) == 'popular-article'?'active':''?>"> <a href="<?php echo base_url('popular-article') ?>"><i class="fas fa-bolt li-icon"></i>Popular Article</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'temple-visit'?'active':''?>"> <a href="<?php echo base_url('temple-visit') ?>"><i class="fas fa-gopuram li-icon"></i>Temple To Visit</a></li>
 
             <li class="divider" tabindex="-1"></li>

@@ -48,7 +48,9 @@ $route['trending/update']                        = 'trending/update';
 // Trending
 $route['temple-visit']                           = 'temple/index';
 $route['temple-visit/update']                    = 'temple/update';
-
+// popular Article
+$route['popular-article']                        = 'popular/index';
+$route['popular-article/update']                 = 'popular/update';
 
 
 

@@ -222,14 +222,16 @@
 		<?php if(!empty($breaking) ){ ?>
 		<section class="ticker-news">
 			<div class="container">
-				<div class="ticker-news-box">
-					<span class="breaking-news">breaking news</span>
-					<ul id="js-news">
-						<?php foreach ($breaking as $key => $value) { ?>
-							<li class="news-item"><a href="<?php echo $value->url?>"><?php echo $value->title?></li>
-						<?php } ?>
-					</ul>
-				</div>
+				<!-- <div class="col-sm-12 col-md-9 col-lg-9"> -->
+					<div class="ticker-news-box">
+						<span class="breaking-news">breaking news</span>
+						<ul id="js-news">
+							<?php foreach ($breaking as $key => $value) { ?>
+								<li class="news-item"><a href="<?php echo $value->url?>"><?php echo $value->title?></li>
+							<?php } ?>
+						</ul>
+					</div>
+				<!-- </div> -->
 			</div>
 		</section>
 		<?php } ?>
@@ -625,86 +627,52 @@
 									</li>
 								</ul>
 							</div>
+							
+							<?php if(!empty($temple)){ ?>
+								<div class="widget features-slide-widget">
+									<div class="title-section">
+										<h1><span>TEMPLE TO VISIT</span></h1>
+									</div>
+									<div class="image-post-slider">
+										<ul class="bxslider">
 
-							<div class="widget features-slide-widget">
-								<div class="title-section">
-									<h1><span>Featured Posts</span></h1>
+											<?php foreach ($temple as $key => $tprow) { 
+												
+												if(empty($tprow->category)){
+													$urllink = $this->urls->urlFormat($tprow->slug);
+												}else{
+													$urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
+												}
+												(!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
+											?>
+											<li class="temple-to-visit">
+												<a href="<?php echo $urllink ?>">
+													<div class="news-post image-post2">
+														<div class="post-gallery">
+															<div class="verticle">
+																<img src="<?php echo base_url().$tprow->image ?>" alt="">
+															</div>
+															<div class="hover-box">
+																<div class="inner-hover">
+																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
+																	<ul class="post-tags">
+																		<!--  -->
+																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</a>
+											</li>
+												
+											<?php } ?>
+											
+											
+										</ul>
+									</div>
 								</div>
-								<div class="image-post-slider">
-									<ul class="bxslider">
-										<li>
-											<div class="news-post image-post2">
-												<div class="post-gallery">
-													<img src="https://placeimg.com/270/240/any" alt="">
-													<div class="hover-box">
-														<div class="inner-hover">
-															<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam pharetra a, ultricies in, diam. </a></h2>
-															<ul class="post-tags">
-																<!--  -->
-																<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="news-post image-post2">
-												<div class="post-gallery">
-													<img src="https://placeimg.com/270/240/any" alt="">
-													<div class="hover-box">
-														<div class="inner-hover">
-															<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam pharetra a, ultricies in, diam. </a></h2>
-															<ul class="post-tags">
-																<!--  -->
-																<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="news-post image-post2">
-												<div class="post-gallery">
-													<img src="https://placeimg.com/270/240/any" alt="">
-													<div class="hover-box">
-														<div class="inner-hover">
-															<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam pharetra a, ultricies in, diam. </a></h2>
-															<ul class="post-tags">
-																<!--  -->
-																<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<ul class="list-posts">
-									<li>
-										<img src="https://placeimg.com/109/109/any" alt="">
-										<div class="post-content">
-											<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam pharetra a, ultricies in, diam. </a></h2>
-											<ul class="post-tags">
-												<!--  -->
-											</ul>
-										</div>
-									</li>
-
-									<li>
-										<img src="https://placeimg.com/109/109/any" alt="">
-										<div class="post-content">
-											<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-											<ul class="post-tags">
-												<!--  -->
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
-
+							<?php } ?>					
 							<div class="advertisement">
 								<div class="desktop-advert">
 									<span>Advertisement</span>
@@ -722,55 +690,37 @@
 
 							<div class="widget tab-posts-widget">
 
-								<ul class="nav nav-tabs" id="myTab">
-									<li class="active">
-										<a href="#option1" data-toggle="tab">Popular</a>
-									</li>
-									<li>
-										<a href="#option2" data-toggle="tab">Recent</a>
-									</li>
-								</ul>
+								<div class="title-section">
+									<h1><span>POPULAR</span></h1>
+								</div>
 
 								<div class="tab-content">
 									<div class="tab-pane active" id="option1">
 										<ul class="list-posts">
-										<?php for ($i=0; $i < 6; $i++) {  ?>
-											<li>
-												<img src="https://placeimg.com/110/110/any" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam pharetra a, ultricies in, diam. </a></h2>
-													<ul class="post-tags">
-														<!--  -->
-													</ul>
-												</div>
-											</li>
-										<?php } ?>
+									
+
+											<?php foreach ($popular as $key => $prow) { 
+												if(!empty($prow)){
+												if(empty($prow->category)){
+													$urllink = $this->urls->urlFormat($prow->slug);
+												}else{
+													$urllink = $this->urls->urlFormat(base_url().$prow->category.'/'.$prow->slug);
+												}
+												(!empty($prow->content)? $content = $prow->content : $content = '' ) ;
+											?>
+												<li>
+													<div>
+
+														<img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>">
+													</div>
+													<div class="post-content">
+														<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($prow->title)) > 43) ? substr(strip_tags($prow->title),0,40).'...' : strip_tags($prow->title); ?></a></h2>
+													</div>
+												</li>
+											<?php } }?>
 										</ul>
 									</div>
-									<div class="tab-pane" id="option2">
-										<ul class="list-posts">
-
-										<?php for ($i=0; $i < 5; $i++) {  ?>
-											<li>
-												<img src="https://placeimg.com/108/108/any" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam pharetra a, ultricies in, diam. </a></h2>
-													<ul class="post-tags">
-														<!--  -->
-													</ul>
-												</div>
-											</li>
-										<?php } ?>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw2.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-													<ul class="post-tags">
-														<!--  -->
-													</ul>
-												</div>
-											</li>
-										</ul>										
-									</div>
+									
 								</div>
 							</div>
 

@@ -1921,3 +1921,10 @@ form .collapsible-body{padding: 1rem;}
 .clearafter:after{display: block;content: ''; clear: both;}
 .board { border: 1px solid #d2d2d2; padding: 12px 5px; }
 .colum3 li p{line-height: 2rem;}
+
+.card .card-reveal .card-title {
+    font-size: 17px;
+    line-height: 24px !important;
+    font-weight: 600;
+    margin-bottom: 25px !important;
+}
