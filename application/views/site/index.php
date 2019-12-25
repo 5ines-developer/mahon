@@ -245,29 +245,35 @@
 
 						<!-- sidebar -->
 						<div class="sidebar small-sidebar theiaStickySidebar">
+							<?php if(!empty($trending)){ ?>
+								<div class="widget review-widget">
+									<div class="title-section">
+										<h1><span>TRENDING POSTS</span></h1>
+									</div>
 
-							<div class="widget review-widget">
-								<div class="title-section">
-									<h1><span>BIG STORIES</span></h1>
+									<ul class="review-posts-list">
+
+										<?php foreach ($trending as $key => $trow) { 
+															
+											if(empty($trow->category)){
+												$urllink = $this->urls->urlFormat($trow->slug);
+											}else{
+												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
+											}
+											(!empty($trow->content)? $content = $trow->content : $content = '' ) ;
+										?>
+											<li>
+												<a href="<?php echo $urllink ?>">
+													<img src="<?php echo base_url().$trow->image ?>" alt="">
+													<h2><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></h2>
+												</a>
+												<!-- <span class="date">27 may 2013</span> -->
+											</li>
+										
+										<?php } ?>
+									</ul>
 								</div>
-
-								<ul class="review-posts-list">
-									<li>
-										<img src="https://placeimg.com/190/140/any" alt="">
-										<h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum.</a></h2>
-										<!-- <span class="date">27 may 2013</span> -->
-									</li>
-									<li>
-										<h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum.</a></h2>
-										<!-- <span class="date">27 may 2013</span> -->
-									</li>
-									<li>
-										<img src="https://placeimg.com/190/140/any" alt="">
-										<h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum.</a></h2>
-										<!-- <span class="date">27 may 2013</span> -->
-									</li>
-								</ul>
-							</div>
+							<?php } ?>
 
 							<div class="widget post-widget">
 								<div class="title-section">

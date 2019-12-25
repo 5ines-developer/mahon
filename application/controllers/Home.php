@@ -21,6 +21,7 @@ class home extends CI_Controller {
         $data['banner']     = $this->m_site->getBanner();
         $data['cArticle']   = $this->m_site->getCategoryArticle();
         $data['breaking']   = $this->m_site->breaking();
+        $data['trending']   = $this->m_site->trending();
         $this->load->view('site/index', $data, FALSE);
     }
 

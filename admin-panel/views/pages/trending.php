@@ -51,8 +51,8 @@
                                     <div class="col s12 m6">
                                         <div class="container-trending cnt">
                                             <div class="card">
-                                                <div class="card-image valign-wrapper">
-                                                    <img src="<?php echo $this->config->item('web_url').$trendings->image ?>" class="activator">
+                                                <div class="card-image valign-wrapper" style="max-height: 250px;">
+                                                    <img src="<?php echo $this->config->item('web_url').$trendings->image ?>" class="activator" style="max-height:250px">
                                                     <span class="card-title">C1</span>
                                                     <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="c1"><i class="fas fa-pencil-alt"></i></a>
                                                 </div>

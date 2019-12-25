@@ -45,7 +45,9 @@ $route['category/sub-category-delete/(:any)']   = 'category/sub_category_delete/
 // Trending
 $route['trending']                               = 'trending/index';
 $route['trending/update']                        = 'trending/update';
-
+// Trending
+$route['temple-visit']                           = 'temple/index';
+$route['temple-visit/update']                    = 'temple/update';
 
 
 
