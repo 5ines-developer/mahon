@@ -1916,6 +1916,8 @@ form .collapsible-body{padding: 1rem;}
 .btn-group .btn{ width:calc((100% / 3) - 3px) }
 .draggable-list{position: relative;}
 .file-field.draggable{ position: static; border: 1px dashed; padding: 20px; background: #f7f7f7;}
-.file-field.draggable input[type=file]{
-    height: 100%;
-}
+.file-field.draggable input[type=file]{ height: 100%; }
+.colum3 { column-count: 3; }
+.clearafter:after{display: block;content: ''; clear: both;}
+.board { border: 1px solid #d2d2d2; padding: 12px 5px; }
+.colum3 li p{line-height: 2rem;}

@@ -7,7 +7,7 @@ class M_author extends CI_Model {
 
     public function make_query()
 	{
-		$select_column = array("id", "name", "email", "phone", "profile");  
+		$select_column = array("id", "name", "email", "phone", "profile", "status");  
 		$order_column = array("NULL", "name","email", "phone", "NULL");  
 		  
 		$this->db->select($select_column);
@@ -76,6 +76,18 @@ class M_author extends CI_Model {
         return $this->db->where('id', $id)->get('mh_author')->row();
     }
 
+    public function block_unblock($id, $status)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('mh_author', array('status' => $status));
+        if($this->db->affected_rows()){
+            return true;
+        }else{
+            return false;
+        }
+        
+        
+    }
   
 
 }

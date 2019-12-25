@@ -69,9 +69,10 @@
                                        <tr>
                                           <th width="75px">Sl NO.</th>
                                           <th width="100px">Profile</th>
-                                          <th width="250px">Name</th>
+                                          <th width="200px">Name</th>
                                           <th >Email</th>
                                           <th >Phone</th>
+                                          <th >Status</th>
                                           <th >Action</th>
                                        </tr>
                                     </thead>
@@ -126,6 +127,24 @@
                         <label class="active" for="about">About author</label>
                      </div>
 
+                     <div class="clearfix"></div>
+                     <div class="board clearafter">
+                        <div class="col s12">
+                           <h6>Select Categories</h6>
+                            <ul class="colum3">
+                              <?php foreach ($category as $key => $value) { ?>
+                                 <li>
+                                    <p class="m0">
+                                       <label>
+                                          <input type="checkbox" class="filled-in catbox" name="category[]" value="<?php echo $value->id ?>"  />
+                                          <span><?php echo $value->title ?></span>
+                                       </label>
+                                    </p>
+                                 </li>
+                              <?php } ?>
+                            </ul>
+                        </div>
+                     </div>
 
                  </div> 
                  <div class="modal-footer">
@@ -226,6 +245,12 @@
                         $('#phone').val(response.phone);
                         $('#about').val(response.abt);
                         $('.file-path').val(response.profile);
+                        $('.catbox').removeAttr('checked');
+                        $.each(response.permission, function (index, value) { 
+                           if(value != '' || value != null, value != undefined){
+                            $('.catbox[value='+value+']').attr('checked','checked');
+                           }
+                        });
 
                     }
                 });
@@ -281,6 +306,29 @@
                     }); 
                 }                
             });  
+
+            $(document).on('click', '.blocker', function(){
+               var status = $(this).attr('status');
+               if(status == 1){
+                  status = 0
+               }else{
+                  status = 1;
+               }
+               var id   = $(this).attr('id');
+               
+               console.log(status);
+               
+                $.ajax({
+                       type: "POST",
+                       url: "<?php echo base_url(); ?>author/block_unblock",
+                       data: {id: id, status: status},
+                       success: function (data) {
+                           M.toast({html: data, classes: 'green'});
+                           dataTable.ajax.reload();
+                       }
+                    });
+               
+            });   
         
         });
       </script>

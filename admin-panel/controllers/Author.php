@@ -12,6 +12,8 @@ class Author extends CI_Controller {
     public function index(Type $var = null)
     {
         $data['title'] = 'Authors';
+        $this->load->model('m_post');
+        $data['category']   = $this->m_post->getCategory();
         $this->load->view('pages/author', $data, FALSE); 
     }
 
@@ -28,6 +30,7 @@ class Author extends CI_Controller {
                  $sub_array[] = $row->name;  
                  $sub_array[] = $row->email; 
                  $sub_array[] = $row->phone; 
+                 $sub_array[] = ($row->status == 1) ? '<a status="'.$row->status.'" class="green hoverable blocker   action-btn" id="'.$row->id.'"><i class="fas fa-check  "></i> block</a>' : '<a status="'.$row->status.'" class="red hoverable blocker  action-btn" id="'.$row->id.'"><i class="fas fa-ban  "></i> unblock</a>'; 
                  $sub_array[] = '
                      <a class="blue hoverable action-btn update-btn  modal-trigger" id="'.$row->id.'" href="#modal1"><i class="fas fa-edit "></i></a>
                      <a class="red hoverable delete-btn action-btn" id="'.$row->id.'"><i class="fas fa-trash  "></i></a>
@@ -64,12 +67,14 @@ class Author extends CI_Controller {
                     $email  = $this->input->post('email');
                     $phone  = $this->input->post('phone');
                     $about  = $this->input->post('about');
+                    $permission = implode(",",$this->input->post('category'));
                     $id  = $this->input->post('ctid');
                     $data   = array(
                         'name'      => $title,
                         'email'     => $email,
                         'phone'     => $phone,
                         'des'       => $about,
+                        'c_permission' => $permission,
                         'profile'   => $file['file'],
                         'update_by' => $this->session->userdata('Mht'),
                         'update_on' => date('Y-m-d H:i:s')
@@ -130,12 +135,14 @@ class Author extends CI_Controller {
             $id  = $this->input->post('id');
             if($row = $this->m_author->single_data($id))
             {
+             
                 $output['name']     = $row->name;
                 $output['email']    = $row->email;
                 $output['id']       = $row->id;
                 $output['phone']    = $row->phone;
                 $output['abt']      = $row->des;
                 $output['profile']  = $row->profile;
+                $output['permission']  = explode(',', $row->c_permission);
                 echo json_encode($output);
             }else{
                 echo 'No data fond';
@@ -158,6 +165,22 @@ class Author extends CI_Controller {
 
 
 
+        public function block_unblock()
+        {
+            $id = $this->input->post('id');
+            if($id == 1){
+                $msg = 'Successfully blocked';
+            }else{
+                $msg = 'Successfully Unblocked';
+
+            }
+            $status = $this->input->post('status');
+            if($this->m_author->block_unblock($id, $status)){
+                echo $msg ;
+            }else{
+                echo $msg;
+            }
+        }
 
 
 }
