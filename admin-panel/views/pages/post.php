@@ -86,7 +86,7 @@
                                         <table id="dynamic" class="striped">
                                             <thead>
                                                 <tr>
-                                                   <th width="170px">Action</th>
+                                                   <th width="190px">Action</th>
                                                    <th width="100px">Sl NO.</th>
                                                    <th width="350px">Title</th>
                                                    <th width="150px">Category</th>
