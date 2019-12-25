@@ -51,7 +51,9 @@ $route['temple-visit/update']                    = 'temple/update';
 // popular Article
 $route['popular-article']                        = 'popular/index';
 $route['popular-article/update']                 = 'popular/update';
-
+// Video gallery
+$route['video-article']                          = 'videos';
+$route['video-article-insert']                   = 'videos/insert';
 
 
 
