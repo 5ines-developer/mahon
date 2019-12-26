@@ -24,6 +24,7 @@ class home extends CI_Controller {
         $data['trending']   = $this->m_site->trending();
         $data['temple']     = $this->m_site->temple();
         $data['popular']    = $this->m_site->popular();
+        $data['videos']     = $this->m_site->videos();
         $this->load->view('site/index', $data, FALSE);
     }
 

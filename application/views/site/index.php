@@ -279,46 +279,22 @@
 
 							<div class="widget post-widget">
 								<div class="title-section">
-									<h1><span>Featured Video</span></h1>
+									<h1><span>SHORT MOVIES</span></h1>
 								</div>
-								<div>
-									<div class="news-post video-post">
-										<img alt="" src="https://placeimg.com/153/153/any">
-										<a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-										<div class="hover-box">
-											<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
-											<ul class="post-tags">
-												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-											</ul>
+								<?php foreach ($videos as $key => $value) {  ?>
+									<div>
+										<div class="news-post video-post">
+											<a href="<?php echo base_url('video/').$value->slug ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
+											<a href="<?php echo base_url('video/').$value->slug ?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+											
 										</div>
-										<p></p>
+										<p><a href="<?php echo base_url('video/').$value->slug ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
 									</div>
-									<p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. </p>
-								</div>
-								<div>
-									<div class="news-post video-post">
-										<img alt="" src="https://placeimg.com/154/154/any">
-										<a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-										<div class="hover-box">
-											<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
-											<ul class="post-tags">
-												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-											</ul>
-										</div>
-										<p></p>
-									</div>
-									<p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. </p>
-								</div>
-							</div>
-
-							<div class="advertisement">
-								<div class="desktop-advert">
-									<img src="https://placeimg.com/154/154/any" alt="">
-								</div>
+								<?php } ?>
+								
 							</div>
 
 							
-
 						</div>
 
 					</div>

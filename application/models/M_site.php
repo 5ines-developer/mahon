@@ -209,6 +209,17 @@ class m_site extends CI_Model {
         $this->db->insert('web_view', $data);
         return true;
     }
+
+    // Get videos
+    public function videos()
+    {
+        return $this->db->where('status', 1)
+        ->where('schedule <=', date('Y-m-d H:i:s'))
+        ->limit(3)
+        ->order_by('id', 'DESC')
+        ->get('mh_videos')
+        ->result();
+    }
 }
 
 /* End of file m_site.php */
