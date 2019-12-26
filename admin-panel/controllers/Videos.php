@@ -13,27 +13,30 @@ class Videos extends CI_Controller {
     public function index()
     {
         $data['title'] = 'Video article | Mahonnthi';
-        $this->load->model('m_post');
-        $data['category']   = $this->m_post->getCategory();
-        $data['author']     = $this->m_post->getauthor();
+        $this->load->model('m_videos');
+        $data['category']   = $this->m_videos->getCategory();
+        $data['author']     = $this->m_videos->getauthor();
+        $data['video']      = $this->m_videos->getVideos();
         $this->load->view('video/list', $data, FALSE);
     }
 
     // Insert 
     public function insert()
     {
+        $id = $this->input->post('ctid', TRUE);
+        
+            if($_FILES['img']['size'] != 0) {
+                if(empty($id)){
+                    $thumbnail = $this->uploadFile();
+                }
+                else{
+                    $thumbnail = array('status'=> true, 'file' => $this->input->post('filepath', TRUE));
+                }
+            }else{
+                $thumbnail['file'] = $this->makeThumb();
+            }
+            // file upload check
            
-
-
-
-        
-        echo "<pre>";
-        print_r ($this->input->post());
-        echo "</pre>";
-        
-
-
-        exit;
         // categoty 
         $related = $this->input->post('related', TRUE);
         $relatedItem = '';
@@ -44,7 +47,7 @@ class Videos extends CI_Controller {
         endif;
         
         $title  = $this->input->post('post');
-        $id = $this->input->post('ctid', TRUE);
+        
         if(!empty($this->input->post('slug', TRUE))){
             $slug = $this->input->post('slug', TRUE);
         }else{
@@ -66,10 +69,12 @@ class Videos extends CI_Controller {
                 'scategory' => $this->input->post('scategory', TRUE),
                 'realted'   => $relatedItem,
                 'schedule'  => $schedule,
-                'status'    => $postedBtn
+                'type'      => $this->input->post('social'),
+                'url'       => $this->input->post('url'),
+                'tumb'      => $thumbnail['file']
             );
 
-            $postResult = $this->m_post->addPost($data, $id);
+            $postResult = $this->m_videos->addPost($data, $id);
             
             if(!empty($id)){
                 $msg = 'Update successfully.';
@@ -106,14 +111,62 @@ class Videos extends CI_Controller {
                     'img_url'   => $this->input->post('timg_url', TRUE),
                     'descr'     => $this->input->post('tdescription', TRUE),
                 );
-                $this->m_post->addPageMeta($dataPage, $id);
-                $this->m_post->addFbMeta($datafb, $id);
-                $this->m_post->addTwitMeta($datatwit, $id);
+                $this->m_videos->addPageMeta($dataPage, $id);
+                $this->m_videos->addFbMeta($datafb, $id);
+                $this->m_videos->addTwitMeta($datatwit, $id);
+                $this->session->set_flashdata('success', 'Video article Created');
+                redirect('video-article','refresh');
+                
+            }else{
+                $this->session->set_flashdata('error', 'upload error occurred');
+                redirect('video-article','refresh');
             }
                 
                 
     }
 
+    // make a thumbnail
+    public function makeThumb()
+    {
+        $type = $this->input->post('social');
+        $url = $this->input->post('url');
+        if($type == 'youtube'){
+            return  $thumbnail = 'https://img.youtube.com/vi/'.explode('=',parse_url($url)['query'])[1].'/0.jpg';
+            
+        }
+      
+        elseif($type == 'vimeo'){
+            $videoId = explode('/',parse_url($url)['path'])[1];
+            $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$videoId.php"));
+            return  $hash[0]['thumbnail_large'];
+        }
+        
+    }
 
+    function uploadFile()
+    {
+        $config = array(
+            'upload_path' => "../video_tumb/",
+            'allowed_types' => "gif|jpg|png|jpeg|svg",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", 
+            'encrypt_name' => true
+        );
+        $this->load->library('upload', $config);
+        if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
+        if($this->upload->do_upload('img'))
+        {
+            $filename = $this->config->item('web_url').'video_tumb/'.$this->upload->data('file_name');
+            $data = array('status'=> true, 'file' => $filename);
+        }
+        else
+        {
+            $data = array('status'=> false, 'file'=> '', 'error' => $this->upload->display_errors());
+
+        }
+        return $data;
+    }
+
+    
 
 }

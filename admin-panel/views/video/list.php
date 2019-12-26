@@ -46,6 +46,26 @@
                                 </div>
                                 <div class="divider"></div>
                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <?php foreach ($video as $key => $value) {  ?>
+                                            <li class="tumb-item">
+                                                <div class="tumb-img">
+                                                    <img src="<?php echo $value->tumb ?>" alt="">
+                                                </div>
+                                                <div class="tumb-action">
+                                                    <a href=""><i class="fas fa-pencil-alt"></i></a>
+                                                    <a href=""><i class="far fa-trash-alt"></i></a>
+                                                    <a href=""><i class="fas fa-play"></i></a>
+                                                </div>
+                                                <div class="tumb-caption">
+                                                    <p class="truncate"><?php echo $value->title ?></p>
+                                                </div>
+                                            </li>
+                                    <?php } ?>
+                                </ul>
+                                 
+                            </div>
                         </div>
                     </div>
                     
@@ -57,7 +77,7 @@
 
        <!-- Modal Structure -->
        <div id="modal1" class="modal big-modal-3 modal-fixed">
-            <form  action="<?php echo base_url() ?>video-article-insert" method="post">
+            <form  action="<?php echo base_url() ?>video-article-insert" method="post" enctype="multipart/form-data">
                 <div class="modal-content">
                 <a href="#!" class="close-btn modal-close waves-effect waves-red"><i class="fas fa-times"></i></a>
 
@@ -70,28 +90,7 @@
                                         <ul class="select-radio-list">
                                             <li>
                                                 <label>
-                                                    <input class="with-gap" name="social" value="facebook" type="radio" checked />
-                                                    <span>Facebook</span>
-                                                </label>
-                                            </li>
-
-                                            <li>
-                                                <label>
-                                                    <input class="with-gap" name="social" value="twitter" type="radio"  />
-                                                    <span>Twitter</span>
-                                                </label>
-                                            </li>
-
-                                            <li>
-                                                <label>
-                                                    <input class="with-gap" name="social" value="instagram" type="radio"  />
-                                                    <span>Instagram</span>
-                                                </label>
-                                            </li>
-
-                                            <li>
-                                                <label>
-                                                    <input class="with-gap" value="youtube" name="social" type="radio"  />
+                                                    <input class="with-gap" value="youtube" name="social" type="radio"  checked/>
                                                     <span>Youtube</span>
                                                 </label>
                                             </li>
@@ -102,14 +101,58 @@
                                                     <span>Vimeo</span>
                                                 </label>
                                             </li>
+                                            <li>
+                                                <label>
+                                                    <input class="with-gap tmb" name="social"  value="facebook" type="radio"  />
+                                                    <span>Facebook</span>
+                                                </label>
+                                            </li>
+
+                                            <li>
+                                                <label>
+                                                    <input class="with-gap tmb" name="social" value="twitter" type="radio"  />
+                                                    <span>Twitter</span>
+                                                </label>
+                                            </li>
+
+                                            <li>
+                                                <label>
+                                                    <input class="with-gap tmb" name="social" value="instagram" type="radio"  />
+                                                    <span>Instagram</span>
+                                                </label>
+                                            </li>
+
+                                           
                                         </ul>
 
                                     </div>
 
-                                     <div class="input-field col s12">
+                                     <div class="input-field col s12 m12">
                                         <input type="url" id="url" name="url" placeholder="." required class="validate" >
                                         <label for="title">URL <span class="red-text">*</span></label>
                                     </div>
+
+                                        <div class="is-image clearafter col s12">
+                                            <div class="file-field draggable center col s12 m6">
+                                                <div class="drag-place center">
+                                                    <i class="material-icons small"> cloud_upload </i>
+                                                    <p>Drag &amp; Drop Image here </p>
+                                                    <p>Or</p>
+                                                </div>
+                                                <div class="btn-img">
+                                                    <span>Browse Image</span>
+                                                    <input type="file" id="img" name="img"  accept="image/*">
+                                                </div>
+                                                <div class="file-path-wrapper ">
+                                                    <input class="file-path validate" name="filepath" type="hidden" placeholder="Upload  files">
+                                                </div>
+                                            </div>
+                                            <div class="col s12 s6">
+                                            
+                                            </div>
+                                        </div>
+
+                                       <br />
 
 
                                     <div class="input-field col s12 m6">
@@ -325,7 +368,6 @@
                 </div>
                 <br>
                 <div class="modal-footer mt10">
-                <input type="hidden" name="btnType">
                 <button class="btn waves-effect waves-light green darken-4 hoverable btn-small" name="submit" type="submit" value="post">Post <i class="fas fa-paper-plane right"></i></button>
             <a href="#!" class="modal-close waves-effect waves-red hoverable red btn-small btn">Close <i class="fas fa-times right"></i></a> 
                 </div>
@@ -339,8 +381,8 @@
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
       <script src="<?php echo base_url()?>assets/ckeditor/ckeditor.js"></script>
       <script src="<?php echo base_url() ?>assets/js/tag.js"></script>
-   
     <script>
+        <?php $this->load->view('include/message.php'); ?>;
         $(document).ready( function () {
             $('select').formSelect();
             $('.collapsible').collapsible({accordion: false});
@@ -376,24 +418,8 @@
                 });
                 
             });
-
-            //  Image preview
-            $('#img').change(function (e) { 
-                readURL(this);
-                $('.imageli').css('border', 'transparent');
-            });
-
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    $('#img-previwer').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-                }
-            }
-
+            
+            
             // Reset the form  
             function clearform() {
                 $('#addArticle').removeAttr('data-draft');
@@ -446,6 +472,16 @@
                 }else{
                     var main = $(this).val();
                     $('.related[data-value='+main+']').removeAttr('checked');
+                }
+            });
+
+            $('input[name=social]').change(function(){
+                if($(this).hasClass('tmb')){
+                    $('.is-image').fadeIn(500);
+                    $('#img').attr('required', 'required')
+                }else{
+                    $('.is-image').fadeOut(500);
+                    $('#img').removeAttr('required');
                 }
             });
         });
