@@ -60,7 +60,8 @@ $route['photos']                                 = 'photos/index';
 $route['photos/(:any)/all']                      = 'photos/single_gall/$1';   
 $route['photos/update']                          = 'photos/update';   
 $route['photos/delete/(:any)']                   = 'photos/update/$1';   
-
+// Event
+$route['events']                                 = 'events/index';
 
 
 
