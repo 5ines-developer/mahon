@@ -1924,78 +1924,18 @@ form .collapsible-body{padding: 1rem;}
 .card .card-reveal .card-title { font-size: 17px; line-height: 24px !important; font-weight: 600; margin-bottom: 25px !important; }
 .select-radio-list li{ display: inline-block; margin-right: 15px;}
 .select-radio-list li span{ padding-left: 25px !important; }
-.is-image {
-    border: 1px solid 
-    #ddd;
-    padding: 20px !important;
-    margin: auto auto 15px !important;
-    border-radius: 4px;
-    display: none;
-    position: relative;
-}
+.is-image { border: 1px solid #ddd; padding: 20px !important; margin: auto auto 15px !important; border-radius: 4px; display: none; position: relative; }
 .drag-place{position: relative;}
-
-.tumb-item {
-    width: calc((100% / 3) - 15px);
-    display: inline-block;
-    margin-right: 12px;
-    position: relative;
-    font-size: 15px;
-    font-weight: 600;
-    border: 1px solid 
-    #ccc;
-    border-radius: 4px;
-    overflow: auto;
-    box-shadow: 1px 1px 5px -3px;
-    margin-bottom: 15px;
-}
-.tumb-img {
-    background: black;
-    text-align: center;
-}
-.tumb-img img{
-  max-width:100%;
-  width: auto;
-  height: 207px;
-  line-height: 0px !important;
-}
-  
-.tumb-action {
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 15px;
-    transform: rotateY(90deg);
-    transform-origin: left center 0;
-    transition: all 350ms ease;
-}
-  
-.tumb-item .tumb-action a {
-    background: #ffffff none repeat scroll 0 0;
-    font-size: 20px;
-    height: 50px;
-    margin-bottom: 1px;
-    position: relative;
-    text-align: center;
-    width: 50px;
-}
-.tumb-item .tumb-action a i {
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-}
-
-.tumb-item:hover .tumb-action {
-    opacity: 1;
-    left: 15px;
-    transform: rotateY(0deg);
-}
-  
-.tumb-caption {
-    padding: 6px 4px 9px;
-}
-  
-  
+.tumb-item { width: calc((100% / 3) - 15px); display: inline-block; margin-right: 12px; position: relative; font-size: 15px; font-weight: 600; border: 1px solid #ccc; border-radius: 4px; overflow: auto; box-shadow: 1px 1px 5px -3px; margin-bottom: 15px; }
+.tumb-img { background: black; text-align: center; }
+.tumb-img img{ max-width:100%; width: auto; height: 207px; line-height: 0px !important; }
+.tumb-action { display: flex; flex-direction: column; left: 0; opacity: 0; position: absolute; top: 15px; transform: rotateY(90deg); transform-origin: left center 0; transition: all 350ms ease; }
+.tumb-item .tumb-action a { background: #ffffff none repeat scroll 0 0; font-size: 20px; height: 50px; margin-bottom: 1px; position: relative; text-align: center; width: 50px; }
+.tumb-item .tumb-action a i { left: 50%; position: absolute; top: 50%; transform: translateX(-50%) translateY(-50%); }
+.tumb-item:hover .tumb-action { opacity: 1; left: 15px; transform: rotateY(0deg); }
+.tumb-caption { padding: 6px 4px 9px; }
+.image-selection{position: relative;}
+.gallery-add-container { border: 1px solid #c1c1c1; border-radius: 4px; padding-top: 20px !important; margin-bottom:15px; }
+.preview.center img{margin: auto;}
+.preview div{ height: 340px; overflow: hidden; }
+.total-item{font-size: 18px;}

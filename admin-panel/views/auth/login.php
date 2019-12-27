@@ -8,11 +8,49 @@
     <link href="<?php echo base_url()?>assets/fonts/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
+	<style>
+		section{
+			min-height:100vh;
+			display:flex;
+			align-items: center;
+		}
+		.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+	</style>
 </head>
 <body>
-    <br><br>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
     	<!-- login section -->
-	<section>
+	<section >
 		<div class="container">
 			<div class="row">
 				<div class="col s12 l6 m10 push-m1 push-l3">

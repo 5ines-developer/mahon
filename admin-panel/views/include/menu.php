@@ -9,7 +9,7 @@
 
             <li class="<?php echo $this->uri->segment(1) == 'post'?'active':''?>"> <a href="<?php echo base_url('post') ?>"><i class="far fa-newspaper li-icon"></i>Articles Post</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'breaking-news'?'active':''?>"> <a href="<?php echo base_url('breaking-news') ?>"><i class="fab fa-audible li-icon"></i>Breaking News</a></li>
-            <li class="<?php echo $this->uri->segment(1) == 'banner'?'active':''?>"> <a href="<?php echo base_url('banner') ?>"><i class="far fa-images li-icon"></i>Banner</a></li>
+            <li class="<?php echo $this->uri->segment(1) == 'banner'?'active':''?>"> <a href="<?php echo base_url('banner') ?>"><i class="fas fa-image li-icon"></i>Banner</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'todays-featured'?'active':''?>"> <a href="<?php echo base_url('todays-featured') ?>"><i class="fas fa-newspaper li-icon"></i>Today's Featured</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'trending'?'active':''?>"> <a href="<?php echo base_url('trending') ?>"><i class="fas fa-fire li-icon"></i>Trending Article</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'popular-article'?'active':''?>"> <a href="<?php echo base_url('popular-article') ?>"><i class="fas fa-bolt li-icon"></i>Popular Article</a></li>
@@ -17,7 +17,7 @@
 
             <li class="divider" tabindex="-1"></li>
                 <li class="<?php echo $this->uri->segment(1) == 'video-article'?'active':''?>"> <a href="<?php echo base_url('video-article') ?>"><i class="fas fa-video li-icon"></i>Video Article</a></li>
-                <li class="<?php echo $this->uri->segment(1) == 'post'?'active':''?>"> <a href="<?php echo base_url('post') ?>"><i class="far fa-newspaper li-icon"></i>Photo Article</a></li>
+                <li class="<?php echo $this->uri->segment(1) == 'photos'?'active':''?>"> <a href="<?php echo base_url('photos') ?>"><i class="far fa-images li-icon"></i>Photo Article</a></li>
                 <li class="<?php echo $this->uri->segment(1) == 'post'?'active':''?>"> <a href="<?php echo base_url('post') ?>"><i class="far fa-newspaper li-icon"></i>Quotes</a></li>
             <li class="divider" tabindex="-1"></li>
 
