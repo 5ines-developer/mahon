@@ -540,22 +540,19 @@
                                         <h1><span>Today's Featured</span></h1>
                                     </div>
 
-                                    <div class="features-today-box owl-wrapper">
+                                    <div class="features-today-box owl-wrapper gallery-slide">
                                         <div class="owl-carousel" data-num="3">
-                                        <?php for ($i=0; $i < 6; $i++) { ?>
+                                        <?php foreach ($gallery as $key => $image) {?>
 											
                                             <div class="item news-post standard-post">
                                                 <div class="post-gallery">
-                                                    <img src="https://placeimg.com/153/153/any" alt="">
-                                                    <a class="category-post world" href="world.html">Music</a>
+													<a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
+                                                    	<img src="<?php echo $image->image->image ?>" alt="">
+													</a>
+                                                    <a class="category-post world" href="<?php echo base_url().strtolower($image->category) ?>"><?php echo $image->category ?></a>
                                                 </div>
                                                 <div class="post-content">
-                                                    <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                    <ul class="post-tags">
-                                                        
-                                                        <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                        <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                    </ul>
+                                                    <h2><a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></h2>
                                                 </div>
                                             </div>
 										<?php } ?>

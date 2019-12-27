@@ -220,6 +220,26 @@ class m_site extends CI_Model {
         ->get('mh_videos')
         ->result();
     }
+
+    public function gallery(Type $var = null)
+    {
+        $result = $this->db->where('p.status', 1)
+        ->order_by('p.id', 'desc')
+        ->from('mh_photos p')
+        ->select('c.title as category, p.title, p.slug, p.id')
+        ->join('mh_category c', 'c.id = p.category', 'left')
+        ->get()
+        ->result();
+        foreach ($result as $key => $value) {
+            $value->image = $this->image($value->id);
+        }
+        return $result;
+    }
+
+    public function image($id = null)
+    {
+        return  $this->db->where('photo_id', $id)->select('image')->get('mh_photo_gallery')->row();
+    }
 }
 
 /* End of file m_site.php */

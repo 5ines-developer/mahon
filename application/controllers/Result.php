@@ -53,6 +53,16 @@ class result extends CI_Controller {
         $data['breaking']   = $this->m_result->breaking();
         $this->load->view('site/detail', $data, FALSE);
     }
+
+    // gallery preview
+    public function photogallery($category = null, $slug = null)
+    {
+        $data['photos'] = $this->m_result->GetGallery($slug);
+        $data['breaking']   = $this->m_result->breaking();
+        $data['title']  =   'Photos';
+        $this->load->view('site/photos', $data, FALSE);
+        
+    }
 }
 
 /* End of file Result.php */

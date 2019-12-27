@@ -140,6 +140,24 @@ class M_result extends CI_Model {
             endif;
     }
 
+    public function GetGallery($slug = null)
+    {
+        $result = $this->db->where('p.status', 1)
+        ->where('slug', $slug)
+        ->order_by('p.id', 'desc')
+        ->from('mh_photos p')
+        ->select('c.title as category, p.title, p.slug, p.id, p.tags, p.uploaded_on')
+        ->join('mh_category c', 'c.id = p.category', 'left')
+        ->get()
+        ->row();
+        $result->image = $this->image($result->id);
+        return $result;
+    }
+
+    public function image($id = null)
+    {
+        return  $this->db->where('photo_id', $id)->select('*')->get('mh_photo_gallery')->result();
+    }
 }
 
 /* End of file M_result.php */

@@ -10,7 +10,6 @@ class home extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('m_site');
-        
     }
     
 
@@ -25,6 +24,7 @@ class home extends CI_Controller {
         $data['temple']     = $this->m_site->temple();
         $data['popular']    = $this->m_site->popular();
         $data['videos']     = $this->m_site->videos();
+        $data['gallery']    = $this->m_site->gallery();
         $this->load->view('site/index', $data, FALSE);
     }
 
