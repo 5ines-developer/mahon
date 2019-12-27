@@ -733,59 +733,31 @@
 		<!-- list line posts section -->
 		<div class="list-line-posts">
 			<div class="container">
-
+					<div class="title-section happenings-title">
+                        <h1><span>Happening's</span></h1>
+					</div>				
+					
 				<div class="owl-wrapper">
 					<div class="owl-carousel" data-num="4">
-
-						<div class="item list-post">
-							<div class="post-content">
-								<a href="politics-category.html">Opinion</a>
-								<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. </a></h2>
-								<ul class="post-tags">
-									<!--  -->
-								</ul>
+						<?php foreach ($happening as $key => $value) { ?>			
+							<div class="item list-post">
+								<a target="_blank" href="<?php echo $value->url ?>">
+								<div class="post-content">
+									<span><small><?php  echo date('d M Y', strtotime($value->date)) ?></small></span>
+									<h2><?php  echo $value->title ?></h2>
+									<ul class="post-tags">
+										<?php 
+											$date2 = date('d-m-Y h:i:s');
+											$date1 = date('d-m-Y h:i:s', strtotime($value->date));
+											$secs = strtotime($date1) - strtotime($date2);// == <seconds between the two times>
+											$days = $secs / 86400;
+										 	echo '<small><i>'.intval($days).' Days left </i></small>';
+										?>
+									</ul>
+								</div>
+								</a>
 							</div>
-						</div>
-
-						<div class="item list-post">
-							<div class="post-content">
-								<a href="politics-category.html">World</a>
-								<h2><a href="single-post.html">Nullam malesuada erat ut turpis. </a></h2>
-								<ul class="post-tags">
-									<!--  -->
-								</ul>
-							</div>
-						</div>
-
-						<div class="item list-post">
-							<div class="post-content">
-								<a href="politics-category.html">Video</a>
-								<h2><a href="single-post.html">Aliquam porttitor mauris sit amet orci. </a></h2>
-								<ul class="post-tags">
-									<!--  -->
-								</ul>
-							</div>
-						</div>
-
-						<div class="item list-post">
-							<div class="post-content">
-								<a href="politics-category.html">Elections</a>
-								<h2><a href="single-post.html">Morbi in sem quis dui placerat ornare. </a></h2>
-								<ul class="post-tags">
-									<!--  -->
-								</ul>
-							</div>
-						</div>
-
-						<div class="item list-post">
-							<div class="post-content">
-								<a href="politics-category.html">Nations</a>
-								<h2><a href="single-post.html">Morbi in sem quis dui placerat ornare. </a></h2>
-								<ul class="post-tags">
-									<!--  -->
-								</ul>
-							</div>
-						</div>
+						<?php } ?>
 
 					</div>
 				</div>

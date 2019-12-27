@@ -240,6 +240,19 @@ class m_site extends CI_Model {
     {
         return  $this->db->where('photo_id', $id)->select('image')->get('mh_photo_gallery')->row();
     }
+
+    public function happening()
+    {
+        $this->db->where('status', 1);
+        $this->db->where('date >=',  date('Y-m-d H:i:s'));
+        return $this->db->get('mh_events')->result();
+    }
+
+
+
+
+
+
 }
 
 /* End of file m_site.php */
