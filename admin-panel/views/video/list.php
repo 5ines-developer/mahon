@@ -36,19 +36,30 @@
                     <div class="card m0">
                         <div class="card-content">
                            <div class="card-heading">
-                                <div class="row ">
+                                <div class="row m0">
                                     <div class="col 12 m6">
                                         <p class="h5-para black-text m0">Video Articles</p>
                                     </div>
                                     <div class="col 12 m6 right-align">
                                         <a href="#modal1" class="waves-effect waves-light btn brand white-text hoverable modal-trigger" id="addArticle"><i class="fas fa-plus left"></i> Add new</a>
                                     </div>
+
+                                    <div class="col s12 ml-0 p0">
+                                        <ul class="small-nav">
+                                            <li ><a class="<?php echo(!empty($this->uri->segment(2))?'' : 'active') ?>" href="<?php echo base_url('video-article') ?>">Short Movies</a></li>
+                                            <li><a  class="<?php echo(empty($this->uri->segment(2))?'' : 'active') ?>" href="<?php echo base_url('video-article/featured-videos') ?>">Featured Videos</a></li>
+                                        </ul>
+                                        
+                                        
+                                    </div>
                                 </div>
                                 <div class="divider"></div>
                            </div>
                             <div class="card-body">
                                 <ul>
-                                    <?php foreach ($video as $key => $value) {  ?>
+                                    <?php 
+                                    if(!empty($video)):
+                                    foreach ($video as $key => $value) {  ?>
                                             <li class="tumb-item">
                                                 <div class="tumb-img">
                                                     <img src="<?php echo $value->tumb ?>" alt="">
@@ -62,7 +73,12 @@
                                                     <p class="truncate"><?php echo $value->title ?></p>
                                                 </div>
                                             </li>
-                                    <?php } ?>
+                                    <?php } else: ?>
+                                       <div class="center">
+                                        <img src="<?php echo base_url() ?>assets/img/notfound.png" style="max-height:350px" alt="" class="responsive-img">
+                                        <h4 class="m0">No Result Found!</h4>
+                                       </div>
+                                    <?php endif ?>
                                 </ul>
                                  
                             </div>
@@ -87,7 +103,8 @@
                             <!-- basic detail -->
                                 <div class="basic-detail card card-25">
                                     <div class="input-field col s12">
-                                        <ul class="select-radio-list">
+                                        <p class="mt-0">Select Video From</p>
+                                        <ul class="select-radio-list m0">
                                             <li>
                                                 <label>
                                                     <input class="with-gap" value="youtube" name="social" type="radio"  checked/>
@@ -108,7 +125,7 @@
                                                 </label>
                                             </li>
 
-                                            <li>
+                                            <!-- <li>
                                                 <label>
                                                     <input class="with-gap tmb" name="social" value="twitter" type="radio"  />
                                                     <span>Twitter</span>
@@ -120,8 +137,29 @@
                                                     <input class="with-gap tmb" name="social" value="instagram" type="radio"  />
                                                     <span>Instagram</span>
                                                 </label>
+                                            </li> -->
+
+                                           
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="input-field col s12 m0">
+                                        <p>Select Video Type</p>
+                                        <ul class="select-radio-list">
+                                            <li>
+                                                <label>
+                                                    <input class="with-gap" value="short" name="vtype" type="radio"  checked/>
+                                                    <span>Short Movie</span>
+                                                </label>
                                             </li>
 
+                                            <li>
+                                                <label>
+                                                    <input class="with-gap" value="featured" name="vtype" type="radio"  />
+                                                    <span>Featured Video </span>
+                                                </label>
+                                            </li>
                                            
                                         </ul>
 
@@ -423,7 +461,6 @@
             // Reset the form  
             function clearform() {
                 $('#addArticle').removeAttr('data-draft');
-                $('#newsPost')[0].reset();
                 $('input[name=tags]').importTags('');
                 $('#img-previwer').attr('src', '');
                 $('#ctid').val('');

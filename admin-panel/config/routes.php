@@ -53,6 +53,7 @@ $route['popular-article']                        = 'popular/index';
 $route['popular-article/update']                 = 'popular/update';
 // Video gallery
 $route['video-article']                          = 'videos';
+$route['video-article/featured-videos']          = 'videos';
 $route['video-article-insert']                   = 'videos/insert';
 // photo gallery
 $route['photos']                                 = 'photos/index';   

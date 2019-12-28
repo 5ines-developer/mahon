@@ -245,8 +245,13 @@ class M_videos extends CI_Model {
         
     }
 
-    public function getVideos()
+    public function getVideos($uri = null)
     {
+        if(!empty($uri)){
+            $this->db->where('vtype', 'featured');
+        }else{
+            $this->db->where('vtype', 'short');
+        }
         return $this->db->where('status', 1)->get('mh_videos')->result();
     }
 

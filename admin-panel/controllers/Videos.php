@@ -13,10 +13,11 @@ class Videos extends CI_Controller {
     public function index()
     {
         $data['title'] = 'Video article | Mahonnthi';
+        $uri =  $this->uri->segment(2);
         $this->load->model('m_videos');
         $data['category']   = $this->m_videos->getCategory();
         $data['author']     = $this->m_videos->getauthor();
-        $data['video']      = $this->m_videos->getVideos();
+        $data['video']      = $this->m_videos->getVideos($uri);
         $this->load->view('video/list', $data, FALSE);
     }
 
@@ -71,7 +72,8 @@ class Videos extends CI_Controller {
                 'schedule'  => $schedule,
                 'type'      => $this->input->post('social'),
                 'url'       => $this->input->post('url'),
-                'tumb'      => $thumbnail['file']
+                'tumb'      => $thumbnail['file'],
+                'vtype'     => $this->input->post('vtype')
             );
 
             $postResult = $this->m_videos->addPost($data, $id);
