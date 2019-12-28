@@ -158,6 +158,59 @@ class M_result extends CI_Model {
     {
         return  $this->db->where('photo_id', $id)->select('*')->get('mh_photo_gallery')->result();
     }
+
+
+    // video post
+    public function getVideo($category, $slug)
+    {
+        // where
+        if(!empty($slug)){$this->db->where('p.slug', $slug);}
+        if(!empty($category)){$this->db->where('c.title', $category); }
+        
+        $query = $this->db->from('mh_videos p')
+            ->where('p.status', 1)
+            // ->where('p.schedule <=', date('Y-m-d H:i:s'))
+            ->select('p.id, p.title, p.slug, p.content, p.tumb as image, p.url, p.type, c.title as category, p.posted_by, p.created_on, p.tags')
+            ->order_by('p.id', 'DESC')
+            ->join('mh_category c', 'c.id = p.category', 'left')
+            ->get();
+
+            
+            
+        if(!empty($category) && !empty($slug)){
+            $result =  $query->row();
+            if(!empty($result)):
+                $result->author = $this->autherdetail($result->posted_by);
+                return $result;
+            else:
+                return $result;
+            endif;
+        }else{
+            return $query->result();
+        }
+    }
+
+    public function relatedVideo($category, $slug)
+    {
+        $this->db->where('c.title', $category);
+        $query = $this->db->from('mh_videos p')
+            ->where('p.status', 1)
+            ->where('p.slug <>', $slug)
+            ->where('p.schedule <=', date('Y-m-d H:i:s'))
+            ->where('p.status', 1)
+            ->select('p.id, p.title, p.slug, p.content, p.url, p.type, p.tumb as image, c.title as category, p.posted_by, p.created_on, p.tags')
+            ->order_by('p.id', 'DESC')
+            ->join('mh_category c', 'c.id = p.category', 'left')
+            ->get()
+            ->result();
+        foreach ($query as $key => $result) {
+            $result->author = $this->autherdetail($result->posted_by);
+        }
+        return $query;
+    }
+
+
+    
 }
 
 /* End of file M_result.php */

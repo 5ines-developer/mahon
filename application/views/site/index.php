@@ -515,7 +515,7 @@
                             <!-- carousel box -->
 							<div class="carousel-box owl-wrapper darkcorocol">
 								<div class="title-section">
-									<h1><span>Most viewed</span></h1>
+									<h1><span>Videos</span></h1>
 								</div>
 								<div class="owl-carousel" data-num="4">
 								<?php for ($i=0; $i < 7; $i++) { ?>
@@ -537,7 +537,7 @@
                                 <div class="">
 
                                     <div class="title-section">
-                                        <h1><span>Today's Featured</span></h1>
+                                        <h1><span>Photo gallery</span></h1>
                                     </div>
 
                                     <div class="features-today-box owl-wrapper gallery-slide">

@@ -63,6 +63,25 @@ class result extends CI_Controller {
         $this->load->view('site/photos', $data, FALSE);
         
     }
+
+    // Video single result
+    public function videos($category = null, $slug = null)
+    {
+        // $category = $this->urls->urlDformat($this->uri->segment(1));
+        $data['post'] = $this->m_result->getVideo($category, $slug);
+        $data['breaking']   = $this->m_result->breaking();
+        
+        if($category != null && $slug != null){
+            $data['related']    =  $this->m_result->relatedVideo($category, $slug);
+            $data['is_detail'] = TRUE;
+            // $this->m_result->visitorCount($data['post']->id);
+            $this->load->view('site/video-detail', $data, FALSE);
+        }
+        else{
+            $data['category'] = $category;
+            $this->load->view('site/result', $data, FALSE);
+        }
+    }
 }
 
 /* End of file Result.php */
