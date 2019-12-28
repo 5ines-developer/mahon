@@ -281,14 +281,14 @@
 								<div class="title-section">
 									<h1><span>SHORT MOVIES</span></h1>
 								</div>
-								<?php foreach ($videos as $key => $value) {  ?>
+								<?php foreach ($videos as $key => $value) { ?>
 									<div>
 										<div class="news-post video-post">
-											<a href="<?php echo base_url('video/').$value->slug ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
-											<a href="<?php echo base_url('video/').$value->slug ?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+											<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
+											<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 											
 										</div>
-										<p><a href="<?php echo base_url('video/').$value->slug ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+										<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
 									</div>
 								<?php } ?>
 								

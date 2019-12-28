@@ -213,11 +213,14 @@ class m_site extends CI_Model {
     // Get videos
     public function videos()
     {
-        return $this->db->where('status', 1)
-        ->where('schedule <=', date('Y-m-d H:i:s'))
+        return $this->db->where('v.status', 1)
+        ->where('v.schedule <=', date('Y-m-d H:i:s'))
+        ->from('mh_videos v')
+        ->join('mh_category c', 'c.id = v.category', 'left')
+        ->select('c.title as category, v.id, v.title, v.url, v.tumb, v.slug')
         ->limit(3)
-        ->order_by('id', 'DESC')
-        ->get('mh_videos')
+        ->order_by('v.id', 'DESC')
+        ->get()
         ->result();
     }
 

@@ -9,8 +9,8 @@ $route['news/(:any)']           = 'result/index/$1';
 $route['news/(:any)/(:any)']    = 'result/index/$1/$2';      // detail page
 $route['topic/(:any)']          = 'search/index/$1';        // search 
 $route['preview/(:any)']        = 'result/preview/$1';     // Preview 
+$route['videos/(:any)/(:any)']  = 'result/videos/$1/$2';
 $route['photogallery/(:any)/(:any)'] = 'result/photogallery/$1/$2';     // Preview 
-
 
 
 // router database
