@@ -215,10 +215,25 @@ class m_site extends CI_Model {
     {
         return $this->db->where('v.status', 1)
         ->where('v.schedule <=', date('Y-m-d H:i:s'))
+        ->where('vtype', 'short')
         ->from('mh_videos v')
         ->join('mh_category c', 'c.id = v.category', 'left')
         ->select('c.title as category, v.id, v.title, v.url, v.tumb, v.slug')
         ->limit(3)
+        ->order_by('v.id', 'DESC')
+        ->get()
+        ->result();
+    }
+
+    public function fvideos()
+    {
+        return $this->db->where('v.status', 1)
+        ->where('vtype', 'featured')
+        ->where('v.schedule <=', date('Y-m-d H:i:s'))
+        ->from('mh_videos v')
+        ->join('mh_category c', 'c.id = v.category', 'left')
+        ->select('c.title as category, v.id, v.title, v.url, v.tumb, v.slug')
+        ->limit(8)
         ->order_by('v.id', 'DESC')
         ->get()
         ->result();

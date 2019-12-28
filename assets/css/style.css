@@ -6458,3 +6458,13 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
 iframe{
   margin-bottom: 0px !important;
 }
+.fvideo img{
+  width:auto;
+  max-width: auto;
+  margin: auto;
+  height: 100px;
+}
+
+.fvideo .video-post{
+  overflow: hidden;
+}

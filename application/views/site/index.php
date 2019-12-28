@@ -515,16 +515,16 @@
                             <!-- carousel box -->
 							<div class="carousel-box owl-wrapper darkcorocol">
 								<div class="title-section">
-									<h1><span>Videos</span></h1>
+									<h1><span>Featured Videos</span></h1>
 								</div>
-								<div class="owl-carousel" data-num="4">
-								<?php for ($i=0; $i < 7; $i++) { ?>
+								<div class="owl-carousel fvideo" data-num="4">
+
+								<?php foreach($fvideos as $key => $fvideo) { ?>
 									<div class="item news-post video-post">
-										<img src="https://placeimg.com/185/180/any" alt="">
-										<a href="https://vimeo.com/47511875" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+										<a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><img alt="" src="<?php echo $fvideo->tumb ?>"></a>
+										<a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>" class="video-link"><i class="fa fa-play-circle-o"></i></a>
 										<div class="hover-box">
-											<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
-											
+											<h2><a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 28) ? substr(strip_tags($fvideo->title),0,25).'...' : strip_tags($fvideo->title);  ?></a></h2>
 										</div>
 									</div>
 								<?php } ?>

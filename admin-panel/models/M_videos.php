@@ -252,6 +252,8 @@ class M_videos extends CI_Model {
         }else{
             $this->db->where('vtype', 'short');
         }
+        $this->db->order_by('id', 'desc');
+        
         return $this->db->where('status', 1)->get('mh_videos')->result();
     }
 
