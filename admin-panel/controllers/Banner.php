@@ -7,6 +7,9 @@ class Banner extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_banner');
+        
+        $this->db->cache_delete($this->router->fetch_class(), $this->router->fetch_method());
+        $this->db->simple_query('SET NAMES \'utf-8\'');
     }
 
     // get banner
@@ -62,6 +65,13 @@ class Banner extends CI_Controller {
                 'update_on' => date('Y-m-d H:i:s')
             );
         }
+
+        
+        // echo "<pre>";
+        // print_r ($data);
+        // echo "</pre>";
+        
+        // exit;
 
         if($this->m_banner->updateBanner($data, $position)){
             $this->session->set_flashdata('success', 'Banner update successfully');

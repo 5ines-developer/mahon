@@ -169,6 +169,17 @@ class Videos extends CI_Controller {
         return $data;
     }
 
+    public function delete($id = null)
+    {
+        if($this->m_videos->moveToTrash($id)){
+            $this->session->set_flashdata('success', 'Video successfully move to trash');
+            redirect('video-article','refresh');
+        }else{
+            $this->session->set_flashdata('error', 'Some error occurred. Please try agin later');
+            redirect('video-article','refresh');
+        }
+    }
+
     
 
 }

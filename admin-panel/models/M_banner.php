@@ -4,6 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_banner extends CI_Model {
 
+    public function __construct()
+    {
+        parent::__construct();
+        header('Content-Type: text/html; charset=utf-8');
+    }
+
     public function getBanner($var = null)
     {
         $this->db->select('id, img as image, title,  link, type');

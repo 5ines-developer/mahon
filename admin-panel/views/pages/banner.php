@@ -4,6 +4,7 @@
    <head>
       <title><?php echo $title ?></title>
       <meta charset="UTF-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <meta name="description" content="Free Web tutorials">
       <meta name="keywords" content="HTML,CSS,XML,JavaScript">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -158,7 +159,7 @@
 
       <!-- Modal Structure -->
     <div id="modal1" class="modal">
-        <form action="<?php echo base_url() ?>banner/update" method="post" enctype="multipart/form-data">
+        <form action="<?php echo base_url() ?>banner/update" method="post" enctype="multipart/form-data" accept-charset="utf-8">
         <div class="modal-content">
             <h6 class="bold">Change Banner Article</h6>
             <br>

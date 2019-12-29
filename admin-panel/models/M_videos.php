@@ -252,11 +252,22 @@ class M_videos extends CI_Model {
         }else{
             $this->db->where('vtype', 'short');
         }
-        $this->db->order_by('id', 'desc');
-        
-        return $this->db->where('status', 1)->get('mh_videos')->result();
+        $this->db->order_by('id', 'desc')
+        ->from('mh_videos v')
+        ->select('v.id, v.title, v.url, v.tumb, c.title as  category,  v.posted_by, v.schedule, v.type, v.vtype, v.slug')
+        ->join('mh_category c','c.id = v.category', 'left');        
+        return $this->db->where('v.status', 1)->get()->result();
     }
 
+    public function moveToTrash($id = null)
+    {
+        $this->db->where('id', $id)->update('mh_videos', array('status' => 2));
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 /** 
  * DRAFT

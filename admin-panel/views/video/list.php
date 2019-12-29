@@ -59,6 +59,7 @@
                                 <ul>
                                     <?php 
                                     if(!empty($video)):
+                                        
                                     foreach ($video as $key => $value) {  ?>
                                             <li class="tumb-item">
                                                 <div class="tumb-img">
@@ -66,8 +67,8 @@
                                                 </div>
                                                 <div class="tumb-action">
                                                     <a href=""><i class="fas fa-pencil-alt"></i></a>
-                                                    <a href=""><i class="far fa-trash-alt"></i></a>
-                                                    <a href=""><i class="fas fa-play"></i></a>
+                                                    <a class="delete-btn" href="<?php echo base_url('video-article/delete/').$value->id ?>"><i class="far fa-trash-alt"></i></a>
+                                                    <a target="_blank" href="<?php echo strtolower($this->config->item('web_url').'videos/'.$value->category.'/'.$value->slug) ?>"><i class="fas fa-play"></i></a>
                                                 </div>
                                                 <div class="tumb-caption">
                                                     <p class="truncate"><?php echo $value->title ?></p>
@@ -540,6 +541,14 @@
                 var text =  $(evt.editor.getData()).text().trim();
                 var setTo = ['pdescription', 'fdescription', 'tdescription'];
                 setVales(text, setTo);
+            });
+
+            // dete conformaton
+            $('.delete-btn').click(function (e) { 
+                if (confirm("Are you sure?")) {
+                    return true
+                }
+                return false;
             });
         });
 

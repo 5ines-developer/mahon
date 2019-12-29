@@ -55,6 +55,7 @@ $route['popular-article/update']                 = 'popular/update';
 $route['video-article']                          = 'videos';
 $route['video-article/featured-videos']          = 'videos';
 $route['video-article-insert']                   = 'videos/insert';
+$route['video-article/delete/(:any)']            = 'videos/delete/$1';
 // photo gallery
 $route['photos']                                 = 'photos/index';   
 $route['photos']                                 = 'photos/index';   
