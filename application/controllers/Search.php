@@ -13,6 +13,10 @@ class Search extends CI_Controller {
     public function index($slug = null)
     {
         $search         = $this->input->post('search');
+        $this->load->model('m_site');
+        $data['temple']     = $this->m_site->temple();
+        $data['trending']   = $this->m_site->trending();
+        $data['videos']     = $this->m_site->videos();
         $data['post']   = $this->m_search->search($search, $slug);
         $data['title']  = $search;
         $data['mtitle']  = $search;

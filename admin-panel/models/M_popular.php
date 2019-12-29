@@ -58,7 +58,7 @@ class M_popular extends CI_Model {
     // update popular
     public function updatepopular($data, $position)
     {
-        $this->db->where('position', $position);
+        $this->db->where('id', $position);
         $this->db->update('mh_popular', $data);
         if($this->db->affected_rows() > 0){ return true;}else{return false; }
     }
@@ -66,7 +66,7 @@ class M_popular extends CI_Model {
     // single popular fetch
     public function get_single_popular($position)
     {
-        $this->db->where('position', $position);
+        $this->db->where('id', $position);
         return $this->db->get('mh_popular')->row();
     }
 }

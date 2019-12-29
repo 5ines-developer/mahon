@@ -21,7 +21,7 @@ class Trending extends CI_Controller {
     public function update()
     {
         $type = $this->input->post('type');
-        $position = $this->input->post('postion');
+        $position = $this->input->post('id');
         if($type == 'article'){
             $url = $this->input->post('arurl');
             $data = array(

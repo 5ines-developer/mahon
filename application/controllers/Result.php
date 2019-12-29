@@ -15,18 +15,23 @@ class result extends CI_Controller {
 
     /** 
      * Result
-     * Parametes
+     * Parameters
      * 1. category
      * 2. slug
      * 3. date
-     * 4. auter
+     * 4. author
     */
     public function index($slug = null, $date = null, $auth = null)
     {
         $category = $this->urls->urlDformat($this->uri->segment(1));
         $data['post'] = $this->m_result->getPosts($category, $slug, $date, $auth);
         $data['breaking']   = $this->m_result->breaking();
-        
+
+        $this->load->model('m_site');
+        $data['temple']     = $this->m_site->temple();
+        $data['trending']   = $this->m_site->trending();
+        $data['videos']     = $this->m_site->videos();
+        $data['popular']    = $this->m_site->popular();
         if($category != null && $slug != null){
             $data['related']    =  $this->m_result->related($category, $slug);
             $data['is_detail'] = TRUE;
@@ -35,6 +40,7 @@ class result extends CI_Controller {
         }
         else{
             $data['category'] = $category;
+            
             $this->load->view('site/result', $data, FALSE);
         }
         
@@ -49,6 +55,11 @@ class result extends CI_Controller {
     // preview
     public function preview($id = null)
     {
+        $this->load->model('m_site');
+        $data['temple']     = $this->m_site->temple();
+        $data['trending']   = $this->m_site->trending();
+        $data['videos']     = $this->m_site->videos();
+        $data['popular']    = $this->m_site->popular();
         $data['post'] = $this->m_result->getPostsPreview($id);
         $data['breaking']   = $this->m_result->breaking();
         $this->load->view('site/detail', $data, FALSE);
@@ -57,6 +68,11 @@ class result extends CI_Controller {
     // gallery preview
     public function photogallery($category = null, $slug = null)
     {
+        $this->load->model('m_site');
+        $data['temple']     = $this->m_site->temple();
+        $data['trending']   = $this->m_site->trending();
+        $data['videos']     = $this->m_site->videos();
+        $data['popular']    = $this->m_site->popular();
         $data['photos'] = $this->m_result->GetGallery($slug);
         $data['breaking']   = $this->m_result->breaking();
         $data['title']  =   'Photos';

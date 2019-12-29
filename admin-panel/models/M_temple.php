@@ -58,7 +58,7 @@ class M_temple extends CI_Model {
     // update temple
     public function updatetemple($data, $position)
     {
-        $this->db->where('position', $position);
+        $this->db->where('id', $position);
         $this->db->update('mh_temple', $data);
         if($this->db->affected_rows() > 0){ return true;}else{return false; }
     }
@@ -66,7 +66,7 @@ class M_temple extends CI_Model {
     // single temple fetch
     public function get_single_temple($position)
     {
-        $this->db->where('position', $position);
+        $this->db->where('id', $position);
         return $this->db->get('mh_temple')->row();
     }
 }

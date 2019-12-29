@@ -276,23 +276,25 @@
 									</ul>
 								</div>
 							<?php } ?>
-
-							<div class="widget post-widget">
-								<div class="title-section">
-									<h1><span>SHORT MOVIES</span></h1>
-								</div>
-								<?php foreach ($videos as $key => $value) { ?>
-									<div>
-										<div class="news-post video-post">
-											<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
-											<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
-											
-										</div>
-										<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+							
+							<?php if(!empty($videos)){ ?>
+								<div class="widget post-widget">
+									<div class="title-section">
+										<h1><span>SHORT MOVIES</span></h1>
 									</div>
-								<?php } ?>
-								
-							</div>
+									<?php foreach ($videos as $key => $value) { ?>
+										<div>
+											<div class="news-post video-post">
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+												
+											</div>
+											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+										</div>
+									<?php } ?>
+									
+								</div>
+							<?php } ?>
 
 							
 						</div>
@@ -577,26 +579,25 @@
 									<h1><span>Stay Connected</span></h1>
 								</div>
 								<ul class="social-share">
-									
 									<li>
 										<a href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour" class="facebook"><i class="fa fa-facebook"></i></a>
-										<span class="number">56,743</span>
-										<span>Fans</span>
+										<span class="number">Facebook</span>
+										<!-- <span>Facebook</span> -->
 									</li>
 									<li>
 										<a href="https://twitter.com/Mahonnathii" class="twitter"><i class="fa fa-twitter"></i></a>
-										<span class="number">43,501</span>
-										<span>Followers</span>
+										<span class="number">Twitter</span>
+										<!-- <span>Twitter</span> -->
 									</li>
 									<li>
 										<a href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
-										<span class="number">35,003</span>
-										<span> Subscribers</span>
+										<span class="number">YouTube</span>
+										<!-- <span>YouTube</span> -->
 									</li>
 									<li>
 										<a href="https://www.instagram.com/mahonnathii/" class="rss"><i class="fa fa-instagram"></i></a>
-										<span class="number">9,455</span>
-										<span>Followers</span>
+										<span class="number">Instagram</span>
+										<!-- <span>Instagram</span> -->
 									</li>
 								</ul>
 							</div>

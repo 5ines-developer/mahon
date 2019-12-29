@@ -49,7 +49,7 @@
                                     <li class="language">
                                         <a href="#">ಕನ್ನಡ</a>
                                     </li>
-									<li>
+									<!-- <li>
 										<span class="city-weather">London, United Kingdom</span>
 										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="24px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 											<path fill="#777777" d="M208,64c8.833,0,16-7.167,16-16V16c0-8.833-7.167-16-16-16s-16,7.167-16,16v32
@@ -72,7 +72,7 @@
 											/>
 										</svg>
 										<span class="cel-temperature">+7</span>
-									</li>
+									</li> -->
 									<li><span class="time-now"> <?php echo date("l jS  F Y  / h:i:s A") ?></span></li>
 									<!-- <li><a href="#">Log In</a></li>
 									<li><a href="contact.html">Contact</a></li> -->

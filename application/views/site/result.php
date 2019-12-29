@@ -48,280 +48,104 @@
 								</div>
 								<ul class="social-share">
 									<li>
-										<a href="#" class="rss"><i class="fa fa-rss"></i></a>
-										<span class="number">9,455</span>
-										<span>Subscribers</span>
+										<a href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour" class="facebook"><i class="fa fa-facebook"></i></a>
+										<span class="number">Facebook</span>
+										<!-- <span>Facebook</span> -->
 									</li>
 									<li>
-										<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-										<span class="number">56,743</span>
-										<span>Fans</span>
+										<a href="https://twitter.com/Mahonnathii" class="twitter"><i class="fa fa-twitter"></i></a>
+										<span class="number">Twitter</span>
+										<!-- <span>Twitter</span> -->
 									</li>
 									<li>
-										<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-										<span class="number">43,501</span>
-										<span>Followers</span>
+										<a href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
+										<span class="number">YouTube</span>
+										<!-- <span>YouTube</span> -->
 									</li>
 									<li>
-										<a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-										<span class="number">35,003</span>
-										<span>Followers</span>
+										<a href="https://www.instagram.com/mahonnathii/" class="rss"><i class="fa fa-instagram"></i></a>
+										<span class="number">Instagram</span>
+										<!-- <span>Instagram</span> -->
 									</li>
 								</ul>
 							</div>
+							<?php if(!empty($temple)){ ?>
+								<div class="widget features-slide-widget">
+									<div class="title-section">
+										<h1><span>TEMPLE TO VISIT</span></h1>
+									</div>
+									<div class="image-post-slider">
+										<ul class="bxslider">
 
-							<div class="widget features-slide-widget">
-								<div class="title-section">
-									<h1><span>Featured Posts</span></h1>
+											<?php foreach ($temple as $key => $tprow) { 
+												
+												if(empty($tprow->category)){
+													$urllink = $this->urls->urlFormat($tprow->slug);
+												}else{
+													$urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
+												}
+												(!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
+											?>
+											<li class="temple-to-visit">
+												<a href="<?php echo $urllink ?>">
+													<div class="news-post image-post2">
+														<div class="post-gallery">
+															<div class="verticle">
+																<img src="<?php echo base_url().$tprow->image ?>" alt="">
+															</div>
+															<div class="hover-box">
+																<div class="inner-hover">
+																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
+																	<ul class="post-tags">
+																		<!--  -->
+																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</a>
+											</li>
+												
+											<?php } ?>
+											
+											
+										</ul>
+									</div>
 								</div>
-								<div class="image-post-slider">
-									<ul class="bxslider">
-										<li>
-											<div class="news-post image-post2">
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/im3.jpg" alt="">
-												<div class="hover-box">
-													<div class="inner-hover">
-														<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-														<ul class="post-tags">
-															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-															<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-															<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-															<li><i class="fa fa-eye"></i>872</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="news-post image-post2">
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/im1.jpg" alt="">
-												<div class="hover-box">
-													<div class="inner-hover">
-														<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-														<ul class="post-tags">
-															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-															<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-															<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-															<li><i class="fa fa-eye"></i>872</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="news-post image-post2">
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/im2.jpg" alt="">
-												<div class="hover-box">
-													<div class="inner-hover">
-														<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-														<ul class="post-tags">
-															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-															<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-															<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-															<li><i class="fa fa-eye"></i>872</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</li>
+							<?php } ?>	
+
+							<?php if(!empty($trending)){ ?>
+								<div class="widget review-widget">
+									<div class="title-section">
+										<h1><span>TRENDING POSTS</span></h1>
+									</div>
+
+									<ul class="review-posts-list">
+
+										<?php foreach ($trending as $key => $trow) { 
+															
+											if(empty($trow->category)){
+												$urllink = $this->urls->urlFormat($trow->slug);
+											}else{
+												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
+											}
+											(!empty($trow->content)? $content = $trow->content : $content = '' ) ;
+										?>
+											<li>
+												<a href="<?php echo $urllink ?>">
+													<img src="<?php echo base_url().$trow->image ?>" alt="">
+													<h2><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></h2>
+												</a>
+												<!-- <span class="date">27 may 2013</span> -->
+											</li>
+										
+										<?php } ?>
 									</ul>
 								</div>
-							</div>
+							<?php } ?>					
 
-							<div class="widget tab-posts-widget">
-
-								<ul class="nav nav-tabs" id="myTab">
-									<li class="active">
-										<a href="#option1" data-toggle="tab">Popular</a>
-									</li>
-									<li>
-										<a href="#option2" data-toggle="tab">Recent</a>
-									</li>
-									<li>
-										<a href="#option3" data-toggle="tab">Top Reviews</a>
-									</li>
-								</ul>
-
-								<div class="tab-content">
-									<div class="tab-pane active" id="option1">
-										<ul class="list-posts">
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw1.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw2.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Sed arcu. Cras consequat. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw3.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus.  </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw4.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw5.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-										</ul>
-									</div>
-									<div class="tab-pane" id="option2">
-										<ul class="list-posts">
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw3.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw4.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw5.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw1.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw2.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-										</ul>										
-									</div>
-									<div class="tab-pane" id="option3">
-										<ul class="list-posts">
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw4.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw1.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw3.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus.  </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw2.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-
-											<li>
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/listw5.jpg" alt="">
-												<div class="post-content">
-													<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</li>
-										</ul>										
-									</div>
-								</div>
-							</div>
-
-							<div class="widget post-widget">
-								<div class="title-section">
-									<h1><span>Featured Video</span></h1>
-								</div>
-								<div class="news-post video-post">
-									<img alt="" src="<?php echo base_url() ?>assets/upload/news-posts/video-sidebar.jpg">
-									<a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-									<div class="hover-box">
-										<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
-										<ul class="post-tags">
-											<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-										</ul>
-									</div>
-								</div>
-								<p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis. </p>
-							</div>
+						
 
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
@@ -333,28 +157,23 @@
 									<p>Get all latest content delivered to your email a few times a month.</p>
 								</form>
 							</div>
-
-							<div class="widget tags-widget">
-
-								<div class="title-section">
-									<h1><span>Popular Tags</span></h1>
+							<?php if(!empty($videos)){ ?>				
+								<div class="widget post-widget">
+									<div class="title-section">
+										<h1><span>SHORT MOVIES</span></h1>
+									</div>
+									<?php foreach ($videos as $key => $value) { ?>
+										<div>
+											<div class="news-post video-post">
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+												
+											</div>
+											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+										</div>
+									<?php } ?>
 								</div>
-
-								<ul class="tag-list">
-									<li><a href="#">News</a></li>
-									<li><a href="#">Fashion</a></li>
-									<li><a href="#">Politics</a></li>
-									<li><a href="#">Sport</a></li>
-									<li><a href="#">Food</a></li>
-									<li><a href="#">Videos</a></li>
-									<li><a href="#">Business</a></li>
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">World</a></li>
-									<li><a href="#">Music</a></li>
-								</ul>
-
-							</div>
-
+							<?php } ?>
 							<div class="advertisement">
 								<div class="desktop-advert">
 									<span>Advertisement</span>

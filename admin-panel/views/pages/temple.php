@@ -53,8 +53,8 @@
                                             <div class="card">
                                                 <div class="card-image valign-wrapper" style="max-height: 250px;">
                                                     <img src="<?php echo $this->config->item('web_url').$temples->image ?>" class="activator" style="max-height:250px">
-                                                    <span class="card-title">C1</span>
-                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="c1"><i class="fas fa-pencil-alt"></i></a>
+                                                    <span class="card-title">C<?php echo $key + 1 ?></span>
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="<?php echo $temples->id ?>"><i class="fas fa-pencil-alt"></i></a>
                                                 </div>
                                                 <div class="card-content">
                                                     <p  class="truncate"><?php echo $temples->title ?></p>
@@ -107,15 +107,15 @@
                             </label>
                         </p>
                     </div>
-    
-                    <!-- <div class="col s12 m4">
+                    <input type="hidden" id="cid" name="id">
+                    <div class="col s12 m4">
                         <p>
                             <label>
                                 <input class="with-gap" name="type" value="custom" type="radio"  />
                                 <span>Custom</span>
                             </label>
                         </p>
-                    </div> -->
+                    </div>
     
                     <div class="input-field col s12 article-box">
                         <input placeholder="Past Article url" id="arurl"  name="arurl" type="text" class="validate">
@@ -233,6 +233,12 @@
                     $('.custom-box, .article-box').fadeOut(0);
                 }
             }
+
+            $('.btn-floating').click(function (e) { 
+                e.preventDefault();
+                var id = $(this).attr('data-id');
+                $('#cid').val(id);
+            });
         });
     </script>
 </body>

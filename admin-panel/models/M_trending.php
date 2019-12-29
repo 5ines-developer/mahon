@@ -58,7 +58,7 @@ class M_trending extends CI_Model {
     // update trending
     public function updatetrending($data, $position)
     {
-        $this->db->where('position', $position);
+        $this->db->where('id', $position);
         $this->db->update('mh_trending', $data);
         if($this->db->affected_rows() > 0){ return true;}else{return false; }
     }
@@ -66,7 +66,7 @@ class M_trending extends CI_Model {
     // single trending fetch
     public function get_single_trending($position)
     {
-        $this->db->where('position', $position);
+        $this->db->where('id', $position);
         return $this->db->get('mh_trending')->row();
     }
 }

@@ -2232,7 +2232,7 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
 }
 .sidebar ul.social-share li span.number {
   color: #333333;
-  margin-top: 5px;
+  margin-top: 12px;
 }
 .sidebar ul.social-share li:nth-child(2n) {
   margin-right: 0;
@@ -6423,6 +6423,11 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   width: auto;
   max-width: inherit;
   text-align: center;
+  margin: auto;
+}
+
+.temple-to-visit .verticle {
+  background: black;
 }
 
 .verticle {
