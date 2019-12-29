@@ -152,8 +152,14 @@ class M_result extends CI_Model {
         ->where('slug', $slug)
         ->order_by('p.id', 'desc')
         ->from('mh_photos p')
-        ->select('c.title as category, p.title, p.slug, p.id, p.tags, p.uploaded_on')
+        ->select('c.title as category, p.title, p.slug, p.id, p.tags, p.uploaded_on,
+        f.pageid as fid, f.title as ftitle, f.site_name as fsite_name, f.url as furl, f.descr as fdes,
+        t.card as tcard, t.title as ttitle, t.site_name as tsite_name, t.url as turl, t.descr as tdes, 
+        pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes')
         ->join('mh_category c', 'c.id = p.category', 'left')
+        ->join('mh_photo_post_fb  f', 'f.postid = p.id', 'left')
+        ->join('mh_photo_twitter  t', 't.post_id = p.id', 'left')
+        ->join('mh_photo_post_page pg', 'pg.post_id = p.id')
         ->get()
         ->row();
         $result->image = $this->image($result->id);
@@ -176,9 +182,15 @@ class M_result extends CI_Model {
         $query = $this->db->from('mh_videos p')
             ->where('p.status', 1)
             // ->where('p.schedule <=', date('Y-m-d H:i:s'))
-            ->select('p.id, p.title, p.slug, p.content, p.tumb as image, p.url, p.type, c.title as category, p.posted_by, p.created_on, p.tags')
+            ->select('p.id, p.title, p.slug, p.content, p.tumb as image, p.url, p.type, c.title as category, p.posted_by, p.created_on, p.tags,
+            f.pageid as fid, f.title as ftitle, f.site_name as fsite_name, f.url as furl, f.descr as fdes,
+            t.card as tcard, t.title as ttitle, t.site_name as tsite_name, t.url as turl, t.descr as tdes, 
+            pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes')
             ->order_by('p.id', 'DESC')
             ->join('mh_category c', 'c.id = p.category', 'left')
+            ->join('mh_video_post_fb  f', 'f.postid = p.id', 'left')
+            ->join('mh_video_twitter  t', 't.post_id = p.id', 'left')
+            ->join('mh_video_post_page pg', 'pg.post_id = p.id')
             ->get();
 
             

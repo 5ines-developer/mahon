@@ -239,6 +239,14 @@ class m_site extends CI_Model {
         ->result();
     }
 
+    public function twitter()
+    {
+        return $this->db->where('status', 1)
+        ->limit(5)
+        ->get('mh_twitter_post')
+        ->result();       
+    }
+
     public function gallery(Type $var = null)
     {
         $result = $this->db->where('p.status', 1)

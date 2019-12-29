@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
-	<title>Mahonnati</title>
 
 	<meta charset="utf-8">
 
@@ -22,7 +21,6 @@
 		<meta property="og:url" content="<?php echo base_url() ?>">
 		<meta property="og:description" content="<?php echo $post->fdes ?>">
 		<meta property="og:type" content="website">
-
 		<!-- Twitter card -->
 		<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@Mahonnathi">
@@ -30,8 +28,7 @@
 		<meta name="twitter:url" content="<?php echo base_url() ?>">
 		<meta name="twitter:title" content="<?php echo $post->ttitle ?>">
 		<meta name="twitter:description" content="<?php echo $post->tdes ?>">
-		
-		<?php  } ?>
+	<?php  } ?>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	

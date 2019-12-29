@@ -3160,8 +3160,10 @@ ul.list-posts > li {
 }
 ul.list-posts > li img {
   width: 100px;
-  margin-right: 20px;
+  margin-right: ;
   float: left;
+  margin: auto;
+  padding: 0 0px 0 0;
 }
 ul.list-posts > li .post-content > a {
   display: inline-block;
@@ -6404,8 +6406,8 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
 .navad{line-height: 100px;}
 .topimgox { max-height: 434px; overflow: hidden; }
 .featured-imgs { max-height: 300px; overflow: hidden; }
-.featuedimg-second { float: left; height: 80px; overflow: hidden; display: flex; align-items: center; }
-.post-gallerybox{height: 200px;overflow: hidden;}
+.featuedimg-second { float: left; height: 80px; overflow: hidden; display: flex; align-items: center; background: #000; text-align: center; margin-right: 10px; }
+.post-gallerybox{height: 200px;overflow: hidden;background: #000; display: flex; margin: auto; align-items: center;}
 .column-2{column-count: 2;}
 .ul {list-style-type: none; padding: 0px;}
 .brd{ border-right: 1px solid #f0f0f0; border-left: 1px solid #f0f0f0; }
@@ -6467,4 +6469,7 @@ iframe{
 
 .fvideo .video-post{
   overflow: hidden;
+}
+#small-list .featuedimg-second{
+  height: 60px;
 }

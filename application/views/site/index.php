@@ -660,7 +660,17 @@
 									<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
 								</div>
 							</div>
-
+							<?php if(!empty($twitter)){ ?>
+							<div class="widget tab-posts-widget">
+								<div class="twitt-silder">
+									<?php foreach ($twitter as $key => $twit) { ?>
+										<div class="item">
+											<?php echo $twit->embed ?>
+										</div>
+									<?php } ?>
+								</div>
+							<?php } ?>
+							</div>
 							<div class="widget tab-posts-widget">
 
 								<div class="title-section">
@@ -669,7 +679,7 @@
 
 								<div class="tab-content">
 									<div class="tab-pane active" id="option1">
-										<ul class="list-posts">
+										<ul class="list-posts" id="small-list">
 									
 
 											<?php foreach ($popular as $key => $prow) { 
@@ -682,7 +692,7 @@
 												(!empty($prow->content)? $content = $prow->content : $content = '' ) ;
 											?>
 												<li>
-													<div>
+													<div class="featuedimg-second">
 
 														<img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>">
 													</div>
@@ -790,6 +800,18 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/sticky.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/script.js"></script>
+	<script src="https://www.jqueryscript.net/demo/Horizontal-Vertical-Image-Carousel-Slide-Fade-Animations-jqCarousel/jquery.carousel.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.twitt-silder').jCarousel({
+				type: 'slidey-up',
+				circle: { isshow:false, },
+				arrow: { isshow:false, },
+				carsize: { carwidth:250, carheight:450 },
+				auto: { isauto:true, interval:5000 },
+			});
 
+		});
+	</script>						
 </body>
 </html>

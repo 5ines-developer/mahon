@@ -27,6 +27,7 @@ class home extends CI_Controller {
         $data['fvideos']    = $this->m_site->fvideos();
         $data['gallery']    = $this->m_site->gallery();
         $data['happening']  = $this->m_site->happening();
+        $data['twitter']    = $this->m_site->twitter();
         $this->load->view('site/index', $data, FALSE);
     }
 

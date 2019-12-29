@@ -1,7 +1,27 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
-	<title>Mahonnati</title>
+	<?php  if(!empty($photos)){ ?>
+		<!-- Meta tags -->
+		<title><?php echo $photos->ptitle ?></title>
+		<meta name="description" content="<?php echo $photos->pdes ?>" />
+		<meta name="keywords" content="<?php echo $photos->pkeyword ?>" />
+		<!-- facebook meta tags -->
+		<meta property="fb:pages" content="<?php echo $photos->fid ?>" />
+		<meta property="og:image" content="<?php echo $photos->image['0']->image ?>" />
+		<meta property="og:title" content="<?php echo $photos->ftitle ?>">
+		<meta property="og:site_name" content="<?php echo $photos->fsite_name ?>">
+		<meta property="og:url" content="<?php echo base_url() ?>">
+		<meta property="og:description" content="<?php echo $photos->fdes ?>">
+		<meta property="og:type" content="website">
+		<!-- Twitter card -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@Mahonnathi">
+		<meta name="twitter:image" content="<?php echo $photos->image['0']->image ?>">
+		<meta name="twitter:url" content="<?php echo base_url() ?>">
+		<meta name="twitter:title" content="<?php echo $photos->ttitle ?>">
+		<meta name="twitter:description" content="<?php echo $photos->tdes ?>">
+	<?php  } ?>
 
 	<meta charset="utf-8">
 
@@ -10,7 +30,6 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery.bxslider.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/font-awesome.css" media="screen">

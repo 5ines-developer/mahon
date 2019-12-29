@@ -1,16 +1,34 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
-	<title>Mahonnati</title>
 
 	<meta charset="utf-8">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+	<?php  if(!empty($post)){ ?>
+		<!-- Meta tags -->
+		<title><?php echo $post->ptitle ?></title>
+		<meta name="description" content="<?php echo $post->pdes ?>" />
+		<meta name="keywords" content="<?php echo $post->pkeyword ?>" />
+		<!-- facebook meta tags -->
+		<meta property="fb:pages" content="<?php echo $post->fid ?>" />
+		<meta property="og:image" content="<?php echo $post->image ?>" />
+		<meta property="og:title" content="<?php echo $post->ftitle ?>">
+		<meta property="og:site_name" content="<?php echo $post->fsite_name ?>">
+		<meta property="og:url" content="<?php echo base_url() ?>">
+		<meta property="og:description" content="<?php echo $post->fdes ?>">
+		<meta property="og:type" content="website">
+		<!-- Twitter card -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@Mahonnathi">
+		<meta name="twitter:image" content="<?php echo $post->image ?>">
+		<meta name="twitter:url" content="<?php echo base_url() ?>">
+		<meta name="twitter:title" content="<?php echo $post->ttitle ?>">
+		<meta name="twitter:description" content="<?php echo $post->tdes ?>">
+	<?php  } ?>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery.bxslider.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/font-awesome.css" media="screen">
@@ -64,14 +82,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-8">
-						<?php if(!empty($post))	{ 
-							
-							echo "<pre>";
-							print_r ($post);
-							echo "</pre>";
-							
-							
-							?>		
+						<?php if(!empty($post))	{ ?>		
 							<!-- block content -->
 							<div class="block-content related-article"  data_slug="<?php echo  $post->slug ?>">
 
