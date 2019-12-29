@@ -130,7 +130,7 @@
                                 <div class="basic-detail card card-25">
                                     <div class="input-field col s12 m6">
                                         <input type="text" id="title" name="title" placeholder="." required class="validate"
-                                            value="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)">
+                                            value="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" autocomplete="off">
                                         <label for="title">Title <span class="red-text">*</span></label>
                                         <input type="hidden" id="ctid" name="ctid">
                                     </div>
@@ -305,18 +305,18 @@
                                             <input type="text" placeholder="Title" id="ftitle" name="ftitle">
                                         </div>
 
-                                        
+<!--                                         
                                         <div class="input-box">
                                             <input type="text" placeholder="Site name" id="fsite_name" name="fsite_name">
-                                        </div>
+                                        </div> -->
 
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                             <input type="url" placeholder="Site Url" id="furl" name="furl">
-                                        </div>
+                                        </div> -->
 
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                             <input type="url" placeholder="Image Url" id="fimg_url" name="fimg_url">
-                                        </div>
+                                        </div> -->
 
                                         <div class="input-box">
                                             <input type="text" placeholder="Meat Description" id="fdescription" name="fdescription">
@@ -327,25 +327,25 @@
                                 <li>
                                     <div class="collapsible-header"><i class="fab fa-twitter"></i>Twitter Meta Detail</div>
                                     <div class="collapsible-body">
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                         <input type="text" id="tcard" name="tcard" class="validate" value="" placeholder="Card">
-                                        </div>
+                                        </div> -->
 
                                         <div class="input-box">
                                         <input type="text" id="ttitle" name="ttitle" class="validate" placeholder="Title" value="">
                                         </div>
 
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                         <input type="text" id="tsite_name" placeholder="Site Name" name="tsite_name" class="validate" value="">
-                                        </div>
+                                        </div> -->
 
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                             <input type="url" id="turl" name="turl" placeholder="Site Url" class="validate" value="">
-                                        </div>
+                                        </div> -->
 
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                             <input type="url" id="timg_url" name="timg_url" placeholder="Image url" class="validate" value="">
-                                        </div>
+                                        </div> -->
 
                                         <div class="input-box">
                                             <textarea id="tdescription" placeholder="Description" name="tdescription" class="materialize-textarea"></textarea>
@@ -420,7 +420,7 @@
             $('.timepicker').timepicker();
 
             // ck editor
-            CKEDITOR.replace( 'description');
+            var editor = CKEDITOR.replace( 'description');
             
             // related category rotate
             $('.related-main-title').click(function (e) { 
@@ -542,18 +542,18 @@
 
                         $('input[name=fdescription]').val(res.fbdes);
                         $('input[name=fid]').val(res.fbid);
-                        $('input[name=fimg_url]').val(res.fbimg);
-                        $('input[name=fsite_name]').val(res.fbsite);
+                        // $('input[name=fimg_url]').val(res.fbimg);
+                        // $('input[name=fsite_name]').val(res.fbsite);
                         $('input[name=ftitle]').val(res.fbtitle);
-                        $('input[name=furl]').val(res.fburl);
+                        // $('input[name=furl]').val(res.fburl);
 
-                        $('input[name=tcard]').val(res.tw_card);
+                        // $('input[name=tcard]').val(res.tw_card);
                         $('input[name=tdescription]').val(res.tw_descr);
                         M.textareaAutoResize($('input[name=tdescription]'));
-                        $('input[name=timg_url]').val(res.tw_img_url);
-                        $('input[name=tsite_name]').val(res.tw_site_name);
+                        // $('input[name=timg_url]').val(res.tw_img_url);
+                        // $('input[name=tsite_name]').val(res.tw_site_name);
                         $('input[name=ttitle]').val(res.tw_title);
-                        $('input[name=turl]').val(res.tw_url);
+                        // $('input[name=turl]').val(res.tw_url);
 
                         $('input[name=pdescription]').val(res.page_descr);
                         $('input[name=pkeywords]').val(res.page_keyword);
@@ -713,18 +713,18 @@
 
                 $('input[name=fdescription]').val();
                 $('input[name=fid]').val();
-                $('input[name=fimg_url]').val();
-                $('input[name=fsite_name]').val();
+                // $('input[name=fimg_url]').val();
+                // $('input[name=fsite_name]').val();
                 $('input[name=ftitle]').val();
-                $('input[name=furl]').val();
+                // $('input[name=furl]').val();
 
-                $('input[name=tcard]').val();
+                // $('input[name=tcard]').val();
                 $('input[name=tdescription]').val();
-                $('input[name=tdescription]').val();
-                $('input[name=timg_url]').val();
-                $('input[name=tsite_name]').val();
+               
+                // $('input[name=timg_url]').val();
+                // $('input[name=tsite_name]').val();
                 $('input[name=ttitle]').val();
-                $('input[name=turl]').val();
+                // $('input[name=turl]').val();
 
                 $('input[name=pdescription]').val();
                 $('input[name=pkeywords]').val();
@@ -750,16 +750,35 @@
                     });
                 }
             }, 5000);
+
+            function setVales(text = null, setTo = null){
+                if(text.length > 350) text = text.substring(0,350);
+               $.each(setTo, function (index, value) { 
+                    $('#'+value).val(text);
+               });
+            }
+            
+            // Set metas
+            $('#title').keyup(function (e) { 
+                var text = $(this).val();
+                var setTo = ['ptitle', 'ftitle', 'ttitle'];
+                setVales(text, setTo);
+            });
+
+            editor.on( 'change', function( evt ) {
+                var text =  $(evt.editor.getData()).text().trim();
+                var setTo = ['pdescription', 'fdescription', 'tdescription'];
+                setVales(text, setTo);
+            });
+
         });
 
         function convertToSlug(str) {
         
             //replace all special characters | symbols with a space
             str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.‘’<>?\s]/g, ' ').toLowerCase();
-            
             // trim spaces at start and end of string
             str = str.replace(/^\s+|\s+$/gm,'');
-            
             // replace space with dash/hyphen
             str = str.replace(/\s+/g, '-');	
             document.getElementById("slug").value = str;
@@ -771,3 +790,5 @@
 </body>
 
 </html>
+
+ 

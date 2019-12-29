@@ -351,7 +351,7 @@
                                         </div>
 
                                         
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                             <input type="text" placeholder="Site name" id="fsite_name" name="fsite_name">
                                         </div>
 
@@ -361,7 +361,7 @@
 
                                         <div class="input-box">
                                             <input type="url" placeholder="Image Url" id="fimg_url" name="fimg_url">
-                                        </div>
+                                        </div> -->
 
                                         <div class="input-box">
                                             <input type="text" placeholder="Meat Description" id="fdescription" name="fdescription">
@@ -372,15 +372,15 @@
                                 <li>
                                     <div class="collapsible-header"><i class="fab fa-twitter"></i>Twitter Meta Detail</div>
                                     <div class="collapsible-body">
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                         <input type="text" id="tcard" name="tcard" class="validate" value="" placeholder="Card">
-                                        </div>
+                                        </div> -->
 
                                         <div class="input-box">
                                         <input type="text" id="ttitle" name="ttitle" class="validate" placeholder="Title" value="">
                                         </div>
 
-                                        <div class="input-box">
+                                        <!-- <div class="input-box">
                                         <input type="text" id="tsite_name" placeholder="Site Name" name="tsite_name" class="validate" value="">
                                         </div>
 
@@ -390,7 +390,7 @@
 
                                         <div class="input-box">
                                             <input type="url" id="timg_url" name="timg_url" placeholder="Image url" class="validate" value="">
-                                        </div>
+                                        </div> -->
 
                                         <div class="input-box">
                                             <textarea id="tdescription" placeholder="Description" name="tdescription" class="materialize-textarea"></textarea>
@@ -439,7 +439,7 @@
             $('.timepicker').timepicker();
 
             // ck editor
-            CKEDITOR.replace( 'description');
+            var editor = CKEDITOR.replace( 'description');
             
             // related category rotate
             $('.related-main-title').click(function (e) { 
@@ -520,6 +520,26 @@
                     $('.is-image').fadeOut(500);
                     $('#img').removeAttr('required');
                 }
+            });
+
+            function setVales(text = null, setTo = null){
+                if(text.length > 350) text = text.substring(0,350);
+               $.each(setTo, function (index, value) { 
+                    $('#'+value).val(text);
+               });
+            }
+            
+            // Set metas
+            $('#title').keyup(function (e) { 
+                var text = $(this).val();
+                var setTo = ['ptitle', 'ftitle', 'ttitle'];
+                setVales(text, setTo);
+            });
+
+            editor.on( 'change', function( evt ) {
+                var text =  $(evt.editor.getData()).text().trim();
+                var setTo = ['pdescription', 'fdescription', 'tdescription'];
+                setVales(text, setTo);
             });
         });
 
