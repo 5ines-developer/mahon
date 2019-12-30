@@ -129,7 +129,7 @@
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
 									<h1>Subscribe to RSS Feeds</h1>
-									<input type="text" name="sumbscribe" id="subscribe" placeholder="Email"/>
+									<input type="text" required name="sumbscribe" id="subscribe" placeholder="Email"/>
 									<button id="submit-subscribe">
 										<i class="fa fa-arrow-circle-right"></i>
 									</button>
@@ -318,6 +318,68 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/owl.carousel.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/script.js"></script>
+	<script src="<?php echo base_url() ?>assets/js/bootstrap-notify.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			
+
+			$('.subscribe-form').submit(function (e) { 
+				e.preventDefault();
+				$.ajax({
+					type: "post",
+					url: "<?php echo base_url() ?>home/subscribe",
+					data: {email: $('#subscribe').val()},
+					dataType: "json",
+					success: function (response) {
+						$.notify(
+							{ 
+								message: 'your subscription has been successfully confirmed' 
+							},
+							{ 
+								type: 'success',
+								z_index: 9999999,
+								timer: 1000,
+								delay: 5000,
+								animate: {
+									enter: 'animated fadeInDown',
+									exit: 'animated fadeOutUp'
+								},
+								placement: {
+									from: "top",
+									align: "center"
+								},
+							}
+						);
+					},
+					error: function (response) {
+						$.notify(
+							{ 
+								message: response.responseJSON
+							},
+							{ 
+								type: 'danger',
+								z_index: 9999999,
+								timer: 1000,
+								delay: 5000,
+								animate: {
+									enter: 'animated fadeInDown',
+									exit: 'animated fadeOutUp'
+								},
+								placement: {
+									from: "top",
+									align: "center"
+								},
+							}
+						);
+					},
+				});
+				
+				
+			});
+
+		});
+
+	</script>	
 
 </body>
 </html>

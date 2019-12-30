@@ -31,6 +31,31 @@ class home extends CI_Controller {
         $this->load->view('site/index', $data, FALSE);
     }
 
+    // subscription
+    public function subscribe()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'email', 'Email', 'required|is_unique[mh_newsletter.email]',
+            array(
+                    'required'      => 'You have not provided %s.',
+                    'is_unique'     => 'This %s already exists.'
+            )
+        );
+        if ($this->form_validation->run() == FALSE)
+        {
+            http_response_code(400);
+            echo json_encode(preg_replace("/\r|\n/", "", validation_errors()));
+        }
+        else
+        {
+            $email =  $this->input->post('email', true);
+            $this->m_site->subscribe($email);
+            echo json_encode('your subscription has been successfully confirmed');
+        }
+       
+    }
+
 }
 
 /* End of file home.php */

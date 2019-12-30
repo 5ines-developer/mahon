@@ -274,6 +274,13 @@ class m_site extends CI_Model {
         return $this->db->get('mh_events')->result();
     }
 
+    // subscription
+    public function subscribe($email = null)
+    {
+        $this->db->insert('mh_newsletter', array('email' => $email));
+        return true;
+    }
+
 
 
 

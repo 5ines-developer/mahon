@@ -64,6 +64,9 @@ $route['photos/update']                          = 'photos/update';
 $route['photos/delete/(:any)']                   = 'photos/update/$1';   
 // Event
 $route['events']                                 = 'events/index';
+// newsletter
+$route['news-letter']                            = 'events/news_letter';
+$route['news-letter/delete/(:any)']              = 'events/news_letter_delete/$1';
 
 
 

@@ -29,6 +29,7 @@
                 </ul>
             </li>
             <li class="<?php echo $this->uri->segment(1) == 'author'?'active':''?>"> <a href="<?php echo base_url('author') ?>"><i class="fas fa-user-tie li-icon"></i>Author</a></li>
+            <li class="<?php echo $this->uri->segment(1) == 'news-letter'?'active':''?>"> <a href="<?php echo base_url('news-letter') ?>"><i class="fas fa-rss li-icon"></i>News Letter</a></li>
 
             <li class="divider" tabindex="-1"></li>
 

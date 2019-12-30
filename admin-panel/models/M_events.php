@@ -90,6 +90,24 @@ class m_events extends CI_Model {
         return $this->db->where('id', $id)->get('mh_events')->row();
     }
 
+    // newsletter subscribers
+    public function news_letter()
+    {
+        $this->db->order_by('id', 'desc');
+        return $this->db->get('mh_newsletter')->result();
+    }
+
+    // news letter delete
+    public function news_letter_delete($id)
+    {
+       $this->db->where('id', $id)->delete('mh_newsletter');
+       if($this->db->affected_rows() > 0){ 
+        return true;
+        }
+        else{
+            return false; 
+        }
+    }
 
 }
 

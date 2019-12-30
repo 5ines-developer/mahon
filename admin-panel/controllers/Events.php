@@ -164,8 +164,8 @@ class Events extends CI_Controller {
     }
 
      // Edit subevents
-     public function sub_events_edit()
-     {
+    public function sub_events_edit()
+    {
          $id = $this->input->post('id');
          $title = $this->input->post('events');
          $data = array('title' => $title, );
@@ -177,7 +177,31 @@ class Events extends CI_Controller {
              $this->session->set_flashdata('error', 'Some error occured, Please try agin later');
              redirect('events/sub-events');
          }
-     }
+    }
+
+    // newsletter subscription
+    public function news_letter()
+    {
+        $data['lists'] = $this->m_events->news_letter();
+        $data['title'] = 'Newsletter Subscribers';
+        $this->load->view('pages/news-letter', $data, FALSE);
+    }
+
+    public function news_letter_delete($id = null)
+    {
+       
+        if($this->m_events->news_letter_delete($id))
+        {
+            $this->session->set_flashdata('success', 'Email id Successfully deleted');
+                redirect('news-letter','refresh');
+        }else{
+            $this->session->set_flashdata('error', 'Some error occured, Please try agin later');
+            redirect('news-letter','refresh');
+        }
+       
+       
+    }
+
 
 }
 
