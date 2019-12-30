@@ -436,6 +436,44 @@
 											
 									</div>				
 									
+									<div class="row">
+										<?php  foreach ($cArticle['2']->data as $key => $carow) { if($key < 2){ ?>
+											<div class="item col-sm-12 col-md-6">
+												<div class="news-post image-post2">
+													<div class="post-gallery">
+														<div class="post-gallerybox">
+															<img src="<?php echo base_url().$carow->image ?>" alt="">
+														</div>
+														<div class="hover-box">
+															<div class="inner-hover">
+																<!-- <a class="category-post" href="politics-category.html">Opionion</a> -->
+																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+																<ul class="post-tags">
+																	<!--  -->
+																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>		
+										<?php } } ?> 
+										<div class="col-sm-12">
+											<ul class="list-posts column-2">
+												<?php  foreach ($cArticle['2']->data as $key => $carow) { if($key >= 2){ ?>
+													<li>
+														<div class="featuedimg-second">
+															<img src="<?php echo base_url().$carow->image ?>" alt="">
+														</div>
+														<div class="post-content">
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+														</div>
+													</li>
+												<?php } }?>	
+											</ul>
+										</div>
+											
+									</div>	
 
 								
 									
@@ -486,7 +524,7 @@
 
 								<div class="row">
 
-									<?php foreach ($cArticle as $key => $category) { if($key != 0 && $key != 1 && $key < 4) { ?>	
+									<?php foreach ($cArticle as $key => $category) { if($key != 0 && $key != 1 && $key != 2 && $key < 5) { ?>	
 										<div class="col-md-6">
 
 											<div class="title-section">

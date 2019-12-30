@@ -86,7 +86,11 @@ class result extends CI_Controller {
         // $category = $this->urls->urlDformat($this->uri->segment(1));
         $data['post'] = $this->m_result->getVideo($category, $slug);
         $data['breaking']   = $this->m_result->breaking();
-        
+        $this->load->model('m_site');
+        $data['temple']     = $this->m_site->temple();
+        $data['trending']   = $this->m_site->trending();
+        $data['videos']     = $this->m_site->videos();
+        $data['popular']    = $this->m_site->popular();
         if($category != null && $slug != null){
             $data['related']    =  $this->m_result->relatedVideo($category, $slug);
             $data['is_detail'] = TRUE;

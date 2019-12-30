@@ -102,10 +102,9 @@
 									<div class="share-post-box">
 										<ul class="share-box">
 											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-											<li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
-											<li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
-											<li><a class="google" href="#"><i class="fa fa-google-plus"></i><span></span></a></li>
-											<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i><span></span></a></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $post->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $post->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/home?url=<?php echo $post->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $post->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
 										</ul>
 									</div>
 
@@ -144,7 +143,7 @@
 
 									
 
-									<div class="about-more-autor">
+									<!-- <div class="about-more-autor">
 										<ul class="nav nav-tabs">
 											<li class="active">
 												<a href="#about-autor" data-toggle="tab">About The Autor</a>
@@ -163,7 +162,6 @@
 													<div class="autor-content">
 														<div class="autor-title">
 															<h1><span><?php echo $post->author->name ?></span>
-															<!-- <a href="autor-details.html">18 Posts</a> -->
 															</h1>
 															<ul class="autor-social">
 																<li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
@@ -185,7 +183,7 @@
 											
 
 										</div>
-									</div>
+									</div> -->
 
 									<!-- carousel box -->
 									
@@ -249,10 +247,9 @@
 									<div class="share-post-box">
 										<ul class="share-box">
 											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-											<li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
-											<li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
-											<li><a class="google" href="#"><i class="fa fa-google-plus"></i><span></span></a></li>
-											<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i><span></span></a></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $post->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $post->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/home?url=<?php echo $post->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $post->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
 										</ul>
 									</div>
 

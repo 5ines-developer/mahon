@@ -94,10 +94,9 @@
 									<div class="share-post-box">
 										<ul class="share-box">
 											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-											<li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
-											<li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
-											<li><a class="google" href="#"><i class="fa fa-google-plus"></i><span></span></a></li>
-											<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i><span></span></a></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $photos->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $photos->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/home?url=<?php echo $photos->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $photos->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
 										</ul>
 									</div>
 
@@ -124,75 +123,16 @@
 									<div class="share-post-box">
 										<ul class="share-box">
 											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-											<li><a class="facebook" href="#"><i class="fa fa-facebook"></i>Share on Facebook</a></li>
-											<li><a class="twitter" href="#"><i class="fa fa-twitter"></i>Share on Twitter</a></li>
-											<li><a class="google" href="#"><i class="fa fa-google-plus"></i><span></span></a></li>
-											<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i><span></span></a></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $photos->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $photos->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/home?url=<?php echo $photos->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $photos->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
 										</ul>
 									</div>
 
 								
 								
 									<!-- carousel box -->
-									<div class="carousel-box owl-wrapper">
-										<div class="title-section">
-											<h1><span>You may also like</span></h1>
-										</div>
-										<div class="owl-carousel" data-num="3">
-										
-											<div class="item news-post image-post3">
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/art1.jpg" alt="">
-												<div class="hover-box">
-													<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</div>
-										
-											<div class="item news-post image-post3">
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/art2.jpg" alt="">
-												<div class="hover-box">
-													<h2><a href="single-post.html">Nullam malesuada erat ut turpis. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</div>
-										
-											<div class="item news-post video-post">
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/art3.jpg" alt="">
-												<a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-												<div class="hover-box">
-													<h2><a href="single-post.html">Lorem ipsum dolor sit consectetuer adipiscing elit. Donec odio. </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</div>
-										
-											<div class="item news-post image-post3">
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/art4.jpg" alt="">
-												<div class="hover-box">
-													<h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. Aliquam </a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</div>
-										
-											<div class="item news-post image-post3">
-												<img src="<?php echo base_url() ?>assets/upload/news-posts/art5.jpg" alt="">
-												<div class="hover-box">
-													<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
-													<ul class="post-tags">
-														<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-													</ul>
-												</div>
-											</div>
-
-										</div>
-									</div>
+								
 									<!-- End carousel box -->
 
 									<!-- contact form box -->

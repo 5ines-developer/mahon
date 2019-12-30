@@ -137,7 +137,7 @@ class m_site extends CI_Model {
     public function indexCategory()
     {
         return  $this->db->where('index', 1)
-        ->order_by('created_on', 'DESC')
+        // ->order_by('created_on', 'DESC')
         ->where('status', 1)
         ->select('title, id')
         ->get('mh_category')
