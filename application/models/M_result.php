@@ -10,10 +10,10 @@ class M_result extends CI_Model {
         // where
         if(!empty($slug)){$this->db->where('p.slug', $slug);}
         if(!empty($category)){$this->db->where('c.title', $category); }
-        
+        $this->db->distinct();
         $query = $this->db->from('mh_posts p')
             ->where('p.status', 1)
-            // ->where('p.schedule <=', date('Y-m-d H:i:s'))
+            ->where('p.schedule <=', date('Y-m-d H:i:s'))
             ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, p.posted_by, p.created_on, p.tags, 
             f.pageid as fid, f.title as ftitle, f.site_name as fsite_name, f.url as furl, f.descr as fdes,
             t.card as tcard, t.title as ttitle, t.site_name as tsite_name, t.url as turl, t.descr as tdes, 

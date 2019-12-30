@@ -81,9 +81,69 @@
 		<!-- block-wrapper-section
 			================================================== -->
 		<section class="block-wrapper">
-			<div class="container">
+			<div class="container-fluid1">
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-2">
+						<div class="sidebar">
+							<?php if(!empty($videos)){ ?>
+								<div class="widget post-widget">
+									<div class="title-section">
+										<h1><span>SHORT MOVIES</span></h1>
+									</div>
+									<?php foreach ($videos as $key => $value) { ?>
+										<div>
+											<div class="news-post video-post">
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+												
+											</div>
+											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+										</div>
+									<?php } ?>
+									
+								</div>
+							<?php } ?>
+
+							<div class="widget">
+								<div style="height: 500px; background: #428bca; color: #fff; line-height: 500px; text-align: center; ">ADS Goes Here  194 x 500</div>
+							</div>
+
+							<?php if(!empty($trending)){ ?>
+								<div class="widget review-widget">
+									<div class="title-section">
+										<h1><span>TRENDING POSTS</span></h1>
+									</div>
+
+									<ul class="review-posts-list">
+
+										<?php foreach ($trending as $key => $trow) { 
+															
+											if(empty($trow->category)){
+												$urllink = $this->urls->urlFormat($trow->slug);
+											}else{
+												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
+											}
+											(!empty($trow->content)? $content = $trow->content : $content = '' ) ;
+										?>
+											<li>
+												<a href="<?php echo $urllink ?>">
+													<img src="<?php echo base_url().$trow->image ?>" alt="">
+													<h2><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></h2>
+												</a>
+												<!-- <span class="date">27 may 2013</span> -->
+											</li>
+										
+										<?php } ?>
+									</ul>
+								</div>
+							<?php } ?>
+
+							<div class="widget">
+								<div style="height: 400px; background: #42ca97; color: #fff; line-height: 400px; text-align: center; ">ADS Goes Here  194 x 400</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-7">
 						<?php if(!empty($post))	{ ?>		
 							<!-- block content -->
 							<div class="block-content related-article"  data_slug="<?php echo  $post->slug ?>">
@@ -274,7 +334,7 @@
 						<?php endforeach; endif;?>  					
 					</div>
 
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 
 						<!-- sidebar -->
 						<div class="sidebar">
@@ -305,6 +365,10 @@
 										<!-- <span>Instagram</span> -->
 									</li>
 								</ul>
+							</div>
+
+							<div class="widget">
+								<div style="height: 400px; background: #ca4242; color: #fff; line-height: 400px; text-align: center; ">ADS Goes Here  194 x 400</div>
 							</div>
 
 							<?php if(!empty($temple)){ ?>
@@ -353,15 +417,19 @@
 								</div>
 							<?php } ?>	
 
+							<div class="widget">
+								<div style="height: 450px; background: #001248; color: #fff; line-height: 400px; text-align: center; ">ADS Goes Here  194 x 400</div>
+							</div>
+
 							<div class="widget tab-posts-widget">
 
 								<div class="title-section">
-									<h1><span>POPULAR</span></h1>
+									<h1><span>Recommended</span></h1>
 								</div>
 
 								<div class="tab-content">
-									<div class="tab-pane active" id="option1">
-										<ul class="list-posts" id="small-list">
+									<div class=>
+										
 									
 
 											<?php foreach ($popular as $key => $prow) { 
@@ -373,40 +441,23 @@
 												}
 												(!empty($prow->content)? $content = $prow->content : $content = '' ) ;
 											?>
-												<li>
-													<div class="featuedimg-second">
 
-														<img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>">
-													</div>
-													<div class="post-content">
-														<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($prow->title)) > 43) ? substr(strip_tags($prow->title),0,40).'...' : strip_tags($prow->title); ?></a></h2>
-													</div>
-												</li>
+											<div class="news-post standard-post2 mb">
+												<div class="post-gallery">
+												<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>"></a>
+												</div>
+												<div class="post-title">
+												<p><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($prow->title)) > 47) ? substr(strip_tags($prow->title),0,50).'...' : strip_tags($prow->title); ?></a></p>
+												</div>
+											</div>
 											<?php } }?>
-										</ul>
+										
 									</div>
 									
 								</div>
 							</div>
 
-							<?php if(!empty($videos)){ ?>
-								<div class="widget post-widget">
-									<div class="title-section">
-										<h1><span>SHORT MOVIES</span></h1>
-									</div>
-									<?php foreach ($videos as $key => $value) { ?>
-										<div>
-											<div class="news-post video-post">
-												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
-												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
-												
-											</div>
-											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
-										</div>
-									<?php } ?>
-									
-								</div>
-									<?php } ?>
+							
 
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">

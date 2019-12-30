@@ -7,9 +7,27 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="keywords" content="News Portal News, New Portal Videos News Portal Photos , News Latest Updates , News Web Portal Development, News Portal Development, News Portal Website, Media Designing Company, Latest news, India news, World News Today, Breaking News Headlines, News Today, News, Latest News, Today's News, Today's News Headlines, Breaking News, Live News, Current Affairs, Sports News in English, " >
+
+	<meta property="og:image" content="<?php echo base_url().$banner[0]->image ?>" />
+	<meta property="og:title" content="Online News Portal">
+	<meta property="og:site_name" content="Online News Portal">
+	<meta property="og:url" content="<?php echo base_url() ?>">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="website">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@Mahonnathi">
+	<meta name="twitter:image" content="<?php echo base_url().$banner[0]->image ?>">
+	<meta name="twitter:url" content=""<?php echo base_url() ?>">
+	<meta name="twitter:title" content="Online News Portal">
+	<meta name="twitter:description" content="">
+
+	
 
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery.bxslider.css" media="screen">
@@ -316,7 +334,13 @@
 								
 							<?php 
 						
-							 if(!empty($fetured[0])){ ?>	
+							 if(!empty($fetured[0])){ 
+								if(empty($fetured[0]->category)){
+									$urllink = $this->urls->urlFormat($fetured[0]->slug);
+								}else{
+									$urllink = $this->urls->urlFormat(base_url().$fetured[0]->category.'/'.$fetured[0]->slug);
+								}	 
+							?>	
 								<div class="image-post-slider">
 									<ul class="ul">
 
@@ -324,17 +348,15 @@
 											<div class="news-post image-post2">
 												<div class="post-gallery">
 													<div class="featured-imgs">
-														<img src="<?php echo base_url().$fetured[0]->image ?>" alt="">
+														<a href="<?php echo $urllink ?>">
+															<img src="<?php echo base_url().$fetured[0]->image ?>" alt="">
+							 							</a>
 													</div>
 													<div class="hover-box overlaybox">
 														<div class="inner-hover">
 														<?php 
 															echo (!empty($fetured[0]->category)? '<a class="category-post" href="#!">'.$fetured[0]->category.'</a>': ' ' ) ;
-															if(empty($fetured[0]->category)){
-																$urllink = $this->urls->urlFormat($fetured[0]->slug);
-															}else{
-																$urllink = $this->urls->urlFormat(base_url().$fetured[0]->category.'/'.$fetured[0]->slug);
-															}
+															
 														?>
 															<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($fetured[0]->title),0,50).'...' : strip_tags($fetured[0]->title); ?></a></h2>
 															<ul class="post-tags">
@@ -359,19 +381,19 @@
 									<ul class="list-posts">
 										<?php foreach ($fetured as $key => $row) { 
 											if(!empty($row->id) && $key > 0 ){
+
+												if(empty($row->category)){
+													$urllink = $this->urls->urlFormat($row->slug);
+												}else{
+													$urllink = $this->urls->urlFormat(base_url().$row->category.'/'.$row->slug);
+												}
 										?>
 											<li class="col-md-6">
 												<div class="featuedimg-second">
-													<img src="<?php echo base_url().$row->image ?>" alt="">
+												<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$row->image ?>" alt=""></a>
 												</div>
 
-												<?php 
-													if(empty($row->category)){
-														$urllink = $this->urls->urlFormat($row->slug);
-													}else{
-														$urllink = $this->urls->urlFormat(base_url().$row->category.'/'.$row->slug);
-													}
-												?>
+												
 												<div class="post-content">
 													<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></h2>
 													<ul class="post-tags">
@@ -403,7 +425,11 @@
 												<div class="news-post image-post2">
 													<div class="post-gallery">
 														<div class="post-gallerybox">
-															<img src="<?php echo base_url().$carow->image ?>" alt="">
+															<div class="afterlay">
+															<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>">
+																<img src="<?php echo base_url().$carow->image ?>" alt="">
+															</a>
+															</div>
 														</div>
 														<div class="hover-box">
 															<div class="inner-hover">
@@ -424,7 +450,7 @@
 												<?php  foreach ($cArticle['0']->data as $key => $carow) { if($key >= 2){ ?>
 													<li>
 														<div class="featuedimg-second">
-															<img src="<?php echo base_url().$carow->image ?>" alt="">
+														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
 															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
@@ -437,12 +463,17 @@
 									</div>				
 									
 									<div class="row">
+									<div class="title-section">
+										<h1><span class="green"><?php echo $cArticle['2']->title ?></span></h1>
+									</div>
 										<?php  foreach ($cArticle['2']->data as $key => $carow) { if($key < 2){ ?>
 											<div class="item col-sm-12 col-md-6">
 												<div class="news-post image-post2">
 													<div class="post-gallery">
 														<div class="post-gallerybox">
-															<img src="<?php echo base_url().$carow->image ?>" alt="">
+															<div class="afterlay">
+															<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+															</div>
 														</div>
 														<div class="hover-box">
 															<div class="inner-hover">
@@ -463,7 +494,7 @@
 												<?php  foreach ($cArticle['2']->data as $key => $carow) { if($key >= 2){ ?>
 													<li>
 														<div class="featuedimg-second">
-															<img src="<?php echo base_url().$carow->image ?>" alt="">
+														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
 															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
@@ -494,7 +525,7 @@
 									<?php  foreach ($cArticle['1']->data as $key => $row) { ?>
 										<li>
 											<div class="featuedimg-second">
-												<img src="<?php echo base_url().$row->image ?>" alt="">
+											<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$row->slug) ?>"><img src="<?php echo base_url().$row->image ?>" alt=""></a>
 											</div>
 											<div class="post-content">
 												<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$row->slug) ?>"><?php echo $row->title ?></a></h2>
@@ -534,7 +565,7 @@
 												<ul class="list-posts">
 													<li>
 														<div class="featuedimg-second">
-															<img src="<?php echo base_url().$drow->image ?>" alt="">
+														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$drow->slug) ?>"><img src="<?php echo base_url().$drow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
 															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$drow->slug) ?>"><?php echo $drow->title ?></a></h2>
@@ -553,20 +584,39 @@
 							</div>
 
                             <!-- carousel box -->
-							<div class="carousel-box owl-wrapper darkcorocol">
+							<div class="carousel-box owl-wrapper graydlayer">
 								<div class="title-section">
+									<div class="right-btn text-right">
+										<span class="sbscrib">Subscribe Now</span>
+										<script src="https://apis.google.com/js/platform.js"></script>
+										<div class="g-ytsubscribe" data-channelid="UC00fs8iYCCtN9TlyEw_8JCg" data-layout="default" data-count="hidden"></div>
+									</div>
+									
 									<h1><span>Featured Videos</span></h1>
+									
+
 								</div>
-								<div class="owl-carousel fvideo" data-num="4">
+								<div class="owl-carousel fvideo" data-num="3">
 
 								<?php foreach($fvideos as $key => $fvideo) { ?>
-									<div class="item news-post video-post">
-										<a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><img alt="" src="<?php echo $fvideo->tumb ?>"></a>
-										<a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-										<div class="hover-box">
-											<h2><a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 28) ? substr(strip_tags($fvideo->title),0,25).'...' : strip_tags($fvideo->title);  ?></a></h2>
+									
+										<div class="item news-post standard-post">
+											<div class="post-gallery">
+												<div>
+													<a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><img alt="" src="<?php echo $fvideo->tumb ?>"></a>
+													<a class="ply-btn" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>" ><i class="fa fa-play"></i></a>
+												</div>
+											</div>
+											<div class="post-content">
+											<h2><a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 58) ? substr(strip_tags($fvideo->title),0,50).'...' : strip_tags($fvideo->title);  ?></a></h2>
+												<!-- <ul class="post-tags">
+													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+													<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
+													<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+												</ul> -->
+											</div>
 										</div>
-									</div>
+
 								<?php } ?>
 
 								</div>
@@ -662,7 +712,7 @@
 													<div class="news-post image-post2">
 														<div class="post-gallery">
 															<div class="verticle">
-																<img src="<?php echo base_url().$tprow->image ?>" alt="">
+															<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$tprow->image ?>" alt=""></a>
 															</div>
 															<div class="hover-box">
 																<div class="inner-hover">
@@ -733,7 +783,7 @@
 												<li>
 													<div class="featuedimg-second">
 
-														<img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>">
+													<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>"></a>
 													</div>
 													<div class="post-content">
 														<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($prow->title)) > 43) ? substr(strip_tags($prow->title),0,40).'...' : strip_tags($prow->title); ?></a></h2>

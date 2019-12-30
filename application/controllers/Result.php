@@ -40,7 +40,7 @@ class result extends CI_Controller {
         }
         else{
             $data['category'] = $category;
-            
+           
             $this->load->view('site/result', $data, FALSE);
         }
         

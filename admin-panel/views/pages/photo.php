@@ -160,7 +160,7 @@
                                                 <div class="clearfix"></div>
 
                                                 <div class="input-field">
-                                                    <textarea id="textarea1" name="imagetitle[]" class="materialize-textarea"></textarea>
+                                                    <textarea id="textarea1" required name="imagetitle[]" class="materialize-textarea"></textarea>
                                                     <label for="textarea1">Image Title</label>
                                                 </div>
                                             </div>
@@ -468,7 +468,7 @@
                             <div class="clearfix"></div>
 
                             <div class="input-field">
-                                <textarea id="textarea1" name="imagetitle[]" class="materialize-textarea" style="height: 45px;"></textarea>
+                                <textarea id="textarea1" required name="imagetitle[]" class="materialize-textarea" style="height: 45px;"></textarea>
                                 <label for="textarea1">Image Title</label>
                             </div>
                         </div>

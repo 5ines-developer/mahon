@@ -114,39 +114,18 @@
 									</div>
 								</div>
 							<?php } ?>	
-
-							<?php if(!empty($trending)){ ?>
-								<div class="widget review-widget">
-									<div class="title-section">
-										<h1><span>TRENDING POSTS</span></h1>
-									</div>
-
-									<ul class="review-posts-list">
-
-										<?php foreach ($trending as $key => $trow) { 
-															
-											if(empty($trow->category)){
-												$urllink = $this->urls->urlFormat($trow->slug);
-											}else{
-												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
-											}
-											(!empty($trow->content)? $content = $trow->content : $content = '' ) ;
-										?>
-											<li>
-												<a href="<?php echo $urllink ?>">
-													<img src="<?php echo base_url().$trow->image ?>" alt="">
-													<h2><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></h2>
-												</a>
-												<!-- <span class="date">27 may 2013</span> -->
-											</li>
+							<div class="widget">
+								<img src="https://www.gourmetads.com/wp-content/uploads/2019/05/fast-food-ads-burger-king-300x600.jpg" class="img-responsive" alt="">
+							</div>						
+												
+							
 										
-										<?php } ?>
-									</ul>
-								</div>
-							<?php } ?>					
-
-						
-
+							<div class="widget">
+								<img src="http://www.winchesteril.com/wp-content/uploads/2017/10/ad-placeholder.jpg" class="img-responsive" alt="">
+							</div>
+							<div class="widget">
+								<img src="https://www.gourmetads.com/wp-content/uploads/2019/05/fast-food-ads-burger-king-300x600.jpg" class="img-responsive" alt="">
+							</div>
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
 									<h1>Subscribe to RSS Feeds</h1>
@@ -174,27 +153,14 @@
 									<?php } ?>
 								</div>
 							<?php } ?>
-							<div class="advertisement">
-								<div class="desktop-advert">
-									<span>Advertisement</span>
-									<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-								</div>
-								<div class="tablet-advert">
-									<span>Advertisement</span>
-									<img src="<?php echo base_url() ?>assets/upload/addsense/200x200.jpg" alt="">
-								</div>
-								<div class="mobile-advert">
-									<span>Advertisement</span>
-									<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-								</div>
-							</div>
+							
 
 						</div>
 						<!-- End sidebar -->
 
 					</div>
 
-					<div class="col-sm-8">
+					<div class="col-sm-7">
 
 						<!-- block content -->
 						<div class="block-content">
@@ -267,6 +233,66 @@
 
 					</div>
 
+					<div class="col-sm-2">
+						<div class="right-inside-add sidebar">
+							
+							<div class="widget">
+								<img src="http://www.winchesteril.com/wp-content/uploads/2017/10/ad-placeholder.jpg" class="img-responsive" alt="">
+							</div>
+							<?php if(!empty($trending)){ ?>
+								<div class="widget review-widget">
+									<div class="title-section">
+										<h1><span>TRENDING POSTS</span></h1>
+									</div>
+
+									<ul class="review-posts-list">
+
+										<?php foreach ($trending as $key => $trow) { 
+															
+											if(empty($trow->category)){
+												$urllink = $this->urls->urlFormat($trow->slug);
+											}else{
+												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
+											}
+											(!empty($trow->content)? $content = $trow->content : $content = '' ) ;
+										?>
+											<li>
+												<a href="<?php echo $urllink ?>">
+													<img src="<?php echo base_url().$trow->image ?>" alt="">
+													<h2><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></h2>
+												</a>
+												<!-- <span class="date">27 may 2013</span> -->
+											</li>
+										
+										<?php } ?>
+									</ul>
+								</div>
+							<?php } ?>
+							<div class="widget">
+								<img src="https://www.gourmetads.com/wp-content/uploads/2019/05/fast-food-ads-burger-king-300x600.jpg" class="img-responsive" alt="">
+							</div>
+							<div class="widget">
+								<img src="http://www.addads.net/assets/200x600S.JPG" class="img-responsive" alt="">
+							</div>
+							<div class="widget">
+								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3-YcSDskfhsUagdpGVJJuM0d6NZuK1o5wU6S1guTTMWT0Oa9dEg&s" class="img-responsive" alt="">
+							</div>
+							<div class="advertisement">
+								<div class="desktop-advert">
+									<span>Advertisement</span>
+									<img src="<?php echo base_url() ?>assets/upload/addsense/200x200.jpg" class="img-responsive" alt="">
+								</div>
+								<div class="tablet-advert">
+									<span>Advertisement</span>
+									<img src="<?php echo base_url() ?>assets/upload/addsense/200x200.jpg" class="img-responsive" alt="">
+								</div>
+								<div class="mobile-advert">
+									<span>Advertisement</span>
+									<img src="<?php echo base_url() ?>assets/upload/addsense/200x200.jpg" class="img-responsive" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 
 			</div>

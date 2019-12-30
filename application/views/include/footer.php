@@ -3,7 +3,7 @@
 				<div class="footer-widgets-part">
 					<div class="row">
 						<div class="col-md-3">
-							<img style="width:100%" src="<?php echo base_url() ?>assets/images/logo2.png" alt="mahonnathi" class="img-responsive">
+							<img style="width:100%; margin-top:50px" src="<?php echo base_url() ?>assets/images/footer-logo.png" alt="mahonnathi" class="img-responsive">
 						</div>
 						<div class="col-md-3">
 							<div class="widget posts-widget">
@@ -30,9 +30,9 @@
 							<div class="widget categories-widget">
 								<h1>Hot Categories</h1>
 								<ul class="category-list">
-									<?php if(!empty(categories())){ foreach(categories() as $key => $value) { ?>
-										<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->title ?> <span><?php echo $value->total ?></span></a> </li>
-									<?php } } ?>
+									<?php if(!empty(categories())){ foreach(categories() as $key => $value) { if($key <= 6){ ?>
+										<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->title ?> </a> </li>
+									<?php } } }?>
 								</ul>
 							</div>
 						</div>
@@ -63,7 +63,7 @@
 						<div class="col-md-6">
 							<nav class="footer-nav">
 								<ul>
-									<li><a href="">Home</a></li>
+									<li><a href="<?php echo base_url() ?>">Home</a></li>
 									<li><a href="">About</a></li>
 									<li><a href="">Contact</a></li>
 								</ul>

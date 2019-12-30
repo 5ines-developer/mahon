@@ -109,27 +109,34 @@ class Photos extends CI_Controller {
         
       
         foreach ($images['name'] as $key => $image) {
-            $_FILES['img[]']['name']= $images['name'][$key];
-            $_FILES['img[]']['type']= $images['type'][$key];
-            $_FILES['img[]']['tmp_name']= $images['tmp_name'][$key];
-            $_FILES['img[]']['error']= $images['error'][$key];
-            $_FILES['img[]']['size']= $images['size'][$key];
-
-            $fileName = $image;
-
-            $images[] = $fileName;
-
-            $config['file_name'] = $fileName;
-
-            $this->upload->initialize($config);
-
-            if ($this->upload->do_upload('img[]')) {
-                $filename = $this->config->item('web_url').'photo_gall/'.$this->upload->data('file_name');
-                // array_push($files, $filename);
-                $data = array('title'=> $title[$key], 'image' => $filename, 'photo_id' => $postid);
-                $this->m_photo->addImages($data);
-            } else {
-                return false;
+            if(!empty($image)){
+                $_FILES['img[]']['name']= $images['name'][$key];
+                $_FILES['img[]']['type']= $images['type'][$key];
+                $_FILES['img[]']['tmp_name']= $images['tmp_name'][$key];
+                $_FILES['img[]']['error']= $images['error'][$key];
+                $_FILES['img[]']['size']= $images['size'][$key];
+    
+                $fileName = $image;
+    
+                $images[] = $fileName;
+    
+                $config['file_name'] = $fileName;
+    
+                $this->upload->initialize($config);
+    
+                if ($this->upload->do_upload('img[]')) {
+                    $filename = $this->config->item('web_url').'photo_gall/'.$this->upload->data('file_name');
+                    // array_push($files, $filename);
+                    if(!empty($title[$key])){
+                        $tit = $title[$key];
+                    }else{
+                        $tit = '';
+                    }
+                    $data = array('title'=> $tit, 'image' => $filename, 'photo_id' => $postid);
+                    $this->m_photo->addImages($data);
+                } else {
+                    return false;
+                }
             }
         }
      
