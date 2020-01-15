@@ -87,7 +87,7 @@
                                             <thead>
                                                 <tr>
                                                    <th width="190px">Action</th>
-                                                   <th width="100px">Sl NO.</th>
+                                                   <!-- <th width="100px">Sl NO.</th> -->
                                                    <th width="350px">Title</th>
                                                    <th width="150px">Category</th>
                                                    <th width="120px">Date</th>

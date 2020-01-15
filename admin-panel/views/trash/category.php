@@ -16,7 +16,7 @@
       <style type="text/css">
          .dash-list a .list-dashboard{transition: 0.5s}
          .dash-list a:hover .list-dashboard{transform: scale(1.1);background: #f3f3f3 !important}
-
+         [type="checkbox"]:not(:checked), [type="checkbox"]:checked { position: relative; opacity: 1; pointer-events: all; }
       </style>
    </head>
    <body>
@@ -43,9 +43,6 @@
                          <div class="col 12 m6">
                              <p class="h5-para black-text m0">Trash (Category)</p>
                          </div>
-                         <div class="col 12 m6 right-align">
-                             <a href="#modal1" class="waves-effect waves-light btn brand white-text hoverable modal-trigger"><i class="fas fa-plus left"></i> Add new</a>
-                         </div>
                      </div>
                      <div class="shorting-table">
                         <div>
@@ -54,24 +51,33 @@
                                  <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="align-center">
+                                          <th class="center" width="45px">
+                                             <input type="checkbox" class="filled-in" id="allCheck" />
+                                          </th>
                                           <th width="75px">Sl NO.</th>
                                           <th width="300px">Title</th>
-                                          <!-- <th class="center">Articles</th>
-                                          <th class="center">Subcategory</th> -->
                                           <th class="center">Action</th>
                                        </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach($result as $k => $row){ ?>
                                             <tr>
+                                                <td class="center">
+                                                   <input type="checkbox" class="filled-in indual" name="deleteid[]" value="<?php echo $row->id ?>" />
+                                                </td>
+                                                
                                                 <td><?php echo $k + 1?></td>
                                                 <td><?php echo $row->title ?></td>
-                                                <!-- <td class="center">1</td>
-                                                <td class="center">5</td> -->
                                                 <td class="center"><a href="<?php echo base_url('trash/category-restore/').$row->id ?>">Restore</a></td>
                                             </tr>
                                         <?php }?>
                                     </tbody>
+                                    <tfoot>
+                                       <tr>
+                                          <td colspan="2"><a href="#!" class="delete-check"><i class="fas fa-trash-alt red-text"></i> Delete</a> </td>
+                                          <td colspan="6"><a href="<?php echo base_url('trash/category/clear-all') ?>" class="clear-btn"><i class="fas fa-times red-text"></i> Clear all trash</a> </td>
+                                       </tr>
+                                    </tfoot>
                                  </table>  
                               </div>
                            </div>
@@ -104,7 +110,47 @@
              // materializedcss js initialize
             $('select').formSelect();
             $('.modal').modal({onOpenStart: reset});
+            $('#allCheck').change(function (e) { 
+               e.preventDefault();
+               if($(this).prop("checked") == true){
+                  $('.indual').prop( "checked", true );
+               }
+               else if($(this).prop("checked") == false){
+                  $('.indual').prop( "checked", false );
+               }
+            });
 
+            // delete cheked item
+            $('.delete-check').click(function (e) { 
+               e.preventDefault();
+               if(confirm('Are you sure???')){
+                  var selected = [];
+                     $('.indual:checked').each(function() {
+                        selected.push($(this).val());
+                     });
+                  $.ajax({
+                        type: "post",
+                        url: "<?php echo base_url('trash/category/delete') ?>",
+                        data: {ids : selected},
+                        dataType: "json",
+                        success: function(response) {
+                           location.reload(); 
+                        },
+                        
+                  });
+               }else{
+                  return false;
+               }
+               
+            });
+
+            $('.clear-btn').click(function(e){ 
+               if(confirm('Are you sure want to clear all trash data???')){
+                  return true;
+               }
+               return false;
+            });
+          
             function reset(){  
                 $('#category_form')[0].reset();
                 $('#ctid').val('')
@@ -116,9 +162,13 @@
                   'buttons': [
                      'copy', 'csv', 'pdf'
                   ], 
+                  "columnDefs": [
+                     { "orderable": false, "targets": [0, 3] }
+                  ]
                   
             })
-          
+
+            
         });
       </script>
       

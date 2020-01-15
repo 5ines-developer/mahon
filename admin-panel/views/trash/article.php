@@ -16,6 +16,7 @@
       <style type="text/css">
          .dash-list a .list-dashboard{transition: 0.5s}
          .dash-list a:hover .list-dashboard{transform: scale(1.1);background: #f3f3f3 !important}
+         [type="checkbox"]:not(:checked), [type="checkbox"]:checked { position: relative; opacity: 1; pointer-events: all; }
 
       </style>
    </head>
@@ -42,9 +43,6 @@
                          <div class="col 12 m6">
                              <p class="h5-para black-text m0">Trash (Article)</p>
                          </div>
-                         <div class="col 12 m6 right-align">
-                             <a href="#modal1" class="waves-effect waves-light btn brand white-text hoverable modal-trigger"><i class="fas fa-plus left"></i> Add new</a>
-                         </div>
                      </div>
                      <div class="shorting-table">
                         <div>
@@ -53,6 +51,9 @@
                                  <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="align-center">
+                                          <th >
+                                             <input type="checkbox" class="filled-in" id="allCheck" />
+                                          </th>
                                           <th class="center">Action</th>
                                           <th class="center" width="75px">Sl NO.</th>
                                           <th width="250px">Title</th>
@@ -64,8 +65,13 @@
                                     </thead>
                                    
                                     <tbody>
-                                        <?php foreach($result as $k => $row){ ?>
+                                       <?php foreach($result as $k => $row){ 
+                                           if($row->status != 3 && $row->status != 4 && $row->status != 1){
+                                       ?>
                                             <tr>
+                                               <td class="center">
+                                                   <input type="checkbox" class="filled-in indual" name="deleteid[]" value="<?php echo $row->id ?>" />
+                                               </td>
                                                 <td class="center">
                                                    <?php if($row->status == 2):  ?>
                                                    <a href="<?php echo base_url('trash/article-restore/').$row->id ?>" class="blue hoverable action-btn update-btn ">Restore</a>
@@ -73,15 +79,21 @@
                                                       <a href="#!" class="red lighten-3 btn-small action-btn tooltipped action-btn update-btn" data-position="right" data-tooltip="you need restore <?php echo $row->category ?> category">Restore</a>
                                                    <?php endif; ?>
                                                 </td>
-                                                <td class="center"><?php echo $row->id?></td>
+                                                <td class="center"><?php echo $k + 1?></td>
                                                 <td><?php echo $row->title ?></td>
                                                 <td class="center"><?php echo $row->category ?></td>
                                                 <td class="center"><?php echo $row->date ?></td>
                                                 <td ><?php echo $row->posted_by ?></td>
                                                 <td class="center"><?php echo $row->created_on ?></td>
                                             </tr>
-                                        <?php }?>
+                                        <?php } }?>
                                     </tbody>
+                                    <tfoot>
+                                       <tr>
+                                          <td colspan="2"><a href="#!" class="delete-check"><i class="fas fa-trash-alt red-text"></i> Delete</a> </td>
+                                          <td colspan="6"><a href="<?php echo base_url('trash/article/clear-all') ?>" class="clear-btn"><i class="fas fa-times red-text"></i> Clear all trash</a> </td>
+                                       </tr>
+                                    </tfoot>
                                  </table>  
                               </div>
                            </div>
@@ -127,8 +139,52 @@
                   'buttons': [
                      'copy', 'csv', 'pdf'
                   ], 
+                  "columnDefs": [
+                     { "orderable": false, "targets": [0, 1] }
+                  ]
                   
-            })
+            });
+
+            $('#allCheck').change(function (e) { 
+               e.preventDefault();
+               if($(this).prop("checked") == true){
+                  $('.indual').prop( "checked", true );
+               }
+               else if($(this). prop("checked") == false){
+                  $('.indual').prop( "checked", false );
+               }
+            });
+
+            // delete cheked item
+            $('.delete-check').click(function (e) { 
+               e.preventDefault();
+               if(confirm('Are you sure???')){
+                  var selected = [];
+                     $('.indual:checked').each(function() {
+                        selected.push($(this).val());
+                     });
+                  $.ajax({
+                        type: "post",
+                        url: "<?php echo base_url('trash/article/delete') ?>",
+                        data: {ids : selected},
+                        dataType: "json",
+                        success: function(response) {
+                           location.reload(); 
+                        },
+                        
+                  });
+               }else{
+                  return false;
+               }
+               
+            });
+
+            $('.clear-btn').click(function(e){ 
+               if(confirm('Are you sure want to clear all trash data???')){
+                  return true;
+               }
+               return false;
+            });
           
         });
       </script>

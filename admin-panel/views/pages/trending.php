@@ -36,6 +36,19 @@
                <div class="col m12 s12 l9">
                     <div class="card m0">
                         <div class="card-content">
+
+                        <div class="card-heading">
+                                <div class="row mb10">
+                                    <div class="col 12 m6">
+                                        <p class="h5-para black-text m0">Trending Articles</p>
+                                    </div>
+                                    <div class="col 12 m6 right-align">
+                                        <a href="#modal1" class="waves-effect waves-light btn brand white-text hoverable modal-trigger" id="addArticle"><i class="fas fa-plus left"></i> Add new</a>
+                                    </div>
+                                </div>
+                                <div class="divider mb10"></div>
+                           </div>
+
                             <div class="row">
                                
                                 <!-- C1 -->
@@ -52,9 +65,12 @@
                                         <div class="container-trending cnt">
                                             <div class="card">
                                                 <div class="card-image valign-wrapper" style="max-height: 250px;">
-                                                    <img src="<?php echo $this->config->item('web_url').$trendings->image ?>" class="activator" style="max-height:250px">
-                                                    <span class="card-title">C<?php echo $key + 1 ?></span>
-                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="<?php echo $trendings->id ?>"><i class="fas fa-pencil-alt"></i></a>
+                                                    <div class="card-box">
+                                                        <img src="<?php echo $this->config->item('web_url').$trendings->image ?>" class="activator">
+                                                        <span class="card-title">C<?php echo $key + 1 ?></span>
+                                                    </div>
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light blue modal-trigger editt-btn" href="#modal1" data-id="<?php echo $trendings->mid ?>"><i class="fas fa-pencil-alt"></i></a>
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light red delete-btn" style="right:75px" href="<?php echo base_url('trending/delete/').$trendings->mid ?>" data-id=""><i class="fas fa-trash"></i></a>
                                                 </div>
                                                 <div class="card-content">
                                                     <p  class="truncate"><?php echo $trendings->title ?></p>
@@ -112,14 +128,15 @@
                         <p>
                             <label>
                                 <input class="with-gap" name="type" value="custom" type="radio"  />
-                                <input type="hidden" id="cid" name="id">
                                 <span>Custom</span>
                             </label>
                         </p>
                     </div>
+                                <input type="hidden" id="cid" name="id">
     
                     <div class="input-field col s12 article-box">
                         <input placeholder="Past Article url" id="arurl"  name="arurl" type="text" class="validate">
+                        <span>Note: Please use only article url</span>
                         <label for="arurl">URL</label>
                     </div>
     
@@ -171,10 +188,15 @@
         <?php $this->load->view('include/message.php'); ?>;
         $(document).ready( function () {
             $('select').formSelect();
-            $('.modal').modal();
+            $('.modal').modal({
+                onCloseEnd: clearData
+            });
 
+            function clearData(){
+                $('#cid').val('');
+            }
 
-            $('.container-trending .card-image a').click(function (e) { 
+            $('.editt-btn').click(function (e) { 
                 e.preventDefault();
                 var position = $(this).attr('data-id');
                 $('input[name=postion]').val(position);
@@ -235,10 +257,18 @@
                 }
             }
 
-            $('.btn-floating').click(function (e) { 
+            $('.editt-btn').click(function (e) { 
                 e.preventDefault();
                 var id = $(this).attr('data-id');
                 $('#cid').val(id);
+            });
+
+            $('.delete-btn').click(function(e){
+                if(confirm('Are You sure, Want to delete this article??')){
+                    return true;
+                }else{
+                    return false;
+                }
             });
         });
     </script>

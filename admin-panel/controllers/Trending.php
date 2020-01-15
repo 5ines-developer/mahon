@@ -24,6 +24,11 @@ class Trending extends CI_Controller {
         $position = $this->input->post('id');
         if($type == 'article'){
             $url = $this->input->post('arurl');
+            // Checking The article is exist or not
+            if($this->m_trending->checkExistUrl($url) == false){
+                $this->session->set_flashdata('error', 'Invalid Article url. Please use valid Url');
+                redirect('trending');
+            }
             $data = array(
                 'link'       => $url, 
                 'type'      => $type,
@@ -62,12 +67,11 @@ class Trending extends CI_Controller {
                 'update_on' => date('Y-m-d H:i:s')
             );
         }
-
         if($this->m_trending->updatetrending($data, $position)){
-            $this->session->set_flashdata('success', 'trending update successfully');
+            $this->session->set_flashdata('success', 'Trending Article  successfully update');
             redirect('trending');
         }else{
-            $this->session->set_flashdata('error', 'Some error occured, Please try agin later');
+            $this->session->set_flashdata('error', 'Some error occurred, Please try agin later');
             redirect('trending');
         }
     }
@@ -102,6 +106,19 @@ class Trending extends CI_Controller {
         $position = $this->input->post('position');
         $result = $this->m_trending->get_single_trending($position);
         echo json_encode($result);
+    }
+
+    // Delete data
+    public function delete($id = null)
+    {
+        if($this->m_trending->delete($id)){
+            $this->session->set_flashdata('success', 'Trending Article Deleted Successfully');
+            redirect('trending');
+        }else{
+            $this->session->set_flashdata('error', 'Some error occurred, Please try agin later');
+            redirect('trending');
+        }
+    
     }
 
 

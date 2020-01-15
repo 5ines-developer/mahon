@@ -31,10 +31,14 @@ $route['banner/update']                         = 'banner/update';
 $route['todays-featured']                       = 'featured';
 $route['breaking-news']                         = 'breaking_news';
 // Trash                
-$route['trash/category']                        =  'trash/category';
+$route['trash/category']                        = 'trash/category';
 $route['trash/article']                         = 'trash/articles';
-$route['trash/category-restore/(:any)']         =  'trash/category_restore/$1';
+$route['trash/category-restore/(:any)']         = 'trash/category_restore/$1';
 $route['trash/article-restore/(:any)']          = 'trash/articles_restore/$1';
+$route['trash/article/delete']                  = 'trash/articles_delete';
+$route['trash/article/clear-all']               = 'trash/clear_all';
+$route['trash/category/clear-all']              = 'trash/category_clear';
+$route['trash/category/delete']                 = 'trash/delete_category';
 // category
 $route['category']                              = 'category/index';
 $route['category/sub-category']                 = 'category/sub_category';
@@ -45,12 +49,14 @@ $route['category/sub-category-delete/(:any)']   = 'category/sub_category_delete/
 // Trending
 $route['trending']                               = 'trending/index';
 $route['trending/update']                        = 'trending/update';
+$route['trending/delete/(:any)']                 = 'trending/delete/$1';
 // Trending
 $route['temple-visit']                           = 'temple/index';
 $route['temple-visit/update']                    = 'temple/update';
 // popular Article
 $route['popular-article']                        = 'popular/index';
 $route['popular-article/update']                 = 'popular/update';
+$route['popular-article/delete/(:any)']          = 'popular/delete/$1';
 // Video gallery
 $route['video-article']                          = 'videos';
 $route['video-article/featured-videos']          = 'videos';
@@ -67,6 +73,7 @@ $route['events']                                 = 'events/index';
 // newsletter
 $route['news-letter']                            = 'events/news_letter';
 $route['news-letter/delete/(:any)']              = 'events/news_letter_delete/$1';
+                 
 
 
 

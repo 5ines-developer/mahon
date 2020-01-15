@@ -34,7 +34,7 @@ class post extends CI_Controller {
                 <a class="red hoverable delete-btn action-btn" id="'.$row->id.'"><i class="fas fa-trash  "></i></a>
                 <a class="orange accent-3 hoverable detail action-btn" target="_blank" href="'.strtolower($this->config->item('web_url').$row->category.'/'.$row->slug).'"><i class="fas fa-eye  "></i></a>
             ';  
-             $sub_array[] = $row->id;  
+            //  $sub_array[] = $row->id;  
              $sub_array[] =  (strlen($row->title) > 60) ? substr($row->title,0,57).'...' : $row->title; 
              $sub_array[] = $row->category;  
              $sub_array[] = date('d M, Y', strtotime($row->date)); 

@@ -21,9 +21,15 @@ class Popular extends CI_Controller {
     public function update()
     {
         $type = $this->input->post('type');
+        
         $position = $this->input->post('id');
         if($type == 'article'){
             $url = $this->input->post('arurl');
+            // Checking The article is exist or not
+            if($this->m_popular->checkExistUrl($url) == false){
+                $this->session->set_flashdata('error', 'Invalid Article url. Please use valid Url');
+                redirect('trending');
+            }
             $data = array(
                 'link'       => $url, 
                 'type'      => $type,
@@ -56,13 +62,15 @@ class Popular extends CI_Controller {
             }
         }
         else{
+     
             $data = array(
                 'type'      => $type,
                 'update_by' => $this->session->userdata('Mht'),
                 'update_on' => date('Y-m-d H:i:s')
             );
         }
-
+        
+  
         if($this->m_popular->updatepopular($data, $position)){
             $this->session->set_flashdata('success', 'popular update successfully');
             redirect('popular');
@@ -104,5 +112,17 @@ class Popular extends CI_Controller {
         echo json_encode($result);
     }
 
+      // Delete data
+      public function delete($id = null)
+      {
+          if($this->m_popular->delete($id)){
+              $this->session->set_flashdata('success', 'Popular Article  Deleted Successfully');
+              redirect('popular-article');
+          }else{
+              $this->session->set_flashdata('error', 'Some error occurred, Please try agin later');
+              redirect('popular-article');
+          }
+      
+      }
 
 }

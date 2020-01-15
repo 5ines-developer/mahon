@@ -10,6 +10,8 @@ class result extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('m_result');
+        $this->ci =& get_instance();
+        $this->detect = $this->ci->mobdetect->detect();
         
     }
 
@@ -36,12 +38,20 @@ class result extends CI_Controller {
             $data['related']    =  $this->m_result->related($category, $slug);
             $data['is_detail'] = TRUE;
             $this->m_result->visitorCount($data['post']->id);
-            $this->load->view('site/detail', $data, FALSE);
+
+            if ($this->detect == 'mobile') {
+                $this->load->view('mobile/detail', $data, FALSE);
+            }else{
+                $this->load->view('site/detail', $data, FALSE);
+            }
         }
         else{
             $data['category'] = $category;
-           
-            $this->load->view('site/result', $data, FALSE);
+            if ($this->detect == 'mobile') {
+                $this->load->view('mobile/result', $data, FALSE);
+            }else{
+                $this->load->view('site/result', $data, FALSE);
+            }
         }
         
     }

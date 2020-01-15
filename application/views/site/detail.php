@@ -14,11 +14,11 @@
 		<meta name="description" content="<?php echo $post->pdes ?>" />
 		<meta name="keywords" content="<?php echo $post->pkeyword ?>" />
 		<!-- facebook meta tags -->
-		<meta property="fb:pages" content="<?php echo $post->fid ?>" />
+		<meta property="fb:pages" content="454748752068930" />
 		<meta property="og:image" content="<?php echo base_url().$post->image ?>" />
 		<meta property="og:title" content="<?php echo $post->ftitle ?>">
-		<meta property="og:site_name" content="<?php echo $post->fsite_name ?>">
-		<meta property="og:url" content="<?php echo base_url() ?>">
+		<meta property="og:site_name" content="Mahonnathi">
+		<meta property="og:url" content="<?php echo current_url() ?>">
 		<meta property="og:description" content="<?php echo $post->fdes ?>">
 		<meta property="og:type" content="website">
 		<!-- Twitter card -->
