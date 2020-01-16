@@ -424,7 +424,7 @@
 							<div class="widget tab-posts-widget">
 
 								<div class="title-section">
-									<h1><span>Recommended</span></h1>
+									<h1><span>ಓದಲೇಬೇಕಾದ್ದು</span></h1>
 								</div>
 
 								<div class="tab-content">
