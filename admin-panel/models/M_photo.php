@@ -93,9 +93,12 @@ class m_photo extends CI_Model {
 
    public function getImage()
    {
-       $result = $this->db->where('status', 1)
-       ->order_by('id', 'desc')
-       ->get('mh_photos')
+       $result = $this->db->where('p.status', 1)
+       ->order_by('p.id', 'desc')
+       ->from('mh_photos p')
+       ->join('mh_category c', "c.id = p.category", 'left')
+       ->select('p.*, c.title as acategory')
+       ->get()
        ->result();
        foreach ($result as $key => $value) {
            $value->count = $this->countOfImages($value->id);
@@ -113,6 +116,16 @@ class m_photo extends CI_Model {
    {
        return  $this->db->where('photo_id', $id)->select('*')->get('mh_photo_gallery')->row_array();
    }
+
+    public function delete($id = null)
+    {
+        $this->db->where('id', $id)->delete('mh_photos');
+        if( $this->db->affected_rows()>0):
+            return true;
+        else:
+            return false;
+        endif;
+    }
 
 }
 /* End of file m_photo.php */

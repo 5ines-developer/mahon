@@ -73,6 +73,18 @@ class M_featured extends CI_Model {
         $this->db->where('position', $position);
         return $this->db->get('mh_today_featured')->row();
     }
+
+    // delete
+    public function delete($id = null)
+    {
+        $this->db->where('id', $id)->delete('mh_today_featured');
+        if( $this->db->affected_rows() > 0){
+            return true;
+        }else {
+            return false;
+        }
+        
+    }
 }
 
     

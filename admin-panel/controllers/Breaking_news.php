@@ -26,8 +26,8 @@ class Breaking_news extends CI_Controller {
          {  
               $sub_array = array();  
               $sub_array[] = $key + 1;  
-              $sub_array[] = $row->title;  
-              $sub_array[] = '<a href="'.$row->url.'" class="truncate" target="_blank" />'.$row->url.'</a>';  
+              $sub_array[] = '<a href="'.$row->url.'" class="truncate" target="_blank"  />'.$row->title.'</a>';  
+            //   $sub_array[] = '<a href="'.$row->url.'" class="truncate" target="_blank"  />'.$row->url.'</a>';  
               $sub_array[] = date('d M, Y', strtotime($row->created_on)); 
               $sub_array[] = '
                   <a class="blue hoverable action-btn update-btn  modal-trigger" id="'.$row->id.'" href="#modal1"><i class="fas fa-edit "></i></a>

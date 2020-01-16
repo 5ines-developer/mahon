@@ -1957,3 +1957,16 @@ form .collapsible-body{padding: 1rem;}
     bottom: -1px;
     left: 0;
 }
+
+.imgs-box, .card-box{
+    height: 250px;
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgs-box img, .card-box img{
+    margin: auto;
+}
