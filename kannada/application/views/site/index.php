@@ -257,7 +257,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 			<div class="container">
 				<!-- <div class="col-sm-12 col-md-9 col-lg-9"> -->
 					<div class="ticker-news-box">
-						<span class="breaking-news">breaking news</span>
+						<span class="breaking-news">ಬ್ರೇಕಿಂಗ್ ನ್ಯೂಸ್</span>
 						<ul id="js-news">
 							<?php foreach ($breaking as $key => $value) { ?>
 								<li class="news-item"><a href="<?php echo $value->url?>"><?php echo $value->title?></li>
@@ -283,7 +283,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<?php if(!empty($trending)){ ?>
 								<div class="widget review-widget">
 									<div class="title-section">
-										<h1><span>TRENDING POSTS</span></h1>
+										<h1><span>ಟ್ರೆಂಡಿಂಗ್ ಪೋಸ್ಟ್ </span></h1>
 									</div>
 
 									<ul class="review-posts-list">
@@ -314,7 +314,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<?php if(!empty($videos)){ ?>
 								<div class="widget post-widget">
 									<div class="title-section">
-										<h1><span>SHORT MOVIES</span></h1>
+										<h1><span>ಕಿರುಚಿತ್ರ</span></h1>
 									</div>
 									<?php foreach ($videos as $key => $value) { 
 										$cat = $this->urls->checkCat($value->category);
@@ -346,7 +346,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="grid-box">
 
 								<div class="title-section">
-									<h1 class=""><span class="red">Today's Featured</span></h1>
+									<h1 class=""><span class="red">ಇಂದಿನ‌ ಸುದ್ದಿಗಳು</span></h1>
 								</div>
 
 								
@@ -619,12 +619,12 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="carousel-box owl-wrapper graydlayer">
 								<div class="title-section">
 									<div class="right-btn text-right">
-										<span class="sbscrib">Subscribe Now</span>
+										<span class="sbscrib">ಸಬ್ ಸ್ರೈಬ್ ಆಗಿ</span>
 										<script src="https://apis.google.com/js/platform.js"></script>
 										<div class="g-ytsubscribe" data-channelid="UC00fs8iYCCtN9TlyEw_8JCg" data-layout="default" data-count="hidden"></div>
 									</div>
 									
-									<h1><span>Featured Videos</span></h1>
+									<h1><span>ಫೀಚರ್ಡ್ ವೀಡಿಯೊಗಳು</span></h1>
 									
 
 								</div>
@@ -698,7 +698,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 							<div class="widget social-widget">
 								<div class="title-section">
-									<h1><span>Stay Connected</span></h1>
+									<h1><span>ಸಂಪರ್ಕದಲ್ಲಿರಿ</span></h1>
 								</div>
 								<ul class="social-share">
 									<li>
@@ -727,7 +727,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<?php if(!empty($temple)){ ?>
 								<div class="widget features-slide-widget">
 									<div class="title-section">
-										<h1><span>TEMPLE TO VISIT</span></h1>
+										<h1><span>ದೇಗುಲ ದರ್ಶನ</span></h1>
 									</div>
 									<div class="image-post-slider">
 										<ul class="bxslider">
@@ -870,7 +870,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 		<div class="list-line-posts">
 			<div class="container">
 					<div class="title-section happenings-title">
-                        <h1><span>Happening's</span></h1>
+                        <h1><span>ಕಾರ್ಯಕ್ರಮಗಳು</span></h1>
 					</div>				
 					
 				<div class="owl-wrapper">

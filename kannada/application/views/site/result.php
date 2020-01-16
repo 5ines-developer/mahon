@@ -1,3 +1,7 @@
+<?php 
+$this->ci =& get_instance();
+$bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
+?>
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -11,7 +15,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery.bxslider.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/font-awesome.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/magnific-popup.css" media="screen">	
@@ -44,7 +48,7 @@
 
 							<div class="widget social-widget">
 								<div class="title-section">
-									<h1><span>Stay Connected</span></h1>
+									<h1><span>ಸಂಪರ್ಕದಲ್ಲಿರಿ</span></h1>
 								</div>
 								<ul class="social-share">
 									<li>
@@ -72,34 +76,32 @@
 							<?php if(!empty($temple)){ ?>
 								<div class="widget features-slide-widget">
 									<div class="title-section">
-										<h1><span>TEMPLE TO VISIT</span></h1>
+										<h1><span>ದೇಗುಲ ದರ್ಶನ</span></h1>
 									</div>
 									<div class="image-post-slider">
 										<ul class="bxslider">
 
 											<?php foreach ($temple as $key => $tprow) { 
-
-												echo "<pre>";
-												print_r ($tprow);
-												echo "</pre>";
-												
 												if(empty($tprow->category)){
-													$urllink = $this->urls->urlFormat($tprow->slug);
+													$urllink = $this->urls->urlFormat((!empty($tprow->slug))?$tprow->slug:'');
 												}else{
-													$urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
+													$cat = $this->urls->checkCat($tprow->category);
+													$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$tprow->slug);
 												}
 												(!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
+												$igm = (!empty($tprow->image))?$tprow->image:'';
+												$ttle = (!empty($tprow->title))?$tprow->title:'';
 											?>
 											<li class="temple-to-visit">
 												<a href="<?php echo $urllink ?>">
 													<div class="news-post image-post2">
 														<div class="post-gallery">
 															<div class="verticle">
-																<img src="<?php echo base_url().$tprow->image ?>" alt="">
+																<img src="<?php echo base_url().$igm ?>" alt="">
 															</div>
 															<div class="hover-box">
 																<div class="inner-hover">
-																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
+																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($ttle)) > 43) ? substr(strip_tags($ttle),0,40).'...' : strip_tags($ttle); ?></a></h2>
 																	<ul class="post-tags">
 																		<!--  -->
 																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
@@ -132,7 +134,7 @@
 							</div>
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
-									<h1>Subscribe to RSS Feeds</h1>
+									<h1>ಸಬ್ ಸ್ರೈಬ್ ಆಗಿ</h1>
 									<input type="text" required name="sumbscribe" id="subscribe" placeholder="Email"/>
 									<button id="submit-subscribe">
 										<i class="fa fa-arrow-circle-right"></i>
@@ -143,16 +145,18 @@
 							<?php if(!empty($videos)){ ?>				
 								<div class="widget post-widget">
 									<div class="title-section">
-										<h1><span>SHORT MOVIES</span></h1>
+										<h1><span>ಕಿರು ಚಿತ್ರ</span></h1>
 									</div>
-									<?php foreach ($videos as $key => $value) { ?>
+									<?php foreach ($videos as $key => $value) { 
+										$cat = $this->urls->checkCat($value->category);
+										?>
 										<div>
 											<div class="news-post video-post">
-												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
-												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+												<a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
+												<a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 												
 											</div>
-											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+											<p><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
 										</div>
 									<?php } ?>
 								</div>
@@ -178,18 +182,19 @@
                                 <?php 
                                     if(!empty($post)){
                                         foreach ($post as $key => $posts) {
+                                        	$cat = $this->urls->checkCat($posts->category);
                                 ?>
                                     <div class="news-post article-post">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="post-gallery c-post-gallery">
                                                     <img alt="" src="<?php echo base_url().$posts->image ?>">
-                                                    <a class="category-post world" href="#!"><?php echo $posts->category ?></a>
+                                                    <a class="category-post world" href="#!"><?php echo $cat ?></a>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="post-content">
-                                                    <h2><a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  (strlen(strip_tags($posts->title)) > 108) ? substr(strip_tags($posts->title),0,105).'...' : strip_tags($posts->title); ?></a></h2>
+                                                    <h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>"><?php echo  (strlen(strip_tags($posts->title)) > 108) ? substr(strip_tags($posts->title),0,105).'...' : strip_tags($posts->title); ?></a></h2>
                                                     <ul class="post-tags">
                                                         <!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
                                                         <?php 
@@ -199,7 +204,7 @@
                                                         <li><i class="fa fa-eye"></i>872</li>
                                                     </ul>
                                                     <p><?php echo  (strlen(strip_tags($posts->content)) > 230) ? substr(strip_tags($posts->content),0,227).'...' : strip_tags($posts->content); ?></p>
-                                                    <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+                                                    <a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -246,7 +251,7 @@
 							<?php if(!empty($trending)){ ?>
 								<div class="widget review-widget">
 									<div class="title-section">
-										<h1><span>TRENDING POSTS</span></h1>
+										<h1><span>ಟ್ರೆಂಡಿಗ್ ಪೋಸ್ಟ್</span></h1>
 									</div>
 
 									<ul class="review-posts-list">
@@ -256,7 +261,8 @@
 											if(empty($trow->category)){
 												$urllink = $this->urls->urlFormat($trow->slug);
 											}else{
-												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
+												$cat = $this->urls->checkCat($trow->category);
+												$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$trow->slug);
 											}
 											(!empty($trow->content)? $content = $trow->content : $content = '' ) ;
 										?>

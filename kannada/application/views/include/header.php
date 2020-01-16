@@ -44,10 +44,10 @@
 							<div class="col-md-9">
 								<ul class="top-line-list">
                                     <li class="language active">
-                                        <a href="#">English</a>
+                                        <a href="<?php echo $this->config->item('web_url') ?>">English</a>
                                     </li>
                                     <li class="language">
-                                        <a href="#">ಕನ್ನಡ</a>
+                                        <a href="<?php echo base_url() ?>">ಕನ್ನಡ</a>
                                     </li>
 									<!-- <li>
 										<span class="city-weather">London, United Kingdom</span>
@@ -136,7 +136,7 @@
 										<li><a href="home6.html">Homepage Version 6</a></li>
 									</ul>
 								</li> -->
-								<li><a  href="<?php echo base_url() ?>">Home</a> </li>
+								<li><a  href="<?php echo base_url() ?>">ಮುಖಪುಟ</a> </li>
 								<?php 
 								if(!empty(categories())){
 									foreach(categories() as $key => $value) { 
@@ -151,7 +151,7 @@
                             <ul class="navbar-form nav navbar-nav navbar-right">
                                 <li>
                                     <form class="" id="search-form" role="search" method="post">
-                                        <input type="text" id="search" name="search" placeholder="Search here" autofocus onfocus="convertToSlug(this.value)" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" value="<?php echo (!empty($mtitle)? $mtitle : '') ?>">
+                                        <input type="text" id="search" name="search" placeholder="ಇಲ್ಲಿ ಹುಡುಕಿ" autofocus onfocus="convertToSlug(this.value)" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" value="<?php echo (!empty($mtitle)? $mtitle : '') ?>">
                                         <button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
                                     </form>
                                 </li>

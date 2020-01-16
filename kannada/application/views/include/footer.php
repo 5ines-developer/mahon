@@ -28,7 +28,7 @@
 						</div>
 						<div class="col-md-3">
 							<div class="widget categories-widget">
-								<h1>Hot Categories</h1>
+								<h1>ಹಾಟ್ ಕ್ಯಾಟಗರೀಸ್</h1>
 								<ul class="category-list">
 									<?php if(!empty(categories())){ foreach(categories() as $key => $value) { if($key <= 6){ ?>
 										<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->title ?> </a> </li>
