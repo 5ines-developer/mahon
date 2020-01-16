@@ -19,7 +19,7 @@
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="@Mahonnathi">
 	<meta name="twitter:image" content="<?php echo base_url().$banner[0]->image ?>">
-	<meta name="twitter:url" content="<?php echo base_url() ?>">
+	<meta name="twitter:url" content=""<?php echo base_url() ?>">
 	<meta name="twitter:title" content="Online News Portal">
 	<meta name="twitter:description" content="">
 
@@ -623,7 +623,7 @@
 							</div>
                             <!-- End carousel box -->
                             
-                            <!-- <section class="features-today">
+                            <section class="features-today">
                                 <div class="">
 
                                     <div class="title-section">
@@ -650,7 +650,7 @@
                                     </div>
 
                                 </div>
-                            </section> -->
+                            </section>
 
 						</div>
 						<!-- End block content -->

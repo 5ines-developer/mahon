@@ -6,7 +6,7 @@ class M_temple extends CI_Model {
 
     public function gettemple($var = null)
     {
-        $this->db->select('id as ids, img as image, title,  link, type');
+        $this->db->select('id, img as image, title,  link, type');
         $result = $this->db->order_by('orders', 'asc')->get('mh_temple')->result();
         return $this->arrangedata($result);
         
@@ -21,15 +21,14 @@ class M_temple extends CI_Model {
             if($value->type == 'recent'){
                 $query = $this->getArticle($link = null,  $data);
                 $offset += 1;
-                $query->ids = $value->ids;
                 array_push($data, $query);
             }
             elseif($value->type == 'article'){
                 $link = explode('/', $value->link);
                 $slug = $link[sizeof($link) - 1];
                 $query = $this->getArticle($slug,  $data);
-                $query->ids = $value->ids;
                 array_push($data, $query);
+
             }                
             else{
                 array_push($data,$value);
@@ -59,14 +58,9 @@ class M_temple extends CI_Model {
     // update temple
     public function updatetemple($data, $position)
     {
-       $query = $this->db->where('link', $data['link'])->get('mh_temple');
-       if ($query->num_rows() > 0) {
-           return false;
-       }else{
         $this->db->where('id', $position);
         $this->db->update('mh_temple', $data);
         if($this->db->affected_rows() > 0){ return true;}else{return false; }
-       }
     }
 
     // single temple fetch

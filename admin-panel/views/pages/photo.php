@@ -150,7 +150,7 @@
                                                         </div>
                                                         <div class="btn-img">
                                                             <span>Browse Image</span>
-                                                            <input type="file" id="img" dataid="1" name="img[]" accept="image/*">
+                                                            <input type="file" id="img" dataid="1" name="img" accept="image/*">
                                                         </div>
                                                         <div class="file-path-wrapper ">
                                                             <input class="file-path validate" name="filepath" type="hidden" placeholder="Upload  files">
