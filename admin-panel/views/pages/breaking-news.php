@@ -55,8 +55,7 @@
                                     <thead>
                                        <tr>
                                           <th width="75px">Sl NO.</th>
-                                          <th width="250px">Title</th>
-                                          <th width="200px">URL</th>
+                                          <th width="350px">Title</th>
                                           <th >Added Date</th>
                                           <th >Action</th>
                                        </tr>

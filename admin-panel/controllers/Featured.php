@@ -104,6 +104,15 @@ class Featured extends CI_Controller {
         echo json_encode($result);
     }
 
+    public function delete($id = null)
+    {
+        if($this->m_featured->delete($id)){
+            $this->session->set_flashdata('success', 'Article deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'please try again');
+        }
+        redirect('todays-featured','refresh');
+    }
 
     
 }

@@ -623,7 +623,7 @@
 							</div>
                             <!-- End carousel box -->
                             
-                            <!-- <section class="features-today">
+                             <section class="features-today">
                                 <div class="">
 
                                     <div class="title-section">
@@ -650,7 +650,7 @@
                                     </div>
 
                                 </div>
-                            </section> -->
+                            </section> 
 
 						</div>
 						<!-- End block content -->

@@ -65,7 +65,7 @@
                                                 <img src="<?php echo $this->config->item('web_url').$row->image ?>">
                                             </div>
                                             <span class="card-title">F<?php echo $a + $i ?></span>
-                                            <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="F<?php echo $a + $i ?>"><i class="fas fa-pencil-alt"></i></a>
+                                            <a class="btn-floating halfway-fab waves-effect waves-light blue modal-trigger edits-btn" href="#modal1" data-id="F<?php echo $a + $i ?>"><i class="fas fa-pencil-alt"></i></a>
                                         </div>
                                         <div class="card-stacked">
                                             <div class="card-content">
@@ -181,7 +181,7 @@
             $('.modal').modal();
 
 
-            $('.card .card-image a.btn-floating').click(function (e) { 
+            $('.edits-btn').click(function (e) { 
                 e.preventDefault();
                 var position = $(this).attr('data-id');
                 $('input[name=postion]').val(position);

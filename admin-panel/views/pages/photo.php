@@ -47,16 +47,17 @@
                            </div>
                             <div class="card-body">
                                 <ul>
-                                    <?php foreach ($gallery as $key => $value) {  ?>
+                                    <?php
+                                    foreach ($gallery as $key => $value) {  ?>
                                             <li class="tumb-item">
                                                 <div class="tumb-img">
                                                     <img src="<?php echo $value->image['image'] ?>" alt="">
                                                     <div class="cont"><?php echo $value->count ?> photos</div>
                                                 </div>
                                                 <div class="tumb-action">
-                                                    <a href=""><i class="fas fa-pencil-alt"></i></a>
-                                                    <a href=""><i class="far fa-trash-alt"></i></a>
-                                                    <a href=""><i class="fas fa-eye"></i></a>
+                                                    <!-- <a href=""><i class="fas fa-pencil-alt"></i></a> -->
+                                                    <a href="<?php echo base_url('photos/delete/').$value->id ?>" class="delete-btn"><i class="far fa-trash-alt"></i></a>
+                                                    <a href="<?php echo $this->config->item('web_url').'photogallery/'.strtolower($value->acategory.'/'.$value->slug) ?>" target="_blank"><i class="fas fa-eye"></i></a>
                                                 </div>
                                                 <div class="tumb-caption">
                                                     <p class="truncate"><?php echo $value->title ?></p>
@@ -526,6 +527,19 @@
             document.getElementById("slug").value = str;
             //return str;
         }
+
+        $(document).ready(function () {
+            $('.delete-btn').click(function (e) { 
+                    if(confirm('Are you sure to delete this photos??')){
+                        return true;
+                    }else{
+                        e.preventDefault(); 
+                        return false;
+                    }
+                    
+                    
+                });
+        });
       </script>
    
 </body>

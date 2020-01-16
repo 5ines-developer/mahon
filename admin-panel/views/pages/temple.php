@@ -52,9 +52,13 @@
                                         <div class="container-temple cnt">
                                             <div class="card">
                                                 <div class="card-image valign-wrapper" style="max-height: 250px;">
-                                                    <img src="<?php echo $this->config->item('web_url').$temples->image ?>" class="activator" style="max-height:250px">
-                                                    <span class="card-title">C<?php echo $key + 1 ?></span>
-                                                    <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="<?php echo $temples->ids ?>"><i class="fas fa-pencil-alt"></i></a>
+                                                    <div class="imgs-box">
+                                                        <img src="<?php echo $this->config->item('web_url').$temples->image ?>" class="activator" >
+                                                    </div>
+                                                    <!-- <span class="card-title">C<?php echo $key + 1 ?></span> -->
+                                                    
+                                                    <a class="btn-floating halfway-fab waves-effect waves-light blue modal-trigger edits" href="#modal1" data-id="<?php echo $temples->ids ?>"><i class="fas fa-pencil-alt"></i></a>
+                                                    <!-- <a class="btn-floating halfway-fab waves-effect waves-light red delete-btn" href="<?php echo base_url('temple-visit/delete/').$temples->id ?>" style="right:75px"><i class="fas fa-trash"></i></a> -->
                                                 </div>
                                                 <div class="card-content">
                                                     <p  class="truncate"><?php echo $temples->title ?></p>
@@ -173,7 +177,7 @@
             $('.modal').modal();
 
 
-            $('.container-temple .card-image a').click(function (e) { 
+            $('.edits').click(function (e) { 
                 e.preventDefault();
                 var position = $(this).attr('data-id');
                 $('input[name=postion]').val(position);
