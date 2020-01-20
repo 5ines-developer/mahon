@@ -16,7 +16,7 @@
             <li><a href="">Today Fetured</a></li>
             <li><a href="">Short Movies</a></li>
             <li><a href="">Popular</a></li>
-            <li><a href="">Videos</a></li>
+            <li><a href="<?php echo base_url('video')?>">Videos</a></li>
         </ul>
         <div class="slider-mm">
             <div class="nav-content nav-menu" id="myDIV">

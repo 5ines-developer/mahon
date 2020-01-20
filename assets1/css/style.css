@@ -116,8 +116,8 @@ body {
 
 .para-cont p {
     margin: 0;
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .sec-list {
@@ -133,6 +133,7 @@ body {
     background-color: white;
     color: black;
     text-align: center;
+    z-index: 999999999999999;
 }
 
 .img-pa img {
@@ -199,8 +200,9 @@ body {
 .title-tra h6 {
     font-size: 17px;
     font-weight: 700;
-    color: green;
+    color: #333;
     margin: 0;
+    margin-bottom: 15px;
 }
 
 .rr-gallery p {
@@ -226,14 +228,21 @@ body {
 }
 
 .line-end {
-    padding: 0px 13px;
-    border-top: 1px solid #e3e3e3;
+    padding: 0px 13px 13px;
+    border-bottom: 1px solid #e3e3e3;
 }
 
 .line-end a {
-    font-size: 13px;
-    color: green;
+    font-size: 14px;
+    color: white;
     font-weight: 700;
+    background: black;
+    padding: 5px 25px;
+    display: inline-block;
+}
+
+.line-end a:hover {
+    background: green;
 }
 
 .line-end p {
@@ -244,16 +253,20 @@ body {
 }
 
 .spr-ne h5 {
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 700;
     margin: 0;
     margin-bottom: 0px;
     margin-bottom: 0px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #000;
+    /* padding-bottom: 15px; */
+    /* border-bottom: 2px solid #000; */
     margin-bottom: 20px;
-    color: green;
-    width: 70%;
+    color: white;
+    width: 50%;
+    padding: 11px;
+    background: green;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 .tabs-menu a {
@@ -290,6 +303,7 @@ body {
 .sticky {
     position: fixed;
     top: 0;
+    z-index: 99999999999999999999999999;
     width: 100%;
 }
 
@@ -525,6 +539,158 @@ html {
 
 .p-para h3 {
     line-height: 20px;
+}
+
+
+/* 20/20 home */
+
+.img-res {
+    width: 110px;
+    height: 82px;
+}
+
+.ll-dm {
+    background: green;
+    width: 21px;
+    height: 21px;
+    text-align: center;
+    line-height: 21px;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    top: -40px;
+    left: 265px;
+    font-size: 12px;
+}
+
+.rr-dm {
+    background: green;
+    width: 21px;
+    height: 21px;
+    text-align: center;
+    line-height: 21px;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    top: -40px;
+    left: 297px;
+    font-size: 12px;
+}
+
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 13px;
+    height: 13px;
+    padding: 5px;
+    cursor: pointer;
+    color: #000;
+    border: 1px solid #fff;
+    outline: none;
+    background: #f2f2f2;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+
+.slick-dots {
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.video-pass li {
+    display: inline-block;
+}
+
+.slick-active button {
+    background: #c62828 !important;
+}
+
+.video-pass.slick-arrow {
+    position: relative;
+}
+
+.sub-title {
+    float: right !important;
+}
+
+.sbscrib {
+    position: relative;
+    left: 45px;
+    top: -3px;
+}
+
+.go-top.active {
+    top: 98%;
+    -webkit-transform: translateY(-98%);
+    transform: translateY(-98%);
+    opacity: 1;
+    visibility: visible;
+    z-index: 9999999999;
+}
+
+.go-top {
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    left: 45%;
+    background-color: #d9d9d9;
+    z-index: 4;
+    width: 40px;
+    text-align: center;
+    height: 42px;
+    line-height: 42px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: .9s;
+    transition: .9s;
+    border-radius: 30px;
+}
+
+.go-top:hover i:last-child {
+    opacity: 1;
+    visibility: visible;
+    top: 50%;
+}
+
+.go-top.active {
+    top: 85%;
+    -webkit-transform: translateY(-98%);
+    transform: translateY(-98%);
+    opacity: 1;
+    visibility: visible;
+}
+
+.go-top:hover {
+    color: #ffffff;
+    background-color: #424866;
+}
+
+.height-li {
+    padding-bottom: 27%;
+}
+
+.photo-pass {
+    margin: 5px 13px;
+    z-index: -1;
+}
+
+.photo-pass {
+    z-index: 999999;
+}
+
+.photo-gal {
+    height: 160px;
+    overflow: hidden;
+    z-index: 99999999;
+}
+
+.img-add {
+    padding: 10px 0px 0px 0px;
+}
+
+.img-add img {
+    width: 70%;
 }
 
 @media(min-width:680px) and (max-width:991px) {

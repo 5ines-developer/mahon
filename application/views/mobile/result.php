@@ -28,15 +28,15 @@
                         <div class="sec-list">
                             <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="black-text">
                                 <div class="row">
-                                    <div class="col  m8 s7">
+                                    <div class="col  m8 s8">
                                         <div class="para-cont">
                                         <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  (strlen(strip_tags($posts->title)) > 108) ? substr(strip_tags($posts->title),0,105).'...' : strip_tags($posts->title); ?></a></p>
                                         </div>
                                     </div>
-                                    <div class="col m4 s5">
+                                    <div class="col m4 s4">
                                         <div class="img-pa img-i">
                                             <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>">
-                                            <img src="<?php echo base_url().$posts->image ?>" class="img-responsive"  alt="">
+                                            <img src="<?php echo base_url().$posts->image ?>" class="img-responsive img-res"  alt="">
                                         </a>
                                         </div>
                                     </div>
@@ -59,9 +59,13 @@
             </div>
         </div>
     </section>
-   
+    <div class="height-li"></div>
    <?php $this->load->view('mobile/footer.php'); ?>
+   
     <!-- script -->
+    <div class="go-top active">
+        <i class="fa fa-angle-double-up gray-text"></i>
+    </div>
     <script type="text/javascript" src="<?php echo base_url()?>assets1/js/jquery.min.js"></script>
     <script src="<?php echo base_url()?>assets1/js/materialize.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -75,49 +79,17 @@
                 $('#tabs-demo').tabs({
                     'swipeable': true
                 });
-                $('.video-pass').slick({
-
-                    dots: false,
-                    infinite: false,
-                    speed: 300,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            infinite: true,
-                        }
-
-                    }, {
-
-                        breakpoint: 767,
-
-                        settings: {
-
-                            slidesToShow: 2,
-
-                            slidesToScroll: 2
-
-                        }
-
-                    }, {
-
-                        breakpoint: 580,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            dots: false,
-                            infinite: false,
-                            speed: 300,
-                            arrows: false,
-
-                        }
-
-                    }]
-
+                // Scroll Event
+                $(window).on('scroll', function() {
+                    var scrolled = $(window).scrollTop();
+                    if (scrolled > 300) $('.go-top').addClass('active');
+                    if (scrolled < 300) $('.go-top').removeClass('active');
+                });
+                // Click Event
+                $('.go-top').on('click', function() {
+                    $("html, body").animate({
+                        scrollTop: "0"
+                    }, 500);
                 });
             });
         </script>
