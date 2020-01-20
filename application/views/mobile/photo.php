@@ -21,26 +21,25 @@
         <div class="container-fluide">
             <div class="row">
                 <div class="col l12">
-                    <div class="video-pp">
-                        <span class="sbscrib">Subscribe Now</span>
-                        <div class="sub-title" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 84px; height: 24px;"
-                            id="___ytsubscribe_0">
-                            <iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 84px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I0_1579514206747"
-                                name="I0_1579514206747" src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channelid=UC00fs8iYCCtN9TlyEw_8JCg&amp;layout=default&amp;count=hidden&amp;origin=https%3A%2F%2Fwww.mahonnathi.com&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.xh-S9KbEGSE.O%2Fam%3DwQc%2Fd%3D1%2Fct%3Dzgms%2Frs%3DAGLTcCNaUSRWzhd71dAsiMVOstVE3KcJZw%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1579514206747&amp;_gfid=I0_1579514206747&amp;parent=https%3A%2F%2Fwww.mahonnathi.com&amp;pfname=&amp;rpctoken=35547097"
-                                data-gapiattached="true" width="100%" frameborder="0"></iframe></div>
-                    </div>
-
+                    <!-- <div class="add-img">
+                        <center><img src="assets1/img/250x250.jpg" class="img-responsive" alt=""></center>
+                    </div> -->
                     <div class="featured-vie">
-                        <h5>Featured Videos</h5>
+                        <h5>Photo gallery</h5>
                     </div>
                     <div class="video-fet">
                         <a href="#">
                             <div class="dis-video">
                                 <img src="assets1/img/photo1.png" class="img-responsive" alt="">
                                 <h1>"Lets Talk # with out Filter,"</h1>
-                                <div class="post-div">
-                                    <i class="fa fa-play"></i>
-                                </div>
+                            
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="dis-video">
+                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
+                                <h1>"Lets Talk # with out Filter,"</h1>
+                     
 
                             </div>
                         </a>
@@ -48,9 +47,7 @@
                             <div class="dis-video">
                                 <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
                                 <h1>"Lets Talk # with out Filter,"</h1>
-                                <div class="post-div">
-                                    <i class="fa fa-play"></i>
-                                </div>
+                   
 
                             </div>
                         </a>
@@ -58,9 +55,6 @@
                             <div class="dis-video">
                                 <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
                                 <h1>"Lets Talk # with out Filter,"</h1>
-                                <div class="post-div">
-                                    <i class="fa fa-play"></i>
-                                </div>
 
                             </div>
                         </a>
@@ -68,19 +62,7 @@
                             <div class="dis-video">
                                 <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
                                 <h1>"Lets Talk # with out Filter,"</h1>
-                                <div class="post-div">
-                                    <i class="fa fa-play"></i>
-                                </div>
-
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="dis-video">
-                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
-                                <h1>"Lets Talk # with out Filter,"</h1>
-                                <div class="post-div">
-                                    <i class="fa fa-play"></i>
-                                </div>
+                
 
                             </div>
                         </a>
