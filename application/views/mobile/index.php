@@ -62,6 +62,7 @@
                 <div class="col l12">
                     <div class="spr-ne">
                         <h5>Today's Featured</h5>
+                        <div class="line-bor"></div>
                         <?php if(!empty($fetured[0])){
                             if(empty($fetured[0]->category)){
                                 $urllink = $this->urls->urlFormat($fetured[0]->slug);
@@ -183,9 +184,8 @@
             <?php if(!empty($temple)){ ?>
             <div class="row">
                 <div class="col l12">
-                    <div class="spr-ne">
+                    <div class="spr-ne spr-pp">
                         <h5>TEMPLE TO VISIT</h5>
-
                         <?php foreach ($temple as $key => $tprow) { 
                             
                             if(empty($tprow->category)){
@@ -310,7 +310,7 @@
 
 
     <!-- script -->
-    <div class="go-top active">
+    <div class="go-top active" onclick="topFunction()">
         <i class="fa fa-angle-double-up gray-text"></i>
     </div>
     <script type="text/javascript" src="<?php echo base_url()?>assets1/js/jquery.min.js"></script>
@@ -417,17 +417,36 @@
 
                 });
                 // Scroll Event
-                $(window).on('scroll', function() {
-                    var scrolled = $(window).scrollTop();
-                    if (scrolled > 300) $('.go-top').addClass('active');
-                    if (scrolled < 300) $('.go-top').removeClass('active');
-                });
+                // $(window).on('scroll', function() {
+                //     var scrolled = $(window).scrollTop();
+                //     if (scrolled > 300) $('.go-top').addClass('active');
+                //     if (scrolled < 300) $('.go-top').removeClass('active');
+                // });
                 // Click Event
-                $('.go-top').on('click', function() {
-                    $("html, body").animate({
-                        scrollTop: "0"
-                    }, 500);
+                // $('.go-top').on('click', function() {
+                //     $("html, body").animate({
+                //         scrollTop: "-0"
+                //     }, 500);;
+                // });
+
+
+
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 100) {
+                        $('.go-top').fadeIn();
+                    } else {
+                        $('.go-top').fadeOut();
+                    }
                 });
+                //Click event to scroll to top
+                $('.go-top').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 900);
+                    // return false;
+                });
+
             });
         </script>
         <script>
@@ -447,6 +466,13 @@
                     $(".input-search").css("display", "none");
                 });
             });
+            // $(window).scroll(function() {
+            //     if ($('#pageStart:in-viewport(tmp)')) {
+            //         $(".go-top").hide("slow");
+            //     } else {
+            //         $(".go-top").show("slow");
+            //     }
+            // });
         </script>
         <!-- <script>
             window.onscroll = function() {
