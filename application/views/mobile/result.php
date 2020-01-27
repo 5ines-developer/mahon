@@ -9,6 +9,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+
+    <!-- <link rel="stylesheet" href="<?php echo base_url()?>assets1/css/jquery.mobile-1.0a1.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script> -->
+
 </head>
 
 <body>
@@ -16,7 +22,7 @@
     <?php $this->load->view('mobile/header'); ?>
     <!-- menu slider -->
     <!--section -->
-    <section class="spr-ne padd-top">
+    <section class="spr-ne padd-top"  >
         <div class="container-fluide">
             <div class="row">
                 <div class="col l12">
@@ -60,6 +66,7 @@
         </div>
     </section>
     <div class="height-li"></div>
+
    <?php $this->load->view('mobile/footer.php'); ?>
    
     <!-- script -->
