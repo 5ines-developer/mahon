@@ -1,5 +1,22 @@
+<!-- <style>
+.go-top {
+display: none;
+}
+.quick-link li {
+
+display: inline;
+padding-right: 12px;
+
+}
+</style>  -->
  <section class="poper-footer">
         <div class="footer">
+            <!-- <div class="quick-link">
+                <ul>
+                    <li><a>Spiritual</a></li>
+                    <li><a>Nation</a></li>
+                </ul>
+            </div> -->
             <div class="img-add">
             <img src="assets1/img/600x80.jpg" class="img-responsive" alt="">
             </div>

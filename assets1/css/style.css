@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans&display=swap');
 body {
     overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: -apple-system, 'Arial', 'Helvetica';
     font-family: 'Segoe UI';
 }
 
@@ -116,8 +117,9 @@ body {
 
 .para-cont p {
     margin: 0;
-    font-size: 17px;
-    font-weight: 500;
+    font-size: medium;
+    font-weight: 600;
+    color: #595959 !important;
 }
 
 .sec-list {
@@ -198,7 +200,7 @@ body {
 }
 
 .title-tra h6 {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     color: #333;
     margin: 0;
@@ -494,7 +496,7 @@ html {
 }
 
 .para-par {
-    display: none;
+    /* display: none; */
 }
 
 .rr-gal {
@@ -563,7 +565,7 @@ html {
     border-radius: 25px;
     position: absolute;
     top: -45px;
-    left: 295px;
+    left: 245px;
     font-size: 13px;
 }
 
@@ -577,7 +579,7 @@ html {
     border-radius: 25px;
     position: absolute;
     top: -45px;
-    left: 330px;
+    left: 279px;
     font-size: 13px
 }
 
@@ -845,7 +847,7 @@ html {
 
 .line-bor {
     border-bottom: 1px solid #c8c8c8;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .p-para li {
@@ -856,6 +858,48 @@ html {
 
 .p-para ul {
     padding-left: 14px !important;
+}
+
+
+/* 27/01/2020 */
+
+.feature-box {
+    background: white;
+    padding: 25px 1px;
+    box-shadow: 0px 0px 4px 0px #cacaca;
+    margin-top: 7px;
+}
+
+body {
+    background: #e6e6e6;
+}
+
+.sec-fe {
+    background: white;
+}
+
+.m0 {
+    margin: 0;
+}
+
+.para-par {
+    font-size: 13px !important;
+    color: gray;
+    overflow: hidden;
+    display: block;
+    height: 35px;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+    width: 100%;
+}
+
+.add-images {
+    text-align: center;
+}
+
+.title-tra i {
+    color: green;
+    padding-right: 3px;
 }
 
 @media(min-width:680px) and (max-width:991px) {
@@ -894,3 +938,6 @@ html {
     text-align: center;
     letter-spacing: 1px;
 }
+
+
+/* slider */

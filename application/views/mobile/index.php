@@ -28,42 +28,46 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="<?php echo base_url()?>assets1/css/jquery.mobile-1.0a1.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
 </head>
 
 <body>
+
     <?php $this->load->view('mobile/header'); ?>
     <!-- menu slider -->
     <!--section -->
-
-    <?php if(!empty($banner[0])){ 
+    <div data-role="page" id="home">
+        <?php if(!empty($banner[0])){ 
         if(empty($banner[0]->category)){
             $urllink = $this->urls->urlFormat($banner[0]->slug);
         }else{
             $urllink = $this->urls->urlFormat(base_url().$banner[0]->category.'/'.$banner[0]->slug);
         }
         ?>
-    <section class="sec-tt">
-        <div class="row">
-            <div class="col l12 s12 m12">
-                <div class="banner-slider">
-                    <img src="<?php echo base_url().$banner[0]->image ?>" class="img-responsive" alt="">
-                </div>
-                <div class="banner-content">
-                    <h6><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[0]->title)) > 43) ? substr(strip_tags($banner[0]->title),0,40).'...' : strip_tags($banner[0]->title); ?></a></h6>
+        <section class="sec-tt sec-fe">
+            <div class="row m0">
+                <div class="col l12 s12 m12">
+                    <div class="banner-slider">
+                        <img src="<?php echo base_url().$banner[0]->image ?>" class="img-responsive" alt="">
+                    </div>
+                    <div class="banner-content">
+                        <h6><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[0]->title)) > 43) ? substr(strip_tags($banner[0]->title),0,40).'...' : strip_tags($banner[0]->title); ?></a></h6>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <?php } ?>
+        </section>
+        <?php } ?>
 
-    <section class="spr-news">
-        <div class="container-fluide">
-            <div class="row">
-                <div class="col l12">
-                    <div class="spr-ne">
-                        <h5>Today's Featured</h5>
-                        <div class="line-bor"></div>
-                        <?php if(!empty($fetured[0])){
+        <section class="spr-news feature-box">
+            <div class="container-fluide">
+                <div class="row">
+                    <div class="col l12 s12">
+                        <div class="spr-ne">
+                            <h5>Today's Featured</h5>
+                            <div class="line-bor"></div>
+                            <?php if(!empty($fetured[0])){
                             if(empty($fetured[0]->category)){
                                 $urllink = $this->urls->urlFormat($fetured[0]->slug);
                             }else{
@@ -71,27 +75,26 @@
                             }    
                         ?>
 
-                        <div class="sec-list">
-                            <div class="row">
-                                <div class="col  m8 s8">
-                                    <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($fetured[0]->title),0,50).'...' : strip_tags($fetured[0]->title); ?></a></p>
-                                        <!-- <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-                                            justo.
-                                        </p> -->
+                            <div class="sec-list">
+                                <div class="row">
+                                    <div class="col  m8 s8">
+                                        <div class="para-cont">
+                                            <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($fetured[0]->title),0,50).'...' : strip_tags($fetured[0]->title); ?></a></p>
+                                            <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col m4 s4">
-                                    <div class="img-pa">
-                                        <a href="<?php echo $urllink ?>"> <img src="<?php echo base_url().$fetured[0]->image ?>" class="img-responsive img-res" alt=""> </a>
+                                    <div class="col m4 s4">
+                                        <div class="img-pa">
+                                            <a href="<?php echo $urllink ?>"> <img src="<?php echo base_url().$fetured[0]->image ?>" class="img-responsive img-res" alt=""> </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
 
 
-                        <?php } if(!empty($fetured)){
+                            <?php } if(!empty($fetured)){
                             foreach ($fetured as $key => $row) { 
                             if(!empty($row->id) && $key > 0 ){
                             if(empty($row->category)){
@@ -103,90 +106,90 @@
 
 
 
-                        <div class="sec-list">
-                            <div class="row">
-                                <div class="col  m8 s8">
-                                    <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></p>
-                                        <!-- <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
+                            <div class="sec-list">
+                                <div class="row">
+                                    <div class="col  m8 s8">
+                                        <div class="para-cont">
+                                            <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></p>
+                                            <!-- <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
                                             justo.
                                         </p> -->
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col m4 s4">
-                                    <div class="img-pa">
-                                        <a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$row->image ?>" class="img-responsive img-res" alt=""></a>
+                                    <div class="col m4 s4">
+                                        <div class="img-pa">
+                                            <a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$row->image ?>" class="img-responsive img-res" alt=""></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
+                            <?php }} } ?>
+
+
+
+
                         </div>
 
-
-
-                        <?php }} } ?>
-
-
-
-
                     </div>
-
                 </div>
+
             </div>
 
-        </div>
+        </section>
 
-    </section>
-
-    <section class="">
-        <div class="row">
-            <!-- <div class="youtube-sub">
+        <section class="feature-box">
+            <div class="row">
+                <!-- <div class="youtube-sub">
                 <div class="right-btn text-right">
      
                 </div>
             </div> -->
-            <div class="title-tra">
-                <h6>VIDEO</h6>
-                <!-- <p> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.massa quis enim. Donec pede justo.
+                <div class="title-tra">
+                    <h6><i class="fas fa-video"></i> VIDEO</h6>
+                    <!-- <p> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.massa quis enim. Donec pede justo.
                 </p> -->
-            </div>
-            <div class="video-pass">
-                <?php foreach($fvideos as $key => $fvideo) { ?>
-                <div class="news-post standard-post">
-                    <div class="post-gallery">
-                        <a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>">
-                            <div class="rr-gallery rr-gal">
+                </div>
+                <div class="video-pass">
+                    <?php foreach($fvideos as $key => $fvideo) { ?>
+                    <div class="news-post standard-post">
+                        <div class="post-gallery">
+                            <a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>">
+                                <div class="rr-gallery rr-gal">
 
-                                <a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $fvideo->tumb ?>"></a>
-                                <!-- <div class="post-div">
+                                    <a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $fvideo->tumb ?>"></a>
+                                    <!-- <div class="post-div">
                                     <i class="fa fa-play"></i>
                                 </div> -->
-                            </div>
-                            <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 58) ? substr(strip_tags($fvideo->title),0,50).'...' : strip_tags($fvideo->title);  ?></a></p>
-                        </a>
+                                </div>
+                                <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 58) ? substr(strip_tags($fvideo->title),0,50).'...' : strip_tags($fvideo->title);  ?></a></p>
+                            </a>
+                        </div>
                     </div>
+                    <?php } ?>
                 </div>
-                <?php } ?>
+                <div class="line-end">
+                    <a href="<?php echo base_url('video')?>">See all</a>
+                    <span class="sbscrib">Subscribe Now</span>
+                    <div class="sub-title" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 84px; height: 24px;"
+                        id="___ytsubscribe_0">
+                        <iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 84px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I0_1579514206747"
+                            name="I0_1579514206747" src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channelid=UC00fs8iYCCtN9TlyEw_8JCg&amp;layout=default&amp;count=hidden&amp;origin=https%3A%2F%2Fwww.mahonnathi.com&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.xh-S9KbEGSE.O%2Fam%3DwQc%2Fd%3D1%2Fct%3Dzgms%2Frs%3DAGLTcCNaUSRWzhd71dAsiMVOstVE3KcJZw%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1579514206747&amp;_gfid=I0_1579514206747&amp;parent=https%3A%2F%2Fwww.mahonnathi.com&amp;pfname=&amp;rpctoken=35547097"
+                            data-gapiattached="true" width="100%" frameborder="0"></iframe></div>
+                </div>
             </div>
-            <div class="line-end">
-                <a href="<?php echo base_url('video')?>">See all</a>
-                <span class="sbscrib">Subscribe Now</span>
-                <div class="sub-title" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 84px; height: 24px;"
-                    id="___ytsubscribe_0">
-                    <iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 84px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I0_1579514206747"
-                        name="I0_1579514206747" src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channelid=UC00fs8iYCCtN9TlyEw_8JCg&amp;layout=default&amp;count=hidden&amp;origin=https%3A%2F%2Fwww.mahonnathi.com&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.xh-S9KbEGSE.O%2Fam%3DwQc%2Fd%3D1%2Fct%3Dzgms%2Frs%3DAGLTcCNaUSRWzhd71dAsiMVOstVE3KcJZw%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1579514206747&amp;_gfid=I0_1579514206747&amp;parent=https%3A%2F%2Fwww.mahonnathi.com&amp;pfname=&amp;rpctoken=35547097"
-                        data-gapiattached="true" width="100%" frameborder="0"></iframe></div>
-            </div>
-        </div>
 
-    </section>
-    <section class="spr-news">
-        <div class="container-fluide">
-            <?php if(!empty($temple)){ ?>
-            <div class="row">
-                <div class="col l12">
-                    <div class="spr-ne spr-pp">
-                        <h5>TEMPLE TO VISIT</h5>
-                        <?php foreach ($temple as $key => $tprow) { 
+        </section>
+        <section class="spr-news feature-box">
+            <div class="container-fluide">
+                <?php if(!empty($temple)){ ?>
+                <div class="row">
+                    <div class="col l12">
+                        <div class="spr-ne spr-pp">
+                            <h5>TEMPLE TO VISIT</h5>
+                            <?php foreach ($temple as $key => $tprow) { 
                             
                             if(empty($tprow->category)){
                                 $urllink = $this->urls->urlFormat($tprow->slug);
@@ -195,42 +198,77 @@
                             }
                             (!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
                         ?>
-                        <div class="sec-list">
-                            <div class="row">
-                                <div class="col  m8 s8">
-                                    <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></p>
-                                        <!-- <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-                                            justo.
-                                        </p> -->
+                            <div class="sec-list">
+                                <div class="row m0">
+                                    <div class="col  m8 s8">
+                                        <div class="para-cont">
+                                            <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></p>
+                                            <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col m4 s4">
-                                    <div class="img-pa">
-                                        <a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$tprow->image ?>" class="img-responsive img-res" alt=""></a>
+                                    <div class="col m4 s4">
+                                        <div class="img-pa">
+                                            <a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$tprow->image ?>" class="img-responsive img-res" alt=""></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php } ?>
+                            <?php } ?>
 
+
+                        </div>
 
                     </div>
-
+                </div>
+                <?php } ?>
+                <div class="add-images">
+                    <img src="https://www.mahonnathi.com/assets/upload/addsense/250x250.jpg" class="img-responsive" alt="">
                 </div>
             </div>
-            <?php } ?>
-
-        </div>
-    </section>
-    <section class="spr-ne">
-
-        <?php if(!empty($trending)){ ?>
-        <div class="container-fluide">
+        </section>
+        <section class="feature-box">
             <div class="row">
-                <div class="col l12">
-                    <div class="spr-ne">
-                        <?php foreach ($trending as $key => $trow) {
+                <!-- <div class="youtube-sub">
+                <div class="right-btn text-right">
+     
+                </div>
+            </div> -->
+                <div class="title-tra">
+                    <h6><i class="fas fa-video"></i> SHORT MOVIES</h6>
+                    <!-- <p> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.massa quis enim. Donec pede justo.
+                </p> -->
+                </div>
+                <div class="video-pass">
+                    <div class="news-post standard-post">
+                        <div class="post-gallery">
+                            <div class="rr-gallery rr-gal">
+                                <a href="http://mahonnathi.com/staging/videos/spiritual/people-witnessing-the-last-solar-eclipse-of-2019"><img alt="" class="img-responsive" src="http://mahonnathi.com/staging/video_tumb/766210a0eccfe16701408c5a34d62d27.png"></a>
+
+                            </div>
+                            <p>Banner Detail he power of mind is indescribable & unimaginable</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-end">
+                    <a href="<?php echo base_url('video')?>">See all</a>
+                    <span class="sbscrib">Subscribe Now</span>
+                    <div class="sub-title" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 84px; height: 24px;"
+                        id="___ytsubscribe_0">
+                        <iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 84px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I0_1579514206747"
+                            name="I0_1579514206747" src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channelid=UC00fs8iYCCtN9TlyEw_8JCg&amp;layout=default&amp;count=hidden&amp;origin=https%3A%2F%2Fwww.mahonnathi.com&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.xh-S9KbEGSE.O%2Fam%3DwQc%2Fd%3D1%2Fct%3Dzgms%2Frs%3DAGLTcCNaUSRWzhd71dAsiMVOstVE3KcJZw%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1579514206747&amp;_gfid=I0_1579514206747&amp;parent=https%3A%2F%2Fwww.mahonnathi.com&amp;pfname=&amp;rpctoken=35547097"
+                            data-gapiattached="true" width="100%" frameborder="0"></iframe></div>
+                </div>
+            </div>
+
+        </section>
+        <section class="spr-ne feature-box">
+            <?php if(!empty($trending)){ ?>
+            <div class="container-fluide">
+                <div class="row">
+                    <div class="col l12">
+                        <div class="spr-ne">
+                            <?php foreach ($trending as $key => $trow) {
                             if(empty($trow->category)){
                                 $urllink = $this->urls->urlFormat($trow->slug);
                             }else{
@@ -238,61 +276,60 @@
                             }
                             (!empty($trow->content)? $content = $trow->content : $content = '' ) ;
                         ?>
-                        <div class="sec-list">
-                            <div class="row">
-                                <div class="col  m8 s8">
-                                    <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></a></p>
-                                        <!-- <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-                                            justo.
-                                        </p> -->
+                            <div class="sec-list">
+                                <div class="row">
+                                    <div class="col  m8 s8">
+                                        <div class="para-cont">
+                                            <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></a></p>
+                                            <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col m4 s4">
-                                    <div class="img-pa">
-                                        <img src="<?php echo base_url().$trow->image ?>" class="img-responsive img-res" alt="">
+                                    <div class="col m4 s4">
+                                        <div class="img-pa">
+                                            <img src="<?php echo base_url().$trow->image ?>" class="img-responsive img-res" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php } ?>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <?php } ?>
-
-        <div class="row">
-            <div class="title-tra">
-                <h6>PHOTOS</h6>
-                <!-- <p>Banner Detail he power of mind is indescribable & unimaginable. Mauris magna metus</p> -->
-            </div>
-            <div class="photo-pass">
-                <?php foreach ($gallery as $key => $image) {?>
-                <div class="photo-post standard-post">
-                    <div class="post-gallery">
-                        <div class="rr-gallery photo-gal">
-                            <a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"> <img src="<?php echo $image->image->image ?>" class="img-responsive" alt=""> </a>
+                            <?php } ?>
 
                         </div>
-                        <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></p>
+
                     </div>
                 </div>
-                <?php } ?>
             </div>
-            <div class="line-end">
-                <a>See all</a>
+            <?php } ?>
+
+            <div class="row">
+                <div class="title-tra">
+                    <h6>PHOTOS</h6>
+                    <!-- <p>Banner Detail he power of mind is indescribable & unimaginable. Mauris magna metus</p> -->
+                </div>
+                <div class="photo-pass">
+                    <?php foreach ($gallery as $key => $image) {?>
+                    <div class="photo-post standard-post">
+                        <div class="post-gallery">
+                            <div class="rr-gallery photo-gal">
+                                <a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"> <img src="<?php echo $image->image->image ?>" class="img-responsive" alt=""> </a>
+
+                            </div>
+                            <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></p>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+                <div class="line-end">
+                    <a>See all</a>
+                </div>
             </div>
-        </div>
-        </div>
+    </div>
 
     </section>
     <div class="height-li"></div>
     <!-- <div id="spiritual" class="col s12 red">Test 2</div>
     <div id="nation" class="col s12 green">Test 3</div> -->
-
+    </div>
 
     <!-- <div class="" id="test-swipe-2">
 
@@ -317,7 +354,9 @@
     <script src="<?php echo base_url()?>assets1/js/materialize.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js">
+
         </script>
+
         <script>
             $(document).ready(function() {
                 $('.sidenav').sidenav();
