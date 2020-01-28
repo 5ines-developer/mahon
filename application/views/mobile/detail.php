@@ -102,6 +102,10 @@
     <!-- <div class="" id="test-swipe-2">
 
     </div> -->
+
+    <div class="go-top active" onclick="topFunction()">
+        <i class="fa fa-angle-double-up gray-text"></i>
+    </div>
 <?php $this->load->view('mobile/footer.php'); ?>
 
 
@@ -118,9 +122,10 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets1/js/jquery.min.js"></script>
     <script src="<?php echo base_url()?>assets1/js/materialize.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js">
+    <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js"> </script>
         <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-        </script>
+       
+       
         <script>
             $(document).ready(function() {
                 $('.sidenav').sidenav();
@@ -175,6 +180,24 @@
                 });
             });
             
+
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 100) {
+                        $('.go-top').fadeIn();
+                    } else {
+                        $('.go-top').fadeOut();
+                    }
+                });
+                //Click event to scroll to top
+                $('.go-top').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 900);
+                    // return false;
+                });
+
+            });
         </script>
         <!-- <script>
             window.onscroll = function() {
@@ -192,6 +215,7 @@
                 }
             }
         </script> -->
+
         <script>
             window.onscroll = function() {
                 myFunction()

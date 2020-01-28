@@ -37,7 +37,9 @@
                                     <div class="col  m8 s8">
                                         <div class="para-cont">
                                         <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  (strlen(strip_tags($posts->title)) > 108) ? substr(strip_tags($posts->title),0,105).'...' : strip_tags($posts->title); ?></a></p>
-                                        </div>
+                                        <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                        </p>   
+                                    </div>
                                     </div>
                                     <div class="col m4 s4">
                                         <div class="img-pa img-i">
@@ -81,23 +83,23 @@
         <script>
             $(document).ready(function() {
                 $('.sidenav').sidenav();
-                $('.tabs').tabs();
                 $('.modal').modal();
-                $('#tabs-demo').tabs({
-                    'swipeable': true
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 100) {
+                        $('.go-top').fadeIn();
+                    } else {
+                        $('.go-top').fadeOut();
+                    }
                 });
-                // Scroll Event
-                $(window).on('scroll', function() {
-                    var scrolled = $(window).scrollTop();
-                    if (scrolled > 300) $('.go-top').addClass('active');
-                    if (scrolled < 300) $('.go-top').removeClass('active');
+                //Click event to scroll to top
+                $('.go-top').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 900);
+                    // return false;
                 });
-                // Click Event
-                $('.go-top').on('click', function() {
-                    $("html, body").animate({
-                        scrollTop: "0"
-                    }, 500);
-                });
+
             });
         </script>
         <script>
@@ -117,7 +119,9 @@
                     $(".input-search").css("display", "none");
                 });
             });
+
         </script>
+
         <script>
             window.onscroll = function() {
                 myFunction()
