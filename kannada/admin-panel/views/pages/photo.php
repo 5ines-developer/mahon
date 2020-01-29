@@ -47,16 +47,17 @@
                            </div>
                             <div class="card-body">
                                 <ul>
-                                    <?php foreach ($gallery as $key => $value) {  ?>
+                                    <?php
+                                    foreach ($gallery as $key => $value) {  ?>
                                             <li class="tumb-item">
                                                 <div class="tumb-img">
                                                     <img src="<?php echo $value->image['image'] ?>" alt="">
                                                     <div class="cont"><?php echo $value->count ?> photos</div>
                                                 </div>
                                                 <div class="tumb-action">
-                                                    <a href=""><i class="fas fa-pencil-alt"></i></a>
-                                                    <a href=""><i class="far fa-trash-alt"></i></a>
-                                                    <a href=""><i class="fas fa-eye"></i></a>
+                                                    <!-- <a href=""><i class="fas fa-pencil-alt"></i></a> -->
+                                                    <a href="<?php echo base_url('photos/delete/').$value->id ?>" class="delete-btn"><i class="far fa-trash-alt"></i></a>
+                                                    <a href="<?php echo $this->config->item('web_url').'photogallery/'.strtolower($value->acategory.'/'.$value->slug) ?>" target="_blank"><i class="fas fa-eye"></i></a>
                                                 </div>
                                                 <div class="tumb-caption">
                                                     <p class="truncate"><?php echo $value->title ?></p>
@@ -88,7 +89,7 @@
                                 <div class="basic-detail card card-25">
                                     <div class="input-field col s12 m6">
                                         <input type="text" id="title" name="title" placeholder="." required class="validate"
-                                            value="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)">
+                                            value="">
                                         <label for="title">Gallery Title <span class="red-text">*</span></label>
                                         <input type="hidden" id="ctid" name="ctid">
                                     </div>
@@ -105,10 +106,10 @@
 
                                         <select required id="posted_by" name="posted_by">
                                             <option value="" disabled >Choose Author</option>
+                                            <option value="0" > none </option>
                                             <?php foreach ($author as $key => $value) {
                                             echo '<option  value="'.$value->id.'">'.$value->name.'</option>';
                                             } ?>
-                                            <option value="0" > none </option>
                                         </select>
                                         <label for="posted_by">Author</label>
                                     </div>
@@ -160,7 +161,7 @@
                                                 <div class="clearfix"></div>
 
                                                 <div class="input-field">
-                                                    <textarea id="textarea1" required name="imagetitle[]" class="materialize-textarea"></textarea>
+                                                    <textarea id="textarea1" name="imagetitle[]" class="materialize-textarea"></textarea>
                                                     <label for="textarea1">Image Title</label>
                                                 </div>
                                             </div>
@@ -254,7 +255,7 @@
                                     <div class="collapsible-header"><i class="material-icons">filter_drama</i>Meta Detail</div>
                                     <div class="collapsible-body">
                                         <div class="input-box">
-                                            <input type="text" id="ptitle" name="ptitle" placeholder="title" class="validate" value="">
+                                            <input type="text" id="ptitle" name="ptitle" placeholder="title" class="validate" value="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)">
                                         </div>
                                         <div class="input-box">
                                             <input type="text" placeholder="Keywords"  id="pkeywords" name="pkeywords">
@@ -526,6 +527,19 @@
             document.getElementById("slug").value = str;
             //return str;
         }
+
+        $(document).ready(function () {
+            $('.delete-btn').click(function (e) { 
+                    if(confirm('Are you sure to delete this photos??')){
+                        return true;
+                    }else{
+                        e.preventDefault(); 
+                        return false;
+                    }
+                    
+                    
+                });
+        });
       </script>
    
 </body>

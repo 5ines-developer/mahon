@@ -196,7 +196,7 @@
 
                                     <div class="input-field col s12 m6">
                                         <input type="text" id="title" name="title" placeholder="." required class="validate"
-                                            value="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)">
+                                            value="">
                                         <label for="title">Title <span class="red-text">*</span></label>
                                         <input type="hidden" id="ctid" name="ctid">
                                     </div>
@@ -213,10 +213,10 @@
 
                                         <select required id="posted_by" name="posted_by">
                                             <option value="" disabled >Choose Author</option>
+                                            <option value="0" > none </option>
                                             <?php foreach ($author as $key => $value) {
                                             echo '<option  value="'.$value->id.'">'.$value->name.'</option>';
                                             } ?>
-                                            <option value="0" > none </option>
                                         </select>
                                         <label for="posted_by">Author</label>
                                     </div>
@@ -329,7 +329,7 @@
                                     <div class="collapsible-header"><i class="material-icons">filter_drama</i>Meta Detail</div>
                                     <div class="collapsible-body">
                                         <div class="input-box">
-                                            <input type="text" id="ptitle" name="ptitle" placeholder="title" class="validate" value="">
+                                            <input type="text" id="ptitle" name="ptitle" placeholder="title" class="validate" value="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)">
                                         </div>
                                         <div class="input-box">
                                             <input type="text" placeholder="Keywords"  id="pkeywords" name="pkeywords">

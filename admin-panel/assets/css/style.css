@@ -1970,3 +1970,8 @@ form .collapsible-body{padding: 1rem;}
 .imgs-box img, .card-box img{
     margin: auto;
 }
+.am-kn-text{
+    color: black; 
+    font-size: 32px;
+    font-weight: 600;
+}

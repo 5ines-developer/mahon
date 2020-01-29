@@ -68,19 +68,33 @@
                         <h5>Today's Featured</h5>
                         <div class="line-bor"></div>
                         <?php if(!empty($fetured[0])){
+                           
                             if(empty($fetured[0]->category)){
                                 $urllink = $this->urls->urlFormat($fetured[0]->slug);
                             }else{
                                 $urllink = $this->urls->urlFormat(base_url().$fetured[0]->category.'/'.$fetured[0]->slug);
-                            }    
+                            }   
+
+
+                            if(strlen(strip_tags($fetured[0]->title)) > 83){
+                                $ftitle = strip_tags($fetured[0]->title);
+                                $fcontent = '';
+                            }else{
+                                $ftitle = strip_tags($fetured[0]->title);
+                                if (!empty($fetured[0]->content)) {
+                                    $fcontent = substr(strip_tags($fetured[0]->content),0,50).'...';
+                                }else{
+                                    $fcontent = '';
+                                }
+                            }
                         ?>
 
                         <div class="sec-list">
                             <div class="row">
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($fetured[0]->title),0,50).'...' : strip_tags($fetured[0]->title); ?></a></p>
-                                        <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo $ftitle ?></a></p>
+                                        <p class="para-par"> <?php echo $fcontent ?>
                                         </p>
                                     </div>
                                 </div>
@@ -102,6 +116,21 @@
                             }else{
                                 $urllink = $this->urls->urlFormat(base_url().$row->category.'/'.$row->slug);
                             }
+
+                            if(strlen(strip_tags($row->title)) > 83){
+                                $ftitle = strip_tags($row->title);
+                                $fcontent = '';
+                            }else{
+                                $ftitle = strip_tags($row->title);
+
+                                if (!empty($row->content)) {
+                                    $fcontent = substr(strip_tags($row->content),0,50).'...';
+                                }else{
+                                    $fcontent = '';
+                                }
+                            }
+
+
                             ?>
 
 
@@ -110,8 +139,8 @@
                             <div class="row">
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></p>
-                                        <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo $ftitle ?></a></p>
+                                        <p class="para-par"> <?php echo $fcontent ?>
                                         </p>
                                     </div>
                                 </div>
@@ -189,6 +218,7 @@
                     <div class="spr-ne spr-pp">
                         <h5>TEMPLE TO VISIT</h5>
                         <?php foreach ($temple as $key => $tprow) { 
+
                             
                             if(empty($tprow->category)){
                                 $urllink = $this->urls->urlFormat($tprow->slug);
@@ -196,13 +226,26 @@
                                 $urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
                             }
                             (!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
+
+                            if(strlen(strip_tags($tprow->title)) > 83){
+                                $ftitle = strip_tags($tprow->title);
+                                $fcontent = '';
+                            }else{
+                                $ftitle = strip_tags($tprow->title);
+                                if (!empty($tprow->content)) {
+                                    $fcontent = substr(strip_tags($tprow->content),0,50).'...';
+                                }else{
+                                    $fcontent = '';
+                                }
+                            }
+
                         ?>
                         <div class="sec-list">
                             <div class="row m0">
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></p>
-                                        <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  $ftitle; ?></a></p>
+                                        <p class="para-par"> <?php echo  $fcontent; ?>
                                         </p>
                                     </div>
                                 </div>
@@ -226,47 +269,38 @@
             </div>
         </div>
     </section>
+    <?php if(!empty($videos)){ ?>
     <section class="feature-box">
         <div class="row">
-            <!-- <div class="youtube-sub">
-                <div class="right-btn text-right">
-     
-                </div>
-            </div> -->
             <div class="title-tra">
                 <h6><i class="fas fa-video"></i> SHORT MOVIES</h6>
-                <!-- <p> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.massa quis enim. Donec pede justo.
-                </p> -->
             </div>
             <div class="video-pass">
+                <?php foreach ($videos as $key => $value) { ?>
                 <div class="news-post standard-post">
                     <div class="post-gallery">
                         <div class="rr-gallery rr-gal">
-                            <a href="http://mahonnathi.com/staging/videos/spiritual/people-witnessing-the-last-solar-eclipse-of-2019"><img alt="" class="img-responsive" src="http://mahonnathi.com/staging/video_tumb/766210a0eccfe16701408c5a34d62d27.png"></a>
+                            <a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $value->tumb ?>"></a>
+                            <a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 
                         </div>
-                        <p>Banner Detail he power of mind is indescribable & unimaginable</p>
+                        <p><?php echo (strlen(strip_tags($value->title)) > 53) ? substr(strip_tags($value->title),0,50).'...' : strip_tags($value->title);  ?></p>
                     </div>
                 </div>
+                <?php } ?>
             </div>
             <div class="line-end">
-                <a href="<?php echo base_url('video')?>">See all</a>
-                <!-- <span class="sbscrib">Subscribe Now</span>
-                <div class="sub-title" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 84px; height: 24px;"
-                    id="___ytsubscribe_0">
-                    <iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 84px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I0_1579514206747"
-                        name="I0_1579514206747" src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channelid=UC00fs8iYCCtN9TlyEw_8JCg&amp;layout=default&amp;count=hidden&amp;origin=https%3A%2F%2Fwww.mahonnathi.com&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.xh-S9KbEGSE.O%2Fam%3DwQc%2Fd%3D1%2Fct%3Dzgms%2Frs%3DAGLTcCNaUSRWzhd71dAsiMVOstVE3KcJZw%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1579514206747&amp;_gfid=I0_1579514206747&amp;parent=https%3A%2F%2Fwww.mahonnathi.com&amp;pfname=&amp;rpctoken=35547097"
-                        data-gapiattached="true" width="100%" frameborder="0"></iframe></div> -->
-            </div>
+                <a href="<?php echo base_url('video')?>">See all</a> </div>
         </div>
-
     </section>
+    <?php } ?>
     <section class="spr-ne feature-box">
         <?php if(!empty($trending)){ ?>
         <div class="container-fluide">
             <div class="row">
                 <div class="col l12">
                     <div class="spr-ne">
+                        <h5>TRENDING POSTS</h5>
                         <?php foreach ($trending as $key => $trow) {
                             if(empty($trow->category)){
                                 $urllink = $this->urls->urlFormat($trow->slug);
@@ -274,13 +308,26 @@
                                 $urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
                             }
                             (!empty($trow->content)? $content = $trow->content : $content = '' ) ;
+
+                            if(strlen(strip_tags($trow->title)) > 83){
+                                $ftitle = strip_tags($trow->title);
+                                $fcontent = '';
+                            }else{
+                                $ftitle = strip_tags($trow->title);
+                                if (!empty($trow->content)) {
+                                    $fcontent = substr(strip_tags($trow->content),0,50).'...';
+                                }else{
+                                    $fcontent = '';
+                                }
+                            }
+
                         ?>
                         <div class="sec-list">
                             <div class="row">
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></a></p>
-                                        <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  $ftitle ?></a></p>
+                                        <p class="para-par"> <?php echo  $fcontent ?>
                                         </p>
                                     </div>
                                 </div>
@@ -403,13 +450,14 @@
                     speed: 300,
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    arrows: true,
+                    arrows: false,
                     responsive: [{
                         breakpoint: 1024,
                         settings: {
                             slidesToShow: 3,
                             slidesToScroll: 1,
                             infinite: true,
+
                         }
 
                     }, {
@@ -420,7 +468,8 @@
 
                             slidesToShow: 2,
 
-                            slidesToScroll: 2
+                            slidesToScroll: 2,
+                             arrows: false,
 
                         }
 
@@ -433,7 +482,7 @@
                             dots: false,
                             infinite: true,
                             speed: 300,
-                            arrows: true,
+                            arrows: false,
                             autoplay: true,
                             autoplaySpeed: 5000,
                             nextArrow: '<span class="next"><i class="fas fa-caret-right r-dm"></i></span>',

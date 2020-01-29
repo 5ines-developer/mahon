@@ -30,14 +30,26 @@
                     <?php if(!empty($post)){?> 
                         <div class="spr-ne">
                         <?php foreach ($post as $key => $posts) {
+
+                            if(strlen(strip_tags($posts->title)) > 83){
+                                $ftitle = strip_tags($posts->title);
+                                $fcontent = '';
+                            }else{
+                                $ftitle = strip_tags($posts->title);
+                                if (!empty($posts->content)) {
+                                    $fcontent = substr(strip_tags($posts->content),0,50).'...';
+                                }else{
+                                    $fcontent = '';
+                                }
+                            }
                         ?>
                         <div class="sec-list">
                             <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="black-text">
                                 <div class="row">
                                     <div class="col  m8 s8">
                                         <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  (strlen(strip_tags($posts->title)) > 108) ? substr(strip_tags($posts->title),0,105).'...' : strip_tags($posts->title); ?></a></p>
-                                        <p class="para-par"> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. justo.
+                                        <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  $ftitle ?></a></p>
+                                        <p class="para-par"> <?php echo  $fcontent ?>
                                         </p>   
                                     </div>
                                     </div>

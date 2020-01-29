@@ -97,7 +97,8 @@
 												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 												
 											</div>
-											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>">
+												<?php echo word_limiter(strip_tags($value->title), 4).'...' ?></a></p>
 										</div>
 									<?php } ?>
 									
@@ -128,7 +129,7 @@
 											<li>
 												<a href="<?php echo $urllink ?>">
 													<img src="<?php echo base_url().$trow->image ?>" alt="">
-													<h2><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></h2>
+													<h2><?php echo word_limiter(strip_tags($trow->title), 5).'...' ?></h2>
 												</a>
 												<!-- <span class="date">27 may 2013</span> -->
 											</li>
@@ -156,8 +157,8 @@
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i><?php echo $post->created_on ?></li>
 											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
-											<li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
-											<li><i class="fa fa-eye"></i>872</li>
+											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li> -->
+											<!-- <li><i class="fa fa-eye"></i>872</li> -->
 										</ul>
 									</div>
 
@@ -207,11 +208,11 @@
 												<div class="autor-box">
 													<div class="auther-image">
 
-														<img src="<?php echo base_url().$post->author->profile ?>" alt="">
+														<img src="<?php echo (!empty($post->author->profile))?base_url().$post->author->profile:''; ?>" alt="">
 													</div>
 													<div class="autor-content">
 														<div class="autor-title">
-															<h1><span><?php echo $post->author->name ?></span>
+															<h1><span><?php echo (!empty($post->author->name))?$post->author->name:''; ?></span>
 															<!-- <a href="autor-details.html">18 Posts</a> -->
 															</h1>
 															<!-- <ul class="autor-social">
@@ -225,7 +226,7 @@
 															</ul> -->
 														</div>
 														<p>
-															<?php echo $post->author->des ?> 
+															<?php echo (!empty($post->author->des))?$post->author->des:''; ?>
 														</p>
 													</div>
 												</div>
@@ -345,22 +346,22 @@
 								</div>
 								<ul class="social-share">
 									<li>
-										<a href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour" class="facebook"><i class="fa fa-facebook"></i></a>
+										<a href="https://www.facebook.com/mahonnathikannada/" class="facebook"><i class="fa fa-facebook"></i></a>
 										<span class="number">Facebook</span>
 										<!-- <span>Facebook</span> -->
 									</li>
 									<li>
-										<a href="https://twitter.com/Mahonnathii" class="twitter"><i class="fa fa-twitter"></i></a>
+										<a href="https://twitter.com/mahonnathikan" class="twitter"><i class="fa fa-twitter"></i></a>
 										<span class="number">Twitter</span>
 										<!-- <span>Twitter</span> -->
 									</li>
 									<li>
-										<a href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
+										<a href="https://www.youtube.com/channel/UC00fs8iYCCtN9TlyEw_8JCg" class="google"><i class="fa fa-youtube"></i></a>
 										<span class="number">YouTube</span>
 										<!-- <span>YouTube</span> -->
 									</li>
 									<li>
-										<a href="https://www.instagram.com/mahonnathii/" class="rss"><i class="fa fa-instagram"></i></a>
+										<a href="https://www.instagram.com/mahonnathikannada/" class="rss"><i class="fa fa-instagram"></i></a>
 										<span class="number">Instagram</span>
 										<!-- <span>Instagram</span> -->
 									</li>
@@ -382,7 +383,7 @@
 											<?php foreach ($temple as $key => $tprow) { 
 												
 												if(empty($tprow->category)){
-													$urllink = $this->urls->urlFormat($tprow->slug);
+													$urllink = $this->urls->urlFormat((!empty($tprow->slug)?$tprow->slug:''));
 												}else{
 													$urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
 												}
@@ -397,10 +398,11 @@
 															</div>
 															<div class="hover-box">
 																<div class="inner-hover">
-																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
+																	<h2><a href="<?php echo $urllink ?>">
+																		<?php echo word_limiter(strip_tags($tprow->title), 5).'...' ?></a></h2>
 																	<ul class="post-tags">
 																		<!--  -->
-																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																		<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																	</ul>
 																</div>
 															</div>
@@ -447,7 +449,8 @@
 												<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>"></a>
 												</div>
 												<div class="post-title">
-												<p><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($prow->title)) > 47) ? substr(strip_tags($prow->title),0,50).'...' : strip_tags($prow->title); ?></a></p>
+												<p><a href="<?php echo $urllink ?>">
+													<?php echo word_limiter(strip_tags($prow->title), 5).'...' ?></a></p>
 												</div>
 											</div>
 											<?php } }?>

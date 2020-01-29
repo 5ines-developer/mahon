@@ -49,6 +49,7 @@
 }
 .auther-image img{max-width:100% !important; border-radius:0px !important}
 	</style>
+	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 
@@ -156,8 +157,8 @@
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i><?php echo $post->created_on ?></li>
 											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
-											<li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
-											<li><i class="fa fa-eye"></i>872</li>
+											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
+											<li><i class="fa fa-eye"></i>872</li> -->
 										</ul>
 									</div>
 
@@ -291,8 +292,8 @@
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i><?php echo $post->created_on ?></li>
 											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
-											<li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
-											<li><i class="fa fa-eye"></i>872</li>
+											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
+											<li><i class="fa fa-eye"></i>872</li> -->
 										</ul>
 									</div>
 
@@ -382,7 +383,7 @@
 											<?php foreach ($temple as $key => $tprow) { 
 												
 												if(empty($tprow->category)){
-													$urllink = $this->urls->urlFormat($tprow->slug);
+													$urllink = $this->urls->urlFormat((!empty($tprow->slug))?$tprow->slug:'');
 												}else{
 													$urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
 												}
@@ -424,7 +425,7 @@
 							<div class="widget tab-posts-widget">
 
 								<div class="title-section">
-									<h1><span>ಓದಲೇಬೇಕಾದ್ದು</span></h1>
+									<h1><span>Recommended</span></h1>
 								</div>
 
 								<div class="tab-content">

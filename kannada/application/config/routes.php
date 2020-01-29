@@ -34,7 +34,7 @@ if(!empty($result)):
         case 'ಸಾಮಾನ್ಯ ಜ್ಞಾನ':
             $ca1cat = 'general-knowledge'; 
             break;
-        case 'ಅರೋಗ್ಯ':
+        case 'ಆರೋಗ್ಯ':
             $ca1cat = 'health'; 
             break;
         case 'ವಿಡಿಯೋ':

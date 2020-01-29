@@ -65,29 +65,6 @@ class home extends CI_Controller {
        
     }
 
-// mobile video
-
-public function mobile_video()
-{
-    $data['title']  = 'Mobile - Video';
-    $this->load->view('mobile/mobile-video',$data);
-}
-public function mobile_video_detail()
-{
-    $data['title']  = 'Mobile - Video - Detail';
-    $this->load->view('mobile/mobile-video-detail',$data);
-}
-public function photo()
-{
-    $data['title']  = 'Mobile - photo';
-    $this->load->view('mobile/photo',$data);
-}
-public function photo_detail()
-{
-    $data['title']  = 'Mobile - photo - Detail';
-    $this->load->view('mobile/photo-detail',$data);
-}
-
 }
 
 /* End of file home.php */

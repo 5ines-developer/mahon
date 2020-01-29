@@ -147,10 +147,10 @@
 
                                         <select required id="posted_by" name="posted_by">
                                             <option value="" disabled >Choose Author</option>
+                                            <option value="0" > none </option>
                                             <?php foreach ($author as $key => $value) {
                                             echo '<option  value="'.$value->id.'">'.$value->name.'</option>';
                                             } ?>
-                                            <option value="0" > none </option>
                                         </select>
                                         <label for="posted_by">Author</label>
                                     </div>
@@ -420,7 +420,12 @@
             $('.timepicker').timepicker();
 
             // ck editor
-            var editor = CKEDITOR.replace( 'description');
+            var editor = CKEDITOR.replace( 'description',{
+                filebrowserBrowseUrl: '<?php echo base_url()?>assets/ckfinder/ckfinder.html',
+                filebrowserImageBrowseUrl: '<?php echo base_url()?>assets/ckfinder/ckfinder.html?type=Images',
+                filebrowserUploadUrl: '<?php echo base_url()?>assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                filebrowserImageUploadUrl: '<?php echo base_url()?>assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+            });
             
             // related category rotate
             $('.related-main-title').click(function (e) { 

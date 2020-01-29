@@ -10,3 +10,9 @@ $(document).ready(function() {
         });
     }
 });
+
+// page swipe
+
+// $("#home").bind('swipeleft', function(event, ui) {
+//     $.mobile.changePage('spiritual');
+// });

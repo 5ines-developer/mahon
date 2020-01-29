@@ -211,8 +211,12 @@ class m_site extends CI_Model {
     }
 
     // Get videos
-    public function videos()
+    public function videos($slug='')
     {
+        echo "<pre>";
+        print_r ($slug);
+        echo "</pre>";
+        if(!empty($slug)){ $this->db->where('slug', $slug); }
         return $this->db->where('v.status', 1)
         ->where('v.schedule <=', date('Y-m-d H:i:s'))
         ->where('vtype', 'short')

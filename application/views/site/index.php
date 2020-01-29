@@ -19,7 +19,7 @@
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="@Mahonnathi">
 	<meta name="twitter:image" content="<?php echo base_url().$banner[0]->image ?>">
-	<meta name="twitter:url" content=""<?php echo base_url() ?>">
+	<meta name="twitter:url" content="<?php echo base_url() ?>">
 	<meta name="twitter:title" content="Online News Portal">
 	<meta name="twitter:description" content="">
 
@@ -37,9 +37,24 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.theme.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
+	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21906498668/PG-TOP', [468, 60], 'div-gpt-ad-1580129697409-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
+<script data-ad-client="ca-pub-9153450084338777" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 </head>
 <body>
+
+
 
 	<!-- Container -->
 	<div id="container">
@@ -85,7 +100,7 @@
 										<?php 
 											echo (!empty($banner[1]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[1]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
 									<p><?php echo  (strlen(strip_tags($content )) > 43) ? substr(strip_tags($content ),0,40).'...' : strip_tags($content ); ?></p>
 								</div>
@@ -122,7 +137,7 @@
 										<?php 
 											echo (!empty($banner[0]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[0]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
 									<p><?php echo  (strlen(strip_tags($content )) > 203) ? substr(strip_tags($content ),0,200).'...' : strip_tags($content ); ?></p>
 								</div>
@@ -156,7 +171,7 @@
 										<?php 
 											echo (!empty($banner[3]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[3]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
 									<p><?php echo  (strlen(strip_tags($content )) > 43) ? substr(strip_tags($content ),0,40).'...' : strip_tags($content ); ?></p>
 								</div>
@@ -188,7 +203,7 @@
 										<?php 
 											echo (!empty($banner[2]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[2]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
 									<p><?php echo  (strlen(strip_tags($content )) > 43) ? substr(strip_tags($content ),0,40).'...' : strip_tags($content ); ?></p>
 								</div>
@@ -220,7 +235,7 @@
 										<?php 
 											echo (!empty($banner[4]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[4]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
 									<p><?php echo  (strlen(strip_tags($content )) > 43) ? substr(strip_tags($content ),0,40).'...' : strip_tags($content ); ?></p>
 								</div>
@@ -364,8 +379,8 @@
 																<?php 
 																	echo (!empty($fetured[0]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$fetured[0]->posted_by .'</a></li>' : '' )
 																?>
-																<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-																<li><i class="fa fa-eye"></i>872</li>
+																<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																<li><i class="fa fa-eye"></i>872</li> -->
 															</ul>
 														</div>
 													</div>
@@ -437,7 +452,7 @@
 																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 																<ul class="post-tags">
 																	<!--  -->
-																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																	<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																</ul>
 															</div>
 														</div>
@@ -481,7 +496,7 @@
 																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 																<ul class="post-tags">
 																	<!--  -->
-																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																	<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																</ul>
 															</div>
 														</div>
@@ -623,11 +638,7 @@
 							</div>
                             <!-- End carousel box -->
                             
-<<<<<<< HEAD
-                            <section class="features-today">
-=======
                              <section class="features-today">
->>>>>>> e466fefc75923ee45e37e488122176c7db11b01a
                                 <div class="">
 
                                     <div class="title-section">
@@ -654,11 +665,7 @@
                                     </div>
 
                                 </div>
-<<<<<<< HEAD
-                            </section>
-=======
                             </section> 
->>>>>>> e466fefc75923ee45e37e488122176c7db11b01a
 
 						</div>
 						<!-- End block content -->
@@ -727,7 +734,7 @@
 																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
 																	<ul class="post-tags">
 																		<!--  -->
-																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																		<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																	</ul>
 																</div>
 															</div>

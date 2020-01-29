@@ -4,6 +4,10 @@
             <a href="<?php echo base_url() ?>" class="brand-logo">
             <img src="<?php echo base_url()?>assets/img/logo.jpg"  class="responsive-img" alt="logo">
             </a>
+            <ul>
+               <li style="position: relative; left: 481px;"><center><span class="am-kn-text">English - Admin Panel</span></center>
+               </li> 
+            </ul>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
             <i class="fas fa-bars black-text"></i>
             </a>

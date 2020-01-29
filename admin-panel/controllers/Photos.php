@@ -96,49 +96,72 @@ class Photos extends CI_Controller {
     function uploadImage($images, $postid)
     {
         $files = array();
+        $files = $_FILES;
         $title = $this->input->post('imagetitle');
-        $config = array(
-            'upload_path' => "../photo_gall/",
-            'allowed_types' => "gif|jpg|png|jpeg|svg",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", 
-            'encrypt_name' => true
-        );
-        $this->load->library('upload', $config);
-        if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
-        
-      
-        foreach ($images['name'] as $key => $image) {
-            if(!empty($image)){
-                $_FILES['img[]']['name']= $images['name'][$key];
-                $_FILES['img[]']['type']= $images['type'][$key];
-                $_FILES['img[]']['tmp_name']= $images['tmp_name'][$key];
-                $_FILES['img[]']['error']= $images['error'][$key];
-                $_FILES['img[]']['size']= $images['size'][$key];
-    
-                $fileName = $image;
-    
-                $images[] = $fileName;
-    
-                $config['file_name'] = $fileName;
-    
-                $this->upload->initialize($config);
-    
-                if ($this->upload->do_upload('img[]')) {
-                    $filename = $this->config->item('web_url').'photo_gall/'.$this->upload->data('file_name');
-                    // array_push($files, $filename);
-                    if(!empty($title[$key])){
-                        $tit = $title[$key];
-                    }else{
-                        $tit = '';
-                    }
-                    $data = array('title'=> $tit, 'image' => $filename, 'photo_id' => $postid);
-                    $this->m_photo->addImages($data);
-                } else {
-                    return false;
+        $filesCount = count($_FILES['img']['name']);
+
+        if (!empty($filesCount)) {
+            for ($i = 0; $i < $filesCount; $i++) {
+                $_FILES['img']['name']     = $files['img']['name'][$i];
+                $_FILES['img']['type']     = $files['img']['type'][$i];
+                $_FILES['img']['tmp_name'] = $files['img']['tmp_name'][$i];
+                $_FILES['img']['error']    = $files['img']['error'][$i];
+                $_FILES['img']['size']     = $files['img']['size'][$i];
+                $config = array(
+                    'upload_path' => "../photo_gall/",
+                    'allowed_types' => "gif|jpg|png|jpeg|svg",
+                    'overwrite' => TRUE,
+                    'max_size' => "2048000", 
+                    'encrypt_name' => true
+                );
+                $this->load->library('upload', $config);
+                if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
+                $this->upload->do_upload('img');
+                $filename = $this->config->item('web_url').'photo_gall/'.$this->upload->data('file_name');
+                if(!empty($title[$i])){
+                    $tit = $title[$i];
+                }else{
+                    $tit = '';
                 }
+                $data = array('title'=> $tit, 'image' => $filename, 'photo_id' => $postid);
+                $this->m_photo->addImages($data);
+
             }
         }
+
+
+        // foreach ($images['name'] as $key => $image) {
+        //     if(!empty($image)){
+                
+        //         $_FILES['img[]']['name']= $images['name'][$key];
+        //         $_FILES['img[]']['type']= $images['type'][$key];
+        //         $_FILES['img[]']['tmp_name']= $images['tmp_name'][$key];
+        //         $_FILES['img[]']['error']= $images['error'][$key];
+        //         $_FILES['img[]']['size']= $images['size'][$key];
+    
+        //         $fileName = $image;
+    
+        //         $images[] = $fileName;
+    
+        //         $config['file_name'] = $fileName;
+    
+        //         $this->upload->initialize($config);
+    
+        //         if ($this->upload->do_upload('img[]')) {
+        //             $filename = $this->config->item('web_url').'photo_gall/'.$this->upload->data('file_name');
+        //             // array_push($files, $filename);
+        //             if(!empty($title[$key])){
+        //                 $tit = $title[$key];
+        //             }else{
+        //                 $tit = '';
+        //             }
+        //             $data = array('title'=> $tit, 'image' => $filename, 'photo_id' => $postid);
+        //             $this->m_photo->addImages($data);
+        //         } else {
+        //             return false;
+        //         }
+        //     }
+        // }
      
     }
 

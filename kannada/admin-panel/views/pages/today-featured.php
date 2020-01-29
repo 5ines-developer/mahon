@@ -33,7 +33,9 @@
                   <div class="card m0">
                      <div class="card-content">
                         <div class="row">
-                            <?php if(!empty($post['0'])){ ?>
+                            <?php
+
+                             if(!empty($post['0'])){ ?>
                                 <div class="col s10 push-s1">
 
                                     <div class="card">

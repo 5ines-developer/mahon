@@ -383,7 +383,7 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
 
     <!-- ck editor -->
-    <script src="<?php echo base_url()?>assets/ckeditor/ckeditor.js"></script>
+   <script src="<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckeditor/ckeditor.js"></script>
 
     <!-- data table -->
     <script type="text/javascript" src="<?php echo base_url()?>assets/dataTable/datatables.min.js"></script>
@@ -420,7 +420,12 @@
             $('.timepicker').timepicker();
 
             // ck editor
-            var editor = CKEDITOR.replace( 'description');
+            var editor = CKEDITOR.replace( 'description',{
+                filebrowserBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html',
+                filebrowserImageBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html?type=Images',
+                filebrowserUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                filebrowserImageUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+            });
             
             // related category rotate
             $('.related-main-title').click(function (e) { 

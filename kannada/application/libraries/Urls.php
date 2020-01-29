@@ -37,7 +37,7 @@ class Urls
             case 'ಸಾಮಾನ್ಯ ಜ್ಞಾನ':
                 $ca1cat = 'general-knowledge'; 
                 break;
-            case 'ಅರೋಗ್ಯ':
+            case 'ಆರೋಗ್ಯ':
                 $ca1cat = 'health'; 
                 break;
             case 'ವಿಡಿಯೋ':
@@ -63,7 +63,7 @@ class Urls
             case 'science':
                 $ca1cat = 'ವಿಜ್ಞಾನ'; 
                 break;
-            case 'general-knowledge':
+            case 'general knowledge':
                 $ca1cat = 'ಸಾಮಾನ್ಯ ಜ್ಞಾನ'; 
                 break;
             case 'health':

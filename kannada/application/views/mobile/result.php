@@ -9,6 +9,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+
+    <!-- <link rel="stylesheet" href="<?php echo base_url()?>assets1/css/jquery.mobile-1.0a1.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script> -->
+
 </head>
 
 <body>
@@ -16,7 +22,7 @@
     <?php $this->load->view('mobile/header'); ?>
     <!-- menu slider -->
     <!--section -->
-    <section class="spr-ne padd-top">
+    <section class="spr-ne padd-top"  >
         <div class="container-fluide">
             <div class="row">
                 <div class="col l12">
@@ -24,19 +30,34 @@
                     <?php if(!empty($post)){?> 
                         <div class="spr-ne">
                         <?php foreach ($post as $key => $posts) {
+                            $cat = $this->urls->checkCat($posts->category);
+
+                            if(strlen(strip_tags($posts->title)) > 83){
+                                $ftitle = character_limiter(strip_tags($posts->title), 80).'...';
+                                $fcontent = '';
+                            }else{
+                                $ftitle = strip_tags($posts->title);
+                                if (!empty($posts->content)) {
+                                    $fcontent = character_limiter(strip_tags($posts->content), 80).'...';
+                                }else{
+                                    $fcontent = '';
+                                }
+                            }
                         ?>
                         <div class="sec-list">
-                            <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="black-text">
+                            <a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>" class="black-text">
                                 <div class="row">
-                                    <div class="col  m8 s7">
+                                    <div class="col  m8 s8">
                                         <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  (strlen(strip_tags($posts->title)) > 108) ? substr(strip_tags($posts->title),0,105).'...' : strip_tags($posts->title); ?></a></p>
-                                        </div>
+                                        <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>"><?php echo  $ftitle ?></a></p>
+                                        <p class="para-par"> <?php echo  $fcontent ?>
+                                        </p>   
                                     </div>
-                                    <div class="col m4 s5">
+                                    </div>
+                                    <div class="col m4 s4">
                                         <div class="img-pa img-i">
-                                            <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>">
-                                            <img src="<?php echo base_url().$posts->image ?>" class="img-responsive"  alt="">
+                                            <a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>">
+                                            <img src="<?php echo base_url().$posts->image ?>" class="img-responsive img-res"  alt="">
                                         </a>
                                         </div>
                                     </div>
@@ -45,7 +66,47 @@
                         </div>
                         <?php } ?>
                     </div>
-                    <?php }else{ ?>
+                    <?php }else if(!empty($vid)){  ?>
+
+                        <div class="featured-vie">
+                            <h5>Featured Videos</h5>
+                        </div>
+
+                       <?php foreach ($vid as $key => $vids) {
+                        $cat = $this->urls->checkCat($vids->category);
+                        if($vids->vtype == 'featured'){ ?> 
+                        <div class="video-fet">
+                            <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>">
+                                <div class="dis-video">
+                                    <img src="<?php echo $vids->tumb ?>" class="img-responsive" alt="">
+                                    <h1><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></h1>
+                                    <div class="post-div">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    <?php } } ?>
+                        <div class="featured-vie">
+                            <h5>SHORT MOVIES</h5>
+                        </div>
+                    <?php foreach ($vid as $key => $vids) {
+                        $cat = $this->urls->checkCat($vids->category);
+                        if($vids->vtype == 'short'){ ?> 
+                        <div class="video-fet">
+                            <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>">
+                                <div class="dis-video">
+                                    <img src="<?php echo $vids->tumb ?>" class="img-responsive" alt="">
+                                    <h1><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></h1>
+                                    <div class="post-div">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    <?php } }  }else{ ?>
                         <div class="error-banner">
                             <h1>No Result <span>Found</span></h1>
                             <p>Oops! It looks like nothing was found at this search. Maybe try another search?</p>
@@ -59,9 +120,14 @@
             </div>
         </div>
     </section>
-   
+    <div class="height-li"></div>
+
    <?php $this->load->view('mobile/footer.php'); ?>
+   
     <!-- script -->
+    <div class="go-top active">
+        <i class="fa fa-angle-double-up gray-text"></i>
+    </div>
     <script type="text/javascript" src="<?php echo base_url()?>assets1/js/jquery.min.js"></script>
     <script src="<?php echo base_url()?>assets1/js/materialize.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -70,55 +136,23 @@
         <script>
             $(document).ready(function() {
                 $('.sidenav').sidenav();
-                $('.tabs').tabs();
                 $('.modal').modal();
-                $('#tabs-demo').tabs({
-                    'swipeable': true
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 100) {
+                        $('.go-top').fadeIn();
+                    } else {
+                        $('.go-top').fadeOut();
+                    }
                 });
-                $('.video-pass').slick({
-
-                    dots: false,
-                    infinite: false,
-                    speed: 300,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            infinite: true,
-                        }
-
-                    }, {
-
-                        breakpoint: 767,
-
-                        settings: {
-
-                            slidesToShow: 2,
-
-                            slidesToScroll: 2
-
-                        }
-
-                    }, {
-
-                        breakpoint: 580,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            dots: false,
-                            infinite: false,
-                            speed: 300,
-                            arrows: false,
-
-                        }
-
-                    }]
-
+                //Click event to scroll to top
+                $('.go-top').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 900);
+                    // return false;
                 });
+
             });
         </script>
         <script>
@@ -138,7 +172,9 @@
                     $(".input-search").css("display", "none");
                 });
             });
+
         </script>
+
         <script>
             window.onscroll = function() {
                 myFunction()

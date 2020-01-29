@@ -215,7 +215,7 @@
 																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
 																	<ul class="post-tags">
 																		<!--  -->
-																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																		<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																	</ul>
 																</div>
 															</div>

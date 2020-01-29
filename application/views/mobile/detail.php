@@ -83,22 +83,61 @@
                         <a class="twitter-timeline" href="https://twitter.com/TwitterDev/likes?ref_src=twsrc%5Etfw">Tweets Liked by @TwitterDev</a>
                     </div>
                 </div> -->
-                <?php if(!empty($related)): ?>
-                <div class="sponser">
-                    <?php foreach ($related as $key => $post): ?>
-                    <div class="sponser-detail" data_slug="<?php echo  $post->slug ?>">
-                        <img src="<?php echo base_url().$post->image ?>" class="img-responsive" alt="">
-                        <h5><?php echo $post->title ?></h5>
-                        <div class="p-para">
-                       <?php echo $post->content ?>
-                    </div>
-                    </div>
-                <?php endforeach; ?>
-                </div>
-                <?php endif;?> 
+
             </div>
         </div>
     </section>
+
+
+
+
+<section class="detail-cont">
+    <div class="container-fluide">
+        <div class="row">
+            <div class="col l12 s12">
+                    <div class="spr-ne">
+            <h5>Related Posts</h5>
+            <div class="line-bor"></div>
+            <?php if(!empty($related)): ?>
+            <div class="sponser">
+                <?php foreach ($related as $key => $post):
+                if(strlen(strip_tags($post->title)) > 83){
+                $ftitle = strip_tags($post->title);
+                $fcontent = '';
+                }else{
+                $ftitle = strip_tags($post->title);
+                if (!empty($post->content)) {
+                $fcontent = substr(strip_tags($post->content),0,50).'...';
+                }else{
+                $fcontent = '';
+                }
+                }
+                ?>
+                <div class="sec-list">
+                    <div class="row">
+                        <div class="col  m8 s8">
+                            <div class="para-cont">
+                                <p><a class="black-text" href="<?php echo  $post->slug ?>"><?php echo $ftitle ?></a></p>
+                                <p class="para-par"> <?php echo $fcontent ?>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col m4 s4">
+                            <div class="img-pa">
+                                <a href="<?php echo $post->slug ?>"><img src="<?php echo base_url().$post->image ?>" class="img-responsive img-res" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <?php endforeach; ?>
+            </div>
+            <?php endif;?>
+        </div>
+        </div>
+    </div>
+</section>
+
     <!-- <div class="" id="test-swipe-2">
 
     </div> -->

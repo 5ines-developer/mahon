@@ -2,8 +2,15 @@
       <nav class="white">
          <div class="nav-wrapper container-wrap">
             <a href="<?php echo base_url() ?>" class="brand-logo">
-            <img src="<?php echo base_url()?>assets/img/logo.jpg"  class="responsive-img" alt="logo">
+            <img src="<?php echo base_url()?>assets/img/LOGO-Final-kannada.png"  class="responsive-img" alt="logo">
             </a>
+            <ul>
+               <li style="position: relative; left: 481px;"><center><span class="am-kn-text">Kannada - Admin Panel</span></center>
+               </li> 
+            </ul>
+            <!-- <p><center><span class="am-kn-text">Kannada - Admin Panel</span></center></p> -->
+               
+            
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
             <i class="fas fa-bars black-text"></i>
             </a>

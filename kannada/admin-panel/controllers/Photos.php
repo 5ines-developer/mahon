@@ -172,6 +172,16 @@ class Photos extends CI_Controller {
         $this->m_photo->single_gall($id);
     }
 
+    // Delete 
+    public function delete($id = null)
+    {
+        if($this->m_photo->delete($id)){
+            $this->session->set_flashdata('success', 'Photos deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'please try again');
+        }
+        redirect('photos','refresh');
+    }
 }
 
 /* End of file Photos.php */

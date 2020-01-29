@@ -16,18 +16,19 @@
             <li><a href="">Today Fetured</a></li>
             <li><a href="">Short Movies</a></li>
             <li><a href="">Popular</a></li>
-            <li><a href="">Videos</a></li>
+            <li><a href="<?php echo base_url('video')?>">Videos</a></li>
         </ul>
         <div class="slider-mm">
             <div class="nav-content nav-menu" id="myDIV">
                 <ul class="tabs-transparent tabs-menu">
-                    <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">Home</a></li>
+                    <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">ಮುಖಪುಟ</a></li>
 
                     <?php 
                     if(!empty(categories())){
                         foreach(categories() as $key => $value) { 
                             if($value->menu == 1){
-                                $rurl = $this->urls->urlFormat(base_url().$value->title)
+                                $cat = $this->urls->checkCat($value->title);
+                                $rurl = $this->urls->urlFormat(base_url().$cat)
                     ?>
                         <li class="bt <?php if($this->uri->segment(1) == $this->urls->urlFormat($value->title)){ echo 'active'; }else{ echo 'no'; } ?>"><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>
                     <?php } } }?>

@@ -83,25 +83,68 @@
                         <a class="twitter-timeline" href="https://twitter.com/TwitterDev/likes?ref_src=twsrc%5Etfw">Tweets Liked by @TwitterDev</a>
                     </div>
                 </div> -->
-                <?php if(!empty($related)): ?>
-                <div class="sponser">
-                    <?php foreach ($related as $key => $post): ?>
-                    <div class="sponser-detail" data_slug="<?php echo  $post->slug ?>">
-                        <img src="<?php echo base_url().$post->image ?>" class="img-responsive" alt="">
-                        <h5><?php echo $post->title ?></h5>
-                        <div class="p-para">
-                       <?php echo $post->content ?>
-                    </div>
-                    </div>
-                <?php endforeach; ?>
-                </div>
-                <?php endif;?> 
+
             </div>
         </div>
     </section>
+
+
+
+
+<section class="detail-cont">
+    <div class="container-fluide">
+        <div class="row">
+            <div class="col l12 s12">
+                    <div class="spr-ne">
+            <h5>Related Posts</h5>
+            <div class="line-bor"></div>
+            <?php if(!empty($related)): ?>
+            <div class="sponser">
+                <?php foreach ($related as $key => $post):
+                if(strlen(strip_tags($post->title)) > 83){
+                $ftitle = strip_tags($post->title);
+                $fcontent = '';
+                }else{
+                $ftitle = strip_tags($post->title);
+                if (!empty($post->content)) {
+                $fcontent = substr(strip_tags($post->content),0,50).'...';
+                }else{
+                $fcontent = '';
+                }
+                }
+                ?>
+                <div class="sec-list">
+                    <div class="row">
+                        <div class="col  m8 s8">
+                            <div class="para-cont">
+                                <p><a class="black-text" href="<?php echo  $post->slug ?>"><?php echo $ftitle ?></a></p>
+                                <p class="para-par"> <?php echo $fcontent ?>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col m4 s4">
+                            <div class="img-pa">
+                                <a href="<?php echo $post->slug ?>"><img src="<?php echo base_url().$post->image ?>" class="img-responsive img-res" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <?php endforeach; ?>
+            </div>
+            <?php endif;?>
+        </div>
+        </div>
+    </div>
+</section>
+
     <!-- <div class="" id="test-swipe-2">
 
     </div> -->
+
+    <div class="go-top active" onclick="topFunction()">
+        <i class="fa fa-angle-double-up gray-text"></i>
+    </div>
 <?php $this->load->view('mobile/footer.php'); ?>
 
 
@@ -118,9 +161,10 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets1/js/jquery.min.js"></script>
     <script src="<?php echo base_url()?>assets1/js/materialize.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js">
+    <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js"> </script>
         <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-        </script>
+       
+       
         <script>
             $(document).ready(function() {
                 $('.sidenav').sidenav();
@@ -174,7 +218,43 @@
 
                 });
             });
+            
+
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 100) {
+                        $('.go-top').fadeIn();
+                    } else {
+                        $('.go-top').fadeOut();
+                    }
+                });
+                //Click event to scroll to top
+                $('.go-top').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 900);
+                    // return false;
+                });
+
+            });
         </script>
+        <!-- <script>
+            window.onscroll = function() {
+                myFunction()
+            };
+
+            var header = document.getElementById("myHeader");
+            var sticky = header.offsetTop;
+
+            function myFunction() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky");
+                } else {
+                    header.classList.remove("sticky");
+                }
+            }
+        </script> -->
+
         <script>
             window.onscroll = function() {
                 myFunction()
@@ -189,6 +269,15 @@
                 } else {
                     header.classList.remove("sticky");
                 }
+            }
+            var header = document.getElementById("myDIV");
+            var btns = header.getElementsByClassName("bt");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
             }
         </script>
 </body>

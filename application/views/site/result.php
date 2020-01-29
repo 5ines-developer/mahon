@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.theme.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
-
+	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 
@@ -80,7 +80,7 @@
 											<?php foreach ($temple as $key => $tprow) { 
 												
 												if(empty($tprow->category)){
-													$urllink = $this->urls->urlFormat($tprow->slug);
+													$urllink = $this->urls->urlFormat((!empty($tprow->slug))?$tprow->slug:'');
 												}else{
 													$urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
 												}
@@ -98,7 +98,7 @@
 																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
 																	<ul class="post-tags">
 																		<!--  -->
-																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																		<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																	</ul>
 																</div>
 															</div>
@@ -191,8 +191,8 @@
                                                         <?php 
                                                                 echo (!empty($posts->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$posts->posted_by .'</a></li>' : '' )
                                                         ?>
-                                                        <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                        <li><i class="fa fa-eye"></i>872</li>
+                                                        <!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
+                                                        <!-- <li><i class="fa fa-eye"></i>872</li> -->
                                                     </ul>
                                                     <p><?php echo  (strlen(strip_tags($posts->content)) > 230) ? substr(strip_tags($posts->content),0,227).'...' : strip_tags($posts->content); ?></p>
                                                     <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>

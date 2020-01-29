@@ -3,7 +3,6 @@ $this->ci =& get_instance();
 
 $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
-
 ?>
 
 <!doctype html>
@@ -88,15 +87,15 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 									
 
 
-									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[1]->title)) > 43) ? substr(strip_tags($banner[1]->title),0,40).'...' : strip_tags($banner[1]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[1]->title)) > 43) ? strip_tags($banner[1]->title) : strip_tags($banner[1]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
 											echo (!empty($banner[1]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[1]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
-									<p><?php echo  (strlen(strip_tags($content )) > 43) ? substr(strip_tags($content ),0,40).'...' : strip_tags($content ); ?></p>
+									<p><?php echo word_limiter(strip_tags($content), 4).'...' ?></p>
 								</div>
 							</div>
 						</div>
@@ -105,7 +104,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 					<?php if(!empty($banner[0])){ ?>
 					<div class="image-slider snd-size">
-						<span class="top-stories">TOP STORIES</span>
+						<span class="top-stories">ಟಾಪ್ ಸ್ಟೋರೀಸ್</span>
 						
 						<div class="news-post image-post ">
 								<div class="topimgox">
@@ -127,15 +126,15 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 									
 
 
-									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[0]->title)) > 43) ? substr(strip_tags($banner[0]->title),0,40).'...' : strip_tags($banner[0]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[0]->title)) > 43) ? strip_tags($banner[0]->title) : strip_tags($banner[0]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
 											echo (!empty($banner[0]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[0]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
-									<p><?php echo  (strlen(strip_tags($content )) > 203) ? substr(strip_tags($content ),0,200).'...' : strip_tags($content ); ?></p>
+									<p> <?php echo word_limiter(strip_tags($content), 8).'...' ?></p>
 								</div>
 							</div>
 						</div>
@@ -162,15 +161,15 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 									
 
 
-									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[3]->title)) > 43) ? substr(strip_tags($banner[3]->title),0,40).'...' : strip_tags($banner[3]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[3]->title)) > 43) ?strip_tags($banner[3]->title): strip_tags($banner[3]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
 											echo (!empty($banner[3]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[3]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
-									<p><?php echo  (strlen(strip_tags($content )) > 43) ? substr(strip_tags($content ),0,40).'...' : strip_tags($content ); ?></p>
+									<p><?php echo word_limiter(strip_tags($content), 5).'...' ?></p>
 								</div>
 							</div>
 						</div>
@@ -195,15 +194,15 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 									
 
 
-									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[2]->title)) > 43) ? substr(strip_tags($banner[2]->title),0,40).'...' : strip_tags($banner[2]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[2]->title)) > 43) ?strip_tags($banner[2]->title): strip_tags($banner[2]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
 											echo (!empty($banner[2]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[2]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
-									<p><?php echo  (strlen(strip_tags($content )) > 43) ? substr(strip_tags($content ),0,40).'...' : strip_tags($content ); ?></p>
+									<p><?php echo word_limiter(strip_tags($content), 5).'...' ?></p>
 								</div>
 							</div>
 						</div>
@@ -229,19 +228,20 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 									
 
 
-									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[4]->title)) > 43) ? substr(strip_tags($banner[4]->title),0,40).'...' : strip_tags($banner[4]->title); ?></a></h2>
+									<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[4]->title)) > 43) ?strip_tags($banner[4]->title): strip_tags($banner[4]->title); ?></a></h2>
 									<ul class="post-tags">
 										<!-- <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li> -->
 										<?php 
 											echo (!empty($banner[4]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$banner[4]->posted_by .'</a></li>' : '' )
 										?>
-										<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+										<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 									</ul>
-									<p><?php echo  (strlen(strip_tags($content )) > 43) ? substr(strip_tags($content ),0,40).'...' : strip_tags($content ); ?></p>
+									<p><?php echo word_limiter(strip_tags($content), 5).'...' ?></p>
 								</div>
 							</div>
 						</div>
 					<?php } ?>
+
 					
 
 				</div>
@@ -301,7 +301,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 											<li>
 												<a href="<?php echo $urllink ?>">
 													<img src="<?php echo base_url().$trow->image ?>" alt="">
-													<h2><?php echo  (strlen(strip_tags($trow->title)) > 43) ? substr(strip_tags($trow->title),0,40).'...' : strip_tags($trow->title); ?></h2>
+													<h2><?php echo word_limiter(strip_tags($trow->title), 5).'...' ?></h2>
 												</a>
 												<!-- <span class="date">27 may 2013</span> -->
 											</li>
@@ -325,7 +325,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 												<a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 												
 											</div>
-											<p><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+											<p><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 37) ? strip_tags($value->title): strip_tags($value->title);  ?></a></p>
 										</div>
 									<?php } ?>
 									
@@ -350,11 +350,11 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 								</div>
 
 								
-							<?php 
+							<?php
 						
 							 if(!empty($fetured[0])){ 
 								if(empty($fetured[0]->category)){
-									$urllink = $this->urls->urlFormat($fetured[0]->slug);
+									$urllink = $this->urls->urlFormat(!empty($fetured[0]->slug)?$fetured[0]->slug:'');
 								}else{
 									$cat = $this->urls->checkCat($fetured[0]->category);
 									$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$fetured[0]->slug);
@@ -377,14 +377,13 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 															echo (!empty($fetured[0]->category)? '<a class="category-post" href="#!">'.$fetured[0]->category.'</a>': ' ' ) ;
 															
 														?>
-															<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($fetured[0]->title),0,50).'...' : strip_tags($fetured[0]->title); ?></a></h2>
-															<ul class="post-tags">
+															<h2><a href="<?php echo $urllink ?>"><?php echo word_limiter(strip_tags($fetured[0]->title), 4).'...' ?></a></h2> <ul class="post-tags">
 																<!--  -->
 																<?php 
 																	echo (!empty($fetured[0]->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$fetured[0]->posted_by .'</a></li>' : '' )
 																?>
-																<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-																<li><i class="fa fa-eye"></i>872</li>
+																<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
+																<!-- <li><i class="fa fa-eye"></i>872</li> -->
 															</ul>
 														</div>
 													</div>
@@ -415,7 +414,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 												
 												<div class="post-content">
-													<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($row->title)) > 53) ? substr(strip_tags($row->title),0,50).'...' : strip_tags($row->title); ?></a></h2>
+													<h2><a href="<?php echo $urllink ?>">
+														<?php echo word_limiter(strip_tags($row->title), 4).'...' ?></a></h2>
 													<ul class="post-tags">
 														<!--  -->
 													</ul>
@@ -431,11 +431,13 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 
 							<!-- carousel box Nation -->
-							<?php if(!empty( $cArticle['0'])){ ?>
+							<?php if(!empty($cArticle['0'])){ ?>
 							<div class="carousel-box owl-wrapper">
 
 								<div class="title-section">
-									<h1><span class="green"><?php echo $cArticle['0']->title ?></span></h1>
+									<a href="<?php echo base_url().$this->urls->checkCat($cArticle['0']->title) ?>">
+										<h1><span class="green"><?php echo $cArticle['0']->title ?></span></h1>
+									</a>
 								</div>
 
 								
@@ -459,7 +461,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 																<ul class="post-tags">
 																	<!--  -->
-																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																	<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																</ul>
 															</div>
 														</div>
@@ -488,7 +490,9 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 									
 									<div class="row">
 									<div class="title-section">
+										<a href="<?php echo base_url().$this->urls->checkCat($cArticle['2']->title) ?>">
 										<h1><span class="green"><?php echo $cArticle['2']->title ?></span></h1>
+									</a>
 									</div>
 										<?php  foreach ($cArticle['2']->data as $key => $carow) { if($key < 2){ 
 											$cat = $this->urls->checkCat($cArticle['2']->title);
@@ -507,7 +511,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 																<ul class="post-tags">
 																	<!--  -->
-																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																	<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																</ul>
 															</div>
 														</div>
@@ -547,7 +551,9 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="carousel-box owl-wrapper">
 
                                 <div class="title-section">
+                                	<a href="<?php echo base_url().$this->urls->checkCat($cArticle['1']->title) ?>">
                                     <h1><span class="orange"><?php echo $cArticle['1']->title ?></span></h1>
+                                </a>
                                 </div>
                                 <ul class="list-posts column-2">
 									<?php  foreach ($cArticle['1']->data as $key => $row) { 
@@ -589,10 +595,11 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										<div class="col-md-6">
 
 											<div class="title-section">
-												<h1><span class="blue"><?php echo  $category->title ?></span></h1>
+												<a href="<?php echo base_url().$this->urls->checkCat($category->title) ?>">
+												<h1><span class="blue"><?php echo  $category->title ?></span></h1></a>
 											</div>
 											<?php foreach ($category->data as $skey => $drow) { 
-												$cat = $this->urls->checkCat($cArticle['1']->title);
+												$cat = $this->urls->checkCat($category->title);
 												?>
 												<ul class="list-posts">
 													<li>
@@ -631,7 +638,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 								<div class="owl-carousel fvideo" data-num="3">
 
 								<?php foreach($fvideos as $key => $fvideo) { 
-									$cat = $this->urls->checkCat($cArticle['1']->title);
+									$cat = $this->urls->checkCat($fvideo->category);
 									?>
 									
 										<div class="item news-post standard-post">
@@ -642,7 +649,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 												</div>
 											</div>
 											<div class="post-content">
-											<h2><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 58) ? substr(strip_tags($fvideo->title),0,50).'...' : strip_tags($fvideo->title);  ?></a></h2>
+											<h2><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$fvideo->slug) ?>"><?php echo word_limiter(strip_tags($fvideo->title), 4).'...' ?></a></h2>
 												<!-- <ul class="post-tags">
 													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 													<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
@@ -657,26 +664,31 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							</div>
                             <!-- End carousel box -->
                             
-                            <!-- <section class="features-today">
+                             <section class="features-today">
                                 <div class="">
 
                                     <div class="title-section">
-                                        <h1><span>Photo gallery</span></h1>
+                                        <h1><span>ಫೋಟೋ ಗ್ಯಾಲರಿ</span></h1>
                                     </div>
 
                                     <div class="features-today-box owl-wrapper gallery-slide">
                                         <div class="owl-carousel" data-num="3">
-                                        <?php foreach ($gallery as $key => $image) {?>
+                                        <?php foreach ($gallery as $key => $image) {
+
+                                        	$cat = $this->urls->checkCat($image->category);
+
+                                        	?>
 											
                                             <div class="item news-post standard-post">
                                                 <div class="post-gallery">
-													<a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
+													<a href="<?php echo base_url('photogallery/').strtolower($cat.'/'.$image->slug) ?>">
                                                     	<img src="<?php echo $image->image->image ?>" alt="">
 													</a>
-                                                    <a class="category-post world" href="<?php echo base_url().strtolower($image->category) ?>"><?php echo $image->category ?></a>
+                                                    <a class="category-post world" href="<?php echo base_url('photogallery/').strtolower($cat.'/'.$image->slug) ?>"><?php echo $image->category ?></a>
                                                 </div>
                                                 <div class="post-content">
-                                                    <h2><a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></h2>
+                                                    <h2><a href="<?php echo base_url('photogallery/').strtolower($cat.'/'.$image->slug) ?>">
+                                                    	<?php echo word_limiter(strip_tags($image->title), 4).'...' ?></a></h2>
                                                 </div>
                                             </div>
 										<?php } ?>
@@ -684,7 +696,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                                     </div>
 
                                 </div>
-                            </section> -->
+                            </section> 
 
 						</div>
 						<!-- End block content -->
@@ -702,22 +714,22 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 								</div>
 								<ul class="social-share">
 									<li>
-										<a href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour" class="facebook"><i class="fa fa-facebook"></i></a>
+										<a href="https://www.facebook.com/mahonnathikannada/" class="facebook"><i class="fa fa-facebook"></i></a>
 										<span class="number">Facebook</span>
 										<!-- <span>Facebook</span> -->
 									</li>
 									<li>
-										<a href="https://twitter.com/Mahonnathii" class="twitter"><i class="fa fa-twitter"></i></a>
+										<a href="https://twitter.com/mahonnathikan" class="twitter"><i class="fa fa-twitter"></i></a>
 										<span class="number">Twitter</span>
 										<!-- <span>Twitter</span> -->
 									</li>
 									<li>
-										<a href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
+										<a href="https://www.youtube.com/channel/UC00fs8iYCCtN9TlyEw_8JCg" class="google"><i class="fa fa-youtube"></i></a>
 										<span class="number">YouTube</span>
 										<!-- <span>YouTube</span> -->
 									</li>
 									<li>
-										<a href="https://www.instagram.com/mahonnathii/" class="rss"><i class="fa fa-instagram"></i></a>
+										<a href="https://www.instagram.com/mahonnathikannada/" class="rss"><i class="fa fa-instagram"></i></a>
 										<span class="number">Instagram</span>
 										<!-- <span>Instagram</span> -->
 									</li>
@@ -735,26 +747,28 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 											<?php foreach ($temple as $key => $tprow) { 
 												
 												if(empty($tprow->category)){
-													$urllink = $this->urls->urlFormat($tprow->slug);
+													$urllink = $this->urls->urlFormat((!empty($tprow->slug))?$tprow->slug:'');
 												}else{
 													$cat = $this->urls->checkCat($tprow->category);
 													$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$tprow->slug);
 												}
 												(!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
+												(!empty($tprow->image)? $timh = $tprow->image : $timh = '' ) ;
 											?>
 											<li class="temple-to-visit">
 												<a href="<?php echo $urllink ?>">
 													<div class="news-post image-post2">
 														<div class="post-gallery">
 															<div class="verticle">
-															<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$tprow->image ?>" alt=""></a>
+															<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$timh ?>" alt=""></a>
 															</div>
 															<div class="hover-box">
 																<div class="inner-hover">
-																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
+																	<h2><a href="<?php echo $urllink ?>">
+																		<?php echo word_limiter(strip_tags($tprow->title), 4).'...' ?></a></h2>
 																	<ul class="post-tags">
 																		<!--  -->
-																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																		<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																	</ul>
 																</div>
 															</div>
@@ -798,7 +812,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="widget tab-posts-widget">
 
 								<div class="title-section">
-									<h1><span>POPULAR</span></h1>
+									<h1><span>ಪಾಪ್ಯುಲರ್</span></h1>
 								</div>
 
 								<div class="tab-content">
@@ -822,7 +836,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 													<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>"></a>
 													</div>
 													<div class="post-content">
-														<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($prow->title)) > 43) ? substr(strip_tags($prow->title),0,40).'...' : strip_tags($prow->title); ?></a></h2>
+														<h2><a href="<?php echo $urllink ?>">
+															<?php echo word_limiter(strip_tags($prow->title), 4).'...' ?></a></h2>
 													</div>
 												</li>
 											<?php } }?>
@@ -834,7 +849,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
-									<h1>Subscribe to RSS Feeds</h1>
+									<h1>ಸಬ್ ಸ್ರೈಬ್ ಆಗಿ</h1>
 									<input type="text" required name="sumbscribe" id="subscribe" placeholder="Email">
 									<button id="submit-subscribe">
 										<i class="fa fa-arrow-circle-right"></i>
@@ -845,7 +860,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 							<div class="widget hcate categories-widget">
 								<div class="title-section">
-									<h1><span>Categories</span></h1>
+									<h1><span>ಕ್ಯಾಟಗರೀಸ್</span></h1>
 								</div>
 								<ul class="category-list">
 								<?php if(!empty(categories())){ foreach(categories() as $key => $value) { 

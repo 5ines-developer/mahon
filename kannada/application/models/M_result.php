@@ -227,6 +227,26 @@ class M_result extends CI_Model {
         return $query;
     }
 
+    public function allVideos($value='')
+    {
+        // $this->db->group_by('mhv.title');
+        $query = $this->db->from('mh_videos mhv')
+            ->where('mhv.status', 1)
+            ->where('mhv.schedule <=', date('Y-m-d H:i:s'))
+            ->select('mhv.id, mhv.title, mhv.slug, mhv.content, mhv.tumb,  mhv.created_by, mhv.created_on, mhv.tags, mhv.url,mhv.type,mhv.vtype,c.title as category, 
+            f.pageid as fid, f.title as ftitle, f.site_name as fsite_name, f.url as furl, f.descr as fdes,
+            t.card as tcard, t.title as ttitle, t.site_name as tsite_name, t.url as turl, t.descr as tdes, 
+            pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes')
+            ->order_by('mhv.id', 'DESC')
+            ->join('mh_category c', 'c.id = mhv.category', 'left')
+            ->join('mh_video_post_fb f', 'f.postid = mhv.id', 'left')
+            ->join('mh_video_twitter t', 't.post_id = mhv.id', 'left')
+            ->join('mh_video_post_page pg', 'pg.post_id = mhv.id')
+            ->get();
+            return $query->result();
+
+    }
+
 
     
 }

@@ -47,6 +47,7 @@
 }
 .auther-image img{max-width:100% !important; border-radius:0px !important}
 	</style>
+	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 
@@ -94,8 +95,8 @@
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i><?php echo $post->created_on ?></li>
 											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
-											<li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
-											<li><i class="fa fa-eye"></i>872</li>
+											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li> -->
+											<!-- <li><i class="fa fa-eye"></i>872</li> -->
 										</ul>
 									</div>
 
@@ -239,8 +240,8 @@
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i><?php echo $post->created_on ?></li>
 											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
-											<li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
-											<li><i class="fa fa-eye"></i>872</li>
+											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li> -->
+											<!-- <li><i class="fa fa-eye"></i>872</li> -->
 										</ul>
 									</div>
 
@@ -355,7 +356,7 @@
 																	<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($tprow->title)) > 43) ? substr(strip_tags($tprow->title),0,40).'...' : strip_tags($tprow->title); ?></a></h2>
 																	<ul class="post-tags">
 																		<!--  -->
-																		<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																		<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
 																	</ul>
 																</div>
 															</div>
