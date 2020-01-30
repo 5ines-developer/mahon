@@ -404,6 +404,10 @@
                     slidesToShow: 3,
                     slidesToScroll: 1,
                     arrows: true,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    nextArrow: '<span class="next"><i class="fas fa-caret-right photo-rr-dm"></i></span>',
+                    prevArrow: '<span class="prev"><i class="fas fa-caret-left photo-ll-dm"></i></span>',
                     responsive: [{
                         breakpoint: 1024,
                         settings: {

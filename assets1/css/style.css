@@ -583,6 +583,34 @@ html {
     font-size: 13px
 }
 
+.photo-ll-dm {
+    background: green;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    top: -45px;
+    left: 245px;
+    font-size: 13px;
+}
+
+.photo-rr-dm {
+    background: green;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    top: -45px;
+    left: 279px;
+    font-size: 13px
+}
+
 .slick-dots li button {
     font-size: 0;
     line-height: 0;
@@ -713,7 +741,7 @@ html {
     font-size: 15px;
     color: black;
     margin: 0;
-    padding: 7px 0px;
+    padding: 11px 0px;
 }
 
 .dis-video {
@@ -743,10 +771,13 @@ html {
     overflow-x: auto;
     height: 300px;} */
 
-.dis-video img {
+.video-img img {
+    width: 100%;
+}
+
+.video-img {
     overflow: hidden;
     height: 170px;
-    width: 100%;
 }
 
 .iframe-he {
