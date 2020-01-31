@@ -41,7 +41,7 @@
     <header id="myHeader">
         <nav class="nav-mahonathi nav-is">
             <div class="nav-wrapper tab-head">
-                <a href="<?php echo base_url().$this->uri->segment(1) ?>" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-arrow-left"></i><span><?php echo ucwords($this->urls->urlDformat($this->uri->segment(1))) ?></span></a>
+                <a href="<?php echo base_url().$this->uri->segment(1) ?>" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-arrow-left"></i><span><?php echo $post->kannada; ?></span></a>
                 <div class="Share-detail">
                     <ul>
                         <li><i class="fas fa-comment-alt"></i><sup>4</sup>
@@ -96,7 +96,7 @@
         <div class="row">
             <div class="col l12 s12">
                     <div class="spr-ne">
-            <h5>Related Posts</h5>
+            <h5>ಸಂಬಂಧಿತ ಪೋಸ್ಟ್‌ಗಳು</h5>
             <div class="line-bor"></div>
             <?php if(!empty($related)): ?>
             <div class="sponser">
@@ -118,8 +118,7 @@
                         <div class="col  m8 s8">
                             <div class="para-cont">
                                 <p><a class="black-text" href="<?php echo  $post->slug ?>"><?php echo $ftitle ?></a></p>
-                                <p class="para-par"> <?php echo $fcontent ?>
-                                </p>
+                                <?php echo (!empty($fcontent))?'<p class="para-par">'.$fcontent.'</p>':''; ?>  
                             </div>
                         </div>
                         <div class="col m4 s4">

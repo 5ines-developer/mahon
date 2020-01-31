@@ -49,8 +49,7 @@
                                     <div class="col  m8 s8">
                                         <div class="para-cont">
                                         <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  $ftitle ?></a></p>
-                                        <p class="para-par"> <?php echo  $fcontent ?>
-                                        </p>   
+                                        <?php echo (!empty($fcontent))?'<p class="para-par">'.$fcontent.'</p>':''; ?>   
                                     </div>
                                     </div>
                                     <div class="col m4 s4">

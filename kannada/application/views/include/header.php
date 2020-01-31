@@ -143,14 +143,22 @@
 									</ul>
 								</li> -->
 								<li><a  href="<?php echo base_url() ?>">ಮುಖಪುಟ</a> </li>
-								<?php 
+								<?php  $vd = '';
+								$kn='';
 								if(!empty(categories())){
-									foreach(categories() as $key => $value) { 
-										if($value->menu == 1){
-											$rurl = $this->urls->urlFormat(base_url().$value->title)
-								?>
+								foreach(categories() as $key => $value) {
+ 								if($value->title == 'Video'){$vd = '1'; }
+								if($value->menu == 1 && $value->title != 'Video'){
+								$rurl = $this->urls->urlFormat(base_url().$value->title) ?>
 									<li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->kannada ?></a> </li>
-								<?php } } }?>	
+								<?php }
+								if($value->title == 'Video'){ 
+									$kn = $value->kannada;
+									$rurl1 = $this->urls->urlFormat(base_url().$value->title);
+								 } } }  if (!empty($vd)) { ?>
+								 	<li><a class="world" href="<?php echo $rurl1 ?>"><?php echo $kn ?></a> </li>
+								<?php } ?>
+
 
                             </ul>
                             <ul class="navbar-form nav navbar-nav navbar-right">

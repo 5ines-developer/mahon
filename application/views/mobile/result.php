@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="col m4 s4">
                                         <div class="img-pa img-i">
-                                            <a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>">
+                                            <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>">
                                             <img src="<?php echo base_url().$posts->image ?>" class="img-responsive img-res"  alt="">
                                         </a>
                                         </div>

@@ -45,6 +45,13 @@
         }else{
             $urllink = $this->urls->urlFormat(base_url().$banner[0]->category.'/'.$banner[0]->slug);
         }
+
+        if(strlen(strip_tags($banner[0]->title)) > 83){
+            $ftitle = character_limiter(strip_tags($banner[0]->title), 80).'...'; 
+        }else{
+            $ftitle = strip_tags($banner[0]->title);
+        }
+
         ?>
     <section class="sec-tt sec-fe">
         <div class="row m0">
@@ -53,7 +60,7 @@
                     <img src="<?php echo base_url().$banner[0]->image ?>" class="img-responsive" alt="">
                 </div>
                 <div class="banner-content">
-                    <h6><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[0]->title)) > 43) ? substr(strip_tags($banner[0]->title),0,40).'...' : strip_tags($banner[0]->title); ?></a></h6>
+                    <h6><a class="black-text" href="<?php echo $urllink ?>"><?php echo  $ftitle; ?></a></h6>
                 </div>
             </div>
         </div>
@@ -65,7 +72,7 @@
             <div class="row">
                 <div class="col l12 s12">
                     <div class="spr-ne">
-                        <h5>Today's Featured</h5>
+                        <h5>ಇಂದಿನ‌ ಸುದ್ದಿಗಳು</h5>
                         <div class="line-bor"></div>
                         <?php if(!empty($fetured[0])){
                            
@@ -76,13 +83,13 @@
                             }   
 
 
-                            if(strlen(strip_tags($fetured[0]->title)) > 83){
-                                $ftitle = strip_tags($fetured[0]->title);
+                            if(strlen(strip_tags($fetured[0]->title)) > 53){
+                                $ftitle = character_limiter(strip_tags($fetured[0]->title), 50).'...'; 
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($fetured[0]->title);
                                 if (!empty($fetured[0]->content)) {
-                                    $fcontent = substr(strip_tags($fetured[0]->content),0,50).'...';
+                                    $fcontent = character_limiter(strip_tags($fetured[0]->content), 50).'...'; 
                                 }else{
                                     $fcontent = '';
                                 }
@@ -94,8 +101,7 @@
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
                                         <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo $ftitle ?></a></p>
-                                        <p class="para-par"> <?php echo $fcontent ?>
-                                        </p>
+                                        <?php echo (!empty($fcontent))?'<p class="para-par">'.$fcontent.'</p>':''; ?>
                                     </div>
                                 </div>
                                 <div class="col m4 s4">
@@ -117,18 +123,18 @@
                                 $urllink = $this->urls->urlFormat(base_url().$row->category.'/'.$row->slug);
                             }
 
-                            if(strlen(strip_tags($row->title)) > 83){
-                                $ftitle = strip_tags($row->title);
+                            if(strlen(strip_tags($row->title)) > 53){
+                                $ftitle = character_limiter(strip_tags($row->title), 50).'...'; 
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($row->title);
-
                                 if (!empty($row->content)) {
-                                    $fcontent = substr(strip_tags($row->content),0,50).'...';
+                                    $fcontent = character_limiter(strip_tags($row->content), 50).'...';
                                 }else{
                                     $fcontent = '';
                                 }
                             }
+
 
 
                             ?>
@@ -140,8 +146,7 @@
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
                                         <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo $ftitle ?></a></p>
-                                        <p class="para-par"> <?php echo $fcontent ?>
-                                        </p>
+                                        <?php echo (!empty($fcontent))?'<p class="para-par">'.$fcontent.'</p>':''; ?>
                                     </div>
                                 </div>
                                 <div class="col m4 s4">
@@ -176,12 +181,19 @@
                 </div>
             </div> -->
             <div class="title-tra">
-                <h6><i class="fas fa-video"></i> VIDEO</h6>
+                <h6><i class="fas fa-video"></i> ವೀಡಿಯೊ</h6>
                 <!-- <p> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.massa quis enim. Donec pede justo.
                 </p> -->
             </div>
             <div class="video-pass">
-                <?php foreach($fvideos as $key => $fvideo) { ?>
+                <?php foreach($fvideos as $key => $fvideo) { 
+                    if(strlen(strip_tags($fvideo->title)) > 53){
+                        $ftitle = character_limiter(strip_tags($fvideo->title), 50).'...'; 
+                    }else{
+                        $ftitle = strip_tags($fvideo->title);
+                    }
+
+                ?>
                 <div class="news-post standard-post">
                     <div class="post-gallery">
                         <a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>">
@@ -192,14 +204,14 @@
                                     <i class="fa fa-play"></i>
                                 </div> -->
                             </div>
-                            <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 58) ? substr(strip_tags($fvideo->title),0,50).'...' : strip_tags($fvideo->title);  ?></a></p>
+                            <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo $ftitle;  ?></a></p>
                         </a>
                     </div>
                 </div>
                 <?php } ?>
             </div>
             <div class="line-end">
-                <a href="<?php echo base_url('video')?>">See all</a>
+                <a href="<?php echo base_url('video')?>">ಎಲ್ಲವನ್ನೂ ನೋಡಿ</a>
                 <span class="sbscrib">Subscribe Now</span>
                 <div class="sub-title" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 84px; height: 24px;"
                     id="___ytsubscribe_0">
@@ -216,7 +228,7 @@
             <div class="row">
                 <div class="col l12">
                     <div class="spr-ne spr-pp">
-                        <h5>TEMPLE TO VISIT</h5>
+                        <h5>ದೇಗುಲ ದರ್ಶನ</h5>
                         <?php foreach ($temple as $key => $tprow) { 
 
                             
@@ -227,13 +239,14 @@
                             }
                             (!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
 
-                            if(strlen(strip_tags($tprow->title)) > 83){
-                                $ftitle = strip_tags($tprow->title);
+
+                            if(strlen(strip_tags($tprow->title)) > 53){
+                                $ftitle = character_limiter(strip_tags($tprow->title), 50).'...';
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($tprow->title);
-                                if (!empty($tprow->content)) {
-                                    $fcontent = substr(strip_tags($tprow->content),0,50).'...';
+                                if (!empty($tprow->title)) {
+                                    $fcontent = character_limiter(strip_tags($tprow->content), 50).'...';
                                 }else{
                                     $fcontent = '';
                                 }
@@ -245,8 +258,7 @@
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
                                         <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  $ftitle; ?></a></p>
-                                        <p class="para-par"> <?php echo  $fcontent; ?>
-                                        </p>
+                                        <?php echo  (!empty($fcontent))?'<p class="para-par">'.$fcontent.'</p>':''; ?>
                                     </div>
                                 </div>
                                 <div class="col m4 s4">
@@ -273,10 +285,17 @@
     <section class="feature-box">
         <div class="row">
             <div class="title-tra">
-                <h6><i class="fas fa-video"></i> SHORT MOVIES</h6>
+                <h6><i class="fas fa-video"></i> ಕಿರುಚಿತ್ರ</h6>
             </div>
             <div class="video-pass">
-                <?php foreach ($videos as $key => $value) { ?>
+                <?php foreach ($videos as $key => $value) { 
+
+                if(strlen(strip_tags($value->title)) > 53){
+                    $ftitle = character_limiter(strip_tags($value->title), 50).'...';
+                }else{
+                    $ftitle = strip_tags($value->title);
+                }
+                ?>
                 <div class="news-post standard-post">
                     <div class="post-gallery">
                         <div class="rr-gallery rr-gal">
@@ -284,13 +303,13 @@
                             <a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 
                         </div>
-                        <p><?php echo (strlen(strip_tags($value->title)) > 53) ? substr(strip_tags($value->title),0,50).'...' : strip_tags($value->title);  ?></p>
+                        <p><?php echo $ftitle;  ?></p>
                     </div>
                 </div>
                 <?php } ?>
             </div>
             <div class="line-end">
-                <a href="<?php echo base_url('video')?>">See all</a> </div>
+                <a href="<?php echo base_url('video')?>">ಎಲ್ಲವನ್ನೂ ನೋಡಿ</a> </div>
         </div>
     </section>
     <?php } ?>
@@ -300,7 +319,7 @@
             <div class="row">
                 <div class="col l12">
                     <div class="spr-ne">
-                        <h5>TRENDING POSTS</h5>
+                        <h5>ಟ್ರೆಂಡಿಂಗ್ ಪೋಸ್ಟ್</h5>
                         <?php foreach ($trending as $key => $trow) {
                             if(empty($trow->category)){
                                 $urllink = $this->urls->urlFormat($trow->slug);
@@ -309,13 +328,14 @@
                             }
                             (!empty($trow->content)? $content = $trow->content : $content = '' ) ;
 
-                            if(strlen(strip_tags($trow->title)) > 83){
-                                $ftitle = strip_tags($trow->title);
+
+                            if(strlen(strip_tags($trow->title)) > 53){
+                                $ftitle = character_limiter(strip_tags($trow->title), 50).'...';
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($trow->title);
-                                if (!empty($trow->content)) {
-                                    $fcontent = substr(strip_tags($trow->content),0,50).'...';
+                                if (!empty($trow->title)) {
+                                    $fcontent = character_limiter(strip_tags($trow->content), 50).'...';
                                 }else{
                                     $fcontent = '';
                                 }
@@ -327,8 +347,7 @@
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
                                         <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  $ftitle ?></a></p>
-                                        <p class="para-par"> <?php echo  $fcontent ?>
-                                        </p>
+                                        <?php echo (!empty($fcontent))?'<p class="para-par">'.$fcontent.'</p>':''; ?>
                                     </div>
                                 </div>
                                 <div class="col m4 s4">
@@ -349,24 +368,32 @@
 
         <div class="row">
             <div class="title-tra">
-                <h6>PHOTOS</h6>
+                <h6>ಫೋಟೋ ಗ್ಯಾಲರಿ</h6>
                 <!-- <p>Banner Detail he power of mind is indescribable & unimaginable. Mauris magna metus</p> -->
             </div>
             <div class="photo-pass">
-                <?php foreach ($gallery as $key => $image) {?>
+                <?php foreach ($gallery as $key => $image) {
+
+                    if(strlen(strip_tags($image->title)) > 53){
+                        $ftitle = character_limiter(strip_tags($image->title), 50).'...';
+                    }else{
+                        $ftitle = strip_tags($image->title);
+                        
+                    }
+                    ?>
                 <div class="photo-post standard-post">
                     <div class="post-gallery">
                         <div class="rr-gallery photo-gal">
                             <a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"> <img src="<?php echo $image->image->image ?>" class="img-responsive" alt=""> </a>
 
                         </div>
-                        <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></p>
+                        <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo $ftitle ?></a></p>
                     </div>
                 </div>
                 <?php } ?>
             </div>
             <div class="line-end">
-                <a>See all</a>
+                <a href="<?php echo base_url('photo-gallery/') ?>">ಎಲ್ಲವನ್ನೂ ನೋಡಿ</a>
             </div>
         </div>
         </div>
