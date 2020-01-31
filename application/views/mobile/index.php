@@ -450,7 +450,15 @@
                     speed: 300,
                     slidesToShow: 3,
                     slidesToScroll: 1,
+<<<<<<< HEAD
                     arrows: false,
+=======
+                    arrows: true,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    nextArrow: '<span class="next"><i class="fas fa-caret-right photo-rr-dm"></i></span>',
+                    prevArrow: '<span class="prev"><i class="fas fa-caret-left photo-ll-dm"></i></span>',
+>>>>>>> ba5d516c450a8ab5fa7577ebcc43143413dca5f0
                     responsive: [{
                         breakpoint: 1024,
                         settings: {
