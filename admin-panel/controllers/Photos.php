@@ -182,6 +182,17 @@ class Photos extends CI_Controller {
         }
         redirect('photos','refresh');
     }
+
+
+    public function album($value='')
+    {
+        $data['title'] = 'Photo Album | Mahonnathi';
+        $this->load->model('m_videos');
+        $data['category']   = $this->m_videos->getCategory();
+        $data['author']     = $this->m_videos->getauthor();
+        $data['gallery']    = $this->m_photo->getAlbum();
+        $this->load->view('pages/photo', $data, FALSE);
+    }
 }
 
 /* End of file Photos.php */

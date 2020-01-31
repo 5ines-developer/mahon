@@ -79,10 +79,16 @@
                  <div class="row m0">
                     <h6 class="m-title col">Add Category</h6>
                      <div class="input-field col s12">
-                       <input type="text" id="category" name="category" placeholder="" class="validate" autofocus required value="">
-                       <label for="category" class="active">Title <span class="red-text">*</span></label>
+                       <input type="text" id="title" name="title" placeholder="" class="validate" autofocus required value="">
+                       <label for="title" class="active">Title <span class="red-text">*</span></label>
                        <input type="hidden" id="ctid" name="ctid">
                      </div>
+
+                     <div class="input-field col s12">
+                       <input type="text" id="category" name="category" placeholder="" class="validate" autofocus required value="">
+                       <label for="category" class="active">English Word <span class="red-text">*</span></label>
+                     </div>
+
                      <div class="col s12">
                          <p>
                            <label>
@@ -189,7 +195,8 @@
                     data: {id : id},
                     dataType: "json",
                     success: function (response) {
-                        $('#category').val(response.title);
+                        $('#title').val(response.title);
+                        $('#category').val(response.category);
                         $('#ctid').val(response.id);
                         if(response.index == 1){
                            $('input[name=home]').attr('checked', 'checked');   
@@ -211,6 +218,7 @@
             $(document).on('submit', '#category_form', function(event){  
                 event.preventDefault();  
                 var name = $('#category').val();  
+                var title = $('#title').val();  
                 var id = $('#ctid').val(); 
                 if(id != ''){
                     var closestd =  $('#'+id).closest('tr').find('td');
@@ -227,7 +235,7 @@
                          var instances = M.Modal.init(document.querySelectorAll('.modal'));
                          instances[0].close();  
                          $('body').css("overflow-y" , "auto");
-                         closestd.eq(1).text(name)
+                         closestd.eq(1).text(title)
                       }  
                     }); 
                 }else{

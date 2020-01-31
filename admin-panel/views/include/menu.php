@@ -18,6 +18,9 @@
             <li class="divider" tabindex="-1"></li>
                 <li class="<?php echo $this->uri->segment(1) == 'video-article'?'active':''?>"> <a href="<?php echo base_url('video-article') ?>"><i class="fas fa-video li-icon"></i>Video Article</a></li>
                 <li class="<?php echo $this->uri->segment(1) == 'photos'?'active':''?>"> <a href="<?php echo base_url('photos') ?>"><i class="far fa-images li-icon"></i>Photo Article</a></li>
+
+                <li class="<?php echo $this->uri->segment(1) == 'photo-album'?'active':''?>"> <a href="<?php echo base_url('photo-album') ?>"><i class="far fa-images li-icon"></i>Photo Album</a></li>
+
                 <li class="<?php echo $this->uri->segment(1) == 'events'?'active':''?>"> <a href="<?php echo base_url('events') ?>"><i class="far fa-calendar-alt li-icon"></i>Happening's</a></li>
                 <li class="<?php echo $this->uri->segment(1) == 'twitter'?'active':''?>"> <a href="<?php echo base_url('twitter') ?>"><i class="fab fa-twitter li-icon"></i>Twitter Post</a></li>
             <li class="divider" tabindex="-1"></li>

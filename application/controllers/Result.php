@@ -46,6 +46,11 @@ class result extends CI_Controller {
             }
         }
         else{
+
+            if ($category == 'video') {
+                $data['vid'] = $this->m_result->allVideos();
+            }
+
             $data['category'] = $category;
             if ($this->detect == 'mobile') {
                 $this->load->view('mobile/result', $data, FALSE);
@@ -86,7 +91,12 @@ class result extends CI_Controller {
         $data['photos'] = $this->m_result->GetGallery($slug);
         $data['breaking']   = $this->m_result->breaking();
         $data['title']  =   'Photos';
-        $this->load->view('site/photos', $data, FALSE);
+       
+        if ($this->detect == 'mobile') {
+            $this->load->view('mobile/photo-detail', $data, FALSE);
+        }else{
+            $this->load->view('site/photos', $data, FALSE);
+        }
         
     }
 
@@ -105,12 +115,23 @@ class result extends CI_Controller {
             $data['related']    =  $this->m_result->relatedVideo($category, $slug);
             $data['is_detail'] = TRUE;
             // $this->m_result->visitorCount($data['post']->id);
-            $this->load->view('site/video-detail', $data, FALSE);
+
+             if ($this->detect == 'mobile') {
+                $this->load->view('mobile/mobile-video-detail', $data, FALSE);
+            }else{
+                $this->load->view('site/video-detail', $data, FALSE);
+            }
         }
         else{
             $data['category'] = $category;
             $this->load->view('site/result', $data, FALSE);
         }
+    }
+
+    public function pgallery()
+    {
+        $data['gallery']    = $this->m_result->pgallery();
+        $this->load->view('mobile/photo', $data, FALSE);
     }
 }
 

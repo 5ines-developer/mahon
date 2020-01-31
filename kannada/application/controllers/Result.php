@@ -25,11 +25,10 @@ class result extends CI_Controller {
     */
     public function index($slug = null, $date = null, $auth = null)
     {
-        $this->load->library('urls');
-        $cat = $this->urls->urlDformat($this->uri->segment(1));
-        $category = $this->urls->catDecode($cat);
+        $category = $this->urls->urlDformat($this->uri->segment(1));
         $data['post'] = $this->m_result->getPosts($category, $slug, $date, $auth);
         $data['breaking']   = $this->m_result->breaking();
+
         $this->load->model('m_site');
         $data['temple']     = $this->m_site->temple();
         $data['trending']   = $this->m_site->trending();
@@ -47,11 +46,10 @@ class result extends CI_Controller {
             }
         }
         else{
-            
-            if ($cat == 'video') {
+
+            if ($category == 'video') {
                 $data['vid'] = $this->m_result->allVideos();
             }
-
 
             $data['category'] = $category;
             if ($this->detect == 'mobile') {
@@ -90,17 +88,21 @@ class result extends CI_Controller {
         $data['trending']   = $this->m_site->trending();
         $data['videos']     = $this->m_site->videos();
         $data['popular']    = $this->m_site->popular();
-        $data['photos']     = $this->m_result->GetGallery($slug);
+        $data['photos'] = $this->m_result->GetGallery($slug);
         $data['breaking']   = $this->m_result->breaking();
         $data['title']  =   'Photos';
-        $this->load->view('site/photos', $data, FALSE);
+       
+        if ($this->detect == 'mobile') {
+            $this->load->view('mobile/photo-detail', $data, FALSE);
+        }else{
+            $this->load->view('site/photos', $data, FALSE);
+        }
         
     }
 
     // Video single result
     public function videos($category = null, $slug = null)
     {
-        $category = $this->urls->catDecode($category);
         // $category = $this->urls->urlDformat($this->uri->segment(1));
         $data['post'] = $this->m_result->getVideo($category, $slug);
         $data['breaking']   = $this->m_result->breaking();
@@ -113,12 +115,8 @@ class result extends CI_Controller {
             $data['related']    =  $this->m_result->relatedVideo($category, $slug);
             $data['is_detail'] = TRUE;
             // $this->m_result->visitorCount($data['post']->id);
-            
+
              if ($this->detect == 'mobile') {
-                $data['videos']     = $this->m_site->videos($category, $slug);
-                echo "<pre>";
-            print_r ($data);
-            echo "</pre>";
                 $this->load->view('mobile/mobile-video-detail', $data, FALSE);
             }else{
                 $this->load->view('site/video-detail', $data, FALSE);
@@ -128,6 +126,12 @@ class result extends CI_Controller {
             $data['category'] = $category;
             $this->load->view('site/result', $data, FALSE);
         }
+    }
+
+    public function pgallery()
+    {
+        $data['gallery']    = $this->m_result->pgallery();
+        $this->load->view('mobile/photo', $data, FALSE);
     }
 }
 

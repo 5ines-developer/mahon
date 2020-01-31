@@ -27,7 +27,7 @@ class category extends CI_Controller {
         {  
              $sub_array = array();  
              $sub_array[] = $row->id;  
-             $sub_array[] = $row->title;  
+             $sub_array[] = $row->kannada;  
              $sub_array[] = date('d M, Y', strtotime($row->created_on)); 
              $sub_array[] = '
                  <a class="blue hoverable action-btn update-btn  modal-trigger" id="'.$row->id.'" href="#modal1"><i class="fas fa-edit "></i></a>
@@ -55,13 +55,15 @@ class category extends CI_Controller {
             $data = form_error('category');
             echo $data;
         }else{
-            $title  = $this->input->post('category');
             $nav = $this->input->post('nav');
             $home = $this->input->post('home');
+            $title = $this->input->post('title');
+            $english  = $this->input->post('category');
             $data   = array(
-                'title' => $title,
+                'title' => $english,
                 'menu' => (empty($nav))? '0' : $nav,
                 'index' => (empty($home))? '0' : $home,
+                'kannada' => $title,
             );
             if($this->m_category->add_category($data))
             {
@@ -91,10 +93,11 @@ class category extends CI_Controller {
         $id  = $this->input->post('id');
         if($row = $this->m_category->single_data($id))
         {
-            $output['title']  = $row->title;
-            $output['id']     = $row->id;
-            $output['index']  = $row->index;
-            $output['menu']   = $row->menu;
+            $output['title']    = $row->kannada;
+            $output['category'] = $row->title;
+            $output['id']       = $row->id;
+            $output['index']    = $row->index;
+            $output['menu']     = $row->menu;
             echo json_encode($output);
         }else{
             echo 'No data fond';
@@ -104,15 +107,21 @@ class category extends CI_Controller {
     // update
     public function update_category()
     {
-        $title  = $this->input->post('category');
-        $id  = $this->input->post('ctid');
-        $nav = $this->input->post('nav');
-        $home = $this->input->post('home');
-        $data   = array(
-            'title' => $title,
-            'menu' => (empty($nav))? '0' : $nav,
-            'index' => (empty($home))? '0' : $home,
-        );
+
+            $nav = $this->input->post('nav');
+            $home = $this->input->post('home');
+            $title = $this->input->post('title');
+            $english  = $this->input->post('category');
+            $id  = $this->input->post('ctid');
+            $data   = array(
+                'title' => $english,
+                'menu' => (empty($nav))? '0' : $nav,
+                'index' => (empty($home))? '0' : $home,
+                'kannada' => $title,
+            );
+
+
+        
         if($this->m_category->add_category($data, $id))
         {
             echo 'Category update successfully';

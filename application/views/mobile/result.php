@@ -32,12 +32,12 @@
                         <?php foreach ($post as $key => $posts) {
 
                             if(strlen(strip_tags($posts->title)) > 83){
-                                $ftitle = strip_tags($posts->title);
+                                $ftitle = character_limiter(strip_tags($posts->title), 80).'...';
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($posts->title);
                                 if (!empty($posts->content)) {
-                                    $fcontent = substr(strip_tags($posts->content),0,50).'...';
+                                    $fcontent = character_limiter(strip_tags($posts->content), 80).'...';
                                 }else{
                                     $fcontent = '';
                                 }
@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="col m4 s4">
                                         <div class="img-pa img-i">
-                                            <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>">
+                                            <a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>">
                                             <img src="<?php echo base_url().$posts->image ?>" class="img-responsive img-res"  alt="">
                                         </a>
                                         </div>
@@ -65,7 +65,45 @@
                         </div>
                         <?php } ?>
                     </div>
-                    <?php }else{ ?>
+                    <?php }else if(!empty($vid)){  ?>
+
+                        <div class="featured-vie">
+                            <h5>Featured Videos</h5>
+                        </div>
+
+                       <?php foreach ($vid as $key => $vids) {
+                        if($vids->vtype == 'featured'){ ?> 
+                        <div class="video-fet">
+                            <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>">
+                                <div class="dis-video">
+                                    <img src="<?php echo $vids->tumb ?>" class="img-responsive" alt="">
+                                    <h1><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></h1>
+                                    <div class="post-div">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    <?php } } ?>
+                        <div class="featured-vie">
+                            <h5>SHORT MOVIES</h5>
+                        </div>
+                    <?php foreach ($vid as $key => $vids) {
+                        if($vids->vtype == 'short'){ ?> 
+                        <div class="video-fet">
+                            <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>">
+                                <div class="dis-video">
+                                    <img src="<?php echo $vids->tumb ?>" class="img-responsive" alt="">
+                                    <h1><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></h1>
+                                    <div class="post-div">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    <?php } }  }else{ ?>
                         <div class="error-banner">
                             <h1>No Result <span>Found</span></h1>
                             <p>Oops! It looks like nothing was found at this search. Maybe try another search?</p>

@@ -30,7 +30,6 @@
                     <?php if(!empty($post)){?> 
                         <div class="spr-ne">
                         <?php foreach ($post as $key => $posts) {
-                            $cat = $this->urls->checkCat($posts->category);
 
                             if(strlen(strip_tags($posts->title)) > 83){
                                 $ftitle = character_limiter(strip_tags($posts->title), 80).'...';
@@ -45,18 +44,18 @@
                             }
                         ?>
                         <div class="sec-list">
-                            <a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>" class="black-text">
+                            <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="black-text">
                                 <div class="row">
                                     <div class="col  m8 s8">
                                         <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>"><?php echo  $ftitle ?></a></p>
+                                        <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  $ftitle ?></a></p>
                                         <p class="para-par"> <?php echo  $fcontent ?>
                                         </p>   
                                     </div>
                                     </div>
                                     <div class="col m4 s4">
                                         <div class="img-pa img-i">
-                                            <a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>">
+                                            <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>">
                                             <img src="<?php echo base_url().$posts->image ?>" class="img-responsive img-res"  alt="">
                                         </a>
                                         </div>
@@ -73,10 +72,9 @@
                         </div>
 
                        <?php foreach ($vid as $key => $vids) {
-                        $cat = $this->urls->checkCat($vids->category);
                         if($vids->vtype == 'featured'){ ?> 
                         <div class="video-fet">
-                            <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>">
+                            <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>">
                                 <div class="dis-video">
                                     <img src="<?php echo $vids->tumb ?>" class="img-responsive" alt="">
                                     <h1><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></h1>
@@ -92,10 +90,9 @@
                             <h5>SHORT MOVIES</h5>
                         </div>
                     <?php foreach ($vid as $key => $vids) {
-                        $cat = $this->urls->checkCat($vids->category);
                         if($vids->vtype == 'short'){ ?> 
                         <div class="video-fet">
-                            <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>">
+                            <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>">
                                 <div class="dis-video">
                                     <img src="<?php echo $vids->tumb ?>" class="img-responsive" alt="">
                                     <h1><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></h1>

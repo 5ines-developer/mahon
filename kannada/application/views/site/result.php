@@ -85,8 +85,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 												if(empty($tprow->category)){
 													$urllink = $this->urls->urlFormat((!empty($tprow->slug))?$tprow->slug:'');
 												}else{
-													$cat = $this->urls->checkCat($tprow->category);
-													$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$tprow->slug);
+													
+													$urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
 												}
 												(!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
 												$igm = (!empty($tprow->image))?$tprow->image:'';
@@ -149,15 +149,14 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										<h1><span>ಕಿರು ಚಿತ್ರ</span></h1>
 									</div>
 									<?php foreach ($videos as $key => $value) {
-										$cat = $this->urls->checkCat($value->category);
 										?>
 										<div>
 											<div class="news-post video-post">
-												<a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
-												<a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 												
 											</div>
-											<p><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><?php echo word_limiter(strip_tags($value->title), 3).'...' ?></a></p>
+											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo word_limiter(strip_tags($value->title), 3).'...' ?></a></p>
 										</div>
 									<?php } ?>
 								</div>
@@ -176,7 +175,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<!-- article box -->
 							<div class="article-box">
 								<div class="title-section">
-									<?php echo (!empty($category)? '<h1><span class="world">'.$category.'</span></h1>': '') ?>
+									<?php echo (!empty($post[0]->kannada)? '<h1><span class="world">'.$post[0]->kannada.'</span></h1>': '<h1><span class="world">ವೀಡಿಯೊ</span></h1>') ?>
 									<?php echo (!empty($mtitle)? '<h1><span class="world">'.$mtitle.'</span></h1>': '') ?>
 								</div>
 
@@ -190,12 +189,12 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                                             <div class="col-sm-6">
                                                 <div class="post-gallery c-post-gallery">
                                                     <img alt="" src="<?php echo base_url().$posts->image ?>">
-                                                    <a class="category-post world" href="#!"><?php echo $cat ?></a>
+                                                    <a class="category-post world" href="#!"><?php echo $posts->kannada ?></a>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="post-content">
-                                                    <h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>"><?php echo word_limiter(strip_tags($posts->title), 6).'...' ?></a></h2>
+                                                    <h2><a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo word_limiter(strip_tags($posts->title), 6).'...' ?></a></h2>
                                                     <ul class="post-tags">
                                                         <!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
                                                         <?php 
@@ -205,7 +204,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                                                         <!-- <li><i class="fa fa-eye"></i>872</li> -->
                                                     </ul>
                                                     <p><?php echo word_limiter(strip_tags($posts->content), 10).'...' ?></p>
-                                                    <a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$posts->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+                                                    <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,7 +215,6 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										<h1><span class="world">ಫೀಚರ್ಡ್ ವೀಡಿಯೊಗಳು</span></h1>
 										</div>';
                                 	foreach ($vid as $key => $vids) {
-                                    $cat = $this->urls->checkCat($vids->category); 
 
                                     if($vids->vtype == 'featured'){?>
                                 	<div class="news-post article-post">
@@ -224,12 +222,12 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                                             <div class="col-sm-6">
                                                 <div class="post-gallery c-post-gallery">
                                                     <img alt="" src="<?php echo $vids->tumb ?>">
-                                                    <a class="category-post world" href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>"><?php echo $cat ?></a>
+                                                    <a class="category-post world" href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>"><?php echo $vids->kannada ?></a>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="post-content">
-                                                    <h2><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>"><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></a></h2>
+                                                    <h2><a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>"><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></a></h2>
                                                     <ul class="post-tags">
                                                         <!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
                                                         <?php 
@@ -239,7 +237,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                                                         <!-- <li><i class="fa fa-eye"></i>872</li> -->
                                                     </ul>
                                                     <p><?php echo strip_tags($vids->content) ?></p>
-                                                    <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>View</a>
+                                                    <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>View</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -252,7 +250,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										</div>';
 
 										foreach ($vid as $key => $vids) {
-                                    $cat = $this->urls->checkCat($vids->category); 
+                                    
 
 										if($vids->vtype == 'short'){ ?>
 	                                	<div class="news-post article-post">
@@ -260,12 +258,12 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 	                                            <div class="col-sm-6">
 	                                                <div class="post-gallery c-post-gallery">
 	                                                    <img alt="" src="<?php echo $vids->tumb ?>">
-	                                                    <a class="category-post world" href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>"><?php echo $cat ?></a>
+	                                                    <a class="category-post world" href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>"><?php echo $vids->kannada ?></a>
 	                                                </div>
 	                                            </div>
 	                                            <div class="col-sm-6">
 	                                                <div class="post-content">
-	                                                    <h2><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>"><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></a></h2>
+	                                                    <h2><a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>"><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></a></h2>
 	                                                    <ul class="post-tags">
 	                                                        <!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
 	                                                        <?php 
@@ -275,7 +273,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 	                                                        <!-- <li><i class="fa fa-eye"></i>872</li> -->
 	                                                    </ul>
 	                                                    <p><?php echo strip_tags($vids->content) ?></p>
-	                                                    <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$vids->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>View</a>
+	                                                    <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>View</a>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -334,8 +332,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 											if(empty($trow->category)){
 												$urllink = $this->urls->urlFormat($trow->slug);
 											}else{
-												$cat = $this->urls->checkCat($trow->category);
-												$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$trow->slug);
+												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
 											}
 											(!empty($trow->content)? $content = $trow->content : $content = '' ) ;
 										?>

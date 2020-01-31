@@ -12,6 +12,12 @@ $route['preview/(:any)']        = 'result/preview/$1';     // Preview
 $route['videos/(:any)/(:any)']  = 'result/videos/$1/$2';
 $route['photogallery/(:any)/(:any)'] = 'result/photogallery/$1/$2';     // Preview 
 
+$route['photo-gallery']    = 'result/pgallery';
+
+
+
+
+
 
 // router database
 require_once (BASEPATH .'database/DB.php');

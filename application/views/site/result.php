@@ -201,14 +201,71 @@
                                         </div>
                                     </div>           
 
-                                <?php } }else{ ?>
-									<div class="error-banner">
-										<h1>No Result <span>Found</span></h1>
-										<p>Oops! It looks like nothing was found at this search. Maybe try another search?</p>
-									</div>
+                                <?php } } else if(!empty($vid)){
+	                                	echo '<div class="title-section">
+										<h1><span class="world">Featured Videos</span></h1>
+										</div>';
+                                	foreach ($vid as $key => $vids) {
 
-								<?php } ?>	
-							</div>
+                                    if($vids->vtype == 'featured'){?>
+                                	<div class="news-post article-post">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="post-gallery c-post-gallery">
+                                                    <img alt="" src="<?php echo $vids->tumb ?>">
+                                                    <a class="category-post world" href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>"><?php echo $vids->category ?></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="post-content">
+                                                    <h2><a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>"><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></a></h2>
+                                                    <ul class="post-tags">
+                                                        <?php 
+                                                                echo (!empty($vids->created_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$vids->created_by .'</a></li>' : '' )
+                                                        ?>
+                                                    </ul>
+                                                    <p><?php echo strip_tags($vids->content) ?></p>
+                                                    <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <?php } }
+
+                                		echo '<div class="title-section">
+										<h1><span class="world">SHORT MOVIES</span></h1>
+										</div>';
+										foreach ($vid as $key => $vids) {
+											if($vids->vtype == 'short'){ ?>
+												<div class="news-post article-post">
+	                                        <div class="row">
+	                                            <div class="col-sm-6">
+	                                                <div class="post-gallery c-post-gallery">
+	                                                    <img alt="" src="<?php echo $vids->tumb ?>">
+	                                                    <a class="category-post world" href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>"><?php echo $vids->category ?></a>
+	                                                </div>
+	                                            </div>
+	                                            <div class="col-sm-6">
+	                                                <div class="post-content">
+	                                                    <h2><a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>"><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></a></h2>
+	                                                    <ul class="post-tags">
+	                                                        <!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
+	                                                        <?php 
+	                                                                echo (!empty($vids->created_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$vids->created_by .'</a></li>' : '' )
+	                                                        ?>
+	                                                        <!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
+	                                                        <!-- <li><i class="fa fa-eye"></i>872</li> -->
+	                                                    </ul>
+	                                                    <p><?php echo strip_tags($vids->content) ?></p>
+	                                                    <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>View</a>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+
+										 <?php	} } } ?> 
+								</div>
 							<!-- End article box -->
 
 							<!-- google addsense -->

@@ -43,7 +43,7 @@
     <header id="myHeader">
         <nav class="nav-mahonathi nav-is">
             <div class="nav-wrapper tab-head">
-                <a href="<?php echo base_url().$this->uri->segment(1) ?>" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-arrow-left"></i><span><?php echo ucwords($this->urls->urlDformat($this->uri->segment(1))) ?></span></a>
+                <a href="<?php echo base_url('photo-gallery') ?>" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-arrow-left"></i><span><?php echo ucwords($this->urls->urlDformat($this->uri->segment(1))) ?></span></a>
                 <div class="Share-detail">
                     <ul>
                         <li><i class="fas fa-comment-alt"></i><sup>4</sup>
@@ -61,29 +61,26 @@
         <div class="container-fluide">
             <div class="row">
                 <div class="col l12 s12 m12">
+                    <?php if(!empty($photos))   { ?>
                     <div class="video-detial-mobile">
-                        <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
-                        <h6>Original Pictures of Swami Vivekananda</h6>
+                        <h6><?php echo $photos->title ?></h6>
                         <div class="share-post-box">
                             <ul class="share-box">
                                 <li><i class="fa fa-share-alt sha"></i><span>Share Post</span></li>
-                                <li><a class="facebook" href="" target="_blank"><i class="fab fa-facebook-f fb"></i></a></li>
-                                <li><a class="twitter" href="" target="_blank"><i class="fab fa-twitter tw"></i></li>
-                                <li><a class="linkedin" href="" target="_blank"><i class="fab fa-linkedin-in li"></i></li>
+                                <li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $photos->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $photos->title ?>" target="_blank"><i class="fab fa-facebook-f fb"></i></a></li>
+                                <li><a class="twitter" href="http://twitter.com/home?url=<?php echo $photos->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fab fa-twitter tw"></i></a></li>
+                                <li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $photos->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fab fa-linkedin-in li"></i></a></li>
                             </ul>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                            eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                            pretium. Integer tincidunt.</p>
+                        <?php foreach ($photos->image as $key => $value) { ?>
                         <div class="img-pic">
-                        <img src="assets1/img/photo1.png" class="img-responsive" alt="">
-                        <p>with people</p>
+                            <img src="<?php echo  $value->image ?>" class="img-responsive" alt="">
+                            <p><?php echo  $value->title ?></p>
                         </div>
-                        <div class="img-pic">
-                        <img src="assets1/img/photo1.png" class="img-responsive" alt="">
-                        <p>with people</p>
-                        </div> 
+                        <?php } ?>
+                        
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

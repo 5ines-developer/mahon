@@ -45,7 +45,7 @@
                               <li>
                                  <div class="collapsible-header h4 col-btn">
                                     <span class="left">
-                                       <?php echo $value->title ?> 
+                                       <?php echo $value->kannada ?> 
                                     </span> 
                                        
                                        <!-- <a href="#!" class="right red-text  ">

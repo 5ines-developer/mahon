@@ -23,7 +23,7 @@ class m_site extends CI_Model {
     {
         $query =  $this->db
             ->where('status', 1)
-            ->select('title, id, menu, index')
+            ->select('title,kannada, id, menu, index')
             ->get('mh_category')
             ->result();
         foreach ($query as $key => $value) {
@@ -139,7 +139,7 @@ class m_site extends CI_Model {
         return  $this->db->where('index', 1)
         // ->order_by('created_on', 'DESC')
         ->where('status', 1)
-        ->select('title, id')
+        ->select('title, id,kannada')
         ->get('mh_category')
         ->result();
     }
@@ -163,7 +163,7 @@ class m_site extends CI_Model {
                 // ->where('p.status', 1)
                 ->where('p.schedule <=', date('Y-m-d H:i:s'))
                 ->where('p.status', 1)
-                ->select('p.id, p.title, p.slug,  p.image, c.title as category')
+                ->select('p.id, p.title, p.slug,  p.image,c.kannada, c.title as category')
                 ->order_by('p.id', 'RANDOM')
                 ->join('mh_category c', 'c.id = p.category', 'left')
                 ->limit(3)
@@ -211,12 +211,8 @@ class m_site extends CI_Model {
     }
 
     // Get videos
-    public function videos($slug='')
+    public function videos()
     {
-        echo "<pre>";
-        print_r ($slug);
-        echo "</pre>";
-        if(!empty($slug)){ $this->db->where('slug', $slug); }
         return $this->db->where('v.status', 1)
         ->where('v.schedule <=', date('Y-m-d H:i:s'))
         ->where('vtype', 'short')

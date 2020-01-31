@@ -21,14 +21,13 @@
         <div class="slider-mm">
             <div class="nav-content nav-menu" id="myDIV">
                 <ul class="tabs-transparent tabs-menu">
-                    <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">ಮುಖಪುಟ</a></li>
+                    <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">Home</a></li>
 
                     <?php 
                     if(!empty(categories())){
                         foreach(categories() as $key => $value) { 
                             if($value->menu == 1){
-                                $cat = $this->urls->checkCat($value->title);
-                                $rurl = $this->urls->urlFormat(base_url().$cat)
+                                $rurl = $this->urls->urlFormat(base_url().$value->title)
                     ?>
                         <li class="bt <?php if($this->uri->segment(1) == $this->urls->urlFormat($value->title)){ echo 'active'; }else{ echo 'no'; } ?>"><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>
                     <?php } } }?>

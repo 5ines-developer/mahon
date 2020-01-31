@@ -15,7 +15,7 @@
 												<img src="<?php echo base_url().$rand->image ?>" alt="">
 											</div>
 											<div class="post-content">
-												<a href="<?php echo base_url('news/').strtolower($rand->category) ?>"><?php echo $rand->category ?></a>
+												<a href="<?php echo base_url('news/').strtolower($rand->category) ?>"><?php echo $rand->kannada ?></a>
 												<h2><a href="<?php echo base_url('news/').strtolower($rand->category.'/'.$rand->slug) ?>"><?php echo $rand->title ?></a></h2>
 												<ul class="post-tags">
 													<!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
@@ -28,10 +28,10 @@
 						</div>
 						<div class="col-md-3">
 							<div class="widget categories-widget">
-								<h1>ಹಾಟ್ ಕ್ಯಾಟಗರೀಸ್</h1>
+								<h1>Hot Categories</h1>
 								<ul class="category-list">
 									<?php if(!empty(categories())){ foreach(categories() as $key => $value) { if($key <= 6){ ?>
-										<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->title ?> </a> </li>
+										<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->kannada ?> </a> </li>
 									<?php } } }?>
 								</ul>
 							</div>

@@ -44,10 +44,10 @@
 							<div class="col-md-9">
 								<ul class="top-line-list">
                                     <li class="language active">
-                                        <a href="<?php echo $this->config->item('web_url') ?>">English</a>
+                                        <a href="<?php echo base_url() ?>">English</a>
                                     </li>
                                     <li class="language">
-                                        <a href="<?php echo base_url() ?>">ಕನ್ನಡ</a>
+                                        <a href="<?php echo base_url('kannada') ?>">ಕನ್ನಡ</a>
                                     </li>
 									<!-- <li>
 										<span class="city-weather">London, United Kingdom</span>
@@ -108,7 +108,13 @@
 
 						<div class="advertisement navad">
 							<div class="desktop-advert">
-								<img src="<?php echo base_url() ?>assets/upload/addsense/468x60-white.jpg" alt="">
+								<!-- /21906498668/PG-TOP -->
+<div id='div-gpt-ad-1580129697409-0' style='width: 468px; height: 60px;'>
+  <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1580129697409-0'); });
+  </script>
+</div>
+								<!-- <img src="<?php echo base_url() ?>assets/upload/addsense/468x60-white.jpg" alt=""> -->
 							</div>
 							<div class="tablet-advert">
 								<img src="<?php echo base_url() ?>assets/upload/addsense/468x60-white.jpg" alt="">
@@ -141,17 +147,16 @@
 								if(!empty(categories())){
 									foreach(categories() as $key => $value) { 
 										if($value->menu == 1){
-											$cat = $this->urls->checkCat($value->title);
-											$rurl = $this->urls->urlFormat(base_url().$cat)
+											$rurl = $this->urls->urlFormat(base_url().$value->title)
 								?>
-									<li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>
+									<li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->kannada ?></a> </li>
 								<?php } } }?>	
 
                             </ul>
                             <ul class="navbar-form nav navbar-nav navbar-right">
                                 <li>
                                     <form class="" id="search-form" role="search" method="post">
-                                        <input type="text" id="search" name="search" placeholder="ಇಲ್ಲಿ ಹುಡುಕಿ" autofocus onfocus="convertToSlug(this.value)" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" value="<?php echo (!empty($mtitle)? $mtitle : '') ?>">
+                                        <input type="text" id="search" name="search" placeholder="Search here" autofocus onfocus="convertToSlug(this.value)" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" value="<?php echo (!empty($mtitle)? $mtitle : '') ?>">
                                         <button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
                                     </form>
                                 </li>

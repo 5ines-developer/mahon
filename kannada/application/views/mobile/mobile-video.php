@@ -44,8 +44,47 @@
 
                             </div>
                         </a>
+                        <a href="#">
+                            <div class="dis-video">
+                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
+                                <h1>"Lets Talk # with out Filter,"</h1>
+                                <div class="post-div">
+                                    <i class="fa fa-play"></i>
+                                </div>
+
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="dis-video">
+                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
+                                <h1>"Lets Talk # with out Filter,"</h1>
+                                <div class="post-div">
+                                    <i class="fa fa-play"></i>
+                                </div>
+
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="dis-video">
+                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
+                                <h1>"Lets Talk # with out Filter,"</h1>
+                                <div class="post-div">
+                                    <i class="fa fa-play"></i>
+                                </div>
+
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="dis-video">
+                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
+                                <h1>"Lets Talk # with out Filter,"</h1>
+                                <div class="post-div">
+                                    <i class="fa fa-play"></i>
+                                </div>
+
+                            </div>
+                        </a>
                     </div>
-                    
                 </div>
             </div>
         </div>

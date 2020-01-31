@@ -28,44 +28,21 @@
                         <h5>Photo gallery</h5>
                     </div>
                     <div class="video-fet">
-                        <a href="#">
+                        <?php 
+                        if(!empty($gallery)){
+                        foreach ($gallery as $key => $image) {?>
+                        <a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
                             <div class="dis-video">
-                                <img src="assets1/img/photo1.png" class="img-responsive" alt="">
-                                <h1>"Lets Talk # with out Filter,"</h1>
+                                <img src="<?php echo $image->image->image ?>" class="img-responsive" alt="">
+                                <h1><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></h1>
                             
                             </div>
                         </a>
-                        <a href="#">
-                            <div class="dis-video">
-                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
-                                <h1>"Lets Talk # with out Filter,"</h1>
-                     
-
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="dis-video">
-                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
-                                <h1>"Lets Talk # with out Filter,"</h1>
-                   
-
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="dis-video">
-                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
-                                <h1>"Lets Talk # with out Filter,"</h1>
-
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="dis-video">
-                                <img src="assets1/img/photo.jpg" class="img-responsive" alt="">
-                                <h1>"Lets Talk # with out Filter,"</h1>
-                
-
-                            </div>
-                        </a>
+                    <?php }}?>
+                        
+                        
+                        
+                        
                     </div>
                 </div>
             </div>

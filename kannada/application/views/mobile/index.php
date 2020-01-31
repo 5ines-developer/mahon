@@ -41,23 +41,10 @@
     <!-- <div data-role="page" id="home"> -->
     <?php if(!empty($banner[0])){ 
         if(empty($banner[0]->category)){
-             $urllink = $this->urls->urlFormat(!empty($banner[0]->slug)?$banner[0]->slug:'');
+            $urllink = $this->urls->urlFormat($banner[0]->slug);
         }else{
-            $cat = $this->urls->checkCat($banner[0]->category);
-            $urllink = $this->urls->urlFormat(base_url().$cat.'/'.$banner[0]->slug);
+            $urllink = $this->urls->urlFormat(base_url().$banner[0]->category.'/'.$banner[0]->slug);
         }
-
-            if(strlen(strip_tags($banner[0]->title)) > 53){
-                $ftitle = character_limiter(strip_tags($banner[0]->title), 50).'...';
-                $fcontent = '';
-            }else{
-                $ftitle = strip_tags($banner[0]->title);
-                if (!empty($banner[0]->content)) {
-                    $fcontent = character_limiter(strip_tags($banner[0]->content), 50).'...';
-                }else{
-                    $fcontent = '';
-                }
-            }
         ?>
     <section class="sec-tt sec-fe">
         <div class="row m0">
@@ -66,7 +53,7 @@
                     <img src="<?php echo base_url().$banner[0]->image ?>" class="img-responsive" alt="">
                 </div>
                 <div class="banner-content">
-                    <h6><a class="black-text" href="<?php echo $urllink ?>"><?php echo  $ftitle; ?></a></h6>
+                    <h6><a class="black-text" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($banner[0]->title)) > 43) ? substr(strip_tags($banner[0]->title),0,40).'...' : strip_tags($banner[0]->title); ?></a></h6>
                 </div>
             </div>
         </div>
@@ -78,31 +65,28 @@
             <div class="row">
                 <div class="col l12 s12">
                     <div class="spr-ne">
-                        <h5>ಇಂದಿನ‌ ಸುದ್ದಿಗಳು</h5>
+                        <h5>Today's Featured</h5>
                         <div class="line-bor"></div>
                         <?php if(!empty($fetured[0])){
                            
                             if(empty($fetured[0]->category)){
-                                $urllink = $this->urls->urlFormat(!empty($fetured[0]->slug)?$fetured[0]->slug:'');
+                                $urllink = $this->urls->urlFormat($fetured[0]->slug);
                             }else{
-                                $cat = $this->urls->checkCat($fetured[0]->category);
-                                $urllink = $this->urls->urlFormat(base_url().$cat.'/'.$fetured[0]->slug);
+                                $urllink = $this->urls->urlFormat(base_url().$fetured[0]->category.'/'.$fetured[0]->slug);
                             }   
 
-                            
 
-                            if(strlen(strip_tags($fetured[0]->title)) > 53){
-                                $ftitle = character_limiter(strip_tags($fetured[0]->title), 50).'...';
+                            if(strlen(strip_tags($fetured[0]->title)) > 83){
+                                $ftitle = strip_tags($fetured[0]->title);
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($fetured[0]->title);
                                 if (!empty($fetured[0]->content)) {
-                                    $fcontent = character_limiter(strip_tags($fetured[0]->content), 50).'...';
+                                    $fcontent = substr(strip_tags($fetured[0]->content),0,50).'...';
                                 }else{
                                     $fcontent = '';
                                 }
                             }
-
                         ?>
 
                         <div class="sec-list">
@@ -126,26 +110,21 @@
 
                         <?php } if(!empty($fetured)){
                             foreach ($fetured as $key => $row) { 
-
-                                
-
                             if(!empty($row->id) && $key > 0 ){
                             if(empty($row->category)){
-                                $urllink = $this->urls->urlFormat(!empty($row->slug)?$row->slug:'');
+                                $urllink = $this->urls->urlFormat($row->slug);
                             }else{
-                                $cat = $this->urls->checkCat($row->category);
-                                $urllink = $this->urls->urlFormat(base_url().$cat.'/'.$row->slug);
+                                $urllink = $this->urls->urlFormat(base_url().$row->category.'/'.$row->slug);
                             }
 
-
-                            if(strlen(strip_tags($row->title)) > 53){
-                            
-                                $ftitle = character_limiter(strip_tags($row->title), 50).'...';
+                            if(strlen(strip_tags($row->title)) > 83){
+                                $ftitle = strip_tags($row->title);
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($row->title);
+
                                 if (!empty($row->content)) {
-                                    $fcontent = character_limiter(strip_tags($row->content), 50).'...';
+                                    $fcontent = substr(strip_tags($row->content),0,50).'...';
                                 }else{
                                     $fcontent = '';
                                 }
@@ -202,35 +181,18 @@
                 </p> -->
             </div>
             <div class="video-pass">
-                <?php foreach($fvideos as $key => $fvideo) { 
-
-                    $cat = $this->urls->checkCat($fvideo->category);
-
-                    if(strlen(strip_tags($fvideo->title)) > 53){
-                        $ftitle = character_limiter(strip_tags($fvideo->title), 50).'...';
-                        $fcontent = '';
-                    }else{
-                        $ftitle = strip_tags($fvideo->title);
-                        if (!empty($fvideo->content)) {
-                            $fcontent = character_limiter(strip_tags($fvideo->content), 50).'...';
-                        }else{
-                            $fcontent = '';
-                        }
-                    }
-
-
-                ?>
+                <?php foreach($fvideos as $key => $fvideo) { ?>
                 <div class="news-post standard-post">
                     <div class="post-gallery">
-                        <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$fvideo->slug) ?>">
+                        <a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>">
                             <div class="rr-gallery rr-gal">
 
-                                <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$fvideo->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $fvideo->tumb ?>"></a>
+                                <a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $fvideo->tumb ?>"></a>
                                 <!-- <div class="post-div">
                                     <i class="fa fa-play"></i>
                                 </div> -->
                             </div>
-                            <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$cat.'/'.$fvideo->slug) ?>"><?php echo $ftitle;  ?></a></p>
+                            <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 58) ? substr(strip_tags($fvideo->title),0,50).'...' : strip_tags($fvideo->title);  ?></a></p>
                         </a>
                     </div>
                 </div>
@@ -254,26 +216,24 @@
             <div class="row">
                 <div class="col l12">
                     <div class="spr-ne spr-pp">
-                        <h5>ದೇಗುಲ ದರ್ಶನ</h5>
+                        <h5>TEMPLE TO VISIT</h5>
                         <?php foreach ($temple as $key => $tprow) { 
 
+                            
                             if(empty($tprow->category)){
-                                $urllink = $this->urls->urlFormat((!empty($tprow->slug))?$tprow->slug:'');
+                                $urllink = $this->urls->urlFormat($tprow->slug);
                             }else{
-                                $cat = $this->urls->checkCat($tprow->category);
-                                $urllink = $this->urls->urlFormat(base_url().$cat.'/'.$tprow->slug);
+                                $urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
                             }
-
                             (!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
 
-
-                            if(strlen(strip_tags($tprow->title)) > 53){
-                                $ftitle = character_limiter(strip_tags($tprow->title), 50).'...';
+                            if(strlen(strip_tags($tprow->title)) > 83){
+                                $ftitle = strip_tags($tprow->title);
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($tprow->title);
                                 if (!empty($tprow->content)) {
-                                    $fcontent = character_limiter(strip_tags($tprow->content), 50).'...';
+                                    $fcontent = substr(strip_tags($tprow->content),0,50).'...';
                                 }else{
                                     $fcontent = '';
                                 }
@@ -313,34 +273,18 @@
     <section class="feature-box">
         <div class="row">
             <div class="title-tra">
-                <h6><i class="fas fa-video"></i>ಕಿರುಚಿತ್ರ</h6>
+                <h6><i class="fas fa-video"></i> SHORT MOVIES</h6>
             </div>
             <div class="video-pass">
-                <?php foreach ($videos as $key => $value) {
-
-                $cat = $this->urls->checkCat($value->category); 
-
-                    if(strlen(strip_tags($value->title)) > 53){
-                        $ftitle = character_limiter(strip_tags($value->title), 50).'...';
-                        $fcontent = '';
-                    }else{
-                        $ftitle = strip_tags($value->title);
-                        if (!empty($value->content)) {
-                            $fcontent = character_limiter(strip_tags($value->content), 50).'...';
-                        }else{
-                            $fcontent = '';
-                        }
-                    }
-
-                ?>
+                <?php foreach ($videos as $key => $value) { ?>
                 <div class="news-post standard-post">
                     <div class="post-gallery">
                         <div class="rr-gallery rr-gal">
-                            <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $value->tumb ?>"></a>
-                            <a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+                            <a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $value->tumb ?>"></a>
+                            <a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 
                         </div>
-                        <p><?php echo $ftitle;  ?></p>
+                        <p><?php echo (strlen(strip_tags($value->title)) > 53) ? substr(strip_tags($value->title),0,50).'...' : strip_tags($value->title);  ?></p>
                     </div>
                 </div>
                 <?php } ?>
@@ -356,24 +300,22 @@
             <div class="row">
                 <div class="col l12">
                     <div class="spr-ne">
-                        <h5>ಟ್ರೆಂಡಿಂಗ್ ಪೋಸ್ಟ್</h5>
+                        <h5>TRENDING POSTS</h5>
                         <?php foreach ($trending as $key => $trow) {
                             if(empty($trow->category)){
                                 $urllink = $this->urls->urlFormat($trow->slug);
                             }else{
-                                $cat = $this->urls->checkCat($trow->category);
-                                $urllink = $this->urls->urlFormat(base_url().$cat.'/'.$trow->slug);
+                                $urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
                             }
                             (!empty($trow->content)? $content = $trow->content : $content = '' ) ;
 
-
-                            if(strlen(strip_tags($trow->title)) > 53){
-                                $ftitle = character_limiter(strip_tags($trow->title), 50).'...';
+                            if(strlen(strip_tags($trow->title)) > 83){
+                                $ftitle = strip_tags($trow->title);
                                 $fcontent = '';
                             }else{
                                 $ftitle = strip_tags($trow->title);
                                 if (!empty($trow->content)) {
-                                    $fcontent = character_limiter(strip_tags($trow->content), 50).'...';
+                                    $fcontent = substr(strip_tags($trow->content),0,50).'...';
                                 }else{
                                     $fcontent = '';
                                 }
@@ -407,33 +349,18 @@
 
         <div class="row">
             <div class="title-tra">
-                <h6>ಫೋಟೋ ಗ್ಯಾಲರಿ</h6>
+                <h6>PHOTOS</h6>
                 <!-- <p>Banner Detail he power of mind is indescribable & unimaginable. Mauris magna metus</p> -->
             </div>
             <div class="photo-pass">
-                <?php foreach ($gallery as $key => $image) {
-
-                    $cat = $this->urls->checkCat($image->category);
-
-                    if(strlen(strip_tags($image->title)) > 53){
-                                $ftitle = character_limiter(strip_tags($image->title), 50).'...';
-                                $fcontent = '';
-                            }else{
-                                $ftitle = strip_tags($image->title);
-                                if (!empty($image->content)) {
-                                    $fcontent = character_limiter(strip_tags($image->content), 50).'...';
-                                }else{
-                                    $fcontent = '';
-                                }
-                            }
-                ?>
+                <?php foreach ($gallery as $key => $image) {?>
                 <div class="photo-post standard-post">
                     <div class="post-gallery">
                         <div class="rr-gallery photo-gal">
-                            <a href="<?php echo base_url('photogallery/').strtolower($cat.'/'.$image->slug) ?>"> <img src="<?php echo $image->image->image ?>" class="img-responsive" alt=""> </a>
+                            <a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"> <img src="<?php echo $image->image->image ?>" class="img-responsive" alt=""> </a>
 
                         </div>
-                        <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($cat.'/'.$image->slug) ?>"><?php echo  $ftitle ?></a></p>
+                        <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></p>
                     </div>
                 </div>
                 <?php } ?>
@@ -465,6 +392,7 @@
     <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js">
 
         </script>
+
         <script>
             $(document).ready(function() {
                 $('.sidenav').sidenav();
@@ -498,7 +426,7 @@
 
                     }, {
 
-                        breakpoint: 550,
+                        breakpoint: 580,
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1,
@@ -547,7 +475,7 @@
 
                     }, {
 
-                        breakpoint: 550,
+                        breakpoint: 580,
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1,

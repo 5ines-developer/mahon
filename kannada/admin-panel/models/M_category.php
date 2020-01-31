@@ -7,8 +7,8 @@ class m_category extends CI_Model {
 
     public function make_query()
 	{
-		$select_column = array("id", "title", "created_on");  
-        $order_column = array("id", "title", "created_on", 'null'); 
+		$select_column = array("id", "title","kannada", "created_on");  
+        $order_column = array("id", "title", "kannada","created_on", 'null'); 
 
         $this->db->where('status', 1);
 		$this->db->select($select_column);

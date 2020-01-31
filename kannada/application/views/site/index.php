@@ -78,9 +78,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										if(empty($banner[1]->category)){
 											$urllink = $this->urls->urlFormat($banner[1]->slug);
 										}else{
-											$cat = $this->urls->checkCat($banner[1]->category);
 
-											$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$banner[1]->slug);
+											$urllink = $this->urls->urlFormat(base_url().$banner[1]->category.'/'.$banner[1]->slug);
 										}
 										(!empty($banner[1]->content)? $content = $banner[1]->content : $content = '' ) ;
 									?>
@@ -118,8 +117,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 											$urllink = $this->urls->urlFormat($banner[0]->slug);
 										}else{
 
-											$cat = $this->urls->checkCat($banner[0]->category);
-											$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$banner[0]->slug);
+											$urllink = $this->urls->urlFormat(base_url().$banner[0]->category.'/'.$banner[0]->slug);
 										}
 										(!empty($banner[0]->content)? $content = $banner[0]->content : $content = '' ) ;
 									?>
@@ -153,8 +151,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										if(empty($banner[3]->category)){
 											$urllink = $this->urls->urlFormat($banner[3]->slug);
 										}else{
-											$cat = $this->urls->checkCat($banner[3]->category);
-											$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$banner[3]->slug);
+											$urllink = $this->urls->urlFormat(base_url().$banner[3]->category.'/'.$banner[3]->slug);
 										}
 										 (!empty($banner[3]->content)? $content = $banner[3]->content : $content = '' ) ;
 									?>
@@ -186,8 +183,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										if(empty($banner[2]->category)){
 											$urllink = $this->urls->urlFormat($banner[2]->slug);
 										}else{
-											$cat = $this->urls->checkCat($banner[2]->category);
-											$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$banner[2]->slug);
+											$urllink = $this->urls->urlFormat(base_url().$banner[2]->category.'/'.$banner[2]->slug);
 										}
 										 (!empty($banner[2]->content)? $content = $banner[2]->content : $content = '' ) ;
 									?>
@@ -220,8 +216,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 											$urllink = $this->urls->urlFormat($banner[4]->slug);
 										}else{
 
-											$cat = $this->urls->checkCat($banner[4]->category);
-											$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$banner[4]->slug);
+											$urllink = $this->urls->urlFormat(base_url().$banner[4]->category.'/'.$banner[4]->slug);
 										}
 										 (!empty($banner[4]->content)? $content = $banner[4]->content : $content = '' ) ;
 									?>
@@ -293,8 +288,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 											if(empty($trow->category)){
 												$urllink = $this->urls->urlFormat($trow->slug);
 											}else{
-												$cat = $this->urls->checkCat($trow->category);
-												$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$trow->slug);
+												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
 											}
 											(!empty($trow->content)? $content = $trow->content : $content = '' ) ;
 										?>
@@ -317,15 +311,14 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										<h1><span>ಕಿರುಚಿತ್ರ</span></h1>
 									</div>
 									<?php foreach ($videos as $key => $value) { 
-										$cat = $this->urls->checkCat($value->category);
 										?>
 										<div>
 											<div class="news-post video-post">
-												<a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
-												<a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" src="<?php echo $value->tumb ?>"></a>
+												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 												
 											</div>
-											<p><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 37) ? strip_tags($value->title): strip_tags($value->title);  ?></a></p>
+											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 37) ? strip_tags($value->title): strip_tags($value->title);  ?></a></p>
 										</div>
 									<?php } ?>
 									
@@ -356,8 +349,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 								if(empty($fetured[0]->category)){
 									$urllink = $this->urls->urlFormat(!empty($fetured[0]->slug)?$fetured[0]->slug:'');
 								}else{
-									$cat = $this->urls->checkCat($fetured[0]->category);
-									$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$fetured[0]->slug);
+									$urllink = $this->urls->urlFormat(base_url().$fetured[0]->category.'/'.$fetured[0]->slug);
 								}	 
 							?>	
 								<div class="image-post-slider">
@@ -403,8 +395,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 												if(empty($row->category)){
 													$urllink = $this->urls->urlFormat($row->slug);
 												}else{
-													$cat = $this->urls->checkCat($row->category);
-													$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$row->slug);
+													$urllink = $this->urls->urlFormat(base_url().$row->category.'/'.$row->slug);
 												}
 										?>
 											<li class="col-md-6">
@@ -436,21 +427,20 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 								<div class="title-section">
 									<a href="<?php echo base_url().$this->urls->checkCat($cArticle['0']->title) ?>">
-										<h1><span class="green"><?php echo $cArticle['0']->title ?></span></h1>
+										<h1><span class="green"><?php echo $cArticle['0']->kannada ?></span></h1>
 									</a>
 								</div>
 
 								
 									<div class="row">
 										<?php  foreach ($cArticle['0']->data as $key => $carow) { if($key < 2){ 
-											$cat = $this->urls->checkCat($cArticle['0']->title);
 											?>
 											<div class="item col-sm-12 col-md-6">
 												<div class="news-post image-post2">
 													<div class="post-gallery">
 														<div class="post-gallerybox">
 															<div class="afterlay">
-															<a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>">
+															<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>">
 																<img src="<?php echo base_url().$carow->image ?>" alt="">
 															</a>
 															</div>
@@ -458,7 +448,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 														<div class="hover-box">
 															<div class="inner-hover">
 																<!-- <a class="category-post" href="politics-category.html">Opionion</a> -->
-																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 																<ul class="post-tags">
 																	<!--  -->
 																	<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
@@ -472,14 +462,13 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										<div class="col-sm-12">
 											<ul class="list-posts column-2">
 												<?php  foreach ($cArticle['0']->data as $key => $carow) { if($key >= 2){ 
-													$cat = $this->urls->checkCat($cArticle['0']->title);
 													?>
 													<li>
 														<div class="featuedimg-second">
-														<a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
-															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 														</div>
 													</li>
 												<?php } }?>	
@@ -491,24 +480,23 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 									<div class="row">
 									<div class="title-section">
 										<a href="<?php echo base_url().$this->urls->checkCat($cArticle['2']->title) ?>">
-										<h1><span class="green"><?php echo $cArticle['2']->title ?></span></h1>
+										<h1><span class="green"><?php echo $cArticle['2']->kannada ?></span></h1>
 									</a>
 									</div>
 										<?php  foreach ($cArticle['2']->data as $key => $carow) { if($key < 2){ 
-											$cat = $this->urls->checkCat($cArticle['2']->title);
 											?>
 											<div class="item col-sm-12 col-md-6">
 												<div class="news-post image-post2">
 													<div class="post-gallery">
 														<div class="post-gallerybox">
 															<div class="afterlay">
-															<a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+															<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
 															</div>
 														</div>
 														<div class="hover-box">
 															<div class="inner-hover">
 																<!-- <a class="category-post" href="politics-category.html">Opionion</a> -->
-																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+																<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 																<ul class="post-tags">
 																	<!--  -->
 																	<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
@@ -522,14 +510,13 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										<div class="col-sm-12">
 											<ul class="list-posts column-2">
 												<?php  foreach ($cArticle['2']->data as $key => $carow) { if($key >= 2){ 
-													$cat = $this->urls->checkCat($cArticle['2']->title);
 													?>
 													<li>
 														<div class="featuedimg-second">
-														<a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
-															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 														</div>
 													</li>
 												<?php } }?>	
@@ -552,19 +539,18 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
                                 <div class="title-section">
                                 	<a href="<?php echo base_url().$this->urls->checkCat($cArticle['1']->title) ?>">
-                                    <h1><span class="orange"><?php echo $cArticle['1']->title ?></span></h1>
+                                    <h1><span class="orange"><?php echo $cArticle['1']->kannada ?></span></h1>
                                 </a>
                                 </div>
                                 <ul class="list-posts column-2">
 									<?php  foreach ($cArticle['1']->data as $key => $row) { 
-										$cat = $this->urls->checkCat($cArticle['1']->title);
 										?>
 										<li>
 											<div class="featuedimg-second">
-											<a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$row->slug) ?>"><img src="<?php echo base_url().$row->image ?>" alt=""></a>
+											<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$row->slug) ?>"><img src="<?php echo base_url().$row->image ?>" alt=""></a>
 											</div>
 											<div class="post-content">
-												<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$row->slug) ?>"><?php echo $row->title ?></a></h2>
+												<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$row->slug) ?>"><?php echo $row->title ?></a></h2>
 											</div>
 										</li>
 									<?php } ?>
@@ -599,15 +585,14 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 												<h1><span class="blue"><?php echo  $category->title ?></span></h1></a>
 											</div>
 											<?php foreach ($category->data as $skey => $drow) { 
-												$cat = $this->urls->checkCat($category->title);
 												?>
 												<ul class="list-posts">
 													<li>
 														<div class="featuedimg-second">
-														<a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$drow->slug) ?>"><img src="<?php echo base_url().$drow->image ?>" alt=""></a>
+														<a href="<?php echo $this->urls->urlFormat(base_url().$category->title.'/'.$drow->slug) ?>"><img src="<?php echo base_url().$drow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
-															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cat.'/'.$drow->slug) ?>"><?php echo $drow->title ?></a></h2>
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$category->title.'/'.$drow->slug) ?>"><?php echo $drow->title ?></a></h2>
 															<ul class="post-tags">
 																<!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
 															</ul>
@@ -638,18 +623,17 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 								<div class="owl-carousel fvideo" data-num="3">
 
 								<?php foreach($fvideos as $key => $fvideo) { 
-									$cat = $this->urls->checkCat($fvideo->category);
 									?>
 									
 										<div class="item news-post standard-post">
 											<div class="post-gallery">
 												<div>
-													<a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$fvideo->slug) ?>"><img alt="" src="<?php echo $fvideo->tumb ?>"></a>
-													<a class="ply-btn" href="<?php echo strtolower(base_url('videos/').$cat.'/'.$fvideo->slug) ?>" ><i class="fa fa-play"></i></a>
+													<a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><img alt="" src="<?php echo $fvideo->tumb ?>"></a>
+													<a class="ply-btn" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>" ><i class="fa fa-play"></i></a>
 												</div>
 											</div>
 											<div class="post-content">
-											<h2><a href="<?php echo strtolower(base_url('videos/').$cat.'/'.$fvideo->slug) ?>"><?php echo word_limiter(strip_tags($fvideo->title), 4).'...' ?></a></h2>
+											<h2><a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo word_limiter(strip_tags($fvideo->title), 4).'...' ?></a></h2>
 												<!-- <ul class="post-tags">
 													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 													<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
@@ -675,19 +659,18 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                                         <div class="owl-carousel" data-num="3">
                                         <?php foreach ($gallery as $key => $image) {
 
-                                        	$cat = $this->urls->checkCat($image->category);
 
                                         	?>
 											
                                             <div class="item news-post standard-post">
                                                 <div class="post-gallery">
-													<a href="<?php echo base_url('photogallery/').strtolower($cat.'/'.$image->slug) ?>">
+													<a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
                                                     	<img src="<?php echo $image->image->image ?>" alt="">
 													</a>
-                                                    <a class="category-post world" href="<?php echo base_url('photogallery/').strtolower($cat.'/'.$image->slug) ?>"><?php echo $image->category ?></a>
+                                                    <a class="category-post world" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo $image->category ?></a>
                                                 </div>
                                                 <div class="post-content">
-                                                    <h2><a href="<?php echo base_url('photogallery/').strtolower($cat.'/'.$image->slug) ?>">
+                                                    <h2><a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
                                                     	<?php echo word_limiter(strip_tags($image->title), 4).'...' ?></a></h2>
                                                 </div>
                                             </div>
@@ -749,8 +732,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 												if(empty($tprow->category)){
 													$urllink = $this->urls->urlFormat((!empty($tprow->slug))?$tprow->slug:'');
 												}else{
-													$cat = $this->urls->checkCat($tprow->category);
-													$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$tprow->slug);
+													$urllink = $this->urls->urlFormat(base_url().$tprow->category.'/'.$tprow->slug);
 												}
 												(!empty($tprow->content)? $content = $tprow->content : $content = '' ) ;
 												(!empty($tprow->image)? $timh = $tprow->image : $timh = '' ) ;
@@ -825,8 +807,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 												if(empty($prow->category)){
 													$urllink = $this->urls->urlFormat($prow->slug);
 												}else{
-													$cat = $this->urls->checkCat($prow->category);
-													$urllink = $this->urls->urlFormat(base_url().$cat.'/'.$prow->slug);
+													$urllink = $this->urls->urlFormat(base_url().$prow->category.'/'.$prow->slug);
 												}
 												(!empty($prow->content)? $content = $prow->content : $content = '' ) ;
 											?>
@@ -864,8 +845,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 								</div>
 								<ul class="category-list">
 								<?php if(!empty(categories())){ foreach(categories() as $key => $value) { 
-									$cat = $this->urls->checkCat($value->title);?>
-									<li><a class="world" href="<?php echo $this->urls->urlFormat(base_url().$cat) ?>"><?php echo $value->title ?> <span><?php echo $value->total ?></span></a> </li>
+									?>
+									<li><a class="world" href="<?php echo $this->urls->urlFormat(base_url().$value->title) ?>"><?php echo $value->kannada ?> <span><?php echo $value->total ?></span></a> </li>
 								<?php } } ?>	
 								</ul>
 							</div>

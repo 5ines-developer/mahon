@@ -66,12 +66,7 @@ class Banner extends CI_Controller {
             );
         }
 
-        
-        // echo "<pre>";
-        // print_r ($data);
-        // echo "</pre>";
-        
-        // exit;
+
 
         if($this->m_banner->updateBanner($data, $position)){
             $this->session->set_flashdata('success', 'Banner update successfully');

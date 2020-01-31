@@ -10,14 +10,14 @@ class M_result extends CI_Model {
         // where
         if(!empty($slug)){$this->db->where('p.slug', $slug);}
         if(!empty($category)){$this->db->where('c.title', $category); }
-        $this->db->group_by('p.title');
+        $this->db->distinct();
         $query = $this->db->from('mh_posts p')
             ->where('p.status', 1)
             ->where('p.schedule <=', date('Y-m-d H:i:s'))
             ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, p.posted_by, p.created_on, p.tags, 
             f.pageid as fid, f.title as ftitle, f.site_name as fsite_name, f.url as furl, f.descr as fdes,
             t.card as tcard, t.title as ttitle, t.site_name as tsite_name, t.url as turl, t.descr as tdes, 
-            pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes')
+            pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes,c.kannada')
             ->order_by('p.id', 'DESC')
             ->join('mh_category c', 'c.id = p.category', 'left')
             ->join('mh_post_fb f', 'f.postid = p.id', 'left')
@@ -227,7 +227,8 @@ class M_result extends CI_Model {
         return $query;
     }
 
-    public function allVideos($value='')
+
+        public function allVideos($value='')
     {
         // $this->db->group_by('mhv.title');
         $query = $this->db->from('mh_videos mhv')
@@ -236,7 +237,7 @@ class M_result extends CI_Model {
             ->select('mhv.id, mhv.title, mhv.slug, mhv.content, mhv.tumb,  mhv.created_by, mhv.created_on, mhv.tags, mhv.url,mhv.type,mhv.vtype,c.title as category, 
             f.pageid as fid, f.title as ftitle, f.site_name as fsite_name, f.url as furl, f.descr as fdes,
             t.card as tcard, t.title as ttitle, t.site_name as tsite_name, t.url as turl, t.descr as tdes, 
-            pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes')
+            pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes,c.kannada')
             ->order_by('mhv.id', 'DESC')
             ->join('mh_category c', 'c.id = mhv.category', 'left')
             ->join('mh_video_post_fb f', 'f.postid = mhv.id', 'left')
@@ -245,6 +246,27 @@ class M_result extends CI_Model {
             ->get();
             return $query->result();
 
+    }
+
+
+     public function pgallery(Type $var = null)
+    {
+        $result = $this->db->where('p.status', 1)
+        ->order_by('p.id', 'desc')
+        ->from('mh_photos p')
+        ->select('c.title as category, p.title, p.slug, p.id')
+        ->join('mh_category c', 'c.id = p.category', 'left')
+        ->get()
+        ->result();
+        foreach ($result as $key => $value) {
+            $value->image = $this->pimage($value->id);
+        }
+        return $result;
+    }
+
+    public function pimage($id = null)
+    {
+        return  $this->db->where('photo_id', $id)->select('image')->get('mh_photo_gallery')->row();
     }
 
 

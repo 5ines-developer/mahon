@@ -68,7 +68,11 @@ $route['photos']                                 = 'photos/index';
 $route['photos']                                 = 'photos/index';   
 $route['photos/(:any)/all']                      = 'photos/single_gall/$1';   
 $route['photos/update']                          = 'photos/update';   
-$route['photos/delete/(:any)']                   = 'photos/delete/$1';   
+$route['photos/delete/(:any)']                   = 'photos/delete/$1';  
+
+// photo album
+$route['photo-album']                            = 'photos/album';
+
 // Event
 $route['events']                                 = 'events/index';
 // newsletter
