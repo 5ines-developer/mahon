@@ -107,7 +107,14 @@
                                         <select required id="posted_by" name="posted_by">
                                             <option value="" disabled >Choose Author</option>
                                             <?php foreach ($author as $key => $value) {
-                                            echo '<option  value="'.$value->id.'">'.$value->name.'</option>';
+                                                if($value->name == 'mahonnathi'){
+                                                    echo '<option  value="'.$value->id.'">'.$value->name.'</option>';
+                                                }
+                                            }?>
+                                            <?php foreach ($author as $key => $value) {
+                                                if($value->name != 'mahonnathi'){
+                                                    echo '<option  value="'.$value->id.'">'.$value->name.'</option>';
+                                                }
                                             } ?>
                                             <option value="0" > none </option>
                                         </select>

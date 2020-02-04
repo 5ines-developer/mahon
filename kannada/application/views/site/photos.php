@@ -10,15 +10,15 @@
 		<meta property="fb:pages" content="<?php echo $photos->fid ?>" />
 		<meta property="og:image" content="<?php echo $photos->image['0']->image ?>" />
 		<meta property="og:title" content="<?php echo $photos->ftitle ?>">
-		<meta property="og:site_name" content="<?php echo $photos->fsite_name ?>">
-		<meta property="og:url" content="<?php echo base_url() ?>">
+		<meta property="og:site_name" content="Mahonnathi/kannada">
+		<meta property="og:url" content="<?php echo current_url() ?>">
 		<meta property="og:description" content="<?php echo $photos->fdes ?>">
 		<meta property="og:type" content="website">
 		<!-- Twitter card -->
 		<meta name="twitter:card" content="summary">
-		<meta name="twitter:site" content="@Mahonnathi">
+		<meta name="twitter:site" content="@Mahonnathi/kannada">
 		<meta name="twitter:image" content="<?php echo $photos->image['0']->image ?>">
-		<meta name="twitter:url" content="<?php echo base_url() ?>">
+		<meta name="twitter:url" content="<?php echo current_url() ?>">
 		<meta name="twitter:title" content="<?php echo $photos->ttitle ?>">
 		<meta name="twitter:description" content="<?php echo $photos->tdes ?>">
 	<?php  } ?>
@@ -39,6 +39,17 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
 	<style> .auther-image { width: 80px; height: 80px; overflow: hidden; border-radius: 50%; float: left; } .auther-image img{max-width:100% !important; border-radius:0px !important} .single-post-box .post-gallery span.image-caption { display: inline-block; color: #353535; font-size: 14px; font-family: 'Lato', sans-serif; font-style: italic; margin-bottom: 20px; } </style>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157746630-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157746630-1');
+</script>
+
 </head>
 <body>
 

@@ -38,7 +38,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
 	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
+	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
 <script>
   window.googletag = window.googletag || {cmd: []};
@@ -50,6 +50,15 @@
 </script>
 
 <script data-ad-client="ca-pub-9153450084338777" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148770094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148770094-1');
+</script>
 
 </head>
 <body>
@@ -120,7 +129,7 @@
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[0]->category)? '<a class="category-post" href="#!">'.$banner[0]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[0]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[0]->category).'">'.$banner[0]->category.'</a>': ' ' ) ;
 										if(empty($banner[0]->category)){
 											$urllink = $this->urls->urlFormat($banner[0]->slug);
 										}else{
@@ -154,7 +163,7 @@
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[3]->category)? '<a class="category-post" href="#!">'.$banner[3]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[3]->category)? '<a class="category-post" href="'. $this->urls->urlFormat(base_url().$banner[3]->category).'">'.$banner[3]->category.'</a>': ' ' ) ;
 										if(empty($banner[3]->category)){
 											$urllink = $this->urls->urlFormat($banner[3]->slug);
 										}else{
@@ -186,7 +195,7 @@
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[2]->category)? '<a class="category-post" href="#!">'.$banner[2]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[2]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[2]->category).'">'.$banner[2]->category.'</a>': ' ' ) ;
 										if(empty($banner[2]->category)){
 											$urllink = $this->urls->urlFormat($banner[2]->slug);
 										}else{
@@ -218,7 +227,7 @@
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[4]->category)? '<a class="category-post" href="#!">'.$banner[4]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[4]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[4]->category).'">'.$banner[4]->category.'</a>': ' ' ) ;
 										if(empty($banner[4]->category)){
 											$urllink = $this->urls->urlFormat($banner[4]->slug);
 										}else{
@@ -430,7 +439,7 @@
 							<div class="carousel-box owl-wrapper">
 
 								<div class="title-section">
-									<h1><span class="green"><?php echo $cArticle['0']->title ?></span></h1>
+									<h1><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title) ?>"><span class="green"><?php echo $cArticle['0']->title ?></span></a></h1>
 								</div>
 
 								
@@ -465,10 +474,10 @@
 												<?php  foreach ($cArticle['0']->data as $key => $carow) { if($key >= 2){ ?>
 													<li>
 														<div class="featuedimg-second">
-														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
-															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 														</div>
 													</li>
 												<?php } }?>	
@@ -479,7 +488,7 @@
 									
 									<div class="row">
 									<div class="title-section">
-										<h1><span class="green"><?php echo $cArticle['2']->title ?></span></h1>
+										<h1><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title) ?>"><span class="green"><?php echo $cArticle['2']->title ?></span></a></h1>
 									</div>
 										<?php  foreach ($cArticle['2']->data as $key => $carow) { if($key < 2){ ?>
 											<div class="item col-sm-12 col-md-6">
@@ -534,7 +543,7 @@
 							<div class="carousel-box owl-wrapper">
 
                                 <div class="title-section">
-                                    <h1><span class="orange"><?php echo $cArticle['1']->title ?></span></h1>
+                                    <h1><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title) ?>"><span class="orange"><?php echo $cArticle['1']->title ?></span></a></h1>
                                 </div>
                                 <ul class="list-posts column-2">
 									<?php  foreach ($cArticle['1']->data as $key => $row) { ?>
@@ -574,16 +583,16 @@
 										<div class="col-md-6">
 
 											<div class="title-section">
-												<h1><span class="blue"><?php echo  $category->title ?></span></h1>
+												<h1><a href="<?php echo $this->urls->urlFormat(base_url().$category->title) ?>"><span class="blue"><?php echo  $category->title ?></span></a></h1>
 											</div>
 											<?php foreach ($category->data as $skey => $drow) { ?>
 												<ul class="list-posts">
 													<li>
 														<div class="featuedimg-second">
-														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$drow->slug) ?>"><img src="<?php echo base_url().$drow->image ?>" alt=""></a>
+														<a href="<?php echo $this->urls->urlFormat(base_url().$category->title.'/'.$drow->slug) ?>"><img src="<?php echo base_url().$drow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
-															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$drow->slug) ?>"><?php echo $drow->title ?></a></h2>
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$category->title.'/'.$drow->slug) ?>"><?php echo $drow->title ?></a></h2>
 															<ul class="post-tags">
 																<!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
 															</ul>

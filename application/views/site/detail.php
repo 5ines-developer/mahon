@@ -50,6 +50,16 @@
 .auther-image img{max-width:100% !important; border-radius:0px !important}
 	</style>
 	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148770094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148770094-1');
+</script>
+
 </head>
 <body>
 
@@ -270,6 +280,43 @@
 									</div>
 									<!-- End contact form box -->
 
+									<div class="row">
+										<div class="re-ad-block">
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
 								</div>
 								<!-- End single-post box -->
 
@@ -283,6 +330,9 @@
 						<?php } ?>	
 
 						<?php if(!empty($related)): foreach ($related as $key => $post): ?>
+
+							<div class="next-story-border"><span class="f-spon"> NEXT STORY</span></div>
+
 								<div class="block-content related-article" data_slug="<?php echo  $post->slug ?>">
 								<!-- single-post box -->
 								<div class="single-post-box">
@@ -328,7 +378,43 @@
 										</ul>
 									</div>
 
-									
+
+									<div class="row">
+										<div class="re-ad-block">
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<br>

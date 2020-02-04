@@ -36,6 +36,15 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148770094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148770094-1');
+</script>
 </head>
 
 <body>
@@ -61,21 +70,37 @@
         <div class="container-fluide">
             <div class="row">
                 <div class="col l12 s12 m12">
+
+                    <?php if(!empty($post)) { ?>
                     <div class="video-detial-mobile">
-                        <iframe class="iframe-he" src="https://www.youtube.com/embed/rVzFAle0qvY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h6>Ugadi is our New Year according to Hindu Sanathana Dharma</h6>
+
+                        <?php
+                           if($post->type == 'youtube'){
+
+                               echo '<iframe class="iframe-he" src="https://www.youtube.com/embed/'.explode('=',parse_url($post->url)['query'])[1].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                           }elseif($post->type == 'vimeo') {
+                               echo ' <iframe class="iframe-he" src="https://player.vimeo.com/video/'.explode('/',parse_url($post->url)['path'])[1].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                           }elseif ($post->type == 'facebook') {
+                               echo '<div id="fb-root"></div> <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>';
+                               echo '<div class="fb-video" data-href="'.$post->url.'" data-allowfullscreen="true" data-width="500"></div>';
+                           }
+                        ?>
+                        <h6><?php echo $post->title ?></h6>
                         <div class="share-post-box">
                             <ul class="share-box">
-                                <li><i class="fa fa-share-alt sha"></i><span>Share Post</span></li>
-                                <li><a class="facebook" href="" target="_blank"><i class="fab fa-facebook-f fb"></i></a></li>
-                                <li><a class="twitter" href="" target="_blank"><i class="fab fa-twitter tw"></i></li>
-                                <li><a class="linkedin" href="" target="_blank"><i class="fab fa-linkedin-in li"></i></li>
+                                <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+                                <li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $post->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $post->title ?>" target="_blank"><i class="fab fa-facebook-f fb"></i><span>Share on Facebook</span></a></li>
+                                <li><a class="twitter" href="http://twitter.com/home?url=<?php echo $post->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fab fa-twitter tw"></i><span>Share on Twitter</span></a></li>
+                                <li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $post->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fab fa-linkedin-in li"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
                             </ul>
+
+                            
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                            eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                            pretium. Integer tincidunt.</p>
+                        <p><?php echo $post->content ?></p>
                     </div>
+                    <?php } ?>
+
+
                 </div>
             </div>
         </div>

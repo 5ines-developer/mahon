@@ -31,6 +31,15 @@
     <!-- <link rel="stylesheet" href="<?php echo base_url()?>assets1/css/jquery.mobile-1.0a1.min.css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script> -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148770094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148770094-1');
+</script>
 </head>
 
 <body style="background: #e6e6e6;">
@@ -450,15 +459,7 @@
                     speed: 300,
                     slidesToShow: 3,
                     slidesToScroll: 1,
-<<<<<<< HEAD
                     arrows: false,
-=======
-                    arrows: true,
-                    autoplay: true,
-                    autoplaySpeed: 5000,
-                    nextArrow: '<span class="next"><i class="fas fa-caret-right photo-rr-dm"></i></span>',
-                    prevArrow: '<span class="prev"><i class="fas fa-caret-left photo-ll-dm"></i></span>',
->>>>>>> ba5d516c450a8ab5fa7577ebcc43143413dca5f0
                     responsive: [{
                         breakpoint: 1024,
                         settings: {

@@ -127,5 +127,21 @@ class m_photo extends CI_Model {
         endif;
     }
 
+    public function insertAlbum($data='')
+    {
+      $this->db->insert('mh_photo_album', $data);
+      return $this->db->insert_id();
+    }
+
+    public function albumImages($data='')
+    {
+      return $this->db->insert('mh_pht_albums', $data);
+    }
+
+    public function getAlbum($value='')
+    {
+      return $this->db->get('mh_photo_album')->result();
+    }
+
 }
 /* End of file m_photo.php */

@@ -11,6 +11,7 @@ class M_result extends CI_Model {
         if(!empty($slug)){$this->db->where('p.slug', $slug);}
         if(!empty($category)){$this->db->where('c.title', $category); }
         $this->db->distinct();
+        $this->db->group_by('p.title');
         $query = $this->db->from('mh_posts p')
             ->where('p.status', 1)
             ->where('p.schedule <=', date('Y-m-d H:i:s'))

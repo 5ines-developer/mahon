@@ -13,10 +13,27 @@
         </nav>
         </nav>
         <ul class="sidenav nn-list" id="mobile-demo">
-            <li><a href="">Today Fetured</a></li>
-            <li><a href="">Short Movies</a></li>
-            <li><a href="">Popular</a></li>
-            <li><a href="<?php echo base_url('video')?>">Videos</a></li>
+            <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">Home</a></li>
+
+                    <?php
+                                $vd = ''; 
+                                $kn='';
+                                if(!empty(categories())){
+                                    foreach(categories() as $key => $value) { 
+                                        if($value->title == 'Video'){$vd = '1'; }
+                                        if($value->menu == 1 && $value->title != 'Video'){
+                                            $rurl = $this->urls->urlFormat(base_url().$value->title)
+                                ?>
+                                    <li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>
+                                <?php } 
+                                if($value->title == 'Video'){ 
+                                    $rurl1 = $this->urls->urlFormat(base_url().$value->title);
+                                    $kn = $value->title;
+                                } 
+                            } }
+                            if (!empty($vd)) { ?>
+                                <li><a class="world" href="<?php echo $rurl1 ?>"><?php echo $kn ?></a> </li>
+                            <?php } ?> 
         </ul>
         <div class="slider-mm">
             <div class="nav-content nav-menu" id="myDIV">

@@ -49,6 +49,17 @@
 }
 .auther-image img{max-width:100% !important; border-radius:0px !important}
 	</style>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157746630-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157746630-1');
+</script>
+
 </head>
 <body>
 
@@ -166,7 +177,10 @@
 										<ul class="share-box">
 											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
 											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $post->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $post->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
-											<li><a class="twitter" href="http://twitter.com/home?url=<?php echo $post->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+
+											
+
+											<li><a class="twitter" href="http://twitter.com/share?url=<?php echo $post->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
 											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $post->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
 										</ul>
 									</div>
@@ -198,7 +212,7 @@
 									<div class="about-more-autor">
 										<ul class="nav nav-tabs">
 											<li class="active">
-												<a href="#about-autor" data-toggle="tab">About The Autor</a>
+												<a href="#about-autor" data-toggle="tab">About The Author</a>
 											</li>
 										</ul>
 
@@ -270,6 +284,44 @@
 									</div>
 									<!-- End contact form box -->
 
+
+									<div class="row">
+										<div class="re-ad-block">
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
 								</div>
 								<!-- End single-post box -->
 
@@ -283,6 +335,8 @@
 						<?php } ?>	
 
 						<?php if(!empty($related)): foreach ($related as $key => $post): ?>
+							<div class="next-story-border"><span class="f-spon"> ಮುಂದಿನ ಲೇಖನ</span></div>
+							
 								<div class="block-content related-article" data_slug="<?php echo  $post->slug ?>">
 								<!-- single-post box -->
 								<div class="single-post-box">
@@ -326,6 +380,44 @@
 											<li><a href="#"><?php echo  $value ?></a></li>
 											<?php } ?>
 										</ul>
+									</div>
+
+
+									<div class="row">
+										<div class="re-ad-block">
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 
 									

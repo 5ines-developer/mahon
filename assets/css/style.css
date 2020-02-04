@@ -6550,3 +6550,34 @@ background: #fafafa;
   line-height: 25px;
   z-index: 999999;
 }
+
+.re-ad-block {
+  margin-top: 50px;
+}
+.next-story-border{
+  line-height: 0.4;
+  text-align: center;
+  overflow: hidden;
+  padding: 12px 0;
+}
+
+.next-story-border .f-spon::after
+{
+  content: "";
+clear: both;
+position: absolute;
+border: 1px solid black; 
+width: 42%;
+left: 0;
+
+}
+
+.next-story-border .f-spon::before{
+  content: "";
+  clear: both;
+  position: absolute;
+  border: 1px solid black; 
+  width: 42%;
+  right: 0;
+}
+

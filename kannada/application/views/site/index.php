@@ -45,6 +45,16 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
 
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157746630-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157746630-1');
+</script>
+
 </head>
 <body>
 
@@ -74,7 +84,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<img src="<?php echo base_url().$banner[1]->image ?>" alt="">
 							<div class="hover-box">
 								<div class="inner-hover">
-									<?php echo (!empty($banner[1]->category)? '<a class="category-post" href="#!">'.$banner[1]->category.'</a>': ' ' ) ;
+									<?php echo (!empty($banner[1]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[1]->category).'">'.$banner[1]->category.'</a>': ' ' ) ;
 										if(empty($banner[1]->category)){
 											$urllink = $this->urls->urlFormat($banner[1]->slug);
 										}else{
@@ -112,7 +122,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[0]->category)? '<a class="category-post" href="#!">'.$banner[0]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[0]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[0]->category).'">'.$banner[0]->category.'</a>': ' ' ) ;
 										if(empty($banner[0]->category)){
 											$urllink = $this->urls->urlFormat($banner[0]->slug);
 										}else{
@@ -147,7 +157,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[3]->category)? '<a class="category-post" href="#!">'.$banner[3]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[3]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[3]->category).'">'.$banner[3]->category.'</a>': ' ' ) ;
 										if(empty($banner[3]->category)){
 											$urllink = $this->urls->urlFormat($banner[3]->slug);
 										}else{
@@ -179,7 +189,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[2]->category)? '<a class="category-post" href="#!">'.$banner[2]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[2]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[2]->category).'">'.$banner[2]->category.'</a>': ' ' ) ;
 										if(empty($banner[2]->category)){
 											$urllink = $this->urls->urlFormat($banner[2]->slug);
 										}else{
@@ -211,7 +221,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[4]->category)? '<a class="category-post" href="#!">'.$banner[4]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[4]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[4]->category).'">'.$banner[4]->category.'</a>': ' ' ) ;
 										if(empty($banner[4]->category)){
 											$urllink = $this->urls->urlFormat($banner[4]->slug);
 										}else{
@@ -426,7 +436,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="carousel-box owl-wrapper">
 
 								<div class="title-section">
-									<a href="<?php echo base_url().$this->urls->checkCat($cArticle['0']->title) ?>">
+									<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title) ?>">
 										<h1><span class="green"><?php echo $cArticle['0']->kannada ?></span></h1>
 									</a>
 								</div>
@@ -465,10 +475,10 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 													?>
 													<li>
 														<div class="featuedimg-second">
-														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+														<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
 														</div>
 														<div class="post-content">
-															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+															<h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
 														</div>
 													</li>
 												<?php } }?>	
@@ -479,7 +489,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 									
 									<div class="row">
 									<div class="title-section">
-										<a href="<?php echo base_url().$this->urls->checkCat($cArticle['2']->title) ?>">
+										<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title) ?>">
 										<h1><span class="green"><?php echo $cArticle['2']->kannada ?></span></h1>
 									</a>
 									</div>
@@ -538,7 +548,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="carousel-box owl-wrapper">
 
                                 <div class="title-section">
-                                	<a href="<?php echo base_url().$this->urls->checkCat($cArticle['1']->title) ?>">
+                                	<a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title) ?>">
                                     <h1><span class="orange"><?php echo $cArticle['1']->kannada ?></span></h1>
                                 </a>
                                 </div>
@@ -581,8 +591,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										<div class="col-md-6">
 
 											<div class="title-section">
-												<a href="<?php echo base_url().$this->urls->checkCat($category->title) ?>">
-												<h1><span class="blue"><?php echo  $category->title ?></span></h1></a>
+												<a href="<?php echo $this->urls->urlFormat(base_url().$category->title) ?>">
+												<h1><span class="blue"><?php echo  $category->kannada ?></span></h1></a>
 											</div>
 											<?php foreach ($category->data as $skey => $drow) { 
 												?>
