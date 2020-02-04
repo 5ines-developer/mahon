@@ -273,7 +273,7 @@ body {
 
 .tabs-menu a {
     color: black !important;
-    font-size: 13px !important;
+    font-size: 14px !important;
     font-weight: 600;
 }
 
@@ -325,7 +325,8 @@ body {
 
 .tabs-menu li {
     display: inline-block;
-    margin-left: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 
@@ -424,8 +425,10 @@ body {
     margin: 0;
     padding: 5px 0px;
     text-align: justify;
-    font-size: 12px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 24px;
+    color: black;
+    font-weight: 500
 }
 
 .p-para {
@@ -500,7 +503,7 @@ html {
 }
 
 .rr-gal {
-    height: 190px;
+    height: 158px;
     overflow: hidden;
     z-index: 99999999;
 }
@@ -741,29 +744,36 @@ html {
     font-size: 15px;
     color: black;
     margin: 0;
-    padding: 11px 0px;
+    padding: 11px 1px;
+    font-weight: 600;
 }
 
 .dis-video {
-    background: #f2f2f2;
+    background: #fff;
     padding: 5px;
     margin-bottom: 16px;
+    position: relative;
+    box-shadow: 0px 1px 3px 0px #ddd;
+    border-radius: 8px;
 }
 
 .post-div i {
-    color: white;
-    top: -180px;
+    color: #ec0000;
+    top: 20px;
     position: absolute;
-    left: 6%;
-    border: 1px solid white;
+    left: 5%;
+    border: 3px solid #cacaca;
     padding: 10px;
     border-radius: 30px;
     font-size: 8px;
+    background: white;
 }
 
+
+/* 
 .post-div {
     position: relative;
-}
+} */
 
 
 /* 
@@ -777,7 +787,7 @@ html {
 
 .video-img {
     overflow: hidden;
-    height: 170px;
+    height: 155px;
 }
 
 .iframe-he {
@@ -883,8 +893,10 @@ html {
 
 .p-para li {
     list-style: circle !important;
-    font-size: 12px;
-    line-height: 22px
+    font-size: 14px;
+    line-height: 24px;
+    color: black;
+    font-weight: 500
 }
 
 .p-para ul {
@@ -915,7 +927,7 @@ html {
 }
 
 .para-par {
-    font-size: 13px !important;
+    font-size: 14px !important;
     color: gray;
     overflow: hidden;
     display: block;
@@ -932,6 +944,28 @@ html {
 .title-tra i {
     color: green;
     padding-right: 3px;
+}
+
+@keyframes blinker {
+    from {
+        opacity: 1.0;
+    }
+    to {
+        opacity: 0.0;
+    }
+}
+
+.blink {
+    text-decoration: blink;
+    animation-name: blinker;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.post-gallery {
+    position: relative;
 }
 
 @media(min-width:680px) and (max-width:991px) {

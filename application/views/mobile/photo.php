@@ -33,9 +33,13 @@
                         foreach ($gallery as $key => $image) {?>
                         <a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
                             <div class="dis-video">
+                            <div class="video-img">
                                 <img src="<?php echo $image->image->image ?>" class="img-responsive" alt="">
+                                </div>
                                 <h1><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></h1>
-                            
+                                <div class="post-div">
+                        <i class="fas fa-image blink"></i>
+                                    </div>
                             </div>
                         </a>
                     <?php }}?>
@@ -67,18 +71,6 @@
                 $('.modal').modal();
                 $('#tabs-demo').tabs({
                     'swipeable': true
-                });
-                // Scroll Event
-                $(window).on('scroll', function() {
-                    var scrolled = $(window).scrollTop();
-                    if (scrolled > 300) $('.go-top').addClass('active');
-                    if (scrolled < 300) $('.go-top').removeClass('active');
-                });
-                // Click Event
-                $('.go-top').on('click', function() {
-                    $("html, body").animate({
-                        scrollTop: "0"
-                    }, 500);
                 });
             });
         </script>
