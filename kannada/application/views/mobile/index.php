@@ -212,11 +212,12 @@
                             <div class="rr-gallery rr-gal">
 
                                 <a href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $fvideo->tumb ?>"></a>
-                                <!-- <div class="post-div">
-                                    <i class="fa fa-play"></i>
-                                </div> -->
+               
                             </div>
                             <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo $ftitle;  ?></a></p>
+                            <div class="post-div">
+                                        <i class="fa fa-play blink "></i>
+                                    </div>
                         </a>
                     </div>
                 </div>
@@ -313,7 +314,9 @@
                         <div class="rr-gallery rr-gal">
                             <a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><img alt="" class="img-responsive" src="<?php echo $value->tumb ?>"></a>
                             <a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
-
+                            <div class="post-div">
+                                        <i class="fa fa-play blink "></i>
+                                    </div>
                         </div>
                         <p><?php echo $ftitle;  ?></p>
                     </div>
@@ -400,6 +403,9 @@
 
                         </div>
                         <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo $ftitle ?></a></p>
+                        <div class="post-div">
+                        <i class="fas fa-image blink"></i>
+                                    </div>
                     </div>
                 </div>
                 <?php } ?>
@@ -489,7 +495,8 @@
                     speed: 300,
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    arrows: false,
+                    arrows: true,
+                    autoplay:true,
                     responsive: [{
                         breakpoint: 1024,
                         settings: {

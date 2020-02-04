@@ -85,10 +85,12 @@
                         <div class="video-fet">
                             <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>">
                                 <div class="dis-video">
+                                <div class="video-img">
                                     <img src="<?php echo $vids->tumb ?>" class="img-responsive" alt="">
+                                    </div>
                                     <h1><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></h1>
                                     <div class="post-div">
-                                        <i class="fa fa-play"></i>
+                                        <i class="fa fa-play blink"></i>
                                     </div>
 
                                 </div>
@@ -103,10 +105,12 @@
                         <div class="video-fet">
                             <a href="<?php echo strtolower(base_url('videos/').$vids->category.'/'.$vids->slug) ?>">
                                 <div class="dis-video">
+                                <div class="video-img">
                                     <img src="<?php echo $vids->tumb ?>" class="img-responsive" alt="">
+                                    </div>
                                     <h1><?php echo word_limiter(strip_tags($vids->title), 6).'...' ?></h1>
                                     <div class="post-div">
-                                        <i class="fa fa-play"></i>
+                                    <i class="fa fa-play blink"></i>
                                     </div>
 
                                 </div>

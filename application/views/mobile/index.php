@@ -202,6 +202,9 @@
                                 </div> -->
                             </div>
                             <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 58) ? substr(strip_tags($fvideo->title),0,50).'...' : strip_tags($fvideo->title);  ?></a></p>
+                            <div class="post-div">
+                                        <i class="fa fa-play blink "></i>
+                                    </div>
                         </a>
                     </div>
                 </div>
@@ -294,6 +297,9 @@
 
                         </div>
                         <p><?php echo (strlen(strip_tags($value->title)) > 53) ? substr(strip_tags($value->title),0,50).'...' : strip_tags($value->title);  ?></p>
+                        <div class="post-div">
+                                        <i class="fa fa-play blink "></i>
+                                    </div>
                     </div>
                 </div>
                 <?php } ?>
@@ -370,6 +376,9 @@
 
                         </div>
                         <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></p>
+                        <div class="post-div">
+                        <i class="fas fa-image blink"></i>
+                                    </div>
                     </div>
                 </div>
                 <?php } ?>
@@ -399,8 +408,7 @@
     <script src="<?php echo base_url()?>assets1/js/materialize.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js">
-
-        </script>
+</script>
 
         <script>
             $(document).ready(function() {

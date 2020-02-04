@@ -171,65 +171,12 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets1/js/jquery.min.js"></script>
     <script src="<?php echo base_url()?>assets1/js/materialize.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js"> </script>
-        <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+    <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js">
        
-       
-        <script>
+    <script>
             $(document).ready(function() {
                 $('.sidenav').sidenav();
-                $('.tabs').tabs();
                 $('.modal').modal();
-                $('#tabs-demo').tabs({
-                    'swipeable': true
-                });
-                $('.video-pass').slick({
-
-                    dots: false,
-                    infinite: false,
-                    speed: 300,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            infinite: true,
-                        }
-
-                    }, {
-
-                        breakpoint: 767,
-
-                        settings: {
-
-                            slidesToShow: 2,
-
-                            slidesToScroll: 2
-
-                        }
-
-                    }, {
-
-                        breakpoint: 580,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            dots: false,
-                            infinite: false,
-                            speed: 300,
-                            arrows: false,
-
-                        }
-
-                    }]
-
-                });
-            });
-            
-
                 //Check to see if the window is top if not then display button
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {
@@ -248,22 +195,25 @@
 
             });
         </script>
-        <!-- <script>
-            window.onscroll = function() {
-                myFunction()
-            };
+        <script>
+            $(document).ready(function() {
+                $(".btn-search").click(function() {
+                    $(".bs").css("display", "none");
+                    $('.img-logo').css("display", "none");
+                    $(".btn-search-close").fadeIn("slow");
+                    $(".btn-search-close").css("display", "block");
+                    $(".input-search").css("display", "block");
+                });
+                $(".btn-search-close").click(function() {
+                    $(".bc").css("display", "none");
+                    $(".btn-search").fadeIn("slow");
+                    $('.img-logo').css("display", "block");
+                    $(".btn-search").css("display", "block");
+                    $(".input-search").css("display", "none");
+                });
+            });
 
-            var header = document.getElementById("myHeader");
-            var sticky = header.offsetTop;
-
-            function myFunction() {
-                if (window.pageYOffset > sticky) {
-                    header.classList.add("sticky");
-                } else {
-                    header.classList.remove("sticky");
-                }
-            }
-        </script> -->
+        </script>
 
         <script>
             window.onscroll = function() {
