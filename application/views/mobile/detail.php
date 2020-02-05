@@ -151,7 +151,7 @@
 
     </div> -->
 
-    <div class="go-top active" onclick="topFunction()">
+    <div class="go-top active">
         <i class="fa fa-angle-double-up gray-text"></i>
     </div>
 <?php $this->load->view('mobile/footer.php'); ?>
@@ -177,58 +177,7 @@
         <script>
             $(document).ready(function() {
                 $('.sidenav').sidenav();
-                $('.tabs').tabs();
                 $('.modal').modal();
-                $('#tabs-demo').tabs({
-                    'swipeable': true
-                });
-                $('.video-pass').slick({
-
-                    dots: false,
-                    infinite: false,
-                    speed: 300,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            infinite: true,
-                        }
-
-                    }, {
-
-                        breakpoint: 767,
-
-                        settings: {
-
-                            slidesToShow: 2,
-
-                            slidesToScroll: 2
-
-                        }
-
-                    }, {
-
-                        breakpoint: 580,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            dots: false,
-                            infinite: false,
-                            speed: 300,
-                            arrows: false,
-
-                        }
-
-                    }]
-
-                });
-            });
-            
-
                 //Check to see if the window is top if not then display button
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {
@@ -246,25 +195,28 @@
                 });
 
             });
-        </script>
-        <!-- <script>
-            window.onscroll = function() {
-                myFunction()
-            };
-
-            var header = document.getElementById("myHeader");
-            var sticky = header.offsetTop;
-
-            function myFunction() {
-                if (window.pageYOffset > sticky) {
-                    header.classList.add("sticky");
-                } else {
-                    header.classList.remove("sticky");
-                }
-            }
-        </script> -->
-
+            </script>
         <script>
+            $(document).ready(function() {
+                $(".btn-search").click(function() {
+                    $(".bs").css("display", "none");
+                    $('.img-logo').css("display", "none");
+                    $(".btn-search-close").fadeIn("slow");
+                    $(".btn-search-close").css("display", "block");
+                    $(".input-search").css("display", "block");
+                });
+                $(".btn-search-close").click(function() {
+                    $(".bc").css("display", "none");
+                    $(".btn-search").fadeIn("slow");
+                    $('.img-logo').css("display", "block");
+                    $(".btn-search").css("display", "block");
+                    $(".input-search").css("display", "none");
+                });
+            });
+
+        </script>
+
+<script>
             window.onscroll = function() {
                 myFunction()
             };

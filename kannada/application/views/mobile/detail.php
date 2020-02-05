@@ -151,11 +151,10 @@
     <!-- <div class="" id="test-swipe-2">
 
     </div> -->
-
-    <div class="go-top active" onclick="topFunction()">
+    <div class="go-top active">
         <i class="fa fa-angle-double-up gray-text"></i>
     </div>
-<?php $this->load->view('mobile/footer.php'); ?>
+    <?php $this->load->view('mobile/footer.php'); ?>
 
 
 
