@@ -72,7 +72,7 @@
         <div class="container-fluide">
             <div class="row">
                 <?php if(!empty($post)) { ?>
-                        <div class="col l12">
+                        <div class="col l12 s12 m12">
                             <div class="inner-detail-banner">
                     <div class="inner-banner">
                         <img src="<?php echo base_url().$post->image ?>" class="img-responsive" alt="">
@@ -126,13 +126,13 @@
                 ?>
                 <div class="sec-list">
                     <div class="row">
-                        <div class="col  m8 s8">
+                        <div class="col l8 m8 s8">
                             <div class="para-cont">
                                 <p><a class="black-text" href="<?php echo  $post->slug ?>"><?php echo $ftitle ?></a></p>
                                 <?php echo (!empty($fcontent))?'<p class="para-par">'.$fcontent.'</p>':''; ?>  
                             </div>
                         </div>
-                        <div class="col m4 s4">
+                        <div class="col l4 m4 s4">
                             <div class="img-pa">
                                 <a href="<?php echo $post->slug ?>"><img src="<?php echo base_url().$post->image ?>" class="img-responsive img-res" alt=""></a>
                             </div>
@@ -176,6 +176,7 @@
             $(document).ready(function() {
                 $('.sidenav').sidenav();
                 $('.modal').modal();
+
                 //Check to see if the window is top if not then display button
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {

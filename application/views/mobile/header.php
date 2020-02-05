@@ -11,7 +11,6 @@
                 <!-- .searchbar -->
             </div>
         </nav>
-        </nav>
         <ul class="sidenav nn-list" id="mobile-demo">
             <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">Home</a></li>
 

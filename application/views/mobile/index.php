@@ -384,7 +384,7 @@
                 <?php } ?>
             </div>
             <div class="line-end">
-                <a>See all</a>
+            <a href="<?php echo base_url('photo-gallery')?>">See all</a> </div>
             </div>
         </div>
         </div>

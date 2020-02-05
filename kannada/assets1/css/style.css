@@ -968,6 +968,14 @@ html {
     position: relative;
 }
 
+.photo-pass {
+    z-index: 0;
+}
+
+.video-pass {
+    z-index: 0;
+}
+
 @media(min-width:680px) and (max-width:991px) {
     .tabs-menu li {
         display: inline-block;

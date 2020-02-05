@@ -12,14 +12,17 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157746630-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157746630-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-157746630-1');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-157746630-1');
+    </script>
 
 </head>
 
@@ -31,7 +34,7 @@
     <section class="padd-top">
         <div class="container-fluide">
             <div class="row">
-                <div class="col l12">
+                <div class="col l12 m12 s12">
                     <!-- <div class="add-img">
                         <center><img src="assets1/img/250x250.jpg" class="img-responsive" alt=""></center>
                     </div> -->
@@ -44,21 +47,23 @@
                         foreach ($gallery as $key => $image) {?>
                         <a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
                             <div class="dis-video">
-                            <div class="video-img">
-                                <img src="<?php echo $image->image->image ?>" class="img-responsive" alt="">
+                                <div class="video-img">
+                                    <img src="<?php echo $image->image->image ?>" class="img-responsive" alt="">
                                 </div>
-                                <h1><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></h1>
+                                <h1>
+                                    <?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?>
+                                </h1>
                                 <div class="post-div">
-                        <i class="fas fa-image blink"></i>
-                                    </div>
-                            
+                                    <i class="fas fa-image blink"></i>
+                                </div>
+
                             </div>
                         </a>
-                    <?php }}?>
-                        
-                        
-                        
-                        
+                        <?php }}?>
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -81,9 +86,7 @@
                 $('.sidenav').sidenav();
                 $('.tabs').tabs();
                 $('.modal').modal();
-                $('#tabs-demo').tabs({
-                    'swipeable': true
-                });
+
                 //Check to see if the window is top if not then display button
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {
