@@ -33,13 +33,16 @@
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script> -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148770094-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-148770094-1');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-148770094-1');
+    </script>
 </head>
 
 <body style="background: #e6e6e6;">
@@ -102,8 +105,13 @@
                             <div class="row">
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo $ftitle ?></a></p>
-                                        <p class="para-par"> <?php echo $fcontent ?>
+                                        <p>
+                                            <a class="black-text" href="<?php echo $urllink ?>">
+                                                <?php echo $ftitle ?>
+                                            </a>
+                                        </p>
+                                        <p class="para-par">
+                                            <?php echo $fcontent ?>
                                         </p>
                                     </div>
                                 </div>
@@ -148,8 +156,13 @@
                             <div class="row">
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo $ftitle ?></a></p>
-                                        <p class="para-par"> <?php echo $fcontent ?>
+                                        <p>
+                                            <a class="black-text" href="<?php echo $urllink ?>">
+                                                <?php echo $ftitle ?>
+                                            </a>
+                                        </p>
+                                        <p class="para-par">
+                                            <?php echo $fcontent ?>
                                         </p>
                                     </div>
                                 </div>
@@ -203,8 +216,8 @@
                             </div>
                             <p><a class="black-text" href="<?php echo strtolower(base_url('videos/').$fvideo->category.'/'.$fvideo->slug) ?>"><?php echo (strlen(strip_tags($fvideo->title)) > 58) ? substr(strip_tags($fvideo->title),0,50).'...' : strip_tags($fvideo->title);  ?></a></p>
                             <div class="post-div">
-                                        <i class="fa fa-play blink "></i>
-                                    </div>
+                                <i class="fa fa-play blink "></i>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -256,8 +269,13 @@
                             <div class="row m0">
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  $ftitle; ?></a></p>
-                                        <p class="para-par"> <?php echo  $fcontent; ?>
+                                        <p>
+                                            <a class="black-text" href="<?php echo $urllink ?>">
+                                                <?php echo  $ftitle; ?>
+                                            </a>
+                                        </p>
+                                        <p class="para-par">
+                                            <?php echo  $fcontent; ?>
                                         </p>
                                     </div>
                                 </div>
@@ -296,10 +314,12 @@
                             <a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 
                         </div>
-                        <p><?php echo (strlen(strip_tags($value->title)) > 53) ? substr(strip_tags($value->title),0,50).'...' : strip_tags($value->title);  ?></p>
+                        <p>
+                            <?php echo (strlen(strip_tags($value->title)) > 53) ? substr(strip_tags($value->title),0,50).'...' : strip_tags($value->title);  ?>
+                        </p>
                         <div class="post-div">
-                                        <i class="fa fa-play blink "></i>
-                                    </div>
+                            <i class="fa fa-play blink "></i>
+                        </div>
                     </div>
                 </div>
                 <?php } ?>
@@ -341,8 +361,13 @@
                             <div class="row">
                                 <div class="col  m8 s8">
                                     <div class="para-cont">
-                                        <p><a class="black-text" href="<?php echo $urllink ?>"><?php echo  $ftitle ?></a></p>
-                                        <p class="para-par"> <?php echo  $fcontent ?>
+                                        <p>
+                                            <a class="black-text" href="<?php echo $urllink ?>">
+                                                <?php echo  $ftitle ?>
+                                            </a>
+                                        </p>
+                                        <p class="para-par">
+                                            <?php echo  $fcontent ?>
                                         </p>
                                     </div>
                                 </div>
@@ -377,15 +402,15 @@
                         </div>
                         <p><a class="black-text" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></p>
                         <div class="post-div">
-                        <i class="fas fa-image blink"></i>
-                                    </div>
+                            <i class="fas fa-image blink"></i>
+                        </div>
                     </div>
                 </div>
                 <?php } ?>
             </div>
             <div class="line-end">
-                <a>See all</a>
-            </div>
+                <a href="<?php echo base_url('photo-gallery')?>">See all</a> </div>
+        </div>
         </div>
         </div>
 
@@ -408,7 +433,7 @@
     <script src="<?php echo base_url()?>assets1/js/materialize.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <scrip type="text/javascript" src="<?php echo base_url()?>assets1/js/script.js">
-</script>
+        </script>
 
         <script>
             $(document).ready(function() {
@@ -486,7 +511,7 @@
                             slidesToShow: 2,
 
                             slidesToScroll: 2,
-                             arrows: false,
+                            arrows: false,
 
                         }
 

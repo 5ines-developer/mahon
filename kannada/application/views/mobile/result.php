@@ -56,13 +56,13 @@
                         <div class="sec-list">
                             <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>" class="black-text">
                                 <div class="row">
-                                    <div class="col  m8 s8">
+                                    <div class="col l8 m8 s8">
                                         <div class="para-cont">
                                         <p><a class="black-text" href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>"><?php echo  $ftitle ?></a></p>
                                         <?php echo (!empty($fcontent))?'<p class="para-par">'.$fcontent.'</p>':''; ?>   
                                     </div>
                                     </div>
-                                    <div class="col m4 s4">
+                                    <div class="col l4 m4 s4">
                                         <div class="img-pa img-i">
                                             <a href="<?php echo $this->urls->urlFormat(base_url().$posts->category.'/'.$posts->slug) ?>">
                                             <img src="<?php echo base_url().$posts->image ?>" class="img-responsive img-res"  alt="">
@@ -147,6 +147,7 @@
             $(document).ready(function() {
                 $('.sidenav').sidenav();
                 $('.modal').modal();
+
                 //Check to see if the window is top if not then display button
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {
@@ -162,7 +163,6 @@
                     }, 900);
                     // return false;
                 });
-
             });
         </script>
         <script>
@@ -182,9 +182,7 @@
                     $(".input-search").css("display", "none");
                 });
             });
-
         </script>
-
         <script>
             window.onscroll = function() {
                 myFunction()

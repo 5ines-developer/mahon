@@ -52,7 +52,7 @@
     <header id="myHeader">
         <nav class="nav-mahonathi nav-is">
             <div class="nav-wrapper tab-head">
-                <a href="<?php echo base_url('photo-gallery') ?>" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-arrow-left"></i><span><?php echo ucwords($this->urls->urlDformat($this->uri->segment(1))) ?></span></a>
+                <a href="<?php echo base_url('photo-gallery') ?>"  class="sidenav-trigger"><i class="fas fa-arrow-left"></i><span><?php echo ucwords($this->urls->urlDformat($this->uri->segment(1))) ?></span></a>
                 <div class="Share-detail">
                     <ul>
                         <li><i class="fas fa-comment-alt"></i><sup>4</sup>
@@ -61,7 +61,29 @@
                 </div>
             </div>
         </nav>
-        </nav>
+        <ul class="sidenav nn-list" id="mobile-demo">
+            <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">Home</a></li>
+
+                    <?php
+                                $vd = ''; 
+                                $kn='';
+                                if(!empty(categories())){
+                                    foreach(categories() as $key => $value) { 
+                                        if($value->title == 'Video'){$vd = '1'; }
+                                        if($value->menu == 1 && $value->title != 'Video'){
+                                            $rurl = $this->urls->urlFormat(base_url().$value->title)
+                                ?>
+                                    <li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>
+                                <?php } 
+                                if($value->title == 'Video'){ 
+                                    $rurl1 = $this->urls->urlFormat(base_url().$value->title);
+                                    $kn = $value->title;
+                                } 
+                            } }
+                            if (!empty($vd)) { ?>
+                                <li><a class="world" href="<?php echo $rurl1 ?>"><?php echo $kn ?></a> </li>
+                            <?php } ?> 
+        </ul>
     </header>
     <!-- menu slider -->
     <!--section -->
@@ -118,20 +140,20 @@
                 $('.sidenav').sidenav();
                 $('.tabs').tabs();
                 $('.modal').modal();
-                $('#tabs-demo').tabs({
-                    'swipeable': true
+                           //Check to see if the window is top if not then display button
+                           $(window).scroll(function() {
+                    if ($(this).scrollTop() > 100) {
+                        $('.go-top').fadeIn();
+                    } else {
+                        $('.go-top').fadeOut();
+                    }
                 });
-                // Scroll Event
-                $(window).on('scroll', function() {
-                    var scrolled = $(window).scrollTop();
-                    if (scrolled > 300) $('.go-top').addClass('active');
-                    if (scrolled < 300) $('.go-top').removeClass('active');
-                });
-                // Click Event
-                $('.go-top').on('click', function() {
-                    $("html, body").animate({
-                        scrollTop: "0"
-                    }, 500);
+                //Click event to scroll to top
+                $('.go-top').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 900);
+                    // return false;
                 });
             });
         </script>
