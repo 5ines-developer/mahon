@@ -230,7 +230,7 @@ class Photos extends CI_Controller {
             }
         }
         $postid = $this->m_photo->insertAlbum($data);
-        $this->albumImages($_FILES,$postid);
+        $this->albumImages($postid);
 
         if(!empty($postid)){
             $this->session->set_flashdata('success', 'Photo Album Added successfully');
@@ -242,7 +242,7 @@ class Photos extends CI_Controller {
 
     }
 
-    function albumImages($files1='', $postid)
+    function albumImages($postid)
     {
         $files = array();
         $files = $_FILES;
@@ -265,7 +265,7 @@ class Photos extends CI_Controller {
                 );
                 $this->load->library('upload', $config);
                 if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
-                $this->upload->do_upload('img');
+                $this->upload->do_upload('images');
                 $filename = $this->config->item('web_url').'photo_album/'.$this->upload->data('file_name');
                 $data = array('uniq'=> random_string('alnum',20), 'image' => $filename, 'post_id' => $postid);
                 $this->m_photo->albumImages($data);

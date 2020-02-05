@@ -6580,4 +6580,15 @@ left: 0;
   width: 42%;
   right: 0;
 }
+.cont {
+  position: absolute;
+  background:
+  #fff;
+  padding: 1px 8px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 4px;
+  font-size: 11px;
+  top: 0;
+  left: 0;
+}
 

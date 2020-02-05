@@ -32,7 +32,7 @@ class home extends CI_Controller {
         $data['gallery']    = $this->m_site->gallery();
         $data['happening']  = $this->m_site->happening();
         $data['twitter']    = $this->m_site->twitter();
-
+        $data['album']      = $this->m_site->getAlbum();
         if ($this->detect == 'mobile') {
             $this->load->view('mobile/index', $data, FALSE);
         }else{

@@ -10,6 +10,7 @@ class result extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('m_result');
+        $this->load->model('m_site');
         $this->ci =& get_instance();
         $this->detect = $this->ci->mobdetect->detect();
         
@@ -133,6 +134,18 @@ class result extends CI_Controller {
         $data['gallery']    = $this->m_result->pgallery();
         $this->load->view('mobile/photo', $data, FALSE);
     }
+
+    public function photoAlbum($slug='')
+    {
+        $data['album']  = $this->m_result->getAlbum($slug);
+        $data['temple']     = $this->m_site->temple();
+        $data['trending']   = $this->m_site->trending();
+        $data['videos']     = $this->m_site->videos();
+        $data['popular']    = $this->m_site->popular();
+        $data['breaking']   = $this->m_result->breaking();
+        $this->load->view('site/photos', $data, FALSE);
+    }
+
 }
 
 /* End of file Result.php */

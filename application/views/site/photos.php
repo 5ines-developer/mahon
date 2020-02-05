@@ -161,6 +161,68 @@
 								
 							<!-- end article -->
 						<?php } ?>	
+
+
+
+						<?php if(!empty($album))	{ ?>		
+							<!-- block content -->
+							<div class="block-content related-article"  data_slug="<?php echo  $album->slug ?>">
+
+								<!-- single-post box -->
+								<div class="single-post-box">
+
+									<div class="title-post">
+										<h1><?php echo $album->title ?></h1>
+										<ul class="post-tags">
+											<li><i class="fa fa-clock-o"></i><?php echo $album->uploaded_on ?></li>
+										</ul>
+									</div>
+
+									<div class="post-gallery">
+											<img src="<?php echo  $album->f_image ?>" alt="">
+									</div>
+
+									<div class="share-post-box">
+										<ul class="share-box">
+											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $album->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $album->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/home?url=<?php echo $album->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $album->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
+										</ul>
+									</div>
+
+									<?php foreach ($album->images as $key => $value) {
+										?>
+										<div class="post-gallery">
+											<img src="<?php echo  $value->image ?>" alt="">
+										</div>
+									<?php } ?>
+
+									
+
+									<div class="post-tags-box">
+										<ul class="tags-box">
+											<li><i class="fa fa-tags"></i><span>Tags:</span></li>
+											<?php  
+											foreach (explode(',', $album->tags) as $key => $value) {
+											?>
+											<li><a href="#"><?php echo  $value ?></a></li>
+											<?php } ?>
+										</ul>
+									</div>
+
+									<div class="share-post-box">
+										<ul class="share-box">
+											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $album->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $album->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/home?url=<?php echo $album->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $album->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+						<?php } ?>	
  					
 					</div>
 
