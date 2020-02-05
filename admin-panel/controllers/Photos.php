@@ -190,7 +190,7 @@ class Photos extends CI_Controller {
         $this->load->model('m_videos');
         $data['category']   = $this->m_videos->getCategory();
         $data['author']     = $this->m_videos->getauthor(); 
-        // $data['gallery']    = $this->m_photo->getAlbum();
+        $data['gallery']    = $this->m_photo->getAlbum();
         $this->load->view('pages/photo-album', $data, FALSE);
     }
 
@@ -226,7 +226,7 @@ class Photos extends CI_Controller {
             } else {
                 $upload_data = $this->upload->data();
                 $file_name = $upload_data['file_name'];
-                $data['f_image'] = 'vendors-profile/'.$file_name;
+                $data['f_image'] = $this->config->item('web_url').'photo_album/'.$file_name;
             }
         }
         $postid = $this->m_photo->insertAlbum($data);
@@ -273,6 +273,19 @@ class Photos extends CI_Controller {
         }
         return true;
     }
+
+        // Delete 
+    public function albumDelete($id = null)
+    {
+        if($this->m_photo->albumDelete($id)){
+            $this->session->set_flashdata('success', 'Photo Albums deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'please try again');
+        }
+        redirect('photo-album','refresh');
+    }
+
+    
 }
 
 /* End of file Photos.php */

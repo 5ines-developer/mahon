@@ -52,13 +52,13 @@
                                     foreach ($gallery as $key => $value) {  ?>
                                             <li class="tumb-item">
                                                 <div class="tumb-img">
-                                                    <img src="<?php echo $value->image['image'] ?>" alt="">
+                                                    <img src="<?php echo (!empty($value->f_image))?$value->f_image:''; ?>" alt="">
                                                     <div class="cont"><?php echo $value->count ?> photos</div>
                                                 </div>
                                                 <div class="tumb-action">
                                                     <!-- <a href=""><i class="fas fa-pencil-alt"></i></a> -->
-                                                    <a href="<?php echo base_url('photos/delete/').$value->id ?>" class="delete-btn"><i class="far fa-trash-alt"></i></a>
-                                                    <a href="<?php echo $this->config->item('web_url').'photogallery/'.strtolower($value->acategory.'/'.$value->slug) ?>" target="_blank"><i class="fas fa-eye"></i></a>
+                                                    <a href="<?php echo base_url('photo-album/delete/').$value->id ?>" class="delete-btn"><i class="far fa-trash-alt"></i></a>
+                                                    <a href="<?php echo $this->config->item('web_url').'photoalbum/'.$value->slug ?>" target="_blank"><i class="fas fa-eye"></i></a>
                                                 </div>
                                                 <div class="tumb-caption">
                                                     <p class="truncate"><?php echo $value->title ?></p>

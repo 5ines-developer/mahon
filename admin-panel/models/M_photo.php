@@ -140,7 +140,42 @@ class m_photo extends CI_Model {
 
     public function getAlbum($value='')
     {
-      return $this->db->get('mh_photo_album')->result();
+      $result = $this->db->get('mh_photo_album')->result();
+      if(!empty($result)){
+        foreach ($result as $key => $value) {
+          $value->count = $this->countAlbum($value->id);
+        }
+      }
+      return $result;
+    }
+
+    public function countAlbum($id='')
+    {
+      return $this->db->where('post_id', $id)->count_all_results('mh_pht_albums');
+    }
+
+    public function albumDelete($id = null)
+    {
+
+        $query = $this->db->where('id', $id)->get('mh_photo_album')->row();
+
+        if(!empty($query)){
+          $this->db->where('id', $id)->delete('mh_photo_album');
+          if($this->db->affected_rows()>0):
+            unlink($query->f_image);
+            $this->salbmdelete($id);
+              return true;
+          else:
+              return false;
+          endif;
+        }else{
+          return false;
+        }
+    }
+
+    public function salbmdelete($id='')
+    {
+      return $this->db->where('post_id', $id)->delete('mh_pht_albums');
     }
 
 }
