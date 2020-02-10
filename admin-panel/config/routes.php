@@ -72,6 +72,9 @@ $route['photos/delete/(:any)']                   = 'photos/delete/$1';
 
 // photo album
 $route['photo-album']                            = 'photos/album';
+$route['photo-album/delete/(:any)']              = 'photos/albumDelete/$1';
+
+
 
 // Event
 $route['events']                                 = 'events/index';

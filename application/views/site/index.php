@@ -607,6 +607,40 @@
 
 							</div>
 
+
+							<!-- photo album -->
+							<?php if (!empty($album)) {?>
+							<section class="features-today">
+                                <div class="">
+
+                                    <div class="title-section">
+                                        <h1><span>Photo Album</span></h1>
+                                    </div>
+
+                                    <div class="features-today-box owl-wrapper gallery-slide">
+                                        <div class="owl-carousel" data-num="3">
+                                        <?php foreach ($album as $key => $val) {?>
+                                            <div class="item news-post standard-post">
+                                                <div class="post-gallery">
+													<a href="<?php echo base_url('photo-album/').$val->slug ?>">
+                                                    	<img src="<?php echo $val->f_image ?>" alt="">
+                                                    	<div class="cont">5 photos</div>
+													</a>
+                                                </div>
+                                                <div class="post-content">
+                                                    <h2><a href="<?php echo base_url('photo-album/').$val->slug ?>"><?php echo (strlen(strip_tags($val->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($val->title) ?></a></h2>
+                                                </div>
+                                            </div>
+										<?php } ?>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                        <?php } ?>
+							<!-- end photo album -->
+
+
                             <!-- carousel box -->
 							<div class="carousel-box owl-wrapper graydlayer">
 								<div class="title-section">

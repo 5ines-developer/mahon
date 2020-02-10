@@ -281,6 +281,22 @@ class m_site extends CI_Model {
         return true;
     }
 
+    public function getAlbum($value='')
+    {
+      $result = $this->db->get('mh_photo_album')->result();
+      if(!empty($result)){
+        foreach ($result as $key => $value) {
+          $value->count = $this->countAlbum($value->id);
+        }
+      }
+      return $result;
+    }
+
+    public function countAlbum($id='')
+    {
+      return $this->db->where('post_id', $id)->count_all_results('mh_pht_albums');
+    }
+
 
 
 
