@@ -976,6 +976,15 @@ html {
     z-index: 0;
 }
 
+.detail-cont img {
+    width: 100%;
+}
+
+.container-fluide {
+    max-width: 98%;
+    margin: auto;
+}
+
 @media(min-width:680px) and (max-width:991px) {
     .tabs-menu li {
         display: inline-block;
