@@ -92,7 +92,7 @@
         <div class="container-fluide">
             <div class="row">
                 <?php if(!empty($post)) { ?>
-                        <div class="col l12">
+                    <div class="col l12 s12">
                             <div class="inner-detail-banner">
                     <div class="inner-banner">
                         <img src="<?php echo base_url().$post->image ?>" class="img-responsive" alt="">
