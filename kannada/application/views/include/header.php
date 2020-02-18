@@ -44,10 +44,10 @@
 							<div class="col-md-9">
 								<ul class="top-line-list">
                                     <li class="language active">
-                                        <a href="<?php echo base_url() ?>">English</a>
+                                        <a href="<?php echo $this->config->item('web_url'); ?>">English</a>
                                     </li>
                                     <li class="language">
-                                        <a href="<?php echo base_url('kannada') ?>">ಕನ್ನಡ</a>
+                                        <a href="<?php echo base_url() ?>">ಕನ್ನಡ</a>
                                     </li>
 									<!-- <li>
 										<span class="city-weather">London, United Kingdom</span>
@@ -80,9 +80,9 @@
 							</div>	
 							<div class="col-md-3">
 								<ul class="social-icons">
-									<li><a class="facebook" href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour"><i class="fa fa-facebook"></i></a></li>
-									<li><a class="rss" href="https://www.instagram.com/mahonnathii/"><i class="fa fa-instagram"></i></a></li>
-									<li><a class="twitter" href="https://twitter.com/Mahonnathii"><i class="fa fa-twitter"></i></a></li>
+									<li><a class="facebook" href="https://www.facebook.com/mahonnathikannada/"><i class="fa fa-facebook"></i></a></li>
+									<li><a class="rss" href="https://www.instagram.com/mahonnathikannada/"><i class="fa fa-instagram"></i></a></li>
+									<li><a class="twitter" href="https://twitter.com/mahonnathikan"><i class="fa fa-twitter"></i></a></li>
 									<li><a class="google" href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
 								</ul>
 							</div>	
@@ -143,15 +143,25 @@
 									</ul>
 								</li> -->
 								<li><a  href="<?php echo base_url() ?>">ಮುಖಪುಟ</a> </li>
+								<?php 
+								if(!empty(categories())){
+								foreach(categories() as $key => $value) {
+									if($value->title == 'Featured'){
+										$rurl = $this->urls->urlFormat(base_url().$value->title);
+										echo '<li><a class="world" href="'.$rurl.'">'.$value->kannada.'</a> </li>';
+									} }} ?>
+
 								<?php  $vd = '';
 								$kn='';
 								if(!empty(categories())){
 								foreach(categories() as $key => $value) {
  								if($value->title == 'Video'){$vd = '1'; }
-								if($value->menu == 1 && $value->title != 'Video'){
+								if($value->menu == 1 && $value->title != 'Video' && $value->title != 'Featured'){
 								$rurl = $this->urls->urlFormat(base_url().$value->title) ?>
 									<li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->kannada ?></a> </li>
 								<?php }
+
+
 								if($value->title == 'Video'){ 
 									$kn = $value->kannada;
 									$rurl1 = $this->urls->urlFormat(base_url().$value->title);

@@ -1,0 +1,4 @@
+[22-Jan-2020 15:03:30 Etc/GMT] PHP Notice:  imagecreatefromstring(): gd-jpeg, libjpeg: recoverable error: Premature end of JPEG file
+ in /home/mah0nnathi12/public_html/kannada/admin-panel/assets/ckfinder/core/connector/php/vendor/cksource/ckfinder/src/CKSource/CKFinder/Image.php on line 207
+[03-Feb-2020 10:04:22 Etc/GMT] PHP Notice:  imagecreatefromstring(): gd-jpeg, libjpeg: recoverable error: Premature end of JPEG file
+ in /home/mah0nnathi12/public_html/kannada/admin-panel/assets/ckfinder/core/connector/php/vendor/cksource/ckfinder/src/CKSource/CKFinder/Image.php on line 207

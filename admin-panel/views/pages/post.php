@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="<?php echo base_url()?>assets/dataTable/button/css/buttons.dataTables.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css">
     <style type="text/css">
     .dash-list a .list-dashboard {
         transition: 0.5s
@@ -148,10 +150,12 @@
                                         <select required id="posted_by" name="posted_by">
                                             <option value="" disabled >Choose Author</option>
                                             <?php foreach ($author as $key => $value) {
-
-                                                if($value->name == 'prathwi'){
+                                                if($value->name == 'mahonnathi'){
                                                     echo '<option  value="'.$value->id.'">'.$value->name.'</option>';
-                                                }else{
+                                                }
+                                            }?>
+                                            <?php foreach ($author as $key => $value) {
+                                                if($value->name != 'mahonnathi'){
                                                     echo '<option  value="'.$value->id.'">'.$value->name.'</option>';
                                                 }
                                             } ?>
@@ -426,10 +430,13 @@
 
             // ck editor
             var editor = CKEDITOR.replace( 'description',{
-                filebrowserBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html',
-                filebrowserImageBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html?type=Images',
-                filebrowserUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                filebrowserImageUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+                extraPlugins: 'wysiwygarea',
+                extraPlugins: 'embed',
+                extraPlugins: 'youtube',
+                // filebrowserBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html',
+                // filebrowserImageBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html?type=Images',
+                // filebrowserUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                // filebrowserImageUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
             });
             
             // related category rotate

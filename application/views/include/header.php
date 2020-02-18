@@ -82,8 +82,8 @@
 								<ul class="social-icons">
 									<li><a class="facebook" href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour"><i class="fa fa-facebook"></i></a></li>
 									<li><a class="rss" href="https://www.instagram.com/mahonnathii/"><i class="fa fa-instagram"></i></a></li>
-									<li><a class="twitter" href="https://twitter.com/Mahonnathii"><i class="fa fa-twitter"></i></a></li>
-									<li><a class="google" href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
+									<li><a class="twitter" href="https://twitter.com/Mahonnathi1"><i class="fa fa-twitter"></i></a></li>
+									<li><a class="google" href="https://www.youtube.com/channel/UCOkjDTSLNf55-fzLqrhb_9A?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
 								</ul>
 							</div>	
 						</div>
@@ -143,13 +143,22 @@
 									</ul>
 								</li> -->
 								<li><a  href="<?php echo base_url() ?>">Home</a> </li>
+
+								<?php 
+								if(!empty(categories())){
+								foreach(categories() as $key => $value) {
+									if($value->title == 'Featured'){
+										$rurl = $this->urls->urlFormat(base_url().$value->title);
+										echo '<li><a class="world" href="'.$rurl.'">'.$value->title.'</a> </li>';
+									} }} ?>
+									
 								<?php
 								$vd = ''; 
 								$kn='';
 								if(!empty(categories())){
 									foreach(categories() as $key => $value) { 
 										if($value->title == 'Video'){$vd = '1'; }
-										if($value->menu == 1 && $value->title != 'Video'){
+										if($value->menu == 1 && $value->title != 'Video' && $value->title != 'Featured'){
 											$rurl = $this->urls->urlFormat(base_url().$value->title)
 								?>
 									<li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>

@@ -146,7 +146,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
 									<h1>ಸಬ್ ಸ್ರೈಬ್ ಆಗಿ</h1>
-									<input type="text" required name="sumbscribe" id="subscribe" placeholder="Email"/>
+									<input type="email" required name="sumbscribe" id="subscribe" placeholder="Email"/>
 									<button id="submit-subscribe">
 										<i class="fa fa-arrow-circle-right"></i>
 									</button>
@@ -208,7 +208,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                                                     <ul class="post-tags">
                                                         <!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
                                                         <?php 
-                                                                echo (!empty($posts->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$posts->posted_by .'</a></li>' : '' )
+                                                                echo (!empty($posts->author)? '<li><i class="fa fa-user"></i>by <a href="#!">'.$posts->author .'</a></li>' : '' )
                                                         ?>
                                                         <!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
                                                         <!-- <li><i class="fa fa-eye"></i>872</li> -->

@@ -15,8 +15,8 @@
 												<img src="<?php echo base_url().$rand->image ?>" alt="">
 											</div>
 											<div class="post-content">
-												<a href="<?php echo base_url('news/').strtolower($rand->category) ?>"><?php echo $rand->category ?></a>
-												<h2><a href="<?php echo base_url('news/').strtolower($rand->category.'/'.$rand->slug) ?>"><?php echo $rand->title ?></a></h2>
+												<a href="<?php echo $this->urls->urlFormat(base_url().strtolower($rand->category)) ?>"><?php echo $rand->category ?></a>
+												<h2><a href="<?php echo base_url().strtolower($this->urls->urlFormat($rand->category).'/'.$rand->slug) ?>"><?php echo $rand->title ?></a></h2>
 												<ul class="post-tags">
 													<!-- <li><i class="fa fa-clock-o"></i>27 may 2013</li> -->
 												</ul>
@@ -31,7 +31,7 @@
 								<h1>Hot Categories</h1>
 								<ul class="category-list">
 									<?php if(!empty(categories())){ foreach(categories() as $key => $value) { if($key <= 6){ ?>
-										<li><a class="world" href="<?php echo strtolower(base_url('news/').$value->title) ?>"><?php echo $value->title ?> </a> </li>
+										<li><a class="world" href="<?php echo strtolower($this->urls->urlFormat(base_url().$value->title)) ?>"><?php echo $value->title ?> </a> </li>
 									<?php } } }?>
 								</ul>
 							</div>
@@ -48,8 +48,8 @@
 								<ul class="social-icons">
 								<li><a class="facebook" href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour"><i class="fa fa-facebook"></i></a></li>
 									<li><a class="rss" href="https://www.instagram.com/mahonnathii/"><i class="fa fa-instagram"></i></a></li>
-									<li><a class="twitter" href="https://twitter.com/Mahonnathii"><i class="fa fa-twitter"></i></a></li>
-									<li><a class="google" href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
+									<li><a class="twitter" href="https://twitter.com/Mahonnathi1"><i class="fa fa-twitter"></i></a></li>
+									<li><a class="google" href="https://www.youtube.com/channel/UCOkjDTSLNf55-fzLqrhb_9A?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
 								</ul>
 							</div>
 						</div>
@@ -64,8 +64,6 @@
 							<nav class="footer-nav">
 								<ul>
 									<li><a href="<?php echo base_url() ?>">Home</a></li>
-									<li><a href="">About</a></li>
-									<li><a href="">Contact</a></li>
 								</ul>
 							</nav>
 						</div>

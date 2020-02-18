@@ -63,12 +63,12 @@
 										<!-- <span>Facebook</span> -->
 									</li>
 									<li>
-										<a href="https://twitter.com/Mahonnathii" class="twitter"><i class="fa fa-twitter"></i></a>
+										<a href="https://twitter.com/Mahonnathi1" class="twitter"><i class="fa fa-twitter"></i></a>
 										<span class="number">Twitter</span>
 										<!-- <span>Twitter</span> -->
 									</li>
 									<li>
-										<a href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
+										<a href="https://www.youtube.com/channel/UCOkjDTSLNf55-fzLqrhb_9A?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
 										<span class="number">YouTube</span>
 										<!-- <span>YouTube</span> -->
 									</li>
@@ -139,7 +139,7 @@
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
 									<h1>Subscribe to RSS Feeds</h1>
-									<input type="text" required name="sumbscribe" id="subscribe" placeholder="Email"/>
+									<input type="email" required name="sumbscribe" id="subscribe" placeholder="Email"/>
 									<button id="submit-subscribe">
 										<i class="fa fa-arrow-circle-right"></i>
 									</button>
