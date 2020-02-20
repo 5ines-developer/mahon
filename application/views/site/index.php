@@ -379,7 +379,7 @@
 													<div class="hover-box overlaybox">
 														<div class="inner-hover">
 														<?php 
-															echo (!empty($fetured[0]->category)? '<a class="category-post" href="#!">'.$fetured[0]->category.'</a>': ' ' ) ;
+															echo (!empty($fetured[0]->category)? '<a class="category-post" href="'.$urllink.'">'.$fetured[0]->category.'</a>': ' ' ) ;
 															
 														?>
 															<h2><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($fetured[0]->title)) > 53) ? substr(strip_tags($fetured[0]->title),0,50).'...' : strip_tags($fetured[0]->title); ?></a></h2>
@@ -609,7 +609,7 @@
 
 
 							<!-- photo album -->
-							<?php if (!empty($album)) {?>
+							<!-- <?php if (!empty($album)) {?>
 							<section class="features-today">
                                 <div class="">
 
@@ -637,7 +637,7 @@
 
                                 </div>
                             </section>
-                        <?php } ?>
+                        <?php } ?> -->
 							<!-- end photo album -->
 
 
@@ -697,7 +697,6 @@
 													<a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
                                                     	<img src="<?php echo $image->image->image ?>" alt="">
 													</a>
-                                                    <a class="category-post world" href="<?php echo base_url().strtolower($image->category) ?>"><?php echo $image->category ?></a>
                                                 </div>
                                                 <div class="post-content">
                                                     <h2><a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo (strlen(strip_tags($image->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($image->title) ?></a></h2>
@@ -731,12 +730,12 @@
 										<!-- <span>Facebook</span> -->
 									</li>
 									<li>
-										<a href="https://twitter.com/Mahonnathii" class="twitter"><i class="fa fa-twitter"></i></a>
+										<a href="https://twitter.com/Mahonnathi1" class="twitter"><i class="fa fa-twitter"></i></a>
 										<span class="number">Twitter</span>
 										<!-- <span>Twitter</span> -->
 									</li>
 									<li>
-										<a href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
+										<a href="https://www.youtube.com/channel/UCOkjDTSLNf55-fzLqrhb_9A?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
 										<span class="number">YouTube</span>
 										<!-- <span>YouTube</span> -->
 									</li>
@@ -857,7 +856,7 @@
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
 									<h1>Subscribe to RSS Feeds</h1>
-									<input type="text" required name="sumbscribe" id="subscribe" placeholder="Email">
+									<input type="email" required name="sumbscribe" id="subscribe" placeholder="Email">
 									<button id="submit-subscribe">
 										<i class="fa fa-arrow-circle-right"></i>
 									</button>

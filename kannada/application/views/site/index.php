@@ -84,7 +84,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<img src="<?php echo base_url().$banner[1]->image ?>" alt="">
 							<div class="hover-box">
 								<div class="inner-hover">
-									<?php echo (!empty($banner[1]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[1]->category).'">'.$banner[1]->category.'</a>': ' ' ) ;
+									<?php echo (!empty($banner[1]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[1]->category).'">'.$banner[1]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[1]->category)){
 											$urllink = $this->urls->urlFormat($banner[1]->slug);
 										}else{
@@ -122,7 +122,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[0]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[0]->category).'">'.$banner[0]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[0]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[0]->category).'">'.$banner[0]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[0]->category)){
 											$urllink = $this->urls->urlFormat($banner[0]->slug);
 										}else{
@@ -157,7 +157,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[3]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[3]->category).'">'.$banner[3]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[3]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[3]->category).'">'.$banner[3]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[3]->category)){
 											$urllink = $this->urls->urlFormat($banner[3]->slug);
 										}else{
@@ -189,7 +189,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[2]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[2]->category).'">'.$banner[2]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[2]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[2]->category).'">'.$banner[2]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[2]->category)){
 											$urllink = $this->urls->urlFormat($banner[2]->slug);
 										}else{
@@ -221,7 +221,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="hover-box">
 								<div class="inner-hover">
 									<?php 
-										echo (!empty($banner[4]->category)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[4]->category).'">'.$banner[4]->category.'</a>': ' ' ) ;
+										echo (!empty($banner[4]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[4]->category).'">'.$banner[4]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[4]->category)){
 											$urllink = $this->urls->urlFormat($banner[4]->slug);
 										}else{
@@ -376,7 +376,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 													<div class="hover-box overlaybox">
 														<div class="inner-hover">
 														<?php 
-															echo (!empty($fetured[0]->category)? '<a class="category-post" href="#!">'.$fetured[0]->category.'</a>': ' ' ) ;
+															echo (!empty($fetured[0]->category)? '<a class="category-post" href="'.$urllink .'">'.$fetured[0]->category.'</a>': ' ' ) ;
 															
 														?>
 															<h2><a href="<?php echo $urllink ?>"><?php echo word_limiter(strip_tags($fetured[0]->title), 4).'...' ?></a></h2> <ul class="post-tags">
@@ -669,7 +669,6 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                                         <div class="owl-carousel" data-num="3">
                                         <?php foreach ($gallery as $key => $image) {
 
-
                                         	?>
 											
                                             <div class="item news-post standard-post">
@@ -677,7 +676,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 													<a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
                                                     	<img src="<?php echo $image->image->image ?>" alt="">
 													</a>
-                                                    <a class="category-post world" href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>"><?php echo $image->category ?></a>
+                                                    
                                                 </div>
                                                 <div class="post-content">
                                                     <h2><a href="<?php echo base_url('photogallery/').strtolower($image->category.'/'.$image->slug) ?>">
@@ -841,7 +840,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
 									<h1>ಸಬ್ ಸ್ರೈಬ್ ಆಗಿ</h1>
-									<input type="text" required name="sumbscribe" id="subscribe" placeholder="Email">
+									<input type="email" required name="sumbscribe" id="subscribe" placeholder="Email">
 									<button id="submit-subscribe">
 										<i class="fa fa-arrow-circle-right"></i>
 									</button>
