@@ -80,10 +80,10 @@
 							</div>	
 							<div class="col-md-3">
 								<ul class="social-icons">
-									<li><a class="facebook" href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour"><i class="fa fa-facebook"></i></a></li>
-									<li><a class="rss" href="https://www.instagram.com/mahonnathii/"><i class="fa fa-instagram"></i></a></li>
-									<li><a class="twitter" href="https://twitter.com/Mahonnathi1"><i class="fa fa-twitter"></i></a></li>
-									<li><a class="google" href="https://www.youtube.com/channel/UCOkjDTSLNf55-fzLqrhb_9A?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
+									<li><a class="facebook" target="_black" href="https://www.facebook.com/Mahonnathi-111889260186202/?modal=admin_todo_tour"><i class="fa fa-facebook"></i></a></li>
+									<li><a class="rss" target="_black" href="https://www.instagram.com/mahonnathii/"><i class="fa fa-instagram"></i></a></li>
+									<li><a class="twitter" target="_black" href="https://twitter.com/Mahonnathi1"><i class="fa fa-twitter"></i></a></li>
+									<li><a class="google" target="_black" href="https://www.youtube.com/channel/UCOkjDTSLNf55-fzLqrhb_9A?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
 								</ul>
 							</div>	
 						</div>
