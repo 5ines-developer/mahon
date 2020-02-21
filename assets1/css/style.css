@@ -503,12 +503,12 @@ html {
 }
 
 .rr-gal {
-height: 215px;
-overflow: hidden;
-z-index: 99999999;
-display: flex;
-align-items: center;
-background: black;
+    height: 215px;
+    overflow: hidden;
+    z-index: 99999999;
+    display: flex;
+    align-items: center;
+    background: black;
 }
 
 .video-pass {
@@ -695,7 +695,7 @@ background: black;
 }
 
 .go-top.active {
-    top: 85%;
+    top: 83%;
     -webkit-transform: translateY(-98%);
     transform: translateY(-98%);
     opacity: 1;
@@ -735,12 +735,12 @@ background: black;
 }
 
 .featured-vie h5 {
-    font-size: 13px;
+    font-size: 14px;
     background: green;
-    padding: 10px 25px;
+    padding: 11px 10px;
     color: white;
     border-radius: 4px;
-    width: 50%;
+    width: 60%;
 }
 
 .dis-video h1 {
@@ -978,13 +978,16 @@ background: black;
 .video-pass {
     z-index: 0;
 }
+
 .detail-cont img {
     width: 100%;
 }
+
 .container-fluide {
-max-width: 94%;
-margin: auto;
+    max-width: 94%;
+    margin: auto;
 }
+
 @media(min-width:680px) and (max-width:991px) {
     .tabs-menu li {
         display: inline-block;
@@ -1024,3 +1027,16 @@ margin: auto;
 
 
 /* slider */
+
+.footer-social li {
+    display: inline-block;
+    padding: 0px 5px;
+}
+
+.footer-social i {
+    color: black;
+}
+
+.footer-social i:hover {
+    color: green;
+}

@@ -830,7 +830,7 @@ body.boxed #container {
 
 p {
     font-size: 15px;
-    color: #666666;
+    color: #0b0b0b;
     font-family: 'Segoe UI', sans-serif;
     font-weight: 400;
     line-height: 25px;
@@ -3545,7 +3545,7 @@ ul.post-tags li:last-child {
 /* standard post2 style */
 
 .standard-post2 .post-title {
-    padding: 18px 20px;
+    padding: 7px 20px;
     background: #fafafa;
     border-bottom: 1px solid #f0f0f0;
     transition: all 0.2s ease-in-out;
@@ -3968,15 +3968,17 @@ button.mfp-arrow {
     -moz-transition: all 0.2s ease-in-out;
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
-    color: #33a3f1;
+    color: #fff;
     font-family: 'Segoe UI', sans-serif;
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 13px;
     margin-bottom: 7px;
+    background: #f44336;
 }
 
 .article-post .post-content>a:hover {
-    opacity: 0.7;
+    background: #ff8f00;
+    border: 1px solid white;
 }
 
 .article-post .post-content h2 {
@@ -8113,4 +8115,31 @@ a:focus {
 
 .post-gallery img {
     height: 200px;
+}
+
+.post-content p {
+    text-align: justify;
+    font-size: 14px;
+}
+
+.video-post a:focus {
+    text-decoration: none;
+}
+
+.col-par:focus {
+    text-decoration: unset;
+}
+
+.post-title a {
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+}
+
+.post-title p {
+    margin: 0;
+}
+
+.post-title a:focus {
+    text-decoration: unset !important
 }

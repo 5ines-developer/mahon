@@ -108,7 +108,7 @@
 												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 												
 											</div>
-											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
+											<p><a class="col-par" href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>"><?php echo (strlen(strip_tags($value->title)) > 33) ? substr(strip_tags($value->title),0,30).'...' : strip_tags($value->title);  ?></a></p>
 										</div>
 									<?php } ?>
 									
@@ -537,7 +537,7 @@
 												<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>"></a>
 												</div>
 												<div class="post-title">
-												<p><a href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($prow->title)) > 47) ? substr(strip_tags($prow->title),0,50).'...' : strip_tags($prow->title); ?></a></p>
+												<p><a class="col-par" href="<?php echo $urllink ?>"><?php echo  (strlen(strip_tags($prow->title)) > 47) ? substr(strip_tags($prow->title),0,50).'...' : strip_tags($prow->title); ?></a></p>
 												</div>
 											</div>
 											<?php } }?>
