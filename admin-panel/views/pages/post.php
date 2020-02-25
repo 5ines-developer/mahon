@@ -433,10 +433,10 @@
                 extraPlugins: 'wysiwygarea',
                 extraPlugins: 'embed',
                 extraPlugins: 'youtube',
-                // filebrowserBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html',
-                // filebrowserImageBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html?type=Images',
-                // filebrowserUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                // filebrowserImageUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+                filebrowserBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html',
+                filebrowserImageBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html?type=Images',
+                filebrowserUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                filebrowserImageUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
             });
             
             // related category rotate
