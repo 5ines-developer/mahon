@@ -503,9 +503,12 @@ html {
 }
 
 .rr-gal {
-    height: 158px;
+    height: 215px;
     overflow: hidden;
     z-index: 99999999;
+    display: flex;
+    align-items: center;
+    background: black;
 }
 
 .video-pass {
@@ -692,7 +695,7 @@ html {
 }
 
 .go-top.active {
-    top: 85%;
+    top: 83%;
     -webkit-transform: translateY(-98%);
     transform: translateY(-98%);
     opacity: 1;
@@ -732,12 +735,12 @@ html {
 }
 
 .featured-vie h5 {
-    font-size: 13px;
+    font-size: 14px;
     background: green;
-    padding: 10px 25px;
+    padding: 11px 10px;
     color: white;
     border-radius: 4px;
-    width: 50%;
+    width: 60%;
 }
 
 .dis-video h1 {
@@ -981,7 +984,7 @@ html {
 }
 
 .container-fluide {
-    max-width: 98%;
+    max-width: 94%;
     margin: auto;
 }
 
@@ -1024,3 +1027,16 @@ html {
 
 
 /* slider */
+
+.footer-social li {
+    display: inline-block;
+    padding: 0px 5px;
+}
+
+.footer-social i {
+    color: black;
+}
+
+.footer-social i:hover {
+    color: green;
+}
