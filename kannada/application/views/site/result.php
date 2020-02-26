@@ -185,7 +185,14 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 							<!-- article box -->
 							<div class="article-box">
 								<div class="title-section">
-									<?php echo (!empty($post[0]->kannada)? '<h1><span class="world">'.$post[0]->kannada.'</span></h1>': '<h1><span class="world">ವೀಡಿಯೊ</span></h1>') ?>
+									<?php
+
+									if(!empty($vid)){
+										echo (!empty($post[0]->kannada)? '<h1><span class="world">'.$post[0]->kannada.'</span></h1>': '<h1><span class="world">ವೀಡಿಯೊ</span></h1>');
+									}else{
+										echo (!empty($post[0]->kannada)? '<h1><span class="world">'.$post[0]->kannada.'</span></h1>': '');
+
+									}  ?>
 									<?php echo (!empty($mtitle)? '<h1><span class="world">'.$mtitle.'</span></h1>': '') ?>
 								</div>
 
@@ -289,15 +296,13 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 	                                        </div>
 	                                    </div>
                                 <?php } } 
-                                  } ?> 
-
-                                <!-- <?php if(1==1){ ?>
+                                  } else{ ?>
 									<div class="error-banner">
-										<h1>No Result <span>Found</span></h1>
+										<h3 style="color: #fff;">No Result <span>Found</span></h3>
 										<p>Oops! It looks like nothing was found at this search. Maybe try another search?</p>
 									</div>
 
-								<?php } ?>	 -->
+								<?php } ?>	
 							</div>
 							<!-- End article box -->
 

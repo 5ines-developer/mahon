@@ -4,7 +4,11 @@
                 <a href="#!" class="brand-logo black-text"><img src="<?php echo base_url()?>assets1/img/logo.png" class="img-logo" alt=""></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <div class="searchbar">
-                    <input placeholder="Placeholder" id="first_name" type="text" class="validate input-search">
+
+                    <form class="" id="search-form" role="search" method="post">
+                    <input type="text" required="" id="search" name="search" placeholder="Search here" autofocus onfocus="convertToSlug(this.value)" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" onchange="convertToSlug(this.value)" value="<?php echo (!empty($mtitle)? $mtitle : '') ?>" class="validate input-search">
+                    <button type="submit" id="search-submit" class="btn-search bs"><i class="fa fa-search"></i></button>
+                    </form>
                     <i class="fas fa-search btn-search bs"></i>
                     <i class="fas fa-times btn-search-close bc"></i>
                 </div>
@@ -62,3 +66,14 @@
             </div>
         </div>
     </header>
+    <script>
+            function convertToSlug(str) {
+                str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+                
+                str = str.replace(/^\s+|\s+$/gm,'');
+                
+                str = str.replace(/\s+/g, '-'); 
+                document.getElementById("search-form").action  = '<?php echo base_url("topic/") ?>'+str;
+                //return str;
+            }
+        </script>

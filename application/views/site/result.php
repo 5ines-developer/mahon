@@ -274,7 +274,13 @@
 	                                        </div>
 	                                    </div>
 
-										 <?php	} } } ?> 
+										 <?php	} } }else{ ?>
+									<div class="error-banner">
+										<h3 style="color: #fff;">No Result <span>Found</span></h3>
+										<p>Oops! It looks like nothing was found at this search. Maybe try another search?</p>
+									</div>
+
+								<?php } ?> 
 								</div>
 							<!-- End article box -->
 
