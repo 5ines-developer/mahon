@@ -182,7 +182,6 @@
                     $(".input-search").css("display", "none");
                 });
             });
-
         </script>
 
         <script>
