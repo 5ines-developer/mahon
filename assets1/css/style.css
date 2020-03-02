@@ -14,7 +14,7 @@ body {
 }
 
 .nav-mahonathi i {
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .banner-content {
@@ -48,7 +48,7 @@ body {
 }
 
 .input-search {
-    width: 60% !important;
+    width: 50% !important;
     position: absolute;
     left: 27%;
     border-color: #ececec !important;
@@ -1039,4 +1039,13 @@ html {
 
 .footer-social i:hover {
     color: green;
+}
+
+
+/* 02-mar-2020 */
+
+.btn-rem {
+    background: none;
+    border: none;
+    padding: 0;
 }
