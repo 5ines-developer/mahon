@@ -7,8 +7,9 @@ class Account extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('Mht_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
+        if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_account');
+         $this->load->library('bcrypt');
     }
 
     /**
@@ -17,7 +18,7 @@ class Account extends CI_Controller {
     **/
 	public function index()
 	{
-		if ($this->session->userdata('Mht_id') != '') {
+		if ($this->session->userdata('Mht') != '') {
             $data['title'] = 'admin-profile - Mahonnati';
             $this->load->view('account/change-password.php', $data);
         } else {
@@ -44,8 +45,8 @@ class Account extends CI_Controller {
             redirect('change-password');
         } else {
             $crpassword = $this->input->post('crpassword');
-            $password = $this->input->post('password');
-            $admin = $this->session->userdata('Mht_id');
+            $password = $this->bcrypt->hash_password($this->input->post('password'));
+            $admin = $this->session->userdata('Mht');
             if ($this->m_account->changepass($admin, $password, $crpassword)) {
                 $this->session->set_flashdata('success', 'Password updated Successfully');
                 redirect('change-password', 'refresh');
@@ -58,11 +59,17 @@ class Account extends CI_Controller {
 
     public function passwordcheck($password)
     {
-        $this->db->where('id', $this->session->userdata('Mht_id'));
-        $this->db->where('password', $password);
-        $result = $this->db->get('admin');
-        if ($result->num_rows() > 0) {
-            return true;
+        $this->db->where('id', $this->session->userdata('Mht'));
+        // $this->db->where('password', $password);
+        $query = $this->db->get('admin');
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            if ($this->bcrypt->check_password($password, $result['password'])) {
+                return true;
+            }else{
+                $this->form_validation->set_message('passwordcheck', 'The {field} is not Valid');
+                return false;
+            }
         } else {
             $this->form_validation->set_message('passwordcheck', 'The {field} is not Valid');
             return false;
@@ -76,7 +83,7 @@ class Account extends CI_Controller {
     public function accntsttngs()
     {
             $data['title'] = 'Account settings - Mahonnati';
-            $admin = $this->session->userdata('Mht_id');
+            $admin = $this->session->userdata('Mht');
             $data['setting'] = $this->m_account->account($admin);
             $this->load->view('account/profile.php', $data, false);
         
@@ -90,7 +97,7 @@ class Account extends CI_Controller {
     public function updateacnt()
     {
         $data['title'] = 'Account settings - Smart Link';
-        $admin = $this->session->userdata('Mht_id');
+        $admin = $this->session->userdata('Mht');
         
         $acuname = $this->input->post('username');
         $acphone = $this->input->post('phone');

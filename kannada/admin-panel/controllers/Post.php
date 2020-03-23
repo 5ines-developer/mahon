@@ -31,7 +31,7 @@ class post extends CI_Controller {
             $sub_array = array();  
             $sub_array[] = '<a class="blue hoverable action-btn update-btn modal-trigger"  href="#modal1" id="'.$row->id.'"><i class="fas fa-edit "></i></a>
                 <a class="red hoverable delete-btn action-btn" id="'.$row->id.'"><i class="fas fa-trash  "></i></a>
-                <a class="orange accent-3 hoverable detail action-btn" target="_blank" href="'.strtolower($this->config->item('web_url').$row->category.'/'.$row->slug).'"><i class="fas fa-eye  "></i></a>';
+                <a class="orange accent-3 hoverable detail action-btn" target="_blank" href="'.strtolower($this->config->item('web_url').str_replace(' ','-',$row->category).'/'.$row->slug).'"><i class="fas fa-eye  "></i></a>';
              // $sub_array[] = $row->id;  
              $sub_array[] =  $row->title; 
              $sub_array[] = $row->category;  

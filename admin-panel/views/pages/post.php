@@ -411,7 +411,6 @@
         $(document).ready(function() {
             // materializedcss js initialize
             
-            
             $('select').formSelect();
             $('.collapsible').collapsible({accordion: false});
             $("select[required]").css({
@@ -438,6 +437,30 @@
                 filebrowserUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
                 filebrowserImageUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
             });
+
+
+
+
+             $(document).on('click','#cke_81,#cke_80',function(){
+
+                if ($("body").hasClass("cke_dialog_open")) {
+                    $('#modal1').modal('close');
+                }else{
+                    $('#modal1').modal('open');
+                }
+            });
+
+            $(document).on('click','.cke_dialog_ui_button_cancel,.cke_dialog_close_button',function(){
+
+                if ($("body").hasClass("cke_dialog_open")) {
+                    $('#modal1').modal('close');
+                }else{
+                    $('#modal1').modal('open');
+                }
+            });
+
+
+            
             
             // related category rotate
             $('.related-main-title').click(function (e) { 

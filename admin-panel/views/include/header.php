@@ -30,17 +30,11 @@
                <!-- Dropdown Structure -->
                <ul id='dropdown2' class='dropdown-content'>
                   <li ><a href="<?php echo  base_url() ?>profile">Profile </a></li>
-                  <li ><a href="<?php echo  base_url() ?>change-password">Settings</a></li>
+                  <li ><a href="<?php echo  base_url() ?>change-password">Change Password</a></li>
                   <li><a href="<?php echo base_url() ?>logout">Logout</a></li>
                </ul>
             </ul>
          </div>
       </nav>
    </div>
-      <ul class="sidenav" id="mobile-demo">
-         <li><a href="sass.html">Sass</a></li>
-         <li><a href="badges.html">Components</a></li>
-         <li><a href="collapsible.html">Javascript</a></li>
-         <li><a href="mobile.html">Mobile</a></li>
-      </ul>
 
