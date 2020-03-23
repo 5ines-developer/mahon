@@ -7,10 +7,11 @@
 
                     <form class="" id="search-form" role="search" method="post">
                     <input type="text" required="" id="search" name="search" placeholder="Search here" autofocus onfocus="convertToSlug(this.value)" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" onchange="convertToSlug(this.value)" value="<?php echo (!empty($mtitle)? $mtitle : '') ?>" class="validate input-search">
-                    <button type="submit" id="search-submit" class="btn-search bs"><i class="fa fa-search"></i></button>
+                    <!-- <button type="submit" id="search-submit" class="btn-search bs"><i class="fa fa-search"></i></button> -->
+                     <button type="submit" value="" id="search-submit" class="btn-search bs btn-rem"><i class="fas fa-search"></i></button>
+                     <i class="fas fa-times btn-search-close bc"></i>
                     </form>
-                    <i class="fas fa-search btn-search bs"></i>
-                    <i class="fas fa-times btn-search-close bc"></i>
+                   
                 </div>
                 <!-- .searchbar -->
             </div>

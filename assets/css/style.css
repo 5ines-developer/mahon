@@ -7710,8 +7710,8 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
 
 .article-post .post-gallery.c-post-gallery {
     margin-bottom: 20px;
-    max-height: 300px;
     overflow: hidden;
+    height: 175px;
 }
 
 .easyimage.easyimage-side {
@@ -8142,4 +8142,24 @@ a:focus {
 
 .post-title a:focus {
     text-decoration: unset !important
+}
+
+.btn-photo {
+    background: #10aa2f;
+    border: none;
+    padding: 5px 30px;
+    font-size: 14px;
+    color: white;
+}
+
+.btn-photo:hover {
+    background: #f44336;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-photo:focus {
+    text-decoration: unset;
+    outline: unset;
+    color: white;
 }

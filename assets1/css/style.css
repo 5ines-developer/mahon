@@ -14,7 +14,7 @@ body {
 }
 
 .nav-mahonathi i {
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .banner-content {
@@ -48,7 +48,7 @@ body {
 }
 
 .input-search {
-    width: 60% !important;
+    width: 50% !important;
     position: absolute;
     left: 27%;
     border-color: #ececec !important;
@@ -135,7 +135,7 @@ body {
     background-color: white;
     color: black;
     text-align: center;
-    z-index: 999999999999999;
+    z-index: 999;
 }
 
 .img-pa img {
@@ -666,7 +666,7 @@ html {
     transform: translateY(-98%);
     opacity: 1;
     visibility: visible;
-    z-index: 9999999999;
+    /* z-index: 9999999999; */
 }
 
 .go-top {
@@ -695,7 +695,7 @@ html {
 }
 
 .go-top.active {
-    top: 83%;
+    top: 82%;
     -webkit-transform: translateY(-98%);
     transform: translateY(-98%);
     opacity: 1;
@@ -1039,4 +1039,13 @@ html {
 
 .footer-social i:hover {
     color: green;
+}
+
+
+/* 02-mar-2020 */
+
+.btn-rem {
+    background: none;
+    border: none;
+    padding: 0;
 }

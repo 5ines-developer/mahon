@@ -3,7 +3,7 @@
 				<div class="footer-widgets-part">
 					<div class="row">
 						<div class="col-md-3">
-							<img style="width:100%; margin-top:50px" src="<?php echo base_url() ?>assets/images/LOGO-kannada.png" alt="mahonnathi" class="img-responsive">
+							<a href="<?php echo base_url() ?>"><img style="width:100%; margin-top:50px" src="<?php echo base_url() ?>assets/images/LOGO-kannada.png" alt="mahonnathi" class="img-responsive"></a>
 						</div>
 						<div class="col-md-3">
 							<div class="widget posts-widget">

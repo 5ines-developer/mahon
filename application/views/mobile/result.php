@@ -166,9 +166,9 @@
             });
         </script>
         <script>
-            $(document).ready(function() {
+       $(document).ready(function() {
                 $(".btn-search").click(function() {
-                    $(".bs").css("display", "none");
+                    $(".bs").css("display", "block");
                     $('.img-logo').css("display", "none");
                     $(".btn-search-close").fadeIn("slow");
                     $(".btn-search-close").css("display", "block");
@@ -182,7 +182,6 @@
                     $(".input-search").css("display", "none");
                 });
             });
-
         </script>
 
         <script>

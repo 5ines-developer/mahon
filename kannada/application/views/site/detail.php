@@ -541,7 +541,7 @@
 												<a href="<?php echo $urllink ?>"><img src="<?php echo base_url().$prow->image ?>" alt="<?php echo $prow->title ?>"></a>
 												</div>
 												<div class="post-title">
-												<p><a href="<?php echo $urllink ?>">
+												<p><a class="col-par" href="<?php echo $urllink ?>">
 													<?php echo word_limiter(strip_tags($prow->title), 5).'...' ?></a></p>
 												</div>
 											</div>

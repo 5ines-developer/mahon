@@ -703,7 +703,8 @@
                                                 </div>
                                             </div>
 										<?php } ?>
-                                        </div>
+										</div>
+										<a class="btn-photo" href="#">ಫೋಟೋ ಗ್ಯಾಲರಿ</a>
                                     </div>
 
                                 </div>
