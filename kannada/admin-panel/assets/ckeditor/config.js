@@ -68,6 +68,10 @@ CKEDITOR.editorConfig = function(config) {
         'toolbar,' +
         'undo,' +
         'uploadimage,' +
+        'youtube,' +
         'wysiwygarea';
+
+        config.allowedContent = true;
+        config.extraAllowedContent = 'iframe(*)';
 
 };

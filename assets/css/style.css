@@ -8113,9 +8113,9 @@ a:focus {
     outline: none;
 }
 
-.post-gallery img {
+/* .post-gallery img {
     height: 200px;
-}
+} */
 
 .post-content p {
     text-align: justify;

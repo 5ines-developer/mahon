@@ -301,9 +301,6 @@
 
 
     <script>
-
-        
-
         $(document).ready(function() {
             // materializedcss js initialize
             
@@ -329,12 +326,18 @@
                 extraPlugins: 'embed',
                 extraPlugins: 'youtube',
                 enterMode : CKEDITOR.ENTER_BR,
-                shiftEnterMode: CKEDITOR.ENTER_P,
+                shiftEnterMode: CKEDITOR.ENTER_P,                
                 filebrowserBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html',
                 filebrowserImageBrowseUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/ckfinder.html?type=Images',
                 filebrowserUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
                 filebrowserImageUploadUrl: '<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
             });
+
+
+
+
+
+
             
             
             // related category rotate
@@ -388,17 +391,97 @@
                 $.each(textcat, function (i, vl) { 
                     $(this).attr("selected", false);
                 });
+                
             }
 
            
 
-            
+            //  update data
+            $(document).on('click', '.update-btn', function() {
+
+                var id = $(this).attr('id');
+                
+                $('.m-title').text('Edit Post');
+                $('button[value=post]').html('Update <i class="fas fa-paper-plane right"></i>');
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>post/single_data",
+                    data: {
+                        id: id
+                    },
+                    dataType: "json",
+                    success: function(res) {
+                        
+
+                        $('input[name=ctid]').val(res.id);
+                        $('input[name=title]').val(res.title);
+                        $('input[name=date]').val(res.date);
+                        $('input[name=slug]').val(res.slug);
+                        $('input[name=tags]').importTags(res.tags);
+                        $('#img-previwer').attr('src', '<?php echo $this->config->item('web_url') ?>'+res.image);
+                        $('.file-path').val(res.image);
+
+                        $('input[name=fdescription]').val(res.fbdes);
+                        $('input[name=fid]').val(res.fbid);
+                        // $('input[name=fimg_url]').val(res.fbimg);
+                        // $('input[name=fsite_name]').val(res.fbsite);
+                        $('input[name=ftitle]').val(res.fbtitle);
+                        // $('input[name=furl]').val(res.fburl);
+
+                        // $('input[name=tcard]').val(res.tw_card);
+                        $('input[name=tdescription]').val(res.tw_descr);
+                        M.textareaAutoResize($('input[name=tdescription]'));
+                        // $('input[name=timg_url]').val(res.tw_img_url);
+                        // $('input[name=tsite_name]').val(res.tw_site_name);
+                        $('input[name=ttitle]').val(res.tw_title);
+                        // $('input[name=turl]').val(res.tw_url);
+
+                        $('input[name=pdescription]').val(res.page_descr);
+                        $('input[name=pkeywords]').val(res.page_keyword);
+                        $('input[name=ptitle]').val(res.page_title);
+                        $('input[name=time]').val(res.time);
+                        $('input[name=scheduledate]').val(res.scheduled);
+
+                        CKEDITOR.instances['description'].setData(res.content);
+                        
+                        var textcat = $('input[name=category]');
+                        $(textcat).removeAttr('checked');
+                        $.each(textcat, function (i, vl) { 
+                            if(res.category == vl.attributes.data_val.value){
+                                $(vl).attr('checked', 'checked');
+                                $(this).show(mainCategorySub);
+                            }
+                        });
+                        console.log(res);
+                        
+                        setTimeout(() => {
+                            var subcat = $('.nasubcategory[name=scategory]');
+                            $.each(subcat, function (ids, vls) {
+                                if(res.scategory == vls.value){
+                                    $(vls).attr('checked', 'checked');
+                                }
+                            });
+                        }, 1000);
+                        
+
+
+                        var postedby = $('select[name=posted_by]').find('option');
+                        $.each(postedby, function (i, vl) { 
+                            if(res.posted_by == vl.innerText){
+                                $(this).attr("selected", "selected", );
+
+                            }
+                        });
+                        
+                    
+                    }
+                });
+            });
 
             // submit update category_form
             $(document).on('click', 'button[name=submit]', function(event){
                 $('input[name=btnType]').val($(this).val())
             });
-
             $(document).on('submit', '#newsPost', function(event) {
                 event.preventDefault();
                                 
@@ -479,7 +562,6 @@
                     }
                 });
             }
-
             $('input[name=category]').change(mainCategorySub);
             $(document).ready(mainCategorySub);
            
@@ -579,93 +661,10 @@
             // trim spaces at start and end of string
             str = str.replace(/^\s+|\s+$/gm,'');
             // replace space with dash/hyphen
-            str = str.replace(/\s+/g, '-'); 
+            str = str.replace(/\s+/g, '-');	
             document.getElementById("slug").value = str;
             //return str;
         }
-
-
-        $(window).on("load", function () {
-
-
-                var id = '<?php echo $this->uri->segment(3) ?>';
-                
-                $('.m-title').text('Edit Post');
-                $('button[value=post]').html('Update <i class="fas fa-paper-plane right"></i>');
-                $.ajax({
-                    type: "POST",
-                    url: "<?php echo base_url(); ?>post/single_data",
-                    data: {
-                        id: id
-                    },
-                    dataType: "json",
-                    success: function(res) {
-                        
-
-                        $('input[name=ctid]').val(res.id);
-                        $('input[name=title]').val(res.title);
-                        $('input[name=date]').val(res.date);
-                        $('input[name=slug]').val(res.slug);
-                        $('input[name=tags]').importTags(res.tags);
-                        $('#img-previwer').attr('src', '<?php echo $this->config->item('web_url') ?>'+res.image);
-                        $('.file-path').val(res.image);
-
-                        $('input[name=fdescription]').val(res.fbdes);
-                        $('input[name=fid]').val(res.fbid);
-                        // $('input[name=fimg_url]').val(res.fbimg);
-                        // $('input[name=fsite_name]').val(res.fbsite);
-                        $('input[name=ftitle]').val(res.fbtitle);
-                        // $('input[name=furl]').val(res.fburl);
-
-                        // $('input[name=tcard]').val(res.tw_card);
-                        $('input[name=tdescription]').val(res.tw_descr);
-                        M.textareaAutoResize($('input[name=tdescription]'));
-                        // $('input[name=timg_url]').val(res.tw_img_url);
-                        // $('input[name=tsite_name]').val(res.tw_site_name);
-                        $('input[name=ttitle]').val(res.tw_title);
-                        // $('input[name=turl]').val(res.tw_url);
-
-                        $('input[name=pdescription]').val(res.page_descr);
-                        $('input[name=pkeywords]').val(res.page_keyword);
-                        $('input[name=ptitle]').val(res.page_title);
-                        $('input[name=time]').val(res.time);
-                        $('input[name=scheduledate]').val(res.scheduled);
-
-                        CKEDITOR.instances['description'].setData(res.content);
-                        
-                        var textcat = $('input[name=category]');
-                        $(textcat).removeAttr('checked');
-                        $.each(textcat, function (i, vl) { 
-                            if(res.category == vl.attributes.data_val.value){
-                                $(vl).attr('checked', 'checked');
-                                $(this).show(mainCategorySub);
-                            }
-                        });
-                        console.log(res);
-                        
-                        setTimeout(() => {
-                            var subcat = $('.nasubcategory[name=scategory]');
-                            $.each(subcat, function (ids, vls) {
-                                if(res.scategory == vls.value){
-                                    $(vls).attr('checked', 'checked');
-                                }
-                            });
-                        }, 1000);
-                        
-
-
-                        var postedby = $('select[name=posted_by]').find('option');
-                        $.each(postedby, function (i, vl) { 
-                            if(res.posted_by == vl.innerText){
-                                $(this).attr("selected", "selected", );
-
-                            }
-                        });
-                        
-                    
-                    }
-                });
-            });
     </script>
 
 
