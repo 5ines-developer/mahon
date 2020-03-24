@@ -20,6 +20,14 @@ class post extends CI_Controller {
         $this->load->view('pages/post', $data, FALSE);
     }
 
+    public function addPost($value='')
+    {
+        $data['title']      = 'post';
+        $data['category']   = $this->m_post->getCategory();
+        $data['author']     = $this->m_post->getauthor();
+        $this->load->view('pages/add-post', $data, FALSE);
+    }
+
     // fetch post 
     public function getData($var = null)
     {
@@ -29,7 +37,7 @@ class post extends CI_Controller {
         {  
             
             $sub_array = array();  
-            $sub_array[] = '<a class="blue hoverable action-btn update-btn modal-trigger"  href="#modal1" id="'.$row->id.'"><i class="fas fa-edit "></i></a>
+            $sub_array[] = '<a class="blue hoverable action-btn update-btn modal-trigger"  href="'.base_url('post/edit/').$row->id.'" id="'.$row->id.'"><i class="fas fa-edit "></i></a>
                 <a class="red hoverable delete-btn action-btn" id="'.$row->id.'"><i class="fas fa-trash  "></i></a>
                 <a class="orange accent-3 hoverable detail action-btn" target="_blank" href="'.strtolower($this->config->item('web_url').str_replace(' ','-',$row->category).'/'.$row->slug).'"><i class="fas fa-eye  "></i></a>';
              // $sub_array[] = $row->id;  
@@ -106,7 +114,7 @@ class post extends CI_Controller {
                 'date'      => date('Y-m-d', strtotime($this->input->post('date'))),
                 'slug'      => $slug,
                 'tags'      => $this->input->post('tags', TRUE),
-                'content'   => $this->input->post('description', TRUE),
+                'content'   => $this->input->post('description'),
                 'image'     => $files['file'],
                 'update_on' => date('Y-m-d H:i:s'),
                 'scategory' => $this->input->post('scategory', TRUE),
@@ -267,7 +275,7 @@ class post extends CI_Controller {
                     'date'      => date('Y-m-d', strtotime($this->input->post('date', TRUE))),
                     'slug'      => $this->input->post('slug', TRUE),
                     'tags'      => $this->input->post('tags', TRUE),
-                    'content'   => $this->input->post('description', TRUE),
+                    'content'   => $this->input->post('description'),
                     'image'     => $files['file'],
                     'update_on' => date('Y-m-d H:i:s')
                 );

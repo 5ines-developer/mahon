@@ -56,7 +56,7 @@
                                 <p class="h5-para black-text m0">Posts</p>
                             </div>
                             <div class="col 12 m6 right-align">
-                                <a href="#modal1" class="waves-effect waves-light btn brand white-text hoverable modal-trigger" id="addArticle"><i class="fas fa-plus left"></i> Add new</a>
+                                <a href="<?php echo base_url('post/add') ?>" class="waves-effect waves-light btn brand white-text hoverable modal-trigger" id="addArticle"><i class="fas fa-plus left"></i> Add new</a>
                             </div>
                         </div>
 

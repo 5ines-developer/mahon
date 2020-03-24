@@ -24,6 +24,7 @@ $route['post']                                  = 'post/index';
 $route['post/edit/(:any)']                      = 'post/edit/$1';
 $route['post/detail/(:any)']                    = 'post/get_single/$1';
 $route['post/draft']                            = 'post/draft';
+$route['post/add']                            = 'post/addPost';
 // banner               
 $route['banner']                                = 'banner/index';
 $route['banner/update']                         = 'banner/update';

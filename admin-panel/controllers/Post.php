@@ -297,6 +297,7 @@ class post extends CI_Controller {
         }else{
             $data['post'] = $this->m_post->single_data($id);
             $data['category'] = $this->m_post->getCategory();
+            $data['author']     = $this->m_post->getauthor();
             $data['title'] = 'Edit';
             $this->load->view('pages/post-edit', $data, FALSE);
         }
