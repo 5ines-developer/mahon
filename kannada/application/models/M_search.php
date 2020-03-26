@@ -18,7 +18,7 @@ class M_search extends CI_Model {
                 ->where('p.schedule <=', date('Y-m-d H:i:s'))
                 ->where('p.status', 1)
             ->group_end()
-            ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, a.name as posted_by, p.created_on, p.tags')
+            ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, a.name as posted_by, p.created_on, p.tags,c.kannada')
             ->order_by('p.id', 'DESC')
             ->join('mh_category c', 'c.id = p.category', 'left')
             ->join('mh_sub_category s', 's.id = p.scategory', 'left')

@@ -18,7 +18,7 @@ class M_result extends CI_Model {
             ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, p.posted_by, p.created_on, p.tags, 
             f.pageid as fid, f.title as ftitle, f.site_name as fsite_name, f.url as furl, f.descr as fdes,
             t.card as tcard, t.title as ttitle, t.site_name as tsite_name, t.url as turl, t.descr as tdes, 
-            pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes,c.kannada')
+            pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes,c.kannada,p.date')
             ->order_by('p.id', 'DESC')
             ->join('mh_category c', 'c.id = p.category', 'left')
             ->join('mh_post_fb f', 'f.postid = p.id', 'left')
