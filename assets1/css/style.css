@@ -1059,9 +1059,7 @@ html {
     border-radius: 25px;
 
 }
-#search-submit:hover:focus {
-
-    background: unset;
-
+#search-submit:focus {
+    background: unset !important;
 }
 /* end changes 27/3/2020 */
