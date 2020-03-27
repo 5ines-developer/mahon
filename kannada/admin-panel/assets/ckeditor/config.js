@@ -69,8 +69,7 @@ CKEDITOR.editorConfig = function(config) {
         'undo,' +
         'uploadimage,' +
         'youtube,' +
-        'wysiwygarea'+
-        'embed';
+        'wysiwygarea';
 
         config.allowedContent = true;
         config.extraAllowedContent = 'iframe(*)';
