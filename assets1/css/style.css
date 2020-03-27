@@ -498,10 +498,6 @@ html {
     padding-left: 15px;
 }
 
-.para-par {
-    /* display: none; */
-}
-
 .rr-gal {
     height: 215px;
     overflow: hidden;
@@ -1049,3 +1045,21 @@ html {
     border: none;
     padding: 0;
 }
+
+/* 27/03/2020 start*/
+.share-box .fs {
+
+    background: #039be5;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    line-height: 25px;
+    border-radius: 25px;
+
+}
+#search-submit:focus {
+    background: unset !important;
+}
+/* end changes 27/3/2020 */

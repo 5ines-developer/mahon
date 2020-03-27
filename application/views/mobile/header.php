@@ -53,7 +53,7 @@
                                         if($value->menu == 1 && $value->title != 'Video'){
                                             $rurl = $this->urls->urlFormat(base_url().$value->title)
                                 ?>
-                                    <li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>
+                                    <li class="bt <?php if($this->uri->segment(1) == $this->urls->urlFormat($value->title)){ echo 'active'; }else{ echo 'no'; } ?>"><a class="world" href="<?php echo $rurl ?>"><?php echo $value->title ?></a> </li>
                                 <?php } 
                                 if($value->title == 'Video'){ 
                                     $rurl1 = $this->urls->urlFormat(base_url().$value->title);

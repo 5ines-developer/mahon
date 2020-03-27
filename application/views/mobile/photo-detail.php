@@ -199,10 +199,10 @@
             }
         </script>
 
-        <script>
-            $(document).ready(function() {
+<script>
+       $(document).ready(function() {
                 $(".btn-search").click(function() {
-                    $(".bs").css("display", "none");
+                    $(".bs").css("display", "block");
                     $('.img-logo').css("display", "none");
                     $(".btn-search-close").fadeIn("slow");
                     $(".btn-search-close").css("display", "block");

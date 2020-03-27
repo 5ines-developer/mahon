@@ -4,9 +4,15 @@
                 <a href="#!" class="brand-logo black-text"><img src="<?php echo base_url()?>assets1/img/logo.png" class="img-logo" alt=""></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <div class="searchbar">
-                    <input placeholder="Placeholder" id="first_name" type="text" class="validate input-search">
+                    <!-- <input placeholder="Placeholder" id="first_name" type="text" class="validate input-search">
                     <i class="fas fa-search btn-search bs"></i>
-                    <i class="fas fa-times btn-search-close bc"></i>
+                    <i class="fas fa-times btn-search-close bc"></i> -->
+                    <form class="" id="search-form" role="search" method="post">
+                    <input type="text" required="" id="search" name="search" placeholder="Search here" autofocus onfocus="convertToSlug(this.value)" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" onchange="convertToSlug(this.value)" value="<?php echo (!empty($mtitle)? $mtitle : '') ?>" class="validate input-search">
+                    <!-- <button type="submit" id="search-submit" class="btn-search bs"><i class="fa fa-search"></i></button> -->
+                     <button type="submit" value="" id="search-submit" class="btn-search bs btn-rem"><i class="fas fa-search"></i></button>
+                     <i class="fas fa-times btn-search-close bc"></i>
+                    </form>
                 </div>
                 <!-- .searchbar -->
             </div>

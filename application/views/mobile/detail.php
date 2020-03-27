@@ -102,6 +102,14 @@
                         <h5><?php echo $post->title ?></h5>
                         <p class="sub-para1"><b>By :</b> <?php echo (!empty($post->posted_by))?$post->author->name:'';  ?> | Updated : <?php echo $post->created_on ?></p>
                     </div>
+                    <div class="share-post-box">
+                        <ul class="share-box">
+                            <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+                            <li><a class="facebook" href="" target="_blank"><i class="fab fa-facebook-f fs"></i></a></li>
+                            <li><a class="twitter" href="" target="_blank"><i class="fab fa-twitter fs"></i></a></li>
+                            <li><a class="linkedin"href="" target="_blank"><i class="fab fa-linkedin fs"></i> &nbsp;&nbsp;</a></li>
+                        </ul>
+                    </div>
                     <div class="p-para">
                        <?php echo $post->content ?>
                     </div>
@@ -221,7 +229,7 @@
         <script>
             $(document).ready(function() {
                 $(".btn-search").click(function() {
-                    $(".bs").css("display", "none");
+                    $(".bs").css("display", "block");
                     $('.img-logo').css("display", "none");
                     $(".btn-search-close").fadeIn("slow");
                     $(".btn-search-close").css("display", "block");
@@ -237,7 +245,6 @@
             });
 
         </script>
-
 <script>
             window.onscroll = function() {
                 myFunction()
