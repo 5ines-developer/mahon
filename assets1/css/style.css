@@ -1046,7 +1046,7 @@ html {
     padding: 0;
 }
 
-/* 27/03/2020 social*/
+/* 27/03/2020 start*/
 .share-box .fs {
 
     background: #039be5;
@@ -1059,3 +1059,9 @@ html {
     border-radius: 25px;
 
 }
+#search-submit:hover:focus {
+
+    background: unset;
+
+}
+/* end changes 27/3/2020 */
