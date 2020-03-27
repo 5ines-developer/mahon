@@ -245,7 +245,6 @@
             });
 
         </script>
-
 <script>
             window.onscroll = function() {
                 myFunction()
