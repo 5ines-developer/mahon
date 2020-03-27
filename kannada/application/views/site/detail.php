@@ -108,7 +108,7 @@
 												<a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug )?>" class="video-icon"><i class="fa fa-play-circle-o"></i></a>
 												
 											</div>
-											<p><a href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>">
+											<p><a class="col-par" href="<?php echo strtolower(base_url('videos/').$value->category.'/'.$value->slug) ?>">
 												<?php echo word_limiter(strip_tags($value->title), 4).'...' ?></a></p>
 										</div>
 									<?php } ?>
