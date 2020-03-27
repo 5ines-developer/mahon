@@ -7,6 +7,8 @@ class Search extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('m_search');
+        $this->ci =& get_instance();
+        $this->detect = $this->ci->mobdetect->detect();
     }
     
 
@@ -20,7 +22,11 @@ class Search extends CI_Controller {
         $data['post']   = $this->m_search->search($search, $slug);
         $data['title']  = $search;
         $data['mtitle']  = $search;
-        $this->load->view('site/result', $data, FALSE);
+        if ($this->detect == 'mobile') {
+            $this->load->view('mobile/result', $data, FALSE);
+        }else{
+            $this->load->view('site/result', $data, FALSE);
+        }
     }
 
 }
