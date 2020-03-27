@@ -30,7 +30,7 @@
     <?php  } ?>
 
     <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets1/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -71,6 +71,7 @@
     <section class="detail-cont">
         <div class="container-fluide">
             <div class="row">
+                
                 <?php if(!empty($post)) { ?>
                         <div class="col l12 s12 m12">
                             <div class="inner-detail-banner">
@@ -78,9 +79,18 @@
                         <img src="<?php echo base_url().$post->image ?>" class="img-responsive" alt="">
                     </div>
                 </div>
+                
                     <div class="title-track-banner">
                         <h5><?php echo $post->title ?></h5>
                         <p class="sub-para1"><b>By :</b> <?php echo (!empty($post->posted_by))?$post->author->name:'';  ?> | Updated : <?php echo $post->created_on ?></p>
+                    </div>
+                    <div class="share-post-box">
+                        <ul class="share-box">
+                            <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+                            <li><a class="facebook" href="" target="_blank"><i class="fab fa-facebook-f fs"></i></a></li>
+                            <li><a class="twitter" href="" target="_blank"><i class="fab fa-twitter fs"></i></a></li>
+                            <li><a class="linkedin"href="" target="_blank"><i class="fab fa-linkedin fs"></i> &nbsp;&nbsp;</a></li>
+                        </ul>
                     </div>
                     <div class="p-para">
                        <?php echo $post->content ?>

@@ -1021,3 +1021,18 @@ margin: auto;
 
 
 /* slider */
+
+
+/* 27/03/2020 social*/
+.share-box .fs {
+
+    background: #039be5;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    line-height: 25px;
+    border-radius: 25px;
+
+}
