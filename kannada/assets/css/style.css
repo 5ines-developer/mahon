@@ -8130,7 +8130,7 @@ h2:hover:focus {
 }
 
 .post-content a {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     color: black;
 }
@@ -8162,4 +8162,7 @@ a:hover {
     text-decoration: unset;
     outline: unset;
     color: white;
+}
+.post-gallery {
+    position: relative;
 }
