@@ -395,8 +395,8 @@ body {
 
 .title-track-banner h5 {
     font-weight: 600;
-    font-size: 15px;
-    line-height: 23px;
+    font-size: 17px;
+    line-height: 25px;
     font-weight: 700;
     margin: 0;
     padding: 5px 0px;
@@ -425,10 +425,10 @@ body {
     margin: 0;
     padding: 5px 0px;
     text-align: justify;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 25px;
     color: black;
-    font-weight: 500
+    font-weight: 500;
 }
 
 .p-para {
@@ -498,9 +498,6 @@ html {
     padding-left: 15px;
 }
 
-.para-par {
-    /* display: none; */
-}
 
 .rr-gal {
 height: 215px;
