@@ -158,6 +158,32 @@
                                                 </div>
                                             </li>
                                             <li>
+                                                    <div class="collapsible-header"><i
+                                                            class="material-icons">playlist_play</i>Playlist</div>
+                                                    <div class="collapsible-body">
+                                                        <div class="colaps-box">
+                                                        <p>
+                                                        <label>
+                                                        <input  value=" "   class="with-gap" class="main-categoris" name="playlist_id" type="radio" checked />
+                                                            <span>None</span>
+                                                        </label>
+                                                    </p>
+                                                            <?php foreach ($playlist as $key => $value) {
+                                               
+                                                echo '
+                                                    <p>
+                                                        <label>
+                                                            <input data_val="'.$value->title.'"  value="'.$value->id.'" class="with-gap" class="main-categoris" name="playlist_id" type="radio"  />
+                                                            <span>'.$value->title.'</span>
+                                                        </label>
+                                                    </p>
+                                                    ';
+                                            } ?>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            <li>
+                                            <li>
                                                 <div class="collapsible-header"><i class="material-icons">format_indent_increase</i>Sub Category</div>
                                                 <div class="collapsible-body">
                                                     <div class="sub-cat">
@@ -618,7 +644,7 @@
            
             // set interval
             setInterval(function() {
-                if($('.modal').hasClass('open') == true &&  $('#addArticle').attr('data-draft')){
+                // if($('.modal').hasClass('open') == true &&  $('#addArticle').attr('data-draft')){
                     var form = $("#newsPost")[0];
                     var formData = new FormData(form);
                     formData.append('daraftid', $('#addArticle').attr('data-draft'));
@@ -629,7 +655,7 @@
                         processData: false,
                         contentType: false,
                     });
-                }
+                // }
             }, 5000);
 
             function setVales(text = null, setTo = null){

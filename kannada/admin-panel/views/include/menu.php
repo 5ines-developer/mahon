@@ -7,6 +7,9 @@
 
             <li class="divider" tabindex="-1"></li>
 
+            <?php if ($this->session->userdata('Mht_type') =='1') { ?>
+                <li class="<?php echo $this->uri->segment(1) == 'subadmin'?'active':''?>"> <a href="<?php echo base_url('subadmin') ?>"><i class="far fa-user li-icon"></i>Subadmin</a></li>
+            <?php  } ?>
             <li class="<?php echo $this->uri->segment(1) == 'post'?'active':''?>"> <a href="<?php echo base_url('post') ?>"><i class="far fa-newspaper li-icon"></i>Articles Post</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'breaking-news'?'active':''?>"> <a href="<?php echo base_url('breaking-news') ?>"><i class="fab fa-audible li-icon"></i>Breaking News</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'banner'?'active':''?>"> <a href="<?php echo base_url('banner') ?>"><i class="fas fa-image li-icon"></i>Banner</a></li>
@@ -18,10 +21,14 @@
             <li class="divider" tabindex="-1"></li>
                 <li class="<?php echo $this->uri->segment(1) == 'video-article'?'active':''?>"> <a href="<?php echo base_url('video-article') ?>"><i class="fas fa-video li-icon"></i>Video Article</a></li>
                 <li class="<?php echo $this->uri->segment(1) == 'photos'?'active':''?>"> <a href="<?php echo base_url('photos') ?>"><i class="far fa-images li-icon"></i>Photo Article</a></li>
+
+                <li class="<?php echo $this->uri->segment(1) == 'photo-album'?'active':''?>"> <a href="<?php echo base_url('photo-album') ?>"><i class="far fa-images li-icon"></i>Photo Album</a></li>
+
                 <li class="<?php echo $this->uri->segment(1) == 'events'?'active':''?>"> <a href="<?php echo base_url('events') ?>"><i class="far fa-calendar-alt li-icon"></i>Happening's</a></li>
                 <li class="<?php echo $this->uri->segment(1) == 'twitter'?'active':''?>"> <a href="<?php echo base_url('twitter') ?>"><i class="fab fa-twitter li-icon"></i>Twitter Post</a></li>
             <li class="divider" tabindex="-1"></li>
 
+            <?php if ($this->session->userdata('Mht_type') =='1') { ?>
             <li class="droup-link <?php echo $this->uri->segment(1) == 'category'?'active':'' ?>"><a class="droup-link-item" data-target="#category-droup"><i class="fas fa-boxes li-icon"></i>Category</a>
                 <ul class="droupmenu" id="category-droup">
                     <li class="<?php echo $this->uri->segment(1) == 'category'?'active':'' ?>"><a href="<?php echo base_url('category') ?>">Main Category</a></li>
@@ -39,7 +46,7 @@
                     <li class="<?php echo $this->uri->segment(2) == 'trash/article'?'active':'' ?>"><a href="<?php echo base_url('trash/article') ?>">Articles</a></li>
                 </ul>
             </li>
-
+            <?php } ?>
         </ul>
     </div>
 </div>

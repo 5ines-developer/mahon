@@ -10,6 +10,11 @@ class post extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_post');
+
+       if ($this->session->userdata('Mht_type') =='2') {
+            $this->load->library('preload');
+            $this->preload->check_auth($this->session->userdata('Mht'));
+        }
     }
 
     public function index()
@@ -25,12 +30,14 @@ class post extends CI_Controller {
         $data['title']      = 'post';
         $data['category']   = $this->m_post->getCategory();
         $data['author']     = $this->m_post->getauthor();
+        $data['playlist']   = $this->m_post->getPlaylist();
         $this->load->view('pages/add-post', $data, FALSE);
     }
 
     // fetch post 
     public function getData($var = null)
     {
+        $_POST["draw"] = null;
         $fetch_data = $this->m_post->make_datatables();
         $data = array();  
         foreach($fetch_data as $row)  
@@ -44,7 +51,9 @@ class post extends CI_Controller {
             ';  
             //  $sub_array[] = $row->id;  
              $sub_array[] =  (strlen($row->title) > 60) ? substr($row->title,0,57).'...' : $row->title; 
-             $sub_array[] = $row->category;  
+             $sub_array[] = $row->category; 
+             $sub_array[] = $row->playlist;  
+             $sub_array[] = $row->tags;  
              $sub_array[] = date('d M, Y', strtotime($row->date)); 
              $sub_array[] = $row->posted_by;  
              $sub_array[] = date('d M, Y', strtotime($row->created_on));  
@@ -107,10 +116,13 @@ class post extends CI_Controller {
             $alt = (!empty($this->input->post('alt'))? $this->input->post('alt') : $slug);
             $schedule = $this->input->post('time').' '. $this->input->post('scheduledate');
             $schedule = date('Y-m-d H:i:s', strtotime($schedule));
-            
+            if($schedule >= date('Y-m-d H:i:s')){
+                $postedBtn=5;
+                }
             $data = array(
                 'title'     => $this->input->post('title', TRUE),
                 'category'  => $this->input->post('category', TRUE),
+                'playlist_id'  => $this->input->post('playlist_id'),
                 'posted_by' => $this->input->post('posted_by', TRUE),
                 'date'      => date('Y-m-d', strtotime($this->input->post('date'))),
                 'slug'      => $slug,
@@ -122,7 +134,8 @@ class post extends CI_Controller {
                 'realted'   => $relatedItem,
                 'alt'       => $alt,
                 'schedule'  => $schedule,
-                'status'    => $postedBtn
+                'status'    => $postedBtn,
+                'updated_by' => $this->session->userdata('Mht')
             );
 
             $postResult = $this->m_post->addPost($data, $id);
@@ -298,6 +311,7 @@ class post extends CI_Controller {
             $data['post'] = $this->m_post->single_data($id);
             $data['category'] = $this->m_post->getCategory();
             $data['author']     = $this->m_post->getauthor();
+            $data['playlist']   = $this->m_post->getPlaylist();
             $data['title'] = 'Edit';
             $this->load->view('pages/post-edit', $data, FALSE);
         }
@@ -469,6 +483,59 @@ class post extends CI_Controller {
             echo 'No data fond';
         }
     }
+
+     //get schedule post
+
+     public function scheduledPost(Type $var = null)
+     {
+        
+         $data['title']      = 'post';
+         $data['category']   = $this->m_post->getCategory();
+         $data['author']     = $this->m_post->getauthor();
+         $this->load->view('pages/schedule-post', $data, FALSE);
+     }
+     // fetch schedule post 
+     public function getScheduleData($var = null)
+     {
+         $fetch_data = $this->m_post->make_schedule_datatables();
+         $data = array();  
+         foreach($fetch_data as $row)  
+         {  
+             
+             $sub_array = array();  
+             $sub_array[] = '<a class="blue hoverable action-btn update-btn modal-trigger"  href="'.base_url('post/edit/').$row->id.'" id="'.$row->id.'"><i class="fas fa-edit "></i></a>
+                 <a class="red hoverable delete-btn action-btn" id="'.$row->id.'"><i class="fas fa-trash  "></i></a>
+                 <a class="orange accent-3 hoverable detail action-btn" target="_blank" href="'.strtolower($this->config->item('web_url').str_replace(' ','-',$row->category).'/'.$row->slug).'"><i class="fas fa-eye  "></i></a>';
+              // $sub_array[] = $row->id;  
+              $sub_array[] =  $row->title; 
+              $sub_array[] = $row->category;  
+              $sub_array[] = date('d M, Y', strtotime($row->date)); 
+              $sub_array[] = $row->posted_by;  
+              $sub_array[] = date('d M, Y', strtotime($row->created_on));  
+ 
+ 
+              $data[] = $sub_array;  
+         }  
+         $output = array(  
+            "draw"                =>     intval($_POST["draw"]),  
+            "recordsTotal"        =>     $this->m_post->get_schedule_data(),  
+            "recordsFiltered"     =>     $this->m_post->get_schedule_filtered_data(),  
+            "data"                =>     $data,
+       );  
+         echo json_encode($output);
+     }
+
+     //update schedule post status
+     public function scheduleStatus(Type $var = null)
+     {
+         $result = $this->m_post->updateStatus();
+         if($result){
+           return true;
+         }else{
+            return false;
+         }
+     }
+
 }
 
 /* End of file post.php */

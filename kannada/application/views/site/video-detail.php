@@ -27,7 +27,7 @@
 		<meta name="twitter:title" content="<?php echo $post->ttitle ?>">
 		<meta name="twitter:description" content="<?php echo $post->tdes ?>">
 	<?php  } ?>
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery.bxslider.css" media="screen">
@@ -37,6 +37,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.theme.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/widget.css">
+    
 	<style>
 		.auther-image {
     width: 80px;
@@ -60,6 +63,8 @@
 
 </head>
 <body>
+
+	<?php $this->load->view('include/widget'); ?>
 
 	<!-- Container -->
 	<div id="container">
@@ -325,7 +330,8 @@
 										<!-- <span>Twitter</span> -->
 									</li>
 									<li>
-										<a href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
+										<a href="https://www.youtube.com/channel/UC00fs8iYCCtN9TlyEw_8JCg/videos
+" class="google"><i class="fa fa-youtube"></i></a>
 										<span class="number">YouTube</span>
 										<!-- <span>YouTube</span> -->
 									</li>

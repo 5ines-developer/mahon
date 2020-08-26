@@ -7,8 +7,8 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+	<?php $this->load->view('include/favicon.php'); ?>
+	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
@@ -19,6 +19,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.theme.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
+
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/widget.css">
+	
 	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148770094-1"></script>
@@ -33,6 +36,7 @@
 </head>
 <body>
 
+	<?php $this->load->view('include/widget'); ?>
 	<!-- Container -->
 	<div id="container">
 
@@ -125,16 +129,16 @@
 								</div>
 							<?php } ?>	
 							<div class="widget">
-								<img src="https://www.gourmetads.com/wp-content/uploads/2019/05/fast-food-ads-burger-king-300x600.jpg" class="img-responsive" alt="">
-							</div>						
-												
-							
-										
-							<div class="widget">
-								<img src="http://www.winchesteril.com/wp-content/uploads/2017/10/ad-placeholder.jpg" class="img-responsive" alt="">
+								<a href="http://www.mindvik.com/" target="_blank">
+								<img src="<?php echo base_url() ?>assets/images/ad-img3.png" class="img-responsive" alt=""></a>
 							</div>
 							<div class="widget">
-								<img src="https://www.gourmetads.com/wp-content/uploads/2019/05/fast-food-ads-burger-king-300x600.jpg" class="img-responsive" alt="">
+								<a href="http://www.5ines.com/" target="_blank">
+								<img src="<?php echo base_url() ?>assets/images/ad-img4.png" class="img-responsive" alt=""></a>
+							</div>
+							<div class="widget">
+								<a href="http://www.getmyappz.com/" target="_blank">
+								<img src="<?php echo base_url() ?>assets/images/ad-img5.jpg" class="img-responsive" alt=""></a>
 							</div>
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
@@ -342,18 +346,24 @@
 								</div>
 							<?php } ?>
 							<div class="widget">
-								<img src="https://www.gourmetads.com/wp-content/uploads/2019/05/fast-food-ads-burger-king-300x600.jpg" class="img-responsive" alt="">
+								<a href="http://www.mindvik.com/" target="_blank">
+								<img src="<?php echo base_url() ?>assets/images/ad-img2.jpg" class="img-responsive" alt=""></a>
 							</div>
 							<div class="widget">
-								<img src="http://www.addads.net/assets/200x600S.JPG" class="img-responsive" alt="">
+								<a href="http://www.mindvik.com/" target="_blank">
+								<img src="<?php echo base_url() ?>assets/images/ad-img7.png" class="img-responsive" alt=""></a>
 							</div>
 							<div class="widget">
-								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3-YcSDskfhsUagdpGVJJuM0d6NZuK1o5wU6S1guTTMWT0Oa9dEg&s" class="img-responsive" alt="">
+								<div class="widget">
+								<a href="<?php echo base_url() ?>" target="_blank">
+								<img src="<?php echo base_url() ?>assets/images/ad-img6.jpg" class="img-responsive" alt=""></a>
+							</div>
 							</div>
 							<div class="advertisement">
 								<div class="desktop-advert">
 									<span>Advertisement</span>
-									<img src="<?php echo base_url() ?>assets/upload/addsense/200x200.jpg" class="img-responsive" alt="">
+									<a href="<?php echo base_url() ?>" target="_blank">
+								<img src="<?php echo base_url() ?>assets/images/ad-img8.png" class="img-responsive" alt=""></a>
 								</div>
 								<div class="tablet-advert">
 									<span>Advertisement</span>

@@ -1,0 +1,245 @@
+ .background-image {
+     background: #0b0b0b00 url('../images/5ine-m1.png');
+     background-repeat: repeat;
+     background-size: auto;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
+     background-blend-mode: color;
+     width: 99%;
+ }
+ 
+ .image-responcive {
+     width: 100%;
+ }
+ 
+ .email {
+     color: white;
+     font-size: 17px;
+ }
+ 
+ .icone-edit {
+     color: white;
+     font-size: 23px;
+ }
+ 
+ .logo-banner {
+     color: white;
+ }
+ 
+ .edit-banned {
+     padding-top: 25px;
+ }
+ 
+ .namtion h3 {
+     font-size: 18px;
+     padding-bottom: 3px;
+ }
+ 
+ .namtion h5 {
+     font-size: 28px;
+     padding-bottom: 0px;
+     font-weight: 900;
+ }
+ 
+ .namtion spam {
+     color: #8fc502;
+     font-size: 23px;
+     font-weight: 700;
+ }
+ 
+ .namtion p {
+     font-size: 19px;
+ }
+ 
+ .gw-icone {
+     color: #1ad47d;
+     font-size: 28px;
+ }
+ 
+ .logo-bjshj {
+     position: absolute;
+     top: 113px;
+ }
+ 
+ body {
+     overflow-x: hidden;
+ }
+ 
+ .edit-banned-new {
+     padding-left: 31px;
+ }
+ 
+ .back-ground {
+     background: #0b0b0b00 url('../images/5ine-m4.png');
+     background-repeat: repeat;
+     background-size: auto;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
+     background-blend-mode: color;
+     width: 99%;
+ }
+ 
+ .table-cor {
+     color: white;
+     margin: 22px;
+     padding: 13px;
+ }
+ 
+ .covid-video {
+     padding: 22px;
+ }
+ 
+ .condid-icone {
+     padding-left: 22px;
+ }
+ 
+ .gf-icaone {
+     font-size: 27px;
+     color: blue;
+ }
+ 
+ .gtw-icone {
+     font-size: 27px;
+     color: #43aed1;
+ }
+ 
+ .gtl-icone {
+     font-size: 25px;
+     color: #0dafe4;
+ }
+ 
+ .gl-icone {
+     font-size: 24px;
+     color: #0f0f6d;
+ }
+ 
+ .gp-icone {
+     font-size: 23px;
+     color: #840605;
+ }
+ 
+ .gem-icone {
+     color: #0058ff;
+     font-size: 23px;
+ }
+ 
+ .covid-mainheading h3 {
+     padding-left: 21px;
+     font-size: 33px;
+     color: black;
+     font-weight: 600;
+     padding-top: 30px;
+ }
+ 
+ .covid-tablde-main {
+     padding: 12px;
+     border: 1px solid #c8b9b9;
+     margin: 21px;
+ }
+ 
+ .gsq-icone {
+     font-size: 32px;
+     color: #1594be;
+     padding-right: 42px;
+ }
+ 
+ .inner-cotent-covid {
+     font-size: 17px;
+ }
+ 
+ a:hover {
+     color: #0056b3;
+     text-decoration: none;
+ }
+ 
+ .conid-icone-who {
+     border: 1px solid gray;
+     margin: 20px;
+     padding: 22px;
+     background-color: #0b0d38;
+     color: white;
+ }
+ 
+ .india {
+     font-size: 17px;
+ }
+ 
+ .gtwer-icone {
+     font-size: 29px;
+     padding: 0px 93px;
+ }
+ 
+ .gtwer-icone {
+     font-size: 29px;
+ }
+ 
+ @media (max-width: 740px) {
+     .logo-banner {
+         color: white;
+         padding: 13px;
+     }
+     .namtion h4 {
+         padding-top: 32px;
+     }
+     .table-cor {
+         color: white;
+         padding-left: 13px;
+         margin: 0px;
+         margin-top: 0px;
+         padding-top: 19px;
+         margin-top: 17px;
+         width: 100%;
+     }
+     .gtwer-icone {
+         padding: 9px 43px;
+     }
+     iframe {
+         width: 572%;
+     }
+     iframe {
+         width: 100%;
+     }
+ }
+ 
+ @media(min-width: 768px) and (max-width: 1024px) {}
+ 
+ table {
+     font-family: arial, sans-serif;
+     border-collapse: collapse;
+     width: 100%;
+ }
+ 
+ td,
+ th {
+     text-align: left;
+     padding: 1px;
+ }
+ 
+ tr:nth-child(2n) {
+     background-color: #c40707;
+ }
+ 
+ .demofooter {
+     border: 1px solid gray;
+ }
+ 
+ .covid-footer-lag h5 {
+     border-bottom: 1px solid #8282824a;
+     font-size: 21px;
+     font-weight: 600;
+ }
+ 
+ iframe {
+     width: 100%;
+ }
+.table-over-flow {
+    height: 270px;
+    max-height: 270px;
+    min-height: 270px;
+    overflow-y: auto;
+}
+.table-over-flow tr {
+    border-bottom: 1px solid #8a3535;
+}

@@ -37,7 +37,7 @@
                            <div class="card-heading">
                                 <div class="row ">
                                     <div class="col 12 m6">
-                                        <p class="h5-para black-text m0">Photo Gallery</p>
+                                        <p class="h5-para black-text m0">Photo gallery</p>
                                     </div>
                                     <div class="col 12 m6 right-align">
                                         <a href="#modal1" class="waves-effect waves-light btn brand white-text hoverable modal-trigger" id="addArticle"><i class="fas fa-plus left"></i> Add new</a>
@@ -55,7 +55,7 @@
                                                     <div class="cont"><?php echo $value->count ?> photos</div>
                                                 </div>
                                                 <div class="tumb-action">
-                                                    <!-- <a href=""><i class="fas fa-pencil-alt"></i></a> -->
+                                                    <a class="modal-trigger  editt-btn" href="#modal1" data-id="<?php echo $value->id ?>"><i class="fas fa-pencil-alt"></i></a> 
                                                     <a href="<?php echo base_url('photos/delete/').$value->id ?>" class="delete-btn"><i class="far fa-trash-alt"></i></a>
                                                     <a href="<?php echo $this->config->item('web_url').'photogallery/'.strtolower($value->acategory.'/'.$value->slug) ?>" target="_blank"><i class="fas fa-eye"></i></a>
                                                 </div>
@@ -158,7 +158,7 @@
                                                         </div>
                                                         <div class="btn-img">
                                                             <span>Browse Image</span>
-                                                            <input type="file" id="img" dataid="1" name="img[]" accept="image/*">
+                                                            <input type="file" id="img" dataid="1" name="img[]" accept="image/*" class="brwsimg">
                                                         </div>
                                                         <div class="file-path-wrapper ">
                                                             <input class="file-path validate" name="filepath" type="hidden" placeholder="Upload  files">
@@ -168,7 +168,7 @@
                                                 <div class="clearfix"></div>
 
                                                 <div class="input-field">
-                                                    <textarea id="textarea1" required name="imagetitle[]" class="materialize-textarea"></textarea>
+                                                    <textarea id="textarea1" required name="imagetitle[]" class="materialize-textarea phtxt"></textarea>
                                                     <label for="textarea1">Image Title</label>
                                                 </div>
                                             </div>
@@ -254,6 +254,8 @@
                                         <div class="input-box col s6"> 
                                             <input type="text" class="datepicker"  value="<?php echo date('M d, Y') ?>"  placeholder="Select date" name="scheduledate"> 
                                         </div>
+
+
                                         
                                     </div>
                                 </li>
@@ -378,12 +380,12 @@
 
             function clearform() {
                 $('#addArticle').removeAttr('data-draft');
-                $('#newsPost')[0].reset();
+                // $('#newsPost')[0].reset();
                 $('input[name=tags]').importTags('');
                 $('#img-previwer').attr('src', '');
                 $('#ctid').val('');
                 $('button[value=post]').html('Post <i class="fas fa-paper-plane right"></i>');
-                CKEDITOR.instances['description'].setData('');
+                // CKEDITOR.instances['description'].setData('');
                 var postedby = $('select[name=posted_by]').find('option');
                 $.each(postedby, function (i, vl) { 
                     $(this).attr("selected", false);
@@ -441,7 +443,6 @@
             });
             // add more images
             $('#addmore').click(function(){
-                console.log($('.gallery-add-container').length);
                 var length = $('.gallery-add-container').length;
                 $('.total-item').text(length + 1)
                 
@@ -547,6 +548,149 @@
                     
                 });
         });
+
+
+       $('.editt-btn').click(function (e) { 
+                e.preventDefault();
+                var id = $(this).attr('data-id');
+
+                $('.gallery-add-container').css('display', 'none');
+
+                 $('.phtxt').removeAttr('required');
+                 $('.brwsimg').removeAttr('name');
+                 $('.phtxt').removeAttr('name');
+
+
+                 
+                $.ajax({
+                    type: "post",
+                    url: "<?php echo base_url() ?>photos/single_gall",
+                    data: {id : id},
+                    dataType: "json",
+                    success: function (res) {
+                        console.log(res);
+                        $('input[name=title]').val(res.title);
+                        $('input[name=slug]').val(res.slug);
+                        $('input[name=posted_by]').val(res.authors);
+                        $('input[name=date]').val(res.uploaded_on);
+                        $('input[name=tags]').importTags(res.tags);
+                        $('input[name=img]').val(res.image);
+                        $('input[name=imagetitle]').val(res.image);
+
+                        $('input[name=fdescription]').val(res.fdes);
+                        $('input[name=fid]').val(res.fbid);
+                        $('input[name=ftitle]').val(res.ftitle);
+
+                        $('input[name=tdescription]').val(res.tdes);
+                        $('input[name=ttitle]').val(res.ttitle);
+
+                        $('input[name=pdescription]').val(res.pdes);
+                        $('input[name=pkeywords]').val(res.pkeyword);
+                        $('input[name=ptitle]').val(res.ptitle);
+                        $('input[name=time]').val(res.time);
+                        $('input[name=scheduledate]').val(res.scheduled);
+
+                        $('#ctid').val(res.id);
+
+
+                        var textcat = $('input[name=category]');
+                        $(textcat).removeAttr('checked');
+                        $.each(textcat, function (i, vl) { 
+                            if(res.category == vl.attributes.data_val.value){
+                                $(vl).attr('checked', 'checked');
+                                // $(this).show(mainCategorySub);
+                            }
+                        });
+
+                        setTimeout(() => {
+                            var subcat = $('.nasubcategory[name=scategory]');
+                            $.each(subcat, function (ids, vls) {
+                                if(res.scategory == vls.value){
+                                    $(vls).attr('checked', 'checked');
+                                }
+                            });
+                        }, 1000);
+
+                        var postedby = $('select[name=posted_by]').find('option');
+                        $.each(postedby, function (i, vl) { 
+                            if(res.author == vl.value){
+                                $(this).attr("selected", "selected", );
+                            }
+                        });
+
+
+                var length = $('.gallery-add-container').length;
+                // $('.total-item').text(length + 1);
+
+
+                var imgs = res.image;
+                $.each(imgs, function (im, imvl) { 
+
+                    var append = `
+                    <div class="gallery-add-container col s12" dataid="`+ (length + 1) +`">
+                        <div class="row">
+                            <div class="col s12 m5 push-m7">
+                                <div class="preview center ">
+                                    <div class="valign-wrapper">
+                                        <img dataid="`+(im + 1)+`" src="`+ imvl.image +`" alt="" class="responsive-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m7 pull-m5">
+                                <h5>`+ (im + 1) +`/<span class="total-item">`+ (im + 1) +`</span></h5>
+                                <div class="image-selection">
+                                    <div class="file-field draggable center">
+                                        <div class="drag-place center">
+                                            <i class="material-icons small"> cloud_upload </i>
+                                            <p>Drag &amp; Drop Image here</p>
+                                            <p>Or</p>
+                                        </div>
+                                        <div class="btn-img">
+                                            <span>Browse Image</span>
+                                            <input type="file" dataid="`+(im + 1)+`" id="img`+(im + 1)+`" name="img[]" accept="image/*">
+                                        </div>
+                                        <div class="file-path-wrapper ">
+                                            <input class="file-path validate" name="filepath[]" type="hidden" placeholder="Upload  files">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <input type="hidden" name="uniq[]" value="`+imvl.uniq+`">
+                                <input type="hidden" name="edit" value="1">
+
+                                <div class="input-field">
+                                    <textarea id="textarea1" required name="imagetitle[]" class="materialize-textarea" style="height: 45px;">`+ imvl.title +`</textarea>
+                                    <label for="textarea1" class="active">Image Title</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                    $("#appendBox").append(append);
+
+
+                    });
+
+
+
+
+
+                
+
+                        
+
+
+
+
+
+
+
+
+                    }
+                });
+            });
+
       </script>
    
 </body>

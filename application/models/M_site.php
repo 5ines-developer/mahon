@@ -16,7 +16,7 @@ class m_site extends CI_Model {
                 ->join('mh_author a', 'a.id = p.posted_by', 'left')
                 ->limit(13)
                 ->get()
-                ->result();
+                ->resuslt();
     }
 
     public function getCategory()
@@ -238,6 +238,18 @@ class m_site extends CI_Model {
         ->get()
         ->result();
     }
+    public function getPlaylist()
+    {
+        return $this->db->where('po.status', 1)
+        ->group_by('pl.title')
+        ->where('po.schedule <=', date('Y-m-d H:i:s'))
+        ->from('mh_playlist pl')
+        ->join('mh_posts po', 'po.playlist_id = pl.id', 'left')
+        ->select('pl.title as playlist, po.id, po.title, po.content, po.image,po.alt,po.tags,po.slug,  po.playlist_id,pl.playlist_img,pl.alt,pl.pl_slug ')
+        ->order_by('po.id', 'DESC')
+        ->get()
+        ->result();
+    }
 
     public function twitter()
     {
@@ -295,6 +307,28 @@ class m_site extends CI_Model {
     public function countAlbum($id='')
     {
       return $this->db->where('post_id', $id)->count_all_results('mh_pht_albums');
+    }
+
+    public function addenquiry($insert='')
+    {
+        return $this->db->insert('contact', $insert);
+    }
+
+    public function getWidget($value='')
+    {
+        return $this->db->get('states')->result();
+    }
+
+    public function widgetDeath($value='')
+    {
+        $this->db->select_sum('deaths');
+        return $this->db->get('states')->result();
+    }
+
+    public function widgetconfirm($value='')
+    {
+        $this->db->select_sum('total');
+        return $this->db->get('states')->result();
     }
 
 

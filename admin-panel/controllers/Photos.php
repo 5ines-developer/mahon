@@ -10,6 +10,11 @@ class Photos extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_photo');
+
+        if ($this->session->userdata('Mht_type') =='2') {
+            $this->load->library('preload');
+            $this->preload->check_auth($this->session->userdata('Mht'));
+        }
     }
 
     public function index()
@@ -25,12 +30,12 @@ class Photos extends CI_Controller {
     // add Image gallery
     public function add()
     {
-       $id = '';
-        
-        
+
+
+       $id = $this->input->post('ctid');
         $data = array(
             'title'         =>  $this->input->post('title'),
-            'slug'          =>  $this->input->post('slug'),
+            'slug'          => $this->input->post('slug'),
             'author'        =>  $this->input->post('posted_by'),
             'date'          =>  date('Y-m-d',strtotime($this->input->post('date'))),
             'tags'          =>  $this->input->post('tags'),
@@ -44,12 +49,17 @@ class Photos extends CI_Controller {
         );
 
         $postResult = $this->m_photo->addPost($data, $id);
+        
         if(!empty($id)){
             $msg = 'Update successfully.';
             $postid = $id;
+            $slug = $data['slug'];
+           
         }else{
                 $msg = 'Post successfully submited.';
                 $postid = $postResult['id'];
+                $slug = $postResult['slug'];
+               
             }
             if($postResult['status'] == 1){
                 $dataPage = array(
@@ -82,9 +92,12 @@ class Photos extends CI_Controller {
                 $this->m_photo->addFbMeta($datafb, $id);
                 $this->m_photo->addTwitMeta($datatwit, $id);
 
+                
+
             if(isset($_FILES['img'])){
-                $this->uploadImage($_FILES['img'], $postid);
+                $this->uploadImage($_FILES['img'], $postid,$slug);
             }
+
 
             $this->session->set_flashdata('success', 'Gallery Added successfully');
         }else{
@@ -93,39 +106,63 @@ class Photos extends CI_Controller {
         redirect('photos','refresh');
     }
 
-    function uploadImage($images, $postid)
+    function uploadImage($images, $postid,$slug)
     {
         $files = array();
         $files = $_FILES;
         $title = $this->input->post('imagetitle');
-        $filesCount = count($_FILES['img']['name']);
+        $filesCount = count($title);
+        $uniq = $this->input->post('uniq');
+        $edit = $this->input->post('edit');
 
+        
         if (!empty($filesCount)) {
+            // $this->db->where('photo_id', $postid);
+            // $this->db->delete('mh_photo_gallery');
             for ($i = 0; $i < $filesCount; $i++) {
-                $_FILES['img']['name']     = $files['img']['name'][$i];
-                $_FILES['img']['type']     = $files['img']['type'][$i];
-                $_FILES['img']['tmp_name'] = $files['img']['tmp_name'][$i];
-                $_FILES['img']['error']    = $files['img']['error'][$i];
-                $_FILES['img']['size']     = $files['img']['size'][$i];
-                $config = array(
-                    'upload_path' => "../photo_gall/",
-                    'allowed_types' => "gif|jpg|png|jpeg|svg",
-                    'overwrite' => TRUE,
-                    'max_size' => "2048000", 
-                    'encrypt_name' => true
-                );
-                $this->load->library('upload', $config);
-                if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
-                $this->upload->do_upload('img');
-                $filename = $this->config->item('web_url').'photo_gall/'.$this->upload->data('file_name');
-                if(!empty($title[$i])){
-                    $tit = $title[$i];
-                }else{
-                    $tit = '';
-                }
-                $data = array('title'=> $tit, 'image' => $filename, 'photo_id' => $postid);
-                $this->m_photo->addImages($data);
 
+                if(!empty($title[$i])){
+                        $tit = $title[$i];
+                    }else{
+                        $tit = '';
+                    }
+                $data = array('title'=> $tit, 'photo_id' => $postid);
+                if (!empty($uniq[$i])) {
+                    $data['uniq'] = $uniq[$i];
+                }else{
+                    $data['uniq'] = random_string('alnum',10);;
+                }
+                if (!empty($_FILES['img']['name'][$i])) {
+                    $_FILES['img']['name']     = $files['img']['name'][$i];
+                    $_FILES['img']['type']     = $files['img']['type'][$i];
+                    $_FILES['img']['tmp_name'] = $files['img']['tmp_name'][$i];
+                    $_FILES['img']['error']    = $files['img']['error'][$i];
+                    $_FILES['img']['size']     = $files['img']['size'][$i];
+                    $config = array(
+                        'upload_path' => "../photo_gall/",
+                        'allowed_types' => "gif|jpg|png|jpeg|svg",
+                        'overwrite' => TRUE,
+                        'max_size' => "2048000", 
+                        'encrypt_name' => true
+                    );
+                    $this->load->library('upload', $config);
+                    if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
+                    $this->upload->do_upload('img');
+                    $filename = $this->config->item('web_url').'photo_gall/'.$this->upload->data('file_name');
+                    
+                    $image_url= $slug.'-image-'.($i+1);
+
+                    $data['image'] = $filename;
+                    $data['image_url'] = $image_url;
+                }
+
+                if (!empty($edit)) {
+                    if (!empty($uniq[$i]) || !empty($filename)) {
+                        $this->m_photo->addImages($data);
+                    }
+                }else{
+                    $this->m_photo->addImages($data);
+                }
             }
         }
 
@@ -169,7 +206,9 @@ class Photos extends CI_Controller {
 
     public function single_gall($id = null)
     {
-        $this->m_photo->single_gall($id);
+        $id = $this->input->post('id');
+        $result = $this->m_photo->single_gall($id);
+        echo json_encode($result);
     }
 
     // Delete 
@@ -248,7 +287,7 @@ class Photos extends CI_Controller {
         $files = $_FILES;
         $filesCount = sizeof($_FILES['images']['name']);
         
-        if (!empty($filesCount)) 
+        if (!empty($_FILES['images']['name'][0])) 
         {
             for ($i = 0; $i < $filesCount; $i++) {
                 $_FILES['images']['name']     = $files['images']['name'][$i];

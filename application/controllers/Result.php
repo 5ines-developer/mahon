@@ -40,6 +40,11 @@ class result extends CI_Controller {
             $data['is_detail'] = TRUE;
             $this->m_result->visitorCount($data['post']->id);
 
+            if (!empty($data['post'])) {
+                $url = base_url().$category.'/'.$slug;
+                $this->urls->reload($url);
+            }
+
             if ($this->detect == 'mobile') {
                 $this->load->view('mobile/detail', $data, FALSE);
             }else{
@@ -90,7 +95,9 @@ class result extends CI_Controller {
         $data['videos']     = $this->m_site->videos();
         $data['popular']    = $this->m_site->popular();
         $data['photos'] = $this->m_result->GetGallery($slug);
+
         $data['breaking']   = $this->m_result->breaking();
+        $data['related']    =  $this->m_result->relatedGallery($category,$slug);
         $data['title']  =   'Photos';
        
         if ($this->detect == 'mobile') {
@@ -137,7 +144,7 @@ class result extends CI_Controller {
 
     public function photoAlbum($slug='')
     {
-        $data['album']  = $this->m_result->getAlbum($slug);
+        $data['album']      = $this->m_result->getAlbum($slug);
         $data['temple']     = $this->m_site->temple();
         $data['trending']   = $this->m_site->trending();
         $data['videos']     = $this->m_site->videos();

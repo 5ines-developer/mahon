@@ -27,7 +27,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+	<?php $this->load->view('include/favicon.php'); ?>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
@@ -38,6 +38,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.theme.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/widget.css">
+
 	<style> .auther-image { width: 80px; height: 80px; overflow: hidden; border-radius: 50%; float: left; } .auther-image img{max-width:100% !important; border-radius:0px !important} .single-post-box .post-gallery span.image-caption { display: inline-block; color: #353535; font-size: 14px; font-family: 'Lato', sans-serif; font-style: italic; margin-bottom: 20px; } </style>
 	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -52,6 +55,8 @@
 
 </head>
 <body>
+
+    <?php $this->load->view('include/widget'); ?>
 
 	<!-- Container -->
 	<div id="container">
@@ -96,9 +101,7 @@
 										<h1><?php echo $photos->title ?></h1>
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i><?php echo $photos->uploaded_on ?></li>
-											<!-- <?php//echo (!empty($photos->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?> -->
-											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li> -->
-											<!-- <li><i class="fa fa-eye"></i>872</li> -->
+											
 										</ul>
 									</div>
 
@@ -106,13 +109,13 @@
 										<ul class="share-box">
 											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
 											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $photos->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $photos->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
-											<li><a class="twitter" href="http://twitter.com/share?text=<?php echo $post->title ?>&url=<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/share?text=<?php echo $photos->title ?>&url=<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
 											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $photos->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
 										</ul>
 									</div>
 
 									<?php foreach ($photos->image as $key => $value) { ?>
-										<div class="post-gallery">
+										<div class="post-gallery way-points" id="<?php echo str_replace('-', '',$value->image_url); ?>"  data_slug="<?php echo  $value->image_url; ?>">
 											<img src="<?php echo  $value->image ?>" alt="">
 											<span class="image-caption"><?php echo  $value->title ?></span>
 										</div>
@@ -130,15 +133,76 @@
 											<?php } ?>
 										</ul>
 									</div>
-
-									<div class="share-post-box">
-										<ul class="share-box">
-											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $photos->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $photos->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
-											<li><a class="twitter" href="http://twitter.com/share?text=<?php echo $photos->title ?>&url=<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
-											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $photos->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
+									
+									<div class="about-more-autor">
+										<ul class="nav nav-tabs">
+											<li class="active">
+												<a href="#about-autor" data-toggle="tab">About The Author</a>
+											</li>
 										</ul>
+
+										<div class="tab-content">
+
+											<div class="tab-pane active" id="about-autor">
+												<div class="autor-box">
+													<div class="auther-image">
+
+														<img src="<?php echo (!empty($photos->author->profile))?base_url().$photos->author->profile:''; ?>" alt="">
+													</div>
+													<div class="autor-content">
+														<div class="autor-title">
+															<h1><span><?php echo (!empty($photos->author->name))?$photos->author->name:''; ?></span>
+														
+															</h1>
+															
+														</div>
+														<p>
+															<?php echo (!empty($photos->author->des))?$photos->author->des:''; ?>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
+
+									<!-- advertisement  -->
+									<div class="row">
+										<div class="re-ad-block" style="margin-top:0px;">
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
 
 								
 								
@@ -155,6 +219,104 @@
 
 							</div>
 							<!-- End block content -->
+								<!-- related block content -->
+								<?php if(!empty($related)){ foreach ($related as $key => $value){ ?>
+								<div class="next-story-border"><span class="f-spon"> NEXT ARTICLE</span></div>
+							<div class="block-content related-article"  data_slug="<?php echo  $value->slug ?>">
+
+								<!-- single-post box -->
+								<div class="single-post-box">
+
+									<div class="title-post">
+										<h1><?php echo $value->title ?></h1>
+										<ul class="post-tags">
+											<li><i class="fa fa-clock-o"></i><?php echo $value->uploaded_on ?></li>
+											
+										</ul>
+									</div>
+
+									<div class="share-post-box">
+										<ul class="share-box">
+											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $value->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $value->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/share?text=<?php //echo $post->title ?>&url=<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $value->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
+										</ul>
+									</div>
+
+									<?php foreach ($value->image as $key => $images) { ?>
+										<div class="post-gallery way-points" id="<?php echo str_replace('-', '',$images->image_url); ?>"  data_slug="<?php echo  $images->image_url; ?>">
+											<img src="<?php echo  $images->image ?>" alt="">
+											<span class="image-caption"><?php echo  $images->title ?></span>
+										</div>
+									<?php } ?>
+
+									
+
+									<div class="post-tags-box">
+										<ul class="tags-box">
+											<li><i class="fa fa-tags"></i><span>Tags:</span></li>
+											<?php  
+											foreach (explode(',', $value->tags) as $key => $tag) {
+											?>
+											<li><a href="#"><?php echo  $tag ?></a></li>
+											<?php } ?>
+										</ul>
+									</div>
+
+									<!-- advertisement -->
+									<div class="row">
+										<div class="re-ad-block"  style="margin-top:0px;">
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="advertisement">
+													<div class="desktop-advert">
+														<span>Advertisement</span>
+														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
+														<!-- <h6>Sponsored Heading</h6>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+									<!-- carousel box -->
+								
+									<!-- End carousel box -->
+
+									<!-- contact form box -->
+									
+									<!-- End contact form box -->
+
+								</div>
+								<!-- End single-post box -->
+
+							</div>
+							<?php }} ?>
+							<!-- End related block content -->
 
 							<!-- article 2 -->
 							
@@ -484,14 +646,24 @@
 	</script>											
 	<script>
 		$(document).ready(function () {
+			
 			setTimeout(() => {
-				var waypoints = $('.related-article').waypoint({
+				var waypoints = $('.way-points').waypoint({
 					handler: function(direction) {
 					var url = this.element.attributes.data_slug.value
-					history.pushState(null, url, url);
+					history.replaceState(null, url, url);
 					}
 				})
 			}, 2000);
+
+		
+		});
+	</script>
+	<script>
+		$(document).ready(function () {
+			$('html, body').animate({
+				scrollTop: $('#<?php echo str_replace('-', '',$this->uri->segment(3)) ;?>').offset().top-150
+			}, 'slow');
 		});
 	</script>
 

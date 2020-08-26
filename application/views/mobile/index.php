@@ -299,6 +299,40 @@
             </div>
         </div>
     </section>
+
+    <section class="feature-box">
+        <div class="row">
+            
+            <div class="title-tra">
+                <h6> THE STORYTELLER</h6>
+               
+            </div>
+            <div class="video-pass">
+                <?php foreach($playlists as $key => $row) { ?>
+                <div class="news-post standard-post">
+                    <div class="post-gallery">
+                        <a href="<?php echo strtolower(base_url('playlist/').$row->pl_slug) ?>">
+                            <div class="rr-gallery rr-gal">
+
+                                <a href="<?php echo strtolower(base_url('playlist/').$row->pl_slug) ?>"><img alt="" class="img-responsive" src="<?php echo $row->playlist_img ?>"></a>
+                               
+                            </div>
+                            <p><a class="black-text" href="<?php echo strtolower(base_url('playlist/').$row->pl_slug) ?>"><?php echo $row->playlist;   ?></a></p>
+                           
+                        </a>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+            <div class="line-end " style="padding:0px">
+                
+            </div>
+        </div>
+
+    </section>
+
+
+
     <?php if(!empty($videos)){ ?>
     <section class="feature-box">
         <div class="row">
@@ -329,6 +363,8 @@
         </div>
     </section>
     <?php } ?>
+
+
     <section class="spr-ne feature-box">
         <?php if(!empty($trending)){ ?>
         <div class="container-fluide">

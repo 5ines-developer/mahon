@@ -52,8 +52,9 @@ body {
 }
 
 #dropdown2 {
-    width: 160px !important;
-    left: 1172.267px !important;
+    display: none;
+    width: 155px !important;
+    left: 1054.267px !important;
     top: 67px !important;
     transform-origin: 0px 0px 0px;
     opacity: 1;

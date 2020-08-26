@@ -1957,3 +1957,8 @@ form .collapsible-body{padding: 1rem;}
     bottom: -1px;
     left: 0;
 }
+.am-kn-text {
+    color: black;
+    font-size: 32px;
+    font-weight: 600;
+}

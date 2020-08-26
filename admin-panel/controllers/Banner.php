@@ -7,9 +7,13 @@ class Banner extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_banner');
-        
         $this->db->cache_delete($this->router->fetch_class(), $this->router->fetch_method());
         $this->db->simple_query('SET NAMES \'utf-8\'');
+
+        if ($this->session->userdata('Mht_type') =='2') {
+            $this->load->library('preload');
+            $this->preload->check_auth($this->session->userdata('Mht'));
+        }
     }
 
     // get banner

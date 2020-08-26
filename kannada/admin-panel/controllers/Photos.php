@@ -182,6 +182,108 @@ class Photos extends CI_Controller {
         }
         redirect('photos','refresh');
     }
+
+        public function album($value='')
+    {
+        $data['title'] = 'Photo Album | Mahonnathi';
+        $this->load->model('m_videos');
+        $data['category']   = $this->m_videos->getCategory();
+        $data['author']     = $this->m_videos->getauthor(); 
+        $data['gallery']    = $this->m_photo->getAlbum();
+        $this->load->view('pages/photo-album', $data, FALSE);
+    }
+
+    public function addAlbum($value='')
+    {
+        $id = '';
+        $data = array(
+            'title'         =>  $this->input->post('title'),
+            'slug'          =>  $this->input->post('slug'),
+            'author'        =>  $this->input->post('posted_by'),
+            'date'          =>  date('Y-m-d',strtotime($this->input->post('date'))),
+            'tags'          =>  $this->input->post('tags'),
+            'uploaded_by'   =>  $this->session->userdata('Mht'),
+            'uploaded_on'   =>date('Y-m-d H:i:s'),
+        );
+        $this->load->library('upload');
+        $this->load->library('image_lib');
+        $files = $_FILES;
+        if (file_exists($_FILES['img']['tmp_name'])) {
+            $config['upload_path'] = '../photo_album/';
+            $config['allowed_types'] = 'jpg|png|jpeg|gif|svg';
+            $config['max_size'] = '2048';
+            $config['max_width'] = 0;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload');
+            $this->upload->initialize($config);
+            if (!is_dir($config['upload_path'])) {mkdir($config['upload_path'], 0777, true); }
+            if (!$this->upload->do_upload('img')) {
+                $error = array('error' => $this->upload->display_errors());
+                // print_r($error);exit();
+                $this->session->set_flashdata('error', $this->upload->display_errors());
+                redirect('photo-album');
+            } else {
+                $upload_data = $this->upload->data();
+                $file_name = $upload_data['file_name'];
+                $data['f_image'] = $this->config->item('web_url').'photo_album/'.$file_name;
+            }
+        }
+        $postid = $this->m_photo->insertAlbum($data);
+        $this->albumImages($postid);
+
+        if(!empty($postid)){
+            $this->session->set_flashdata('success', 'Photo Album Added successfully');
+        }else{
+            $this->session->set_flashdata('error', 'please try again');
+        }
+        redirect('photo-album','refresh');
+        
+
+    }
+
+    function albumImages($postid)
+    {
+        $files = array();
+        $files = $_FILES;
+        $filesCount = sizeof($_FILES['images']['name']);
+        
+        if (!empty($filesCount)) 
+        {
+            for ($i = 0; $i < $filesCount; $i++) {
+                $_FILES['images']['name']     = $files['images']['name'][$i];
+                $_FILES['images']['type']     = $files['images']['type'][$i];
+                $_FILES['images']['tmp_name'] = $files['images']['tmp_name'][$i];
+                $_FILES['images']['error']    = $files['images']['error'][$i];
+                $_FILES['images']['size']     = $files['images']['size'][$i];
+                $config = array(
+                    'upload_path' => "../photo_album/",
+                    'allowed_types' => "gif|jpg|png|jpeg|svg",
+                    'overwrite' => TRUE,
+                    'max_size' => "2048000", 
+                    'encrypt_name' => true
+                );
+                $this->load->library('upload', $config);
+                if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
+                $this->upload->do_upload('images');
+                $filename = $this->config->item('web_url').'photo_album/'.$this->upload->data('file_name');
+                $data = array('uniq'=> random_string('alnum',20), 'image' => $filename, 'post_id' => $postid);
+                $this->m_photo->albumImages($data);
+            }
+        }
+        return true;
+    }
+
+        // Delete 
+    public function albumDelete($id = null)
+    {
+        if($this->m_photo->albumDelete($id)){
+            $this->session->set_flashdata('success', 'Photo Albums deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'please try again');
+        }
+        redirect('photo-album','refresh');
+    }
+    
 }
 
 /* End of file Photos.php */

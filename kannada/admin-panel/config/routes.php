@@ -71,9 +71,20 @@ $route['photos/update']                          = 'photos/update';
 $route['photos/delete/(:any)']                   = 'photos/delete/$1';   
 // Event
 $route['events']                                 = 'events/index';
+
+// photo album
+$route['photo-album']                            = 'photos/album';
+$route['photo-album/delete/(:any)']              = 'photos/albumDelete/$1';
+
 // newsletter
 $route['news-letter']                            = 'events/news_letter';
 $route['news-letter/delete/(:any)']              = 'events/news_letter_delete/$1';
+//subadmin
+$route['subadmin']                               = 'Subadmin/index';
+$route['subadmin/edit/(:any)']                   = 'Subadmin/edit/$1';
+$route['subadmin/delete/(:any)']                 = 'Subadmin/delete/$1';
+$route['account-activation/(:any)']              = 'Subadmin/activate/$1';
+$route['subadmin/set-password']              	 = 'Subadmin/setPass';
                  
 
 

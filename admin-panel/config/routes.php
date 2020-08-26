@@ -24,8 +24,8 @@ $route['post']                                  = 'post/index';
 $route['post/edit/(:any)']                      = 'post/edit/$1';
 $route['post/detail/(:any)']                    = 'post/get_single/$1';
 $route['post/draft']                            = 'post/draft';
-$route['post/add']                            = 'post/addPost';
-
+$route['post/add']                            	= 'post/addPost';
+$route['post/scheduled-articles']                = 'post/scheduledPost';
 
 // banner               
 $route['banner']                                = 'banner/index';
@@ -72,18 +72,39 @@ $route['photos']                                 = 'photos/index';
 $route['photos/(:any)/all']                      = 'photos/single_gall/$1';   
 $route['photos/update']                          = 'photos/update';   
 $route['photos/delete/(:any)']                   = 'photos/delete/$1';  
-
 // photo album
 $route['photo-album']                            = 'photos/album';
 $route['photo-album/delete/(:any)']              = 'photos/albumDelete/$1';
-
-
-
 // Event
 $route['events']                                 = 'events/index';
 // newsletter
 $route['news-letter']                            = 'events/news_letter';
 $route['news-letter/delete/(:any)']              = 'events/news_letter_delete/$1';
+//subadmin
+$route['subadmin']                               = 'Subadmin/index';
+$route['subadmin/edit/(:any)']                   = 'Subadmin/edit/$1';
+$route['subadmin/delete/(:any)']                 = 'Subadmin/delete/$1';
+$route['account-activation/(:any)']              = 'Subadmin/activate/$1';
+$route['subadmin/set-password']              	 = 'Subadmin/setPass';
+
+//enquiry
+$route['enquiries']			        =	'enquiries/index'; //add vendor
+$route['enquiries/view/(:any)']	    =	'enquiries/view/$1'; //add vendor
+$route['enquiries/delete/(:any)']	=	'enquiries/delete/$1'; //add vendor
+
+//widget
+$route['widget']			        =	'widget/index'; //add vendor
+$route['widget/edit/(:any)']		=	'widget/edit/$1'; //add vendor
+$route['widget/update']				=	'widget/update'; //add vendor
+$route['widget/delete/(:any)']		=	'widget/delete/$1'; //add vendor
+
+$route['visit-articles']            =    'visitarticles';
+$route['visit-articles/(:any)']     =    'visitarticles/index/$1';
+
+$route['playlist-article/(:any)']     =    'playlist/playlistArticle/$1';
+$route['playlist-article/edit/(:any)/(:any)']  = 'playlist/edit/$1/$2';
+
+
                  
 
 

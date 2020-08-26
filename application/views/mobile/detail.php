@@ -43,6 +43,14 @@
 
   gtag('config', 'UA-148770094-1');
 </script>
+
+<style>
+    .p-para img{
+        width: 320px;
+        height: auto;
+        overflow: hidden;
+    }
+</style>
 </head>
 
 <body>
@@ -93,22 +101,22 @@
             <div class="row">
                 <?php if(!empty($post)) { ?>
                     <div class="col l12 s12">
-                            <div class="inner-detail-banner">
-                    <div class="inner-banner">
-                        <img src="<?php echo base_url().$post->image ?>" class="img-responsive" alt="">
-                    </div>
-                </div>
+                        <div class="inner-detail-banner">
+                            <div class="inner-banner">
+                                <img src="<?php echo base_url().$post->image ?>" class="img-responsive" alt="">
+                            </div>
+                        </div>
                     <div class="title-track-banner">
                         <h5><?php echo $post->title ?></h5>
-                        <p class="sub-para1"><b>By :</b> <?php echo (!empty($post->posted_by))?$post->author->name:'';  ?> | Updated : <?php echo $post->created_on ?></p>
+                        <p class="sub-para1"><b>By :</b> <?php echo (!empty($post->posted_by))?$post->author->name:'';  ?> | Updated : <?php echo date('d-m-Y',strtotime($post->created_on));  ?></p>
                     </div>
                     <div class="share-post-box">
                         <ul class="share-box">
-                            <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-                            <li><a class="facebook" href="" target="_blank"><i class="fab fa-facebook-f fs"></i></a></li>
-                            <li><a class="twitter" href="" target="_blank"><i class="fab fa-twitter fs"></i></a></li>
-                            <li><a class="linkedin"href="" target="_blank"><i class="fab fa-linkedin fs"></i> &nbsp;&nbsp;</a></li>
-                        </ul>
+                                <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+                                <li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $post->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $post->title ?>" target="_blank"><i class="fab fa-facebook-f fb"></i><span>Share on Facebook</span></a></li>
+                                <li><a class="twitter" href="http://twitter.com/home?url=<?php echo $post->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fab fa-twitter tw"></i><span>Share on Twitter</span></a></li>
+                                <li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $post->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fab fa-linkedin-in li"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
+                            </ul>
                     </div>
                     <div class="p-para">
                        <?php echo $post->content ?>

@@ -181,6 +181,17 @@ class Authentication extends CI_Controller {
             }
         }
     }
+   //update schedule post status
+   public function scheduleStatus(Type $var = null)
+   {
+    $this->load->model('m_post');
+    $result = $this->m_post->updateStatus();
+    if($result){
+      echo 'ok';
+    }else{
+     echo 'not ok';
+    }
+   }
 
 }
 

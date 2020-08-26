@@ -99,10 +99,10 @@
                         <h6><?php echo $photos->title ?></h6>
                         <div class="share-post-box">
                             <ul class="share-box">
-                                <li><i class="fa fa-share-alt sha"></i><span>Share Post</span></li>
-                                <li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $photos->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $photos->title ?>" target="_blank"><i class="fab fa-facebook-f fb"></i></a></li>
-                                <li><a class="twitter" href="http://twitter.com/home?url=<?php echo $photos->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fab fa-twitter tw"></i></a></li>
-                                <li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $photos->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fab fa-linkedin-in li"></i></a></li>
+                                <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+                                <li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $post->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $post->title ?>" target="_blank"><i class="fab fa-facebook-f fb"></i><span>Share on Facebook</span></a></li>
+                                <li><a class="twitter" href="http://twitter.com/share?text=<?php echo $post->title ?>&url=<?php echo current_url(); ?>" target="_blank"><i class="fab fa-twitter tw"></i><span>Share on Twitter</span></a></li>
+                                <li><a class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo current_url(); ?>" target="_blank"><i class="fab fa-linkedin-in li"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
                             </ul>
                         </div>
                         <?php foreach ($photos->image as $key => $value) { ?>

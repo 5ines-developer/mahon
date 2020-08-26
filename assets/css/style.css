@@ -864,10 +864,18 @@ p {
     border-bottom: 2px solid #fe0000;
 }
 
+.red {
+    background: #fe0000 !important;
+}
+
 .title-section h1 span.green {
     background: #10aa2f;
     color: #fff;
     border-bottom: 2px solid #10aa2f;
+}
+
+.green {
+    background: #10aa2f !important;
 }
 
 .title-section h1 span.orange {
@@ -876,16 +884,38 @@ p {
     border-bottom: 2px solid #ff6000;
 }
 
+.orange {
+    background: #ff6000 !important;
+}
+
 .title-section h1 span.blue {
     background: #406bee;
     color: #fff;
     border-bottom: 2px solid #406bee;
 }
 
+.blue {
+    background: #406bee !important;
+}
+
 .title-section h1 span.perpol {
     background: #c52dfe;
     color: #fff;
     border-bottom: 2px solid #c52dfe;
+}
+
+.perpol {
+    background: #c52dfe !important;
+}
+
+.title-section h1 span.cyan {
+    background: #05DBDB;
+    color: #FFF;
+    border-bottom: 2px solid #05DBDB;
+}
+
+.cyan {
+    background: #05DBDB !important;
 }
 
 .darkcorocol {
@@ -3464,8 +3494,9 @@ span.top-stories {
 /* post tags list style */
 
 ul.post-tags {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 10px;
 }
 
 ul.post-tags li {
@@ -3692,13 +3723,14 @@ ul.post-tags li:last-child {
 }
 
 .image-post2 .hover-box .inner-hover {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    padding: 0 40px;
-    text-align: center;
-    margin-top: -40px;
+	position: absolute;
+	/* top: 50%; */
+	left: 0;
+	width: 100%;
+	padding: 0 40px;
+	text-align: center;
+	/* margin-top: -40px; */
+	bottom: 7px;
 }
 
 .image-post2 .hover-box a.category-post {
@@ -7906,7 +7938,7 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
 }
 
 .gallery-slide .owl-carousel .post-gallery {
-    height: 115px;
+    height: 125px;
     overflow: hidden;
     text-align: center;
     /* min-height: 200px;
@@ -7938,8 +7970,8 @@ iframe {
 }
 
 .ply-btn {
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     width: 40px;
     height: 40px;
     text-align: center;
@@ -7951,6 +7983,7 @@ iframe {
     -o-transition: all 0.2s ease-in-out;
     position: absolute;
     color: #fff;
+    transform: translate(-50%,-50%);
 }
 
 .fvideo .video-post {

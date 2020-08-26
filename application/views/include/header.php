@@ -74,8 +74,8 @@
 										<span class="cel-temperature">+7</span>
 									</li> -->
 									<li><span class="time-now"> <?php echo date("l jS  F Y  / h:i:s A") ?></span></li>
-									<!-- <li><a href="#">Log In</a></li>
-									<li><a href="contact.html">Contact</a></li> -->
+									<!-- <li><a href="#">Log In</a></li> -->
+									<li><a href="<?php echo base_url('contact-us') ?>">Contact</a></li>
 								</ul>
 							</div>	
 							<div class="col-md-3">
@@ -109,12 +109,12 @@
 						<div class="advertisement navad">
 							<div class="desktop-advert">
 								<!-- /21906498668/PG-TOP -->
-<div id='div-gpt-ad-1580129697409-0' style='width: 468px; height: 60px;'>
-  <script>
-    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1580129697409-0'); });
-  </script>
-</div>
-								<!-- <img src="<?php echo base_url() ?>assets/upload/addsense/468x60-white.jpg" alt=""> -->
+								<!-- <div id='div-gpt-ad-1580129697409-0' style='width: 468px; height: 60px;'>
+								<script>
+									googletag.cmd.push(function() { googletag.display('div-gpt-ad-1580129697409-0'); });
+								</script>
+								</div> -->
+								<img src="<?php echo base_url() ?>assets/upload/addsense/468x60-white.jpg" alt="">
 							</div>
 							<div class="tablet-advert">
 								<img src="<?php echo base_url() ?>assets/upload/addsense/468x60-white.jpg" alt="">

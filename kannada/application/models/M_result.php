@@ -270,6 +270,21 @@ class M_result extends CI_Model {
         return  $this->db->where('photo_id', $id)->select('image')->get('mh_photo_gallery')->row();
     }
 
+    public function getAlbum($slug='')
+    {
+        $query = $this->db->where('slug', $slug)->get('mh_photo_album')->row();
+
+        if (!empty($query)) {
+            $query->images = $this->albumimage($query->id);
+        }
+        return $query;
+    }
+
+    public function albumimage($id='')
+    {
+        return  $this->db->where('post_id', $id)->select('*')->get('mh_pht_albums')->result();
+    }
+
 
     
 }

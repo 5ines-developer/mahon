@@ -130,7 +130,7 @@ class m_category extends CI_Model {
     {
         $this->db->where('id', $id)->update('mh_sub_category', array('status' => 2));
         if($this->db->affected_rows() > 0){ 
-            $this->deleteSubCategoryTrash($id);
+            // $this->deleteSubCategoryTrash($id);
             return true;
         }
         else{

@@ -7,8 +7,9 @@
 
             <li class="divider" tabindex="-1"></li>
 
-            <li class="<?php echo $this->uri->segment(1) == 'post'?'active':''?>"> <a href="<?php echo base_url('post') ?>"><i class="far fa-newspaper li-icon"></i>Articles Post</a></li>
-
+            <?php if ($this->session->userdata('Mht_type') =='1') { ?>
+                <li class="<?php echo $this->uri->segment(1) == 'subadmin'?'active':''?>"> <a href="<?php echo base_url('subadmin') ?>"><i class="far fa-user li-icon"></i>Subadmin</a></li>
+            <?php  } ?>
             <li class="<?php echo $this->uri->segment(1) == 'post'?'active':''?>"> <a href="<?php echo base_url('post') ?>"><i class="far fa-newspaper li-icon"></i>Articles Post</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'breaking-news'?'active':''?>"> <a href="<?php echo base_url('breaking-news') ?>"><i class="fab fa-audible li-icon"></i>Breaking News</a></li>
             <li class="<?php echo $this->uri->segment(1) == 'banner'?'active':''?>"> <a href="<?php echo base_url('banner') ?>"><i class="fas fa-image li-icon"></i>Banner</a></li>
@@ -25,8 +26,16 @@
 
                 <li class="<?php echo $this->uri->segment(1) == 'events'?'active':''?>"> <a href="<?php echo base_url('events') ?>"><i class="far fa-calendar-alt li-icon"></i>Happening's</a></li>
                 <li class="<?php echo $this->uri->segment(1) == 'twitter'?'active':''?>"> <a href="<?php echo base_url('twitter') ?>"><i class="fab fa-twitter li-icon"></i>Twitter Post</a></li>
+
+                <li class="<?php echo $this->uri->segment(1) == 'widget'?'active':''?>"> <a href="<?php echo base_url('widget') ?>"><i class="far fa-clone li-icon"></i>Widget</a></li>
+                <li class="<?php echo $this->uri->segment(1) == 'playlist'?'active':''?>"> <a href="<?php echo base_url('playlist') ?>"><i class="far fa-clone li-icon"></i>Playlist</a></li>
+
+
+                
+
             <li class="divider" tabindex="-1"></li>
 
+            <?php if ($this->session->userdata('Mht_type') =='1') { ?>
             <li class="droup-link <?php echo $this->uri->segment(1) == 'category'?'active':'' ?>"><a class="droup-link-item" data-target="#category-droup"><i class="fas fa-boxes li-icon"></i>Category</a>
                 <ul class="droupmenu" id="category-droup">
                     <li class="<?php echo $this->uri->segment(1) == 'category'?'active':'' ?>"><a href="<?php echo base_url('category') ?>">Main Category</a></li>
@@ -34,8 +43,11 @@
                 </ul>
             </li>
             <li class="<?php echo $this->uri->segment(1) == 'author'?'active':''?>"> <a href="<?php echo base_url('author') ?>"><i class="fas fa-user-tie li-icon"></i>Author</a></li>
-            <li class="<?php echo $this->uri->segment(1) == 'news-letter'?'active':''?>"> <a href="<?php echo base_url('news-letter') ?>"><i class="fas fa-rss li-icon"></i>News Letter</a></li>
 
+            <li class="<?php echo $this->uri->segment(1) == 'enquiries'?'active':''?>"> <a href="<?php echo base_url('enquiries') ?>"><i class="fas fa-rss li-icon"></i>Enquiry</a></li>
+
+            <li class="<?php echo $this->uri->segment(1) == 'news-letter'?'active':''?>"> <a href="<?php echo base_url('news-letter') ?>"><i class="fas fa-rss li-icon"></i>News Letter</a></li>
+            <li class="<?php echo $this->uri->segment(1) == 'visit-articles'?'active':''?>"> <a href="<?php echo base_url('visit-articles') ?>"><i class="fas fa-eye li-icon"></i>Visit Articles</a></li>
             <li class="divider" tabindex="-1"></li>
 
             <li class="droup-link <?php echo $this->uri->segment(1) == 'trash'?'active':'' ?>"><a class="droup-link-item" data-target="#trash-dropdown"><i class="fas fa-trash li-icon"></i>Trash</a>
@@ -44,7 +56,7 @@
                     <li class="<?php echo $this->uri->segment(2) == 'trash/article'?'active':'' ?>"><a href="<?php echo base_url('trash/article') ?>">Articles</a></li>
                 </ul>
             </li>
-
+            <?php } ?>
         </ul>
     </div>
 </div>

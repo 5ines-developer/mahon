@@ -1,0 +1,83 @@
+       
+#f1_container {
+      position: fixed;
+        bottom: 0;
+        right: 0;
+      margin: 10px;
+      width: 100px;
+      height: 100px;
+      z-index: 1;
+      background: #fff;
+}
+#f1_container {
+      perspective: 1000;
+      z-index: 999999;
+    
+}
+#f1_card {
+    width: 100%;
+    height: 100%;
+}
+
+.face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden; 
+}
+.face.back {
+      display: block;
+      transform: rotateY(180deg);
+      text-align: center;
+}
+
+.face.back {
+    -webkit-animation-delay: 3s;
+    animation: BackRotate 9000ms linear 2s infinite;
+    -webkit-animation-delay: 3s; 
+}
+
+.face.front {
+    -webkit-animation-delay: 3s;
+    animation: Rotate 9000ms linear 2s infinite;
+    -webkit-animation-delay: 3s;
+    
+}
+.wid-title{
+  padding: 0 15px;
+  background: url('../images/covid-19-bg.png') no-repeat 0 0;
+  color: #fff;
+}
+
+.wid-title h6 {
+  margin: 0;
+  height: 20px;
+  line-height: 20px;
+
+}
+.wid-content .wid-subtitle{
+  margin: 0;
+  font-size: 13px;
+  text-align: center;
+  font-weight: 600;
+}
+.wid-subconntet{
+  text-align: left;
+  padding-left: 15px;
+}
+
+.wid-content p{
+  color: #007bff;
+}
+
+
+
+@keyframes Rotate {
+  from {transform:rotateY(0deg);}
+  to {transform:rotateY(360deg);}
+}
+ 
+@keyframes BackRotate {
+  from {transform:rotateY(180deg);}
+  to {transform:rotateY(540deg);}
+}

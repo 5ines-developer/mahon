@@ -126,6 +126,11 @@ class M_authentication extends CI_Model {
     return count($result);
   }
 
+  public function checkLogin($id='')
+  {
+    return $this->db->where('id', $id)->where('is_active',1)->get('admin')->row();
+  }
+
   
 
 	

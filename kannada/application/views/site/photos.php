@@ -10,15 +10,15 @@
 		<meta property="fb:pages" content="<?php echo $photos->fid ?>" />
 		<meta property="og:image" content="<?php echo $photos->image['0']->image ?>" />
 		<meta property="og:title" content="<?php echo $photos->ftitle ?>">
-		<meta property="og:site_name" content="Mahonnathi/kannada">
-		<meta property="og:url" content="<?php echo current_url() ?>">
+		<meta property="og:site_name" content="<?php echo $photos->fsite_name ?>">
+		<meta property="og:url" content="<?php echo base_url() ?>">
 		<meta property="og:description" content="<?php echo $photos->fdes ?>">
 		<meta property="og:type" content="website">
 		<!-- Twitter card -->
 		<meta name="twitter:card" content="summary">
-		<meta name="twitter:site" content="@Mahonnathi/kannada">
+		<meta name="twitter:site" content="@Mahonnathi">
 		<meta name="twitter:image" content="<?php echo $photos->image['0']->image ?>">
-		<meta name="twitter:url" content="<?php echo current_url() ?>">
+		<meta name="twitter:url" content="<?php echo base_url() ?>">
 		<meta name="twitter:title" content="<?php echo $photos->ttitle ?>">
 		<meta name="twitter:description" content="<?php echo $photos->tdes ?>">
 	<?php  } ?>
@@ -28,7 +28,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery.bxslider.css" media="screen">
@@ -38,20 +38,24 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.theme.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
-	<style> .auther-image { width: 80px; height: 80px; overflow: hidden; border-radius: 50%; float: left; } .auther-image img{max-width:100% !important; border-radius:0px !important} .single-post-box .post-gallery span.image-caption { display: inline-block; color: #353535; font-size: 14px; font-family: 'Lato', sans-serif; font-style: italic; margin-bottom: 20px; } </style>
 
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/widget.css">
+    
+	<style> .auther-image { width: 80px; height: 80px; overflow: hidden; border-radius: 50%; float: left; } .auther-image img{max-width:100% !important; border-radius:0px !important} .single-post-box .post-gallery span.image-caption { display: inline-block; color: #353535; font-size: 14px; font-family: 'Lato', sans-serif; font-style: italic; margin-bottom: 20px; } </style>
+	<script data-ad-client="ca-pub-8593432034756272" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157746630-1"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148770094-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-157746630-1');
+  gtag('config', 'UA-148770094-1');
 </script>
 
 </head>
 <body>
+		<?php $this->load->view('include/widget'); ?>
 
 	<!-- Container -->
 	<div id="container">
@@ -97,8 +101,8 @@
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i><?php echo $photos->uploaded_on ?></li>
 											<!-- <?php//echo (!empty($photos->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?> -->
-											<li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
-											<li><i class="fa fa-eye"></i>872</li>
+											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li> -->
+											<!-- <li><i class="fa fa-eye"></i>872</li> -->
 										</ul>
 									</div>
 
@@ -161,6 +165,69 @@
 								
 							<!-- end article -->
 						<?php } ?>	
+
+
+
+						<?php if(!empty($album))	{ ?>		
+							<!-- block content -->
+							<div class="block-content related-article"  data_slug="<?php echo  $album->slug ?>">
+
+								<!-- single-post box -->
+								<div class="single-post-box">
+
+									<div class="title-post">
+										<h1><?php echo $album->title ?></h1>
+										<ul class="post-tags">
+											<li><i class="fa fa-clock-o"></i><?php echo $album->uploaded_on ?></li>
+										</ul>
+									</div>
+
+									<div class="post-gallery">
+											<img src="<?php echo  $album->f_image ?>" alt="">
+									</div>
+
+									<div class="share-post-box">
+										<ul class="share-box">
+											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $album->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $album->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											
+											<li><a class="twitter" href="http://twitter.com/share?text=<?php echo $album->title ?>&url=<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $album->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
+										</ul>
+									</div>
+
+									<?php foreach ($album->images as $key => $value) {
+										?>
+										<div class="post-gallery">
+											<img src="<?php echo  $value->image ?>" alt="">
+										</div>
+									<?php } ?>
+
+									
+
+									<div class="post-tags-box">
+										<ul class="tags-box">
+											<li><i class="fa fa-tags"></i><span>Tags:</span></li>
+											<?php  
+											foreach (explode(',', $album->tags) as $key => $value) {
+											?>
+											<li><a href="#"><?php echo  $value ?></a></li>
+											<?php } ?>
+										</ul>
+									</div>
+
+									<div class="share-post-box">
+										<ul class="share-box">
+											<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+											<li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $album->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $album->title ?>" target="_blank"><i class="fa fa-facebook"></i><span>Share on Facebook</span></a></li>
+											<li><a class="twitter" href="http://twitter.com/home?url=<?php echo $album->title ?>+<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i><span>Share on Twitter</span></a></li>
+											<li><a class="linkedin"href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $album->title ?>&amp;amp;source=<?php echo base_url() ?>" target="_blank"><i class="fa fa-linkedin"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+						<?php } ?>	
  					
 					</div>
 
@@ -180,12 +247,13 @@
 										<!-- <span>Facebook</span> -->
 									</li>
 									<li>
-										<a href="https://twitter.com/Mahonnathii" class="twitter"><i class="fa fa-twitter"></i></a>
+										<a href="https://twitter.com/Mahonnathi1" class="twitter"><i class="fa fa-twitter"></i></a>
 										<span class="number">Twitter</span>
 										<!-- <span>Twitter</span> -->
 									</li>
 									<li>
-										<a href="https://www.youtube.com/channel/UC32CdzgdOb15enGuIR5QfCg/featured?view_as=subscriber" class="google"><i class="fa fa-youtube"></i></a>
+										<a href="https://www.youtube.com/channel/UC00fs8iYCCtN9TlyEw_8JCg/videos
+" class="google"><i class="fa fa-youtube"></i></a>
 										<span class="number">YouTube</span>
 										<!-- <span>YouTube</span> -->
 									</li>
@@ -300,7 +368,7 @@
 
 							<div class="widget subscribe-widget">
 								<form class="subscribe-form">
-									<h1>ಸಬ್ ಸ್ರೈಬ್ ಆಗಿ</h1>
+									<h1>Subscribe to RSS Feeds</h1>
 									<input type="email" required name="sumbscribe" id="subscribe" placeholder="Email"/>
 									<button id="submit-subscribe">
 										<i class="fa fa-arrow-circle-right"></i>

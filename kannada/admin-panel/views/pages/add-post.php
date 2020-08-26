@@ -388,7 +388,7 @@
 
             // Reset the form  
             function clearform() {
-                $('#addArticle').removeAttr('data-draft');
+                $('input[name=title]').removeAttr('data-draft');
                 $('#newsPost')[0].reset();
                 $('input[name=tags]').importTags('');
                 $('#img-previwer').attr('src', '');
@@ -541,7 +541,7 @@
                     $('.preloader-box').addClass('active');
                     var form = $(this)[0];
                     var formData = new FormData(form);
-                    formData.append('daraftid', $('#addArticle').attr('data-draft'));
+                    $('input[name=title]').removeAttr('data-draft');
                     $.ajax({
                         url: "<?php echo base_url() . 'post/add_post'?>",
                         method: 'POST',
@@ -628,9 +628,11 @@
             });
             
             // auto draft   
-            $('#addArticle').click(function() {
-                var key = Math.ceil(Math.random() * 10000);
-               $(this).attr('data-draft', key);
+            $(document).on('change','input[name=title]',function(event) {
+                event.preventDefault();
+                // auto draft   
+                    var key = Math.ceil(Math.random() * 10000);
+                   $(this).attr('data-draft', key);
             });
 
             // test ionterval
@@ -669,10 +671,10 @@
            
             // set interval
             setInterval(function() {
-                if($('.modal').hasClass('open') == true &&  $('#addArticle').attr('data-draft')){
+                if($('input[name=title]').val() !=''){
                     var form = $("#newsPost")[0];
                     var formData = new FormData(form);
-                    formData.append('daraftid', $('#addArticle').attr('data-draft'));
+                    formData.append('daraftid', $('input[name=title]').attr('data-draft'));
                     $.ajax({
                         url : "<?php echo base_url() ?>post/save_draft",
                         type: "POST",

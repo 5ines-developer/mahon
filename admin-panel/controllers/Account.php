@@ -10,6 +10,11 @@ class Account extends CI_Controller {
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_account');
          $this->load->library('bcrypt');
+
+        if ($this->session->userdata('Mht_type') =='2') {
+            $this->load->library('preload');
+            $this->preload->check_auth($this->session->userdata('Mht'));
+        }
     }
 
     /**

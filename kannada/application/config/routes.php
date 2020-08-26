@@ -13,6 +13,13 @@ $route['videos/(:any)/(:any)']  = 'result/videos/$1/$2';
 $route['photogallery/(:any)/(:any)'] = 'result/photogallery/$1/$2';     // Preview 
 
 $route['photo-gallery']    = 'result/pgallery';
+$route['photo-album/(:any)']  	= 'result/photoAlbum/$1';//photo album
+
+$route['contact-us']    		= 'home/contact';
+$route['contact-submit']    	= 'home/contactSubmit';
+$route['corona-updates-in-india']    	= 'home/widget';
+
+
 
 
 

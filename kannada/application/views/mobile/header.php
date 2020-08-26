@@ -17,7 +17,9 @@
                 <!-- .searchbar -->
             </div>
         </nav>
+        
         <ul class="sidenav nn-list" id="mobile-demo">
+            <li class="bt"><a href="<?php echo $this->config->item('web_url'); ?>">English</a></li>
             <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">ಮುಖಪುಟ</a></li>
 
                     <?php 
@@ -68,3 +70,14 @@
             </div>
         </div>
     </header>
+        <script>
+            function convertToSlug(str) {
+                str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+                
+                str = str.replace(/^\s+|\s+$/gm,'');
+                
+                str = str.replace(/\s+/g, '-'); 
+                document.getElementById("search-form").action  = '<?php echo base_url("topic/") ?>'+str;
+                //return str;
+            }
+        </script>

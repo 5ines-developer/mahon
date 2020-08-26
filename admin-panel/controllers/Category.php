@@ -10,6 +10,7 @@ class category extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_category');
+        if ($this->session->userdata('Mht_type') !='1') { redirect('/'); }
     }
 
     public function index()

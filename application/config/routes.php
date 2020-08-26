@@ -15,6 +15,16 @@ $route['photogallery/(:any)/(:any)'] = 'result/photogallery/$1/$2';// Preview
 $route['photo-gallery']    		= 'result/pgallery';
 $route['photo-album/(:any)']  	= 'result/photoAlbum/$1';//photo album
 
+$route['contact-us']    		= 'home/contact';
+$route['contact-submit']    	= 'home/contactSubmit';
+$route['corona-updates-in-india']    	= 'home/widget';
+
+$route['playlist']  = 'playlist/index';
+$route['playlist/(:any)']  = 'playlist/index/$1';
+$route['playlist/(:any)/(:any)']  = 'playlist/index/$1/$2';
+$route['playlist/(:any)/detail/(:any)']  = 'playlist/PlaylistVideos/$1/$2';
+
+
 
 // router database
 require_once (BASEPATH .'database/DB.php');

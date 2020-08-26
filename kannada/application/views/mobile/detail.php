@@ -45,6 +45,14 @@
   gtag('config', 'UA-157746630-1');
 </script>
 
+<style>
+    .p-para img{
+        width: 320px;
+        height: auto;
+        overflow: hidden;
+    }
+</style>
+
 </head>
 
 <body>
@@ -63,7 +71,30 @@
                 </div>
             </div>
         </nav>
-        </nav>
+        <ul class="sidenav nn-list" id="mobile-demo">
+            <li class="bt"><a href="<?php echo $this->config->item('web_url'); ?>">English</a></li>
+            <li class="bt <?php if($this->uri->segment(1) == ''){ echo ' active'; } ?>"><a  href="<?php echo base_url() ?>">ಮುಖಪುಟ</a></li>
+
+                    <?php
+                                $vd = ''; 
+                                $kn='';
+                                if(!empty(categories())){
+                                    foreach(categories() as $key => $value) { 
+                                        if($value->title == 'Video'){$vd = '1'; }
+                                        if($value->menu == 1 && $value->title != 'Video'){
+                                            $rurl = $this->urls->urlFormat(base_url().$value->title)
+                                ?>
+                                    <li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->kannada ?></a> </li>
+                                <?php } 
+                                if($value->title == 'Video'){ 
+                                    $rurl1 = $this->urls->urlFormat(base_url().$value->title);
+                                    $kn = $value->title;
+                                } 
+                            } }
+                            if (!empty($vd)) { ?>
+                                <li><a class="world" href="<?php echo $rurl1 ?>"><?php echo $kn ?></a> </li>
+                            <?php } ?> 
+        </ul>
     </header>
     <!-- menu slider -->
     <!--section -->
@@ -86,11 +117,11 @@
                     </div>
                     <div class="share-post-box">
                         <ul class="share-box">
-                            <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-                            <li><a class="facebook" href="" target="_blank"><i class="fab fa-facebook-f fs"></i></a></li>
-                            <li><a class="twitter" href="" target="_blank"><i class="fab fa-twitter fs"></i></a></li>
-                            <li><a class="linkedin"href="" target="_blank"><i class="fab fa-linkedin fs"></i> &nbsp;&nbsp;</a></li>
-                        </ul>
+                                <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+                                <li><a class="facebook" href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $post->title ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $post->title ?>" target="_blank"><i class="fab fa-facebook-f fb"></i><span>Share on Facebook</span></a></li>
+                                <li><a class="twitter" href="http://twitter.com/share?text=<?php echo $post->title ?>&url=<?php echo current_url(); ?>" target="_blank"><i class="fab fa-twitter tw"></i><span>Share on Twitter</span></a></li>
+                                <li><a class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo current_url(); ?>" target="_blank"><i class="fab fa-linkedin-in li"></i> &nbsp;&nbsp;<span>Share on Linkedin</span></a></li>
+                            </ul>
                     </div>
                     <div class="p-para">
                        <?php echo $post->content ?>
@@ -225,7 +256,7 @@
 
         </script>
 
-        <script>
+<!--         <script>
             window.onscroll = function() {
                 myFunction()
             };
@@ -249,7 +280,7 @@
                     this.className += " active";
                 });
             }
-        </script>
+        </script> -->
 </body>
 
 </html>

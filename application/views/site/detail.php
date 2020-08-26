@@ -29,7 +29,8 @@
 		<meta name="twitter:title" content="<?php echo $post->ttitle ?>">
 		<meta name="twitter:description" content="<?php echo $post->tdes ?>">
 	<?php  } ?>
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+	<?php $this->load->view('include/favicon.php'); ?>
+	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery.bxslider.css" media="screen">
@@ -39,6 +40,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.theme.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/widget.css">
+
 	<style>
 		.auther-image {
     width: 80px;
@@ -62,6 +66,9 @@
 
 </head>
 <body>
+
+    <?php $this->load->view('include/widget'); ?>
+	
 
 	<!-- Container -->
 	<div id="container">
@@ -165,7 +172,7 @@
 									<div class="title-post">
 										<h1><?php echo $post->title ?></h1>
 										<ul class="post-tags">
-											<li><i class="fa fa-clock-o"></i><?php echo $post->created_on ?></li>
+											<li><i class="fa fa-clock-o"></i><?php echo date('d-m-Y',strtotime($post->created_on));  ?></li>
 											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
 											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
 											<li><i class="fa fa-eye"></i>872</li> -->
@@ -256,7 +263,7 @@
 									<!-- End carousel box -->
 
 									<!-- contact form box -->
-									<div class="contact-form-box">
+									<!-- <div class="contact-form-box">
 										<div class="title-section">
 											<h1><span>Leave a Comment</span> <span class="email-not-published">Your email address will not be published.</span></h1>
 										</div>
@@ -281,18 +288,17 @@
 												<i class="fa fa-comment"></i> Post Comment
 											</button>
 										</form>
-									</div>
+									</div> -->
 									<!-- End contact form box -->
 
-									<div class="row">
+									<!-- <div class="row">
 										<div class="re-ad-block">
 											<div class="col-lg-4">
 												<div class="advertisement">
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
@@ -302,8 +308,7 @@
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
@@ -313,13 +318,12 @@
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 
 								</div>
 								<!-- End single-post box -->
@@ -383,15 +387,14 @@
 									</div>
 
 
-									<div class="row">
+									<!-- <div class="row">
 										<div class="re-ad-block">
 											<div class="col-lg-4">
 												<div class="advertisement">
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
@@ -401,8 +404,7 @@
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
@@ -412,13 +414,12 @@
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+													
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<br>

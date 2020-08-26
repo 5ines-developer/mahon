@@ -2,7 +2,6 @@
 $this->ci =& get_instance();
 
 $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
-
 ?>
 
 <!doctype html>
@@ -33,7 +32,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 
 
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 
@@ -45,6 +44,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.theme.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/ticker-style.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css" media="screen">
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/widget.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157746630-1"></script>
@@ -62,6 +63,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 </head>
 
 <body>
+    <?php $this->load->view('include/widget'); ?>
 
     <!-- Container -->
     <div id="container">
@@ -84,12 +86,40 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 
                     <!-- 2  -->
-                    <?php if(!empty($banner[1])){ ?>
+                    <?php if(!empty($banner[1])){ 
+
+                        $bnc1 = '';
+                        if(!empty($banner[1]->category)){
+                            switch ($banner[1]->category) {
+                                case 'Spiritual':
+                                    $bnc1 = 'orange';
+                                    break;
+                                case 'Nation':
+                                    $bnc1 = 'blue';
+                                    break;
+                                case 'Health':
+                                    $bnc1 = 'green';
+                                    break;
+                                case 'General Knowledge':
+                                    $bnc1 = 'cyan';
+                                    break;
+                                case 'Featured':
+                                    $bnc1 = 'red';
+                                    break;
+                                
+                                default:
+                                    $bnc1 = 'green';
+                                    break;
+                            }
+                        }
+
+                    ?>
+
                     <div class="news-post image-post default-size small-post">
                         <img src="<?php echo base_url().$banner[1]->image ?>" alt="">
                         <div class="hover-box">
                             <div class="inner-hover">
-                                <?php echo (!empty($banner[1]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[1]->category).'">'.$banner[1]->kannada.'</a>': ' ' ) ;
+                                <?php echo (!empty($banner[1]->kannada)? '<a class="category-post '.$bnc1.'" href="'.$this->urls->urlFormat(base_url().$banner[1]->category).'">'.$banner[1]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[1]->category)){
 											$urllink = $this->urls->urlFormat($banner[1]->slug);
 										}else{
@@ -118,7 +148,32 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                     <?php } ?>
                     <!-- 1  -->
 
-                    <?php if(!empty($banner[0])){ ?>
+                    <?php if(!empty($banner[0])){ 
+                        $bnc1 = '';
+                        if(!empty($banner[0]->category)){
+                            switch ($banner[0]->category) {
+                                case 'Spiritual':
+                                    $bnc1 = 'orange';
+                                    break;
+                                case 'Nation':
+                                    $bnc1 = 'blue';
+                                    break;
+                                case 'Health':
+                                    $bnc1 = 'green';
+                                    break;
+                                case 'General Knowledge':
+                                    $bnc1 = 'cyan';
+                                    break;
+                                case 'Featured':
+                                    $bnc1 = 'red';
+                                    break;
+                                
+                                default:
+                                    $bnc1 = 'green';
+                                    break;
+                            }
+                        }
+                    ?>
                     <div class="image-slider snd-size">
                         <span class="top-stories">ಟಾಪ್ ಸ್ಟೋರೀಸ್</span>
 
@@ -129,7 +184,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                             <div class="hover-box">
                                 <div class="inner-hover">
                                     <?php 
-										echo (!empty($banner[0]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[0]->category).'">'.$banner[0]->kannada.'</a>': ' ' ) ;
+										echo (!empty($banner[0]->kannada)? '<a class="category-post '.$bnc1.'" href="'.$this->urls->urlFormat(base_url().$banner[0]->category).'">'.$banner[0]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[0]->category)){
 											$urllink = $this->urls->urlFormat($banner[0]->slug);
 										}else{
@@ -160,13 +215,39 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                     <?php } ?>
 
                     <!-- 4  -->
-                    <?php if(!empty($banner[3])){ ?>
+                    <?php if(!empty($banner[3])){
+                        $bnc1 = '';
+                        if(!empty($banner[3]->category)){
+                            switch ($banner[3]->category) {
+                                case 'Spiritual':
+                                    $bnc1 = 'orange';
+                                    break;
+                                case 'Nation':
+                                    $bnc1 = 'blue';
+                                    break;
+                                case 'Health':
+                                    $bnc1 = 'green';
+                                    break;
+                                case 'General Knowledge':
+                                    $bnc1 = 'cyan';
+                                    break;
+                                case 'Featured':
+                                    $bnc1 = 'red';
+                                    break;
+                                
+                                default:
+                                    $bnc1 = 'green';
+                                    break;
+                            }
+                        }
+
+                    ?>
                     <div class="news-post image-post  small-post">
                         <img src="<?php echo base_url().$banner[3]->image ?>" alt="">
                         <div class="hover-box">
                             <div class="inner-hover">
                                 <?php 
-										echo (!empty($banner[3]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[3]->category).'">'.$banner[3]->kannada.'</a>': ' ' ) ;
+										echo (!empty($banner[3]->kannada)? '<a class="category-post '.$bnc1.'" href="'.$this->urls->urlFormat(base_url().$banner[3]->category).'">'.$banner[3]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[3]->category)){
 											$urllink = $this->urls->urlFormat($banner[3]->slug);
 										}else{
@@ -194,13 +275,38 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                     <?php } ?>
 
                     <!-- 3  -->
-                    <?php if(!empty($banner[2])){ ?>
+                    <?php if(!empty($banner[2])){ 
+                        $bnc1 = '';
+                        if(!empty($banner[2]->category)){
+                            switch ($banner[2]->category) {
+                                case 'Spiritual':
+                                    $bnc1 = 'orange';
+                                    break;
+                                case 'Nation':
+                                    $bnc1 = 'blue';
+                                    break;
+                                case 'Health':
+                                    $bnc1 = 'green';
+                                    break;
+                                case 'General Knowledge':
+                                    $bnc1 = 'cyan';
+                                    break;
+                                case 'Featured':
+                                    $bnc1 = 'red';
+                                    break;
+                                
+                                default:
+                                    $bnc1 = 'green';
+                                    break;
+                            }
+                        }
+                    ?>
                     <div class="news-post image-post  small-post">
                         <img src="<?php echo base_url().$banner[2]->image ?>" alt="">
                         <div class="hover-box">
                             <div class="inner-hover">
                                 <?php 
-										echo (!empty($banner[2]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[2]->category).'">'.$banner[2]->kannada.'</a>': ' ' ) ;
+										echo (!empty($banner[2]->kannada)? '<a class="category-post '.$bnc1.'" href="'.$this->urls->urlFormat(base_url().$banner[2]->category).'">'.$banner[2]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[2]->category)){
 											$urllink = $this->urls->urlFormat($banner[2]->slug);
 										}else{
@@ -228,13 +334,38 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                     <?php } ?>
 
                     <!-- 5  -->
-                    <?php if(!empty($banner[4])){ ?>
+                    <?php if(!empty($banner[4])){ 
+                        $bnc1 = '';
+                        if(!empty($banner[4]->category)){
+                            switch ($banner[4]->category) {
+                                case 'Spiritual':
+                                    $bnc1 = 'orange';
+                                    break;
+                                case 'Nation':
+                                    $bnc1 = 'blue';
+                                    break;
+                                case 'Health':
+                                    $bnc1 = 'green';
+                                    break;
+                                case 'General Knowledge':
+                                    $bnc1 = 'cyan';
+                                    break;
+                                case 'Featured':
+                                    $bnc1 = 'red';
+                                    break;
+                                
+                                default:
+                                    $bnc1 = 'green';
+                                    break;
+                            }
+                        }
+                    ?>
                     <div class="news-post image-post default-size small-post">
                         <img src="<?php echo base_url().$banner[4]->image ?>" alt="">
                         <div class="hover-box">
                             <div class="inner-hover">
                                 <?php 
-										echo (!empty($banner[4]->kannada)? '<a class="category-post" href="'.$this->urls->urlFormat(base_url().$banner[4]->category).'">'.$banner[4]->kannada.'</a>': ' ' ) ;
+										echo (!empty($banner[4]->kannada)? '<a class="category-post '.$bnc1.'" href="'.$this->urls->urlFormat(base_url().$banner[4]->category).'">'.$banner[4]->kannada.'</a>': ' ' ) ;
 										if(empty($banner[4]->category)){
 											$urllink = $this->urls->urlFormat($banner[4]->slug);
 										}else{
@@ -311,7 +442,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 										<?php foreach ($trending as $key => $trow) { 
 															
 											if(empty($trow->category)){
-												$urllink = $this->urls->urlFormat($trow->slug);
+                                                // $urllink = $this->urls->urlFormat($trow->slug);
+												$urllink = $trow->slug;
 											}else{
 												$urllink = $this->urls->urlFormat(base_url().$trow->category.'/'.$trow->slug);
 											}
@@ -448,7 +580,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                     <?php } ?>
             </div>
             <!-- End grid box -->
-
+            
 
             <!-- carousel box Nation -->
             <?php if(!empty($cArticle['0'])){ ?>
@@ -456,7 +588,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
                 <div class="title-section">
                     <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['0']->title) ?>">
-                        <h1><span class="green"><?php echo $cArticle['0']->kannada ?></span></h1>
+                        <h1><span class="orange"><?php echo $cArticle['0']->kannada ?></span></h1>
                     </a>
                 </div>
 
@@ -508,24 +640,24 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
                 <div class="row">
                     <div class="title-section">
-                        <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title) ?>">
-                            <h1><span class="green"><?php echo $cArticle['2']->kannada ?></span></h1>
+                        <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['4']->title) ?>">
+                            <h1><span class="red"><?php echo $cArticle['4']->kannada ?></span></h1>
                         </a>
                     </div>
-                    <?php  foreach ($cArticle['2']->data as $key => $carow) { if($key < 2){ 
+                    <?php  foreach ($cArticle['4']->data as $key => $carow) {if($key < 2){ 
 											?>
                     <div class="item col-sm-12 col-md-6">
                         <div class="news-post image-post2">
                             <div class="post-gallery">
                                 <div class="post-gallerybox">
                                     <div class="afterlay">
-                                        <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+                                        <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['4']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="hover-box">
                                     <div class="inner-hover">
                                         <!-- <a class="category-post" href="politics-category.html">Opionion</a> -->
-                                        <h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+                                        <h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['4']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
                                         <ul class="post-tags">
                                             <!--  -->
                                             <!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
@@ -538,14 +670,63 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                     <?php } } ?>
                     <div class="col-sm-12">
                         <ul class="list-posts column-2">
-                            <?php  foreach ($cArticle['2']->data as $key => $carow) { if($key >= 2){ 
+                            <?php  foreach ($cArticle['4']->data as $key => $carow) {  if($key >= 2){ 
 													?>
                             <li>
                                 <div class="featuedimg-second">
-                                    <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+                                    <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['4']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
                                 </div>
                                 <div class="post-content">
-                                    <h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['2']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+                                    <h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['4']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+                                </div>
+                            </li>
+                            <?php } } ?>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="title-section">
+                        <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['3']->title) ?>">
+                            <h1><span class="cyan"><?php echo $cArticle['3']->kannada ?></span></h1>
+                        </a>
+                    </div>
+                    <?php  foreach ($cArticle['3']->data as $key => $carow) { if($key < 2){ 
+                                            ?>
+                    <div class="item col-sm-12 col-md-6">
+                        <div class="news-post image-post2">
+                            <div class="post-gallery">
+                                <div class="post-gallerybox">
+                                    <div class="afterlay">
+                                        <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['3']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="hover-box">
+                                    <div class="inner-hover">
+                                        <!-- <a class="category-post" href="politics-category.html">Opionion</a> -->
+                                        <h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['3']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
+                                        <ul class="post-tags">
+                                            <!--  -->
+                                            <!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } } ?>
+                    <div class="col-sm-12">
+                        <ul class="list-posts column-2">
+                            <?php  foreach ($cArticle['3']->data as $key => $carow) { if($key >= 2){ 
+                                                    ?>
+                            <li>
+                                <div class="featuedimg-second">
+                                    <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['3']->title.'/'.$carow->slug) ?>"><img src="<?php echo base_url().$carow->image ?>" alt=""></a>
+                                </div>
+                                <div class="post-content">
+                                    <h2><a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['3']->title.'/'.$carow->slug) ?>"><?php echo $carow->title ?></a></h2>
                                 </div>
                             </li>
                             <?php } }?>
@@ -568,7 +749,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
                 <div class="title-section">
                     <a href="<?php echo $this->urls->urlFormat(base_url().$cArticle['1']->title) ?>">
-                        <h1><span class="orange"><?php echo $cArticle['1']->kannada ?></span></h1>
+                        <h1><span class="blue"><?php echo $cArticle['1']->kannada ?></span></h1>
                     </a>
                 </div>
                 <ul class="list-posts column-2">
@@ -606,12 +787,14 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
                 <div class="row">
 
-                    <?php foreach ($cArticle as $key => $category) { if($key != 0 && $key != 1 && $key != 2 && $key < 5) { ?>
+                    <?php foreach ($cArticle as $key => $category) {
+                        if($key == 7 || $key == 2) {
+                    ?>
                     <div class="col-md-6">
 
                         <div class="title-section">
                             <a href="<?php echo $this->urls->urlFormat(base_url().$category->title) ?>">
-                                <h1><span class="blue"><?php echo  $category->kannada ?></span></h1>
+                                <h1><span class="green"><?php echo  $category->kannada ?></span></h1>
                             </a>
                         </div>
                         <?php foreach ($category->data as $skey => $drow) { 
@@ -636,6 +819,40 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                 </div>
 
             </div>
+
+            <!-- photo album -->
+                            <?php if (!empty($album)) {?>
+                            <section class="features-today">
+                                <div class="">
+
+                                    <div class="title-section">
+                                        <h1><span>Photo Album</span></h1>
+                                    </div>
+
+                                    <div class="features-today-box owl-wrapper gallery-slide">
+                                        <div class="owl-carousel" data-num="3">
+                                        <?php foreach ($album as $key => $val) {
+
+                                            ?>
+                                            <div class="item news-post standard-post">
+                                                <div class="post-gallery">
+                                                    <a href="<?php echo base_url('photo-album/').$val->slug ?>">
+                                                        <img src="<?php echo $val->f_image ?>" alt="">
+                                                        <div class="cont"><?php echo $val->count ?> photos</div>
+                                                    </a>
+                                                </div>
+                                                <div class="post-content">
+                                                    <h2><a href="<?php echo base_url('photo-album/').$val->slug ?>"><?php echo (strlen(strip_tags($val->title)) > 53) ? substr(strip_tags($image->title),0,50).'...' : strip_tags($val->title) ?></a></h2>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                        <?php } ?> 
+                            <!-- end photo album -->
 
             <!-- carousel box -->
             <div class="carousel-box owl-wrapper graydlayer">
@@ -708,7 +925,6 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                             </div>
                             <?php } ?>
                         </div>
-                        <a class="btn-photo" href="#">ಫೋಟೋ ಗ್ಯಾಲರಿ</a>
                     </div>
 
                 </div>
@@ -740,7 +956,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
                         <!-- <span>Twitter</span> -->
                     </li>
                     <li>
-                        <a href="https://www.youtube.com/channel/UC00fs8iYCCtN9TlyEw_8JCg" class="google"><i class="fa fa-youtube"></i></a>
+                        <a href="https://www.youtube.com/channel/UC00fs8iYCCtN9TlyEw_8JCg/videos
+" class="google"><i class="fa fa-youtube"></i></a>
                         <span class="number">YouTube</span>
                         <!-- <span>YouTube</span> -->
                     </li>
@@ -805,7 +1022,8 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
             <div class="advertisement">
                 <div class="desktop-advert">
                     <span>Advertisement</span>
-                    <img src="<?php echo base_url() ?>assets/upload/addsense/250x250.jpg" alt="">
+                    <a target="_blank" href="http://5ines.com/">
+                                    <img src="<?php echo base_url() ?>assets/images/ad-img1.jpg" alt=""></a>
                 </div>
                 <div class="tablet-advert">
                     <span>Advertisement</span>
@@ -902,6 +1120,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
     <!-- End block-wrapper-section -->
 
     <!-- list line posts section -->
+    <?php if (!empty($happening)) { ?>
     <div class="list-line-posts">
         <div class="container">
             <div class="title-section happenings-title">
@@ -937,6 +1156,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
         </div>
     </div>
+    <?php }?>
     <!-- End list line posts section -->
 
 

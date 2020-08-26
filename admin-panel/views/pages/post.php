@@ -92,6 +92,8 @@
                                                    <!-- <th width="100px">Sl NO.</th> -->
                                                    <th width="350px">Title</th>
                                                    <th width="150px">Category</th>
+                                                   <th width="150px">Playlist</th>
+                                                   <th width="150px">Tags</th>
                                                    <th width="120px">Date</th>
                                                    <th width="120px">Posted By</th>
                                                    <th width="120px">Uploaded Date</th>
@@ -429,7 +431,7 @@
                 'buttons': [
                     'copy', 'csv', 'pdf'
                 ],
-                'order': [],
+                'order': [ 3, "asc" ],
                 'ajax': {
                     'url': "<?php echo base_url(). 'post/getData' ?>",
                     'type': 'POST'

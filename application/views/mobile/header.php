@@ -17,6 +17,7 @@
             </div>
         </nav>
         <ul class="sidenav nn-list" id="mobile-demo">
+            <li class="bt"><a href="<?php echo base_url('kannada') ?>">ಕನ್ನಡ</a></li>
             <li class="bt <?php if($this->uri->segment(1) == ''){ echo 'active'; } ?>"><a href="<?php echo base_url() ?>">Home</a></li>
 
                     <?php

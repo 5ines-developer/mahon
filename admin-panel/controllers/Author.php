@@ -6,6 +6,7 @@ class Author extends CI_Controller {
     {
         parent::__construct();
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
+        if ($this->session->userdata('Mht_type') !='1') { redirect('/'); }
         $this->load->model('m_author');
     }
 

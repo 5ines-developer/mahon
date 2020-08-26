@@ -525,6 +525,8 @@
                     },
                     dataType: "json",
                     success: function(res) {
+
+                        console.log(res)
                         
                         $('#addArticle').attr('data-draft', res.draft)
                         $('input[name=title]').val(res.title);

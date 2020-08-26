@@ -117,7 +117,7 @@ class m_site extends CI_Model {
             $this->db->where('p.status', 1)
                 ->from('mh_posts p')
                 ->where('p.schedule <=', date('Y-m-d H:i:s'))
-                ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, a.name as posted_by')
+                ->select('p.id, p.title, p.slug, p.content, p.image, c.title as category, a.name as posted_by,c.kannada')
                 ->join('mh_category c', 'c.id = p.category', 'left')
                 ->join('mh_author a', 'a.id = p.posted_by', 'left');
         return $this->db->order_by('p.update_on', 'DESC')->get()->row(0);
@@ -279,6 +279,44 @@ class m_site extends CI_Model {
     {
         $this->db->insert('mh_newsletter', array('email' => $email));
         return true;
+    }
+
+        public function getAlbum($value='')
+    {
+      $result = $this->db->get('mh_photo_album')->result();
+      if(!empty($result)){
+        foreach ($result as $key => $value) {
+          $value->count = $this->countAlbum($value->id);
+        }
+      }
+      return $result;
+    }
+
+    public function countAlbum($id='')
+    {
+      return $this->db->where('post_id', $id)->count_all_results('mh_pht_albums');
+    }
+
+        public function addenquiry($insert='')
+    {
+        return $this->db->insert('contact', $insert);
+    }
+
+    public function getWidget($value='')
+    {
+        return $this->db->get('states')->result();
+    }
+
+    public function widgetDeath($value='')
+    {
+        $this->db->select_sum('deaths');
+        return $this->db->get('states')->result();
+    }
+
+    public function widgetconfirm($value='')
+    {
+        $this->db->select_sum('total');
+        return $this->db->get('states')->result();
     }
 
 

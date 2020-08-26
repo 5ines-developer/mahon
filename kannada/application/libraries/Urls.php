@@ -80,6 +80,23 @@ class Urls
         return  $ca1cat;
     }
 
+
+     public function widgetDeath($value='')
+    {
+        $result =  $this->ci->m_site->widgetDeath();
+        foreach ($result as $key => $value) {
+            return $value->deaths;
+        }
+    }
+
+    public function widgetconfirm($value='')
+    {
+        $result =  $this->ci->m_site->widgetconfirm();
+        foreach ($result as $key => $value) {
+            return $value->total;
+        }
+    }
+
     
 
 }

@@ -7,6 +7,11 @@ class Breaking_news extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_breaking_news');
+
+        if ($this->session->userdata('Mht_type') =='2') {
+            $this->load->library('preload');
+            $this->preload->check_auth($this->session->userdata('Mht'));
+        }
     }
 
     // get banner
@@ -25,6 +30,7 @@ class Breaking_news extends CI_Controller {
          foreach($fetch_data as $key => $row)  
          {  
               $sub_array = array();  
+              $sub_array[]='  <input type="checkbox" class="filled-in indual" name="deleteid[]" value="'. $row->id .'" />';
               $sub_array[] = $key + 1;  
               $sub_array[] = '<a href="'.$row->url.'" class="truncate" target="_blank"  />'.$row->title.'</a>';  
             //   $sub_array[] = '<a href="'.$row->url.'" class="truncate" target="_blank"  />'.$row->url.'</a>';  
@@ -81,6 +87,15 @@ class Breaking_news extends CI_Controller {
              echo 'Some error occured, Please try agin later';
          }
      }
+    // delete multiple news
+    public function deleteAll()
+    {
+       $ids = $this->input->post('ids');
+       foreach ($ids as $key => $value) {
+        $this->m_breaking_news->delete($value);
+       }
+       echo json_encode('deleted Successfully');
+    }
  
     //  // single data
      public function single_data()
@@ -104,7 +119,9 @@ class Breaking_news extends CI_Controller {
          $url  = $this->input->post('breaking');
          $title  = $this->input->post('title');
          $id  = $this->input->post('ctid');
-         $data   = array('url' => $url, 'title'=> $title);
+         $newtab    = $this->input->post('newtab');
+         if(empty($newtab)){$newtab='0';}
+         $data   = array('url' => $url, 'title'=> $title, 'is_newtab' => $newtab);
          if($this->m_breaking_news->add($data, $id))
          {
              echo 'Successfully Updated';
