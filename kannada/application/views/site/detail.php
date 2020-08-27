@@ -14,13 +14,16 @@
 		<meta name="description" content="<?php echo $post->pdes ?>" />
 		<meta name="keywords" content="<?php echo $post->pkeyword ?>" />
 		<!-- facebook meta tags -->
-		<meta property="fb:pages" content="454748752068930" />
+		<meta property="fb:pages" content="110725200321598" />
 		<meta property="og:image" content="<?php echo base_url().$post->image ?>" />
+		<meta property="fb:app_id" content="454748752068930" />
+		
 		<meta property="og:title" content="<?php echo $post->ftitle ?>">
 		<meta property="og:site_name" content="Mahonnathi">
 		<meta property="og:url" content="<?php echo current_url() ?>">
 		<meta property="og:description" content="<?php echo $post->fdes ?>">
 		<meta property="og:type" content="website">
+	
 		<!-- Twitter card -->
 		<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@Mahonnathi">
@@ -29,6 +32,7 @@
 		<meta name="twitter:title" content="<?php echo $post->ttitle ?>">
 		<meta name="twitter:description" content="<?php echo $post->tdes ?>">
 	<?php  } ?>
+	<?php $this->load->view('include/favicon.php'); ?>
 	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" media="screen">	
@@ -65,6 +69,25 @@
 
 </head>
 <body>
+<script>
+        window.fbAsyncInit = function() {
+        FB.init({
+        appId : '454748752068930',
+        cookie : true,
+        xfbml : true,
+        version : 'v7.0'
+        });
+        FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
 	<?php $this->load->view('include/widget'); ?>
 	<!-- Container -->
 	<div id="container">
@@ -97,7 +120,7 @@
 		<section class="block-wrapper">
 			<div class="container-fluid1">
 				<div class="row">
-					<div class="col-sm-2">
+					<!-- <div class="col-sm-2">
 						<div class="sidebar">
 							<?php if(!empty($videos)){ ?>
 								<div class="widget post-widget">
@@ -145,7 +168,7 @@
 													<img src="<?php echo base_url().$trow->image ?>" alt="">
 													<h2><?php echo word_limiter(strip_tags($trow->title), 5).'...' ?></h2>
 												</a>
-												<!-- <span class="date">27 may 2013</span> -->
+												
 											</li>
 										
 										<?php } ?>
@@ -157,8 +180,8 @@
 								<div style="height: 400px; background: #42ca97; color: #fff; line-height: 400px; text-align: center; ">ADS Goes Here  194 x 400</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-7">
+					</div> -->
+					<div class="col-sm-9">
 						<?php if(!empty($post))	{ ?>		
 							<!-- block content -->
 							<div class="block-content related-article"  data_slug="<?php echo  $post->slug ?>">
@@ -171,8 +194,7 @@
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i><?php echo date('d-m-Y',strtotime($post->created_on));  ?></li>
 											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
-											<!-- <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li> -->
-											<!-- <li><i class="fa fa-eye"></i>872</li> -->
+										
 										</ul>
 									</div>
 
@@ -259,7 +281,7 @@
 									<!-- End carousel box -->
 
 									<!-- contact form box -->
-									<div class="contact-form-box">
+									<!-- <div class="contact-form-box">
 										<div class="title-section">
 											<h1><span>Leave a Comment</span> <span class="email-not-published">Your email address will not be published.</span></h1>
 										</div>
@@ -284,19 +306,18 @@
 												<i class="fa fa-comment"></i> Post Comment
 											</button>
 										</form>
-									</div>
+									</div> -->
 									<!-- End contact form box -->
 
 
-									<div class="row">
+									<!-- <div class="row">
 										<div class="re-ad-block">
 											<div class="col-lg-4">
 												<div class="advertisement">
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
@@ -306,8 +327,7 @@
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
@@ -317,13 +337,12 @@
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 
 								</div>
 								<!-- End single-post box -->
@@ -350,7 +369,7 @@
 											<li><i class="fa fa-clock-o"></i><?php echo $post->created_on ?></li>
 											<?php echo (!empty($post->posted_by)? '<li><i class="fa fa-user"></i>by <a href="#">'.$post->author->name.'</a></li>' : '') ?>
 											<li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
-											<li><i class="fa fa-eye"></i>872</li>
+										
 										</ul>
 									</div>
 
@@ -386,15 +405,14 @@
 									</div>
 
 
-									<div class="row">
+									<!-- <div class="row">
 										<div class="re-ad-block">
 											<div class="col-lg-4">
 												<div class="advertisement">
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
@@ -404,8 +422,7 @@
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
@@ -415,13 +432,12 @@
 													<div class="desktop-advert">
 														<span>Advertisement</span>
 														<img src="<?php echo base_url() ?>assets/upload/addsense/300x250.jpg" alt="">
-														<!-- <h6>Sponsored Heading</h6>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reiciendis eveniet placeat minima.</p> -->
+														
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 
 									
 								</div>

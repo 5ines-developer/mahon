@@ -177,7 +177,9 @@
                     data: {id : id},
                     dataType: "json",
                     success: function (response) {
-                        $('#title').val(response.title);
+                        var embed = response.embed;
+                        var box = $("#title");
+                        box.val(box.val() + embed);
                         $('#ctid').val(response.id);
                         $('#url').val(response.url);
                         $('#date').val(response.date);

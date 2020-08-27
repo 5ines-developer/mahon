@@ -9,6 +9,12 @@ class Account extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('Mht') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_account');
+         $this->load->library('bcrypt');
+
+        if ($this->session->userdata('Mht_type') =='2') {
+            $this->load->library('preload');
+            $this->preload->check_auth($this->session->userdata('Mht'));
+        }
     }
 
     /**
@@ -44,7 +50,7 @@ class Account extends CI_Controller {
             redirect('change-password');
         } else {
             $crpassword = $this->input->post('crpassword');
-            $password = $this->input->post('password');
+            $password = $this->bcrypt->hash_password($this->input->post('password'));
             $admin = $this->session->userdata('Mht');
             if ($this->m_account->changepass($admin, $password, $crpassword)) {
                 $this->session->set_flashdata('success', 'Password updated Successfully');
@@ -59,10 +65,16 @@ class Account extends CI_Controller {
     public function passwordcheck($password)
     {
         $this->db->where('id', $this->session->userdata('Mht'));
-        $this->db->where('password', $password);
-        $result = $this->db->get('admin');
-        if ($result->num_rows() > 0) {
-            return true;
+        // $this->db->where('password', $password);
+        $query = $this->db->get('admin');
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            if ($this->bcrypt->check_password($password, $result['password'])) {
+                return true;
+            }else{
+                $this->form_validation->set_message('passwordcheck', 'The {field} is not Valid');
+                return false;
+            }
         } else {
             $this->form_validation->set_message('passwordcheck', 'The {field} is not Valid');
             return false;
@@ -89,7 +101,7 @@ class Account extends CI_Controller {
      */
     public function updateacnt()
     {
-        $data['title'] = 'Account settings - Mahonnathi';
+        $data['title'] = 'Account settings - Smart Link';
         $admin = $this->session->userdata('Mht');
         
         $acuname = $this->input->post('username');

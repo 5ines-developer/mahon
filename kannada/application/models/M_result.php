@@ -149,11 +149,17 @@ class M_result extends CI_Model {
 
     public function GetGallery($slug = null)
     {
+        if($this->getPhotoId($slug)){
+            $id= $this->getPhotoId($slug);
+        }else{
+            $id=null;
+        };
         $result = $this->db->where('p.status', 1)
         ->where('slug', $slug)
+        ->or_where('p.id',$id)
         ->order_by('p.id', 'desc')
         ->from('mh_photos p')
-        ->select('c.title as category, p.title, p.slug, p.id, p.tags, p.uploaded_on,
+        ->select('c.title as category, p.title, p.slug, p.id, p.tags, p.uploaded_on,p.uploaded_by,
         f.pageid as fid, f.title as ftitle, f.site_name as fsite_name, f.url as furl, f.descr as fdes,
         t.card as tcard, t.title as ttitle, t.site_name as tsite_name, t.url as turl, t.descr as tdes, 
         pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes')
@@ -164,12 +170,47 @@ class M_result extends CI_Model {
         ->get()
         ->row();
         $result->image = $this->image($result->id);
+        $result->author = $this->autherdetail($result->uploaded_by);
         return $result;
     }
-
     public function image($id = null)
     {
-        return  $this->db->where('photo_id', $id)->select('*')->get('mh_photo_gallery')->result();
+        return  $this->db->where('photo_id', $id)->order_by('photo_id', 'ASC')->select('*')->get('mh_photo_gallery')->result();
+    }
+    public function getPhotoId($slug)
+    {
+        $query = $this->db->where('image_url', $slug)->get('mh_photo_gallery')->row();
+        if(!empty($query)){
+            return  $query->photo_id;
+        }else{
+            return false;
+        }
+    }
+    //related photo gallery
+    public function relatedGallery($category, $slug)
+    {
+        $gallery = $this->db->where('image_url',$slug)->get('mh_photo_gallery')->row();
+        if(!empty($gallery)){$photo_id =  $gallery->photo_id;}else{$photo_id=null;}
+
+        $result = $this->db->where('p.status', 1)
+        ->where('p.slug <>', $slug)
+        ->where('p.id <>', $photo_id)
+        ->order_by('p.id', 'desc')
+        ->from('mh_photos p')
+        ->select('c.title as category, p.title, p.slug, p.id, p.tags, p.uploaded_on,
+        pg.title as ptitle, pg.keyword as pkeyword, pg.descr as pdes')
+        ->join('mh_category c', 'c.id = p.category', 'left')
+        ->join('mh_photo_post_page pg', 'pg.post_id = p.id')
+        ->get()
+        ->result();
+        foreach ($result as $key => $value) {
+            $value->image = $this->relatedImage($value->id,$photo_id);
+        }
+        return $result;
+    }
+    public function relatedImage($id = null,$photo_id=null)
+    {
+        return  $this->db->where('photo_id', $id)->where('photo_id <>', $photo_id)->order_by('photo_id', 'ASC')->select('*')->get('mh_photo_gallery')->result();
     }
 
 

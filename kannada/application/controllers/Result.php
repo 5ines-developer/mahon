@@ -84,18 +84,24 @@ class result extends CI_Controller {
     // gallery preview
     public function photogallery($category = null, $slug = null)
     {
+       
         $this->load->model('m_site');
         $data['temple']     = $this->m_site->temple();
         $data['trending']   = $this->m_site->trending();
         $data['videos']     = $this->m_site->videos();
         $data['popular']    = $this->m_site->popular();
         $data['photos'] = $this->m_result->GetGallery($slug);
+
         $data['breaking']   = $this->m_result->breaking();
+        $data['related']    =  $this->m_result->relatedGallery($category,$slug);
+
         $data['title']  =   'Photos';
        
         if ($this->detect == 'mobile') {
+           
             $this->load->view('mobile/photo-detail', $data, FALSE);
         }else{
+            
             $this->load->view('site/photos', $data, FALSE);
         }
         

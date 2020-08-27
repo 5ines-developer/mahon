@@ -26,11 +26,9 @@ class Photos extends CI_Controller {
     public function add()
     {
        $id = '';
-        
-        
         $data = array(
             'title'         =>  $this->input->post('title'),
-            'slug'          =>  $this->input->post('slug'),
+            'slug'          => str_replace(' ', '-',$this->input->post('slug')),
             'author'        =>  $this->input->post('posted_by'),
             'date'          =>  date('Y-m-d',strtotime($this->input->post('date'))),
             'tags'          =>  $this->input->post('tags'),
@@ -44,12 +42,14 @@ class Photos extends CI_Controller {
         );
 
         $postResult = $this->m_photo->addPost($data, $id);
+        
         if(!empty($id)){
             $msg = 'Update successfully.';
             $postid = $id;
         }else{
                 $msg = 'Post successfully submited.';
                 $postid = $postResult['id'];
+                $slug = $postResult['slug'];
             }
             if($postResult['status'] == 1){
                 $dataPage = array(
@@ -83,7 +83,7 @@ class Photos extends CI_Controller {
                 $this->m_photo->addTwitMeta($datatwit, $id);
 
             if(isset($_FILES['img'])){
-                $this->uploadImage($_FILES['img'], $postid);
+                $this->uploadImage($_FILES['img'], $postid, $slug);
             }
 
             $this->session->set_flashdata('success', 'Gallery Added successfully');
@@ -93,7 +93,7 @@ class Photos extends CI_Controller {
         redirect('photos','refresh');
     }
 
-    function uploadImage($images, $postid)
+    function uploadImage($images, $postid,$slug)
     {
         $files = array();
         $files = $_FILES;
@@ -123,7 +123,8 @@ class Photos extends CI_Controller {
                 }else{
                     $tit = '';
                 }
-                $data = array('title'=> $tit, 'image' => $filename, 'photo_id' => $postid);
+                $image_url= $slug.'-image-'.($i+1);
+                $data = array('title'=> $tit,'image_url'=>$image_url, 'image' => $filename, 'photo_id' => $postid);
                 $this->m_photo->addImages($data);
 
             }
@@ -195,7 +196,7 @@ class Photos extends CI_Controller {
 
     public function addAlbum($value='')
     {
-        $id = '';
+        $id = $this->input->post('album_id');
         $data = array(
             'title'         =>  $this->input->post('title'),
             'slug'          =>  $this->input->post('slug'),
@@ -228,7 +229,7 @@ class Photos extends CI_Controller {
                 $data['f_image'] = $this->config->item('web_url').'photo_album/'.$file_name;
             }
         }
-        $postid = $this->m_photo->insertAlbum($data);
+        $postid = $this->m_photo->insertAlbum($data,$id);
         $this->albumImages($postid);
 
         if(!empty($postid)){
@@ -247,7 +248,7 @@ class Photos extends CI_Controller {
         $files = $_FILES;
         $filesCount = sizeof($_FILES['images']['name']);
         
-        if (!empty($filesCount)) 
+        if (!empty($_FILES['images']['name'][0])) 
         {
             for ($i = 0; $i < $filesCount; $i++) {
                 $_FILES['images']['name']     = $files['images']['name'][$i];
@@ -262,7 +263,8 @@ class Photos extends CI_Controller {
                     'max_size' => "2048000", 
                     'encrypt_name' => true
                 );
-                $this->load->library('upload', $config);
+                $this->load->library('upload');
+                $this->upload->initialize($config);
                 if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
                 $this->upload->do_upload('images');
                 $filename = $this->config->item('web_url').'photo_album/'.$this->upload->data('file_name');
@@ -283,7 +285,20 @@ class Photos extends CI_Controller {
         }
         redirect('photo-album','refresh');
     }
-    
+    public function editAlbum($id)
+    {
+        $data['title']='edit';
+        $data['album'] = $this->m_photo->getSingleAlbum($id);
+        $data['allalbum'] = $this->m_photo->getAllAlbum($id);
+
+        $this->load->view('pages/edit-photo-album',$data);
+    }
+
+    public function deleteAlbum($id)
+    {
+        $result = $this->m_photo->deleteAlbum($id);
+        echo json_encode($result);
+    }
 }
 
 /* End of file Photos.php */

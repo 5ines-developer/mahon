@@ -127,6 +127,11 @@
                                         <label for="date">Date</label>
                                     </div>
 
+
+                                    <div class="input-field col s12">
+                                         <textarea id="cdesc" placeholder="Description" name="cdesc" class="materialize-textarea"></textarea>
+                                     </div>
+
                                     <div class="clearfix"></div>
 
                                     <div class="input-field col s12 " style="margin-top:0px">
@@ -165,13 +170,16 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                                 <div class="clearfix"></div>
 
-                                                <div class="input-field">
-                                                    <textarea id="textarea1" required name="imagetitle[]" class="materialize-textarea phtxt"></textarea>
-                                                    <label for="textarea1">Image Title</label>
+                                            <div class="col s12">
+                                                    <div class="input-field">
+                                                        <textarea id="imagetitle" required name="imagetitle[]" class="materialize-textarea phtxt"></textarea>
+                                                        <label for="imagetitle">Image Title</label>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                
                                         </div>
                                     </div>
                                     <div id="appendBox"></div>
@@ -356,11 +364,14 @@
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
-      <script src="<?php echo base_url()?>assets/ckeditor/ckeditor.js"></script>
+      <script src="<?php echo $this->config->item('web_url')?>kannada/admin-panel/assets/ckeditor/ckeditor.js"></script>
       <script src="<?php echo base_url() ?>assets/js/tag.js"></script>
       <script>
           <?php $this->load->view('include/message.php'); ?>;
           $(document).ready(function () {
+
+            CKEDITOR.replace('imagetitle');
+            CKEDITOR.replace('cdesc');
               
             $('select').formSelect();
             $('.collapsible').collapsible({accordion: false});

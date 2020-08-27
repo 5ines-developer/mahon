@@ -16,7 +16,7 @@
       <style type="text/css">
          .dash-list a .list-dashboard{transition: 0.5s}
          .dash-list a:hover .list-dashboard{transform: scale(1.1);background: #f3f3f3 !important}
-         [type="checkbox"]:not(:checked), [type="checkbox"]:checked { position: relative; opacity: 1; pointer-events: all; }
+         /* [type="checkbox"]:not(:checked), [type="checkbox"]:checked { position: relative; opacity: 1; pointer-events: all; } */
          .allcheck {padding-left:12px!important}
       </style>
    </head>

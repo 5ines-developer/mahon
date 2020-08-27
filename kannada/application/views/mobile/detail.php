@@ -56,6 +56,25 @@
 </head>
 
 <body>
+<script>
+        window.fbAsyncInit = function() {
+        FB.init({
+        appId : '454748752068930',
+        cookie : true,
+        xfbml : true,
+        version : 'v7.0'
+        });
+        FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
 
     <header id="myHeader">
         <nav class="nav-mahonathi nav-is">
@@ -71,30 +90,7 @@
                 </div>
             </div>
         </nav>
-        <ul class="sidenav nn-list" id="mobile-demo">
-            <li class="bt"><a href="<?php echo $this->config->item('web_url'); ?>">English</a></li>
-            <li class="bt <?php if($this->uri->segment(1) == ''){ echo ' active'; } ?>"><a  href="<?php echo base_url() ?>">ಮುಖಪುಟ</a></li>
-
-                    <?php
-                                $vd = ''; 
-                                $kn='';
-                                if(!empty(categories())){
-                                    foreach(categories() as $key => $value) { 
-                                        if($value->title == 'Video'){$vd = '1'; }
-                                        if($value->menu == 1 && $value->title != 'Video'){
-                                            $rurl = $this->urls->urlFormat(base_url().$value->title)
-                                ?>
-                                    <li><a class="world" href="<?php echo $rurl ?>"><?php echo $value->kannada ?></a> </li>
-                                <?php } 
-                                if($value->title == 'Video'){ 
-                                    $rurl1 = $this->urls->urlFormat(base_url().$value->title);
-                                    $kn = $value->title;
-                                } 
-                            } }
-                            if (!empty($vd)) { ?>
-                                <li><a class="world" href="<?php echo $rurl1 ?>"><?php echo $kn ?></a> </li>
-                            <?php } ?> 
-        </ul>
+        </nav>
     </header>
     <!-- menu slider -->
     <!--section -->
@@ -256,7 +252,7 @@
 
         </script>
 
-<!--         <script>
+        <script>
             window.onscroll = function() {
                 myFunction()
             };
@@ -280,7 +276,7 @@
                     this.className += " active";
                 });
             }
-        </script> -->
+        </script>
 </body>
 
 </html>

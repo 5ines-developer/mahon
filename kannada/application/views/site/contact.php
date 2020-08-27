@@ -15,14 +15,14 @@
 	<meta property="og:url" content="<?php echo base_url() ?>">
 	<meta property="og:description" content="">
 	<meta property="og:type" content="website">
-
+	
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="@Mahonnathi">
 	<meta name="twitter:image" content="<?php echo base_url().$banner[0]->image ?>">
 	<meta name="twitter:url" content="<?php echo base_url() ?>">
 	<meta name="twitter:title" content="Online News Portal">
 	<meta name="twitter:description" content="">
-
+	<?php $this->load->view('include/favicon.php'); ?>
 	
 
 	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
@@ -72,6 +72,25 @@
 
 </head>
 <body>
+<script>
+        window.fbAsyncInit = function() {
+        FB.init({
+        appId : '454748752068930',
+        cookie : true,
+        xfbml : true,
+        version : 'v7.0'
+        });
+        FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
 
 	<?php $this->load->view('include/widget'); ?>
 

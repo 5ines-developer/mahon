@@ -10,16 +10,16 @@ class M_featured extends CI_Model {
     {
         $this->db->select('id, img as image, title,  link, type');
         $result = $this->db->order_by('orders', 'asc')->get('mh_today_featured')->result();
-        return $this->arrangedata($result);
-        
+
+        $res= $this->arrangedata($result);
+        return $res;
     }
 
     function arrangedata($result = null)
     {
         $data = array();
         $offset = 1;
-        foreach ($result as $key => $value) {
-            
+        foreach ($result as $key => $value) {  
             if($value->type == 'recent'){
                 $query = $this->getArticle($link = null,  $data);
                 $offset += 1;
@@ -30,12 +30,12 @@ class M_featured extends CI_Model {
                 $slug = $link[sizeof($link) - 1];
                 $query = $this->getArticle($slug,  $data);
                 array_push($data, $query);
-
             }                
             else{
                 array_push($data,$value);
             }
         }
+       
         return $data;
         
     }
@@ -55,7 +55,8 @@ class M_featured extends CI_Model {
         $this->db->from('mh_posts p');
         $this->db->join('mh_category c', 'c.id = p.category', 'left');
         
-        return $this->db->order_by('p.update_on', 'DESC')->get()->row(0);
+         $res= $this->db->order_by('p.update_on', 'DESC')->get()->row(0);
+        return  $res;
     }
 
 

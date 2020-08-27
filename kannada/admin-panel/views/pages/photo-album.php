@@ -58,6 +58,7 @@
                                                 <div class="tumb-action">
                                                     <!-- <a href=""><i class="fas fa-pencil-alt"></i></a> -->
                                                     <a href="<?php echo base_url('photo-album/delete/').$value->id ?>" class="delete-btn"><i class="far fa-trash-alt"></i></a>
+                                                    <a href="<?php echo base_url('photo-album/edit/').$value->id ?>" class=""><i class="far fa-edit"></i></a>
                                                     <a href="<?php echo $this->config->item('web_url').'photo-album/'.$value->slug ?>" target="_blank"><i class="fas fa-eye"></i></a>
                                                 </div>
                                                 <div class="tumb-caption">

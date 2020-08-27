@@ -26,7 +26,7 @@ class m_photo extends CI_Model {
         else{
             $this->db->insert('mh_photos', $data);
             if( $this->db->affected_rows() > 0 ){
-                $data = array('status' => 1, 'id' => $this->db->insert_id());
+                $data = array('status' => 1, 'id' => $this->db->insert_id(),'slug'=>$data['slug']);
             }else{
                     $data = array('status' => 0,);
             }
@@ -127,8 +127,13 @@ class m_photo extends CI_Model {
         endif;
     }
 
-        public function insertAlbum($data='')
+    public function insertAlbum($data='',$id='')
     {
+        if(!empty($id)){
+            $this->db->where('id',$id);
+            $this->db->update('mh_photo_album', $data);
+            return $id;
+        }
       $this->db->insert('mh_photo_album', $data);
       return $this->db->insert_id();
     }
@@ -177,6 +182,41 @@ class m_photo extends CI_Model {
     {
       return $this->db->where('post_id', $id)->delete('mh_pht_albums');
     }
+    public function getSingleAlbum($id)
+    {
+        $result = $this->db->where('p.id', $id)
+        ->from('mh_photo_album p')
+        ->join('mh_author a', "a.id = p.author", 'left')
+        ->select('p.*,a.name')
+        ->get()
+        ->row();
+       
+        return $result;
+    }
+    public function getAllAlbum($id)
+    {
+        $result = $this->db->where('post_id', $id)
+        ->get('mh_pht_albums')
+        ->result();
+        return $result;
+    }
+    public function deleteAlbum($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('mh_pht_albums')->row();
+        if(!empty($query)){
 
+            $this->db->where('id', $id);
+            $this->db->delete('mh_pht_albums');
+            @unlink($query->image);
+            if($this->db->affected_rows() > 0){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 }
 /* End of file m_photo.php */

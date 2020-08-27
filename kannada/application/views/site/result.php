@@ -11,7 +11,7 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+	<?php $this->load->view('include/favicon.php'); ?>
 	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	
@@ -38,6 +38,25 @@ $bimg = (!empty($banner[0]->image))?$banner[0]->image:'';
 
 </head>
 <body>
+<script>
+        window.fbAsyncInit = function() {
+        FB.init({
+        appId : '454748752068930',
+        cookie : true,
+        xfbml : true,
+        version : 'v7.0'
+        });
+        FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
 	<?php $this->load->view('include/widget'); ?>
 
 	<!-- Container -->

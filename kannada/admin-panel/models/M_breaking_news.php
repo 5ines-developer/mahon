@@ -34,7 +34,8 @@ class m_breaking_news extends CI_Model {
 		if($_POST["length"] != -1)  
 		{  
 			 $this->db->limit($_POST['length'], $_POST['start']);  
-		}  
+        }  
+        $this->db->limit(5); 
 		$query = $this->db->get();  
 		return $query->result();  
     }

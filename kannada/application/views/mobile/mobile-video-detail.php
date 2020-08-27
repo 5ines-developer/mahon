@@ -48,16 +48,35 @@
 </head>
 
 <body>
+<script>
+        window.fbAsyncInit = function() {
+        FB.init({
+        appId : '454748752068930',
+        cookie : true,
+        xfbml : true,
+        version : 'v7.0'
+        });
+        FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
 
     <header id="myHeader">
         <nav class="nav-mahonathi nav-is">
             <div class="nav-wrapper tab-head">
                 <a href="<?php echo base_url().$this->uri->segment(1) ?>" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-arrow-left"></i><span><?php echo ucwords($this->urls->urlDformat($this->uri->segment(1))) ?></span></a>
                 <div class="Share-detail">
-                    <!-- <ul>
+                    <ul>
                         <li><i class="fas fa-comment-alt"></i><sup>4</sup>
                         </li>
-                    </ul> -->
+                    </ul>
                 </div>
             </div>
         </nav>

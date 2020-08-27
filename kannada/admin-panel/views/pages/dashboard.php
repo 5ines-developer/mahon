@@ -175,7 +175,7 @@
                            
                         </div><!-- end col 8 -->
                         <div class="col s12 m12 l4">
-                           <!-- <div class="web-visitor-chart">
+                           <div class="web-visitor-chart">
                               <div class="chart-toolbar">
                                     <div class="btn-group">
                                        <a href=""  class="btn">Today</a>
@@ -186,9 +186,7 @@
                               <div class="card">
                                     <canvas id="myChart" height="300px"></canvas>
                               </div>
-                           </div> -->
-
-                           <!-- web visitor count end -->
+                           </div><!-- web visitor count end -->
 
                            <div class="recent-post-authors">
                               <ul class="collection with-header">

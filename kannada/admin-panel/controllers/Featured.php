@@ -13,6 +13,8 @@ class Featured extends CI_Controller {
     {
         $data['title'] = 'Todays Fetured';
         $data['post'] = $this->m_featured->getFetures();
+      
+        
         $this->load->view('pages/today-featured', $data, FALSE);
         
     }

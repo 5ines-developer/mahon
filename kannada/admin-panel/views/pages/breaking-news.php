@@ -16,7 +16,8 @@
       <style type="text/css">
          .dash-list a .list-dashboard{transition: 0.5s}
          .dash-list a:hover .list-dashboard{transform: scale(1.1);background: #f3f3f3 !important}
-
+         [type="checkbox"]:not(:checked), [type="checkbox"]:checked { position: relative; opacity: 1; pointer-events: all; }
+         .allcheck {padding-left:12px!important}
       </style>
    </head>
    <body>
@@ -54,6 +55,9 @@
                                  <table id="dynamic" class="striped">
                                     <thead>
                                        <tr>
+                                       <th  class="allcheck">
+                                             <input type="checkbox" class="filled-in" id="allCheck" />
+                                          </th>
                                           <th width="75px">Sl NO.</th>
                                           <th width="250px">Title</th>
                                           <th width="200px">URL</th>
@@ -61,6 +65,12 @@
                                           <th >Action</th>
                                        </tr>
                                     </thead>
+                                    <tfoot>
+                                       <tr>
+                                          <td colspan="2"><a href="#!" class="delete-check"><i class="fas fa-trash-alt red-text"></i> Delete</a> </td>
+                                         
+                                       </tr>
+                                    </tfoot>
                                  </table>  
                               </div>
                            </div>
@@ -251,7 +261,43 @@
                       
                     }); 
                 }                
-            });  
+            }); 
+
+               //delete all check all
+            $('#allCheck').change(function (e) { 
+               e.preventDefault();
+               if($(this).prop("checked") == true){
+                  $('.indual').prop( "checked", true );
+               }
+               else if($(this). prop("checked") == false){
+                  $('.indual').prop( "checked", false );
+               }
+            });
+
+                // delete cheked item
+                $('.delete-check').click(function (e) { 
+               e.preventDefault();
+               if(confirm('Are you sure???')){
+                  var selected = [];
+                     $('.indual:checked').each(function() {
+                        selected.push($(this).val());
+                     });
+                     
+                  $.ajax({
+                        type: "post",
+                        url: "<?php echo base_url('breaking_news/deleteAll') ?>",
+                        data: {ids : selected},
+                        dataType: "json",
+                        success: function(response) {
+                           location.reload(); 
+                        },
+                        
+                  });
+               }else{
+                  return false;
+               }
+               
+            }); 
         
         });
       </script>

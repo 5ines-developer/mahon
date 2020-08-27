@@ -34,7 +34,9 @@
                      <div class="card-content">
                         <div class="row">
                             <?php
-
+                                
+                               
+                                
                              if(!empty($post['0'])){ ?>
                                 <div class="col s10 push-s1">
 
@@ -44,7 +46,7 @@
                                                 <img src="<?php echo $this->config->item('web_url').$post['0']->image ?>" class="activator">
                                             </div>
                                             <span class="card-title">F1</span>
-                                            <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1" data-id="F1"><i class="fas fa-pencil-alt"></i></a>
+                                            <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger edits-btn" href="#modal1" data-id="F1"><i class="fas fa-pencil-alt"></i></a>
                                         </div>
                                         <div class="card-content">
                                             <span class="card-title activator grey-text text-darken-4"><?php echo $post['0']->title ?></span>
@@ -56,7 +58,7 @@
 
                                 </div>
                             <?php } else{ echo '<h3 class="center">No result found</h3>'; }?>
-
+                                
                             <?php $a = 1; foreach ($post as $i => $row) { 
                                 if($i > 0 && !empty($row->id)){
                             ?>
